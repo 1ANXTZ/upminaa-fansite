@@ -173,10 +173,11 @@ a:focus-visible, button:focus-visible{
   font-family: var(--font-display);
   font-size: 1.3rem;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   color: var(--text-main);
+  white-space: nowrap;
 }
-.brand span{ color: var(--purple-light); text-shadow: 0 0 12px var(--purple-light); }
+.brand span{ color: var(--purple-light); text-shadow: 0 0 8px var(--purple-light); }
 
 .nav-links{ display:flex; gap: 40px; }
 
