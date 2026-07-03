@@ -166,14 +166,23 @@
     </div>
 
     <div class="gallery-grid" id="galleryGrid">
-      <figure class="gallery-card embed-card live-card">
-        <iframe
-          src="https://player.twitch.tv/?channel=upminaa&parent=1anxtz.github.io&parent=localhost&muted=true"
-          allowfullscreen
-          loading="lazy"
-          title="UpMinaa live on Twitch">
-        </iframe>
-        <span class="gallery-tag">Live on Twitch</span>
+      <!-- Card "ao vivo": mostra a foto dela com uma tag OFFLINE/AO VIVO.
+           O script.js checa o status real na Twitch, atualiza a tag e,
+           se ela estiver ao vivo, troca a foto pelo player embutido
+           depois de alguns segundos. -->
+      <figure class="gallery-card embed-card live-card" id="twitchLiveCard">
+        <img src="upminaa-profile.png" alt="Upminaa" class="twitch-status-photo" id="twitchStatusPhoto">
+        <div class="twitch-status-badge is-off" id="twitchStatusBadge">
+          <span class="status-dot"></span>
+          <span class="status-text">OFFLINE</span>
+        </div>
+        <div class="twitch-embed-wrap" id="twitchEmbedWrap"></div>
+        <span class="gallery-tag">UpMinaa na Twitch</span>
+      </figure>
+
+      <!-- VOD mais recente da Twitch, inserido pelo script.js -->
+      <figure class="gallery-card embed-card twitch-vod-card" id="twitchVodCard">
+        <div class="yt-loading">Carregando VOD mais recente da Twitch…</div>
       </figure>
 
       <!-- Os cards de vídeo do YouTube abaixo são inseridos
