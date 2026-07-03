@@ -65,8 +65,6 @@ a:focus-visible, button:focus-visible{
   background: radial-gradient(circle at 50% 40%, var(--bg-purple) 0%, var(--bg-black) 70%);
   display:flex; align-items:center; justify-content:center;
   transition: opacity 0.6s ease, visibility 0.6s ease;
-  /* CSS-only safety net: hides the loader on its own even if script.js
-     never loads or fails, so the page is never stuck. */
   animation: forceHideLoader 0s linear 3.5s forwards;
 }
 .loader.hidden{ opacity:0; visibility:hidden; pointer-events:none; }
@@ -564,6 +562,23 @@ section{ position:relative; padding: 120px 6vw; }
   border: 1px solid rgba(255,60,80,0.5);
   color: #ff5c72;
 }
+
+/* ---- Dynamically-loaded YouTube video cards ---- */
+.yt-placeholder{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.yt-loading, .yt-error{
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  text-align: center;
+  padding: 0 20px;
+}
+.yt-error{ color: #ff8a8a; }
 
 .embed-note{
   max-width: 760px; margin: 30px auto 0; text-align: center;
