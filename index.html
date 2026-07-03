@@ -1,1 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Upminaa | Fan Hub</title>
+<meta name="description" content="An unofficial fan-made hub celebrating Upminaa — clips, community and streams." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
+<!-- Loading Screen -->
+<div id="loader" class="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <div class="loader-ring"></div>
+    <span class="loader-tag">UPMINAA</span>
+    <div class="loader-bars">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+</div>
+
+<!-- Background FX -->
+<div class="bg-fx" aria-hidden="true">
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+  <div class="grid-overlay"></div>
+</div>
+
+<!-- Nav -->
+<header class="site-header" id="siteHeader">
+  <nav class="navbar">
+    <a href="#home" class="brand">UPMIN<span>AA</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#bio" class="nav-link">Bio</a></li>
+      <li><a href="#cosplay" class="nav-link">Cosplays</a></li>
+      <li><a href="#social" class="nav-link">Socials</a></li>
+      <li><a href="#gallery" class="nav-link">Gallery</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">// UNOFFICIAL FAN HUB · LIVE ON TWITCH</p>
+      <h1 class="hero-title" data-text="UPMINAA">UPMINAA</h1>
+      <p class="hero-desc">
+        Full-send energy, clutch plays and a chat that never sleeps.
+        This corner of the internet is built by fans, for fans —
+        celebrating every stream, every clip, every unforgettable moment.
+      </p>
+      <div class="hero-actions">
+        <a href="https://www.tiktok.com/@upminaa.cos" target="_blank" rel="noopener" class="btn btn-glow btn-tiktok">
+          <span class="btn-icon">♪</span> Follow on TikTok
+        </a>
+        <a href="https://www.twitch.tv/upminaa" target="_blank" rel="noopener" class="btn btn-glow btn-twitch">
+          <span class="btn-icon">▶</span> Watch on Twitch
+        </a>
+        <a href="https://www.youtube.com/@upminaa" target="_blank" rel="noopener" class="btn btn-glow btn-youtube">
+          <span class="btn-icon">▶</span> Subscribe on YouTube
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-frame">
+        <img src="upminaa-profile.png" alt="Upminaa" class="hero-photo">
+        <div class="hero-frame-glow"></div>
+        <div class="hero-scanline"></div>
+        <div class="live-tag">● LIVE</div>
+      </div>
+      <div class="visualizer">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+    <a href="#about" class="scroll-cue" aria-label="Scroll down">
+      <span class="scroll-cue-dot"></span>
+    </a>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="section-heading">
+      <p class="section-eyebrow">Who is</p>
+      <h2 class="section-title">About Upminaa</h2>
+    </div>
+
+    <div class="about-grid">
+      <article class="card about-card">
+        <div class="card-icon">🎮</div>
+        <h3>The Gameplay</h3>
+        <p>Known for sharp reflexes and even sharper commentary, Upminaa turns every ranked match into a show worth watching — clutch or chaos, chat gets it all live.</p>
+      </article>
+
+      <article class="card about-card">
+        <div class="card-icon">💜</div>
+        <h3>The Community</h3>
+        <p>Warm, hilarious and endlessly welcoming — the community around Upminaa feels like a late-night call with your closest friends, minigames and all.</p>
+      </article>
+
+      <article class="card about-card">
+        <div class="card-icon">⚡</div>
+        <h3>The Vibe</h3>
+        <p>High-energy streams, genuine reactions and zero scripts. What you see is what you get, and that honesty is exactly why fans keep coming back.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Bio -->
+  <section id="bio" class="bio">
+    <div class="section-heading">
+      <p class="section-eyebrow">Conheça a</p>
+      <h2 class="section-title">Biografia</h2>
+    </div>
+
+    <div class="bio-content">
+      <div class="bio-photo">
+        <img src="upminaa-profile.png" alt="Upminaa">
+        <div class="bio-photo-glow"></div>
+      </div>
+
+      <div class="bio-text">
+        <div class="bio-facts-row">
+          <div class="bio-fact">
+            <span class="bio-fact-label">Nome</span>
+            <span class="bio-fact-value">Mina, mais conhecida como UpMinaa</span>
+          </div>
+          <div class="bio-fact">
+            <span class="bio-fact-label">Origem</span>
+            <span class="bio-fact-value">Alemanha 🇩🇪</span>
+          </div>
+          <div class="bio-fact">
+            <span class="bio-fact-label">Idade</span>
+            <span class="bio-fact-value">20 anos</span>
+          </div>
+          <div class="bio-fact">
+            <span class="bio-fact-label">Streamer desde</span>
+            <span class="bio-fact-value">Fevereiro de 2023</span>
+          </div>
+        </div>
+
+        <p class="bio-paragraph">
+          A jornada da UpMinaa começou no fim de 2022, quando um único vídeo de cosplay
+          da Gawr Gura viralizou no TikTok. O que era pra ser só um post virou o início
+          de uma carreira multi-plataforma: hoje ela soma milhões de seguidores somando
+          TikTok, Instagram, YouTube, Twitch e X.
+        </p>
+        <p class="bio-paragraph">
+          Estreou oficialmente na Twitch em fevereiro de 2023 e, partindo do zero,
+          construiu uma base de quase 200 mil seguidores de forma totalmente orgânica —
+          sem depender de números para crescer, e sim de conexão genuína com a audiência.
+        </p>
+
+        <h3 class="bio-subtitle">Curiosidades</h3>
+        <ul class="bio-list">
+          <li>É bilíngue: transita entre alemão e inglês durante as lives, dependendo de quem está no chat.</li>
+          <li>Mistura cosplay com terror — costuma jogar horror games já caracterizada.</li>
+          <li>Fã declarada de anime, com Blue Lock, Tokyo Ghoul, Naruto e Jujutsu Kaisen entre os favoritos.</li>
+          <li>Referências recorrentes nos seus cosplays: Hatsune Miku e a vtuber Gawr Gura.</li>
+          <li>Costuma ir ao ar às quartas, sábados e domingos, por volta das 19h (horário de Berlim) — mas admite se atrasar de vez em quando.</li>
+        </ul>
+
+        <p class="bio-note">
+          ℹ️ Dados públicos reunidos pela comunidade de fãs. Se algo estiver desatualizado
+          ou incorreto, é só avisar que a gente corrige.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cosplay -->
+  <section id="cosplay" class="cosplay">
+    <div class="section-heading">
+      <p class="section-eyebrow">Craft & Characters</p>
+      <h2 class="section-title">Cosplays Icônicos</h2>
+      <p class="cosplay-intro">
+        Do vídeo que viralizou até os looks mais recentes, uma seleção dos personagens
+        que mais marcaram a trajetória cosplayer da UpMinaa.
+      </p>
+    </div>
+
+    <div class="cosplay-grid">
+
+      <article class="cosplay-card cosplay-featured">
+        <span class="cosplay-badge">O primeiro viral</span>
+        <div class="cosplay-art cosplay-art-gura">
+          <span class="cosplay-emoji">🦈</span>
+        </div>
+        <div class="cosplay-info">
+          <h3>Gawr Gura</h3>
+          <p class="cosplay-source">Hololive EN</p>
+          <p class="cosplay-desc">O cosplay que começou tudo: um único vídeo no TikTok em 2022 viralizou e deu início à carreira de conteúdo da UpMinaa.</p>
+        </div>
+      </article>
+
+      <article class="cosplay-card">
+        <div class="cosplay-art cosplay-art-miku">
+          <span class="cosplay-emoji">🎧</span>
+        </div>
+        <div class="cosplay-info">
+          <h3>Hatsune Miku</h3>
+          <p class="cosplay-source">Vocaloid</p>
+          <p class="cosplay-desc">Uma das referências mais recorrentes nos seus posts — presença fixa entre os favoritos dos fãs.</p>
+        </div>
+      </article>
+
+      <article class="cosplay-card">
+        <div class="cosplay-art cosplay-art-frieren">
+          <span class="cosplay-emoji">🧝‍♀️</span>
+        </div>
+        <div class="cosplay-info">
+          <h3>Frieren</h3>
+          <p class="cosplay-source">Frieren: Beyond Journey's End</p>
+          <p class="cosplay-desc">Um dos looks mais elogiados pela comunidade, com direito a peruca e detalhes fiéis ao anime.</p>
+        </div>
+      </article>
+
+      <article class="cosplay-card">
+        <div class="cosplay-art cosplay-art-maki">
+          <span class="cosplay-emoji">⚔️</span>
+        </div>
+        <div class="cosplay-info">
+          <h3>Maki Zenin</h3>
+          <p class="cosplay-source">Jujutsu Kaisen</p>
+          <p class="cosplay-desc">Cosplay que rendeu vídeos de dança super virais, incluindo o famoso "Watashi wa Star".</p>
+        </div>
+      </article>
+
+      <article class="cosplay-card">
+        <div class="cosplay-art cosplay-art-makima">
+          <span class="cosplay-emoji">🔗</span>
+        </div>
+        <div class="cosplay-info">
+          <h3>Makima</h3>
+          <p class="cosplay-source">Chainsaw Man</p>
+          <p class="cosplay-desc">Um dos personagens mais pedidos pela audiência, refeito em diferentes variações de figurino.</p>
+        </div>
+      </article>
+
+      <article class="cosplay-card">
+        <div class="cosplay-art cosplay-art-tsunade">
+          <span class="cosplay-emoji">💎</span>
+        </div>
+        <div class="cosplay-info">
+          <h3>Tsunade</h3>
+          <p class="cosplay-source">Naruto</p>
+          <p class="cosplay-desc">Homenagem a um clássico do shounen, unindo a paixão da UpMinaa por anime old-school.</p>
+        </div>
+      </article>
+
+      <article class="cosplay-card">
+        <div class="cosplay-art cosplay-art-ellen">
+          <span class="cosplay-emoji">🌀</span>
+        </div>
+        <div class="cosplay-info">
+          <h3>Ellen Joe</h3>
+          <p class="cosplay-source">Zenless Zone Zero</p>
+          <p class="cosplay-desc">Um dos cosplays mais recentes e comentados, unindo referência gamer e estética alternativa.</p>
+        </div>
+      </article>
+
+      <article class="cosplay-card">
+        <div class="cosplay-art cosplay-art-mavuika">
+          <span class="cosplay-emoji">🔥</span>
+        </div>
+        <div class="cosplay-info">
+          <h3>Mavuika</h3>
+          <p class="cosplay-source">Genshin Impact</p>
+          <p class="cosplay-desc">Look temático de fogo que apareceu tanto em streams quanto em clipes de destaque nas redes.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="cosplay-note">
+      ℹ️ Personagens listados com base no que a própria UpMinaa compartilhou publicamente em suas redes.
+      Fotos reais não foram incluídas aqui por respeito aos direitos autorais — confira os looks completos
+      direto no <a href="https://www.tiktok.com/@upminaa.cos" target="_blank" rel="noopener">TikTok</a> e
+      <a href="https://www.instagram.com/upminaa/" target="_blank" rel="noopener">Instagram</a> dela.
+    </p>
+  </section>
+
+  <!-- Social -->
+  <section id="social" class="social">
+    <div class="section-heading">
+      <p class="section-eyebrow">Stay connected</p>
+      <h2 class="section-title">Follow The Journey</h2>
+    </div>
+
+    <div class="social-grid">
+      <a href="https://www.tiktok.com/@upminaa.cos" target="_blank" rel="noopener" class="social-card social-tiktok">
+        <span class="social-glow"></span>
+        <span class="social-icon">♪</span>
+        <span class="social-name">TikTok</span>
+        <span class="social-sub">Cosplay & clips</span>
+      </a>
+
+      <a href="https://www.twitch.tv/upminaa" target="_blank" rel="noopener" class="social-card social-twitch">
+        <span class="social-glow"></span>
+        <span class="social-icon">▶</span>
+        <span class="social-name">Twitch</span>
+        <span class="social-sub">Watch live streams</span>
+      </a>
+
+      <a href="https://www.youtube.com/@upminaa" target="_blank" rel="noopener" class="social-card social-youtube">
+        <span class="social-glow"></span>
+        <span class="social-icon">▶</span>
+        <span class="social-name">YouTube</span>
+        <span class="social-sub">Highlights & VODs</span>
+      </a>
+
+      <a href="https://www.instagram.com/upminaa/" target="_blank" rel="noopener" class="social-card social-instagram">
+        <span class="social-glow"></span>
+        <span class="social-icon">◎</span>
+        <span class="social-name">Instagram</span>
+        <span class="social-sub">Behind the scenes</span>
+      </a>
+
+      <a href="https://x.com/upminaa" target="_blank" rel="noopener" class="social-card social-twitter">
+        <span class="social-glow"></span>
+        <span class="social-icon">✕</span>
+        <span class="social-name">Twitter / X</span>
+        <span class="social-sub">Latest updates</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Gallery / Watch -->
+  <section id="gallery" class="gallery">
+    <div class="section-heading">
+      <p class="section-eyebrow">Watch</p>
+      <h2 class="section-title">Streams &amp; Videos</h2>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Card "ao vivo": mostra a foto dela com uma tag OFFLINE/AO VIVO.
+           O script.js checa o status real na Twitch, atualiza a tag e,
+           se ela estiver ao vivo, troca a foto pelo player embutido
+           depois de alguns segundos. -->
+      <figure class="gallery-card embed-card live-card" id="twitchLiveCard">
+        <img src="upminaa-profile.png" alt="Upminaa" class="twitch-status-photo" id="twitchStatusPhoto">
+        <div class="twitch-status-badge is-off" id="twitchStatusBadge">
+          <span class="status-dot"></span>
+          <span class="status-text">OFFLINE</span>
+        </div>
+        <div class="twitch-embed-wrap" id="twitchEmbedWrap"></div>
+        <span class="gallery-tag">UpMinaa na Twitch</span>
+      </figure>
+
+      <!-- VOD mais recente da Twitch, inserido pelo script.js -->
+      <figure class="gallery-card embed-card twitch-vod-card" id="twitchVodCard">
+        <div class="yt-loading">Carregando VOD mais recente da Twitch…</div>
+      </figure>
+
+      <!-- Os cards de vídeo do YouTube abaixo são inseridos
+           automaticamente pelo script.js com os vídeos mais
+           recentes do canal. Não precisa editar aqui à mão. -->
+      <figure class="gallery-card embed-card yt-video-card yt-placeholder">
+        <div class="yt-loading">Carregando vídeos recentes…</div>
+      </figure>
+    </div>
+
+    <p class="embed-note">
+      ℹ️ O player fica preto/parado quando ela não está ao vivo — isso é normal, é a tela padrão de "offline" da Twitch.
+    </p>
+  </section>
+</main>
+
+
+<footer class="site-footer">
+  <p class="footer-brand">UPMIN<span>AA</span> FAN HUB</p>
+  <p>&copy; <span id="year"></span> Upminaa Fan Hub. All rights reserved by their respective owners.</p>
+  <p class="disclaimer">This is an unofficial, fan-made website and is not affiliated with, endorsed by, or operated by Upminaa. Created purely out of appreciation for the content and community.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
