@@ -563,6 +563,61 @@ section{ position:relative; padding: 120px 6vw; }
   color: #ff5c72;
 }
 
+/* ---- Twitch "ao vivo" card: photo + status badge + embed ---- */
+.live-card{ position: relative; }
+
+.twitch-status-photo{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  z-index: 1;
+  transition: opacity 0.5s ease;
+}
+
+.twitch-embed-wrap{
+  position: absolute; inset: 0;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+.twitch-embed-wrap.is-visible{ opacity: 1; pointer-events: auto; }
+.twitch-embed-wrap iframe{ width: 100%; height: 100%; border: 0; }
+
+.twitch-status-badge{
+  position: absolute; top: 14px; right: 14px; z-index: 3;
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 14px;
+  border-radius: 30px;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  background: rgba(8,6,13,0.75);
+  backdrop-filter: blur(6px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.twitch-status-badge.is-hidden{
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+}
+.status-dot{ width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+
+.twitch-status-badge.is-off{
+  color: #a49bbf;
+  border: 1px solid rgba(164,155,191,0.4);
+}
+.twitch-status-badge.is-on{
+  color: #ff5c72;
+  border: 1px solid rgba(255,60,80,0.55);
+}
+.twitch-status-badge.is-on .status-dot{ animation: livePulse 1.8s ease-in-out infinite; }
+
+/* ---- Twitch VOD card (fills the same way the YouTube cards do) ---- */
+.twitch-vod-card{ display: flex; align-items: center; justify-content: center; }
+.twitch-vod-card iframe{ width: 100%; height: 100%; border: 0; position: absolute; inset: 0; }
+
 /* ---- Dynamically-loaded YouTube video cards ---- */
 .yt-placeholder{
   display: flex;
