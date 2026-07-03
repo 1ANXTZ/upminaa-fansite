@@ -22,7 +22,7 @@ if (loaderEl) {
    parallel with everything else below, so it doesn't block the
    rest of the page. */
 const YT_CHANNEL_ID = 'UCw3CBMvVjZJNfQR3tEvTodQ'; // @upminaa
-const YT_VIDEO_COUNT = 5;
+const YT_VIDEO_COUNT = 4; // um a menos, o 5º lugar agora é o VOD da Twitch
 const YT_RSS_URL = `https://www.youtube.com/feeds/videos.xml?channel_id=${YT_CHANNEL_ID}`;
 
 // A couple of public CORS proxies, tried in order, so one going
@@ -100,6 +100,120 @@ async function loadLatestVideos() {
 }
 
 loadLatestVideos();
+
+/* ---------- Twitch live status + latest VOD ----------
+   The official Twitch API needs a server-side secret to authenticate,
+   which a static GitHub Pages site doesn't have. This uses the same
+   public GQL endpoint Twitch's own website calls, with the well-known
+   public "web client" Client-Id — the standard trick fan sites use to
+   read live status without a backend. It's unofficial, so if Twitch
+   changes something on their end this may need updating, but it's
+   read-only and asks for nothing private. */
+const TWITCH_CHANNEL = 'upminaa';
+const TWITCH_CLIENT_ID = 'kimne78kx3ncx6brgo4mv6wki5h1ko'; // Twitch's public web client id
+const TWITCH_GQL_URL = 'https://gql.twitch.tv/gql';
+const TWITCH_BADGE_HOLD_MS = 4000;      // tempo que o selo AO VIVO fica visível antes de sumir
+const TWITCH_RECHECK_MS = 2 * 60 * 1000; // rechecha o status a cada 2 minutos
+
+async function twitchGqlQuery(query) {
+  const res = await fetch(TWITCH_GQL_URL, {
+    method: 'POST',
+    headers: { 'Client-Id': TWITCH_CLIENT_ID, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query }),
+  });
+  if (!res.ok) throw new Error(`Twitch GQL HTTP ${res.status}`);
+  const json = await res.json();
+  if (json.errors) throw new Error('Twitch GQL error');
+  return json.data;
+}
+
+async function fetchTwitchIsLive() {
+  const data = await twitchGqlQuery(
+    `query { user(login: "${TWITCH_CHANNEL}") { stream { id } } }`
+  );
+  return Boolean(data && data.user && data.user.stream);
+}
+
+async function fetchLatestTwitchVod() {
+  const data = await twitchGqlQuery(
+    `query { user(login: "${TWITCH_CHANNEL}") { videos(first: 1, sort: TIME, type: ARCHIVE) { edges { node { id title } } } } }`
+  );
+  const edge = data && data.user && data.user.videos && data.user.videos.edges[0];
+  return edge ? { id: edge.node.id, title: edge.node.title } : null;
+}
+
+function twitchEmbedParent() {
+  // player.twitch.tv exige o(s) domínio(s) exato(s) que estão servindo a página
+  return window.location.hostname || 'localhost';
+}
+
+function setTwitchBadge(state) {
+  const badge = document.getElementById('twitchStatusBadge');
+  if (!badge) return;
+  badge.classList.remove('is-hidden');
+  badge.classList.toggle('is-off', state === 'off');
+  badge.classList.toggle('is-on', state === 'on');
+  const label = badge.querySelector('.status-text');
+  if (label) label.textContent = state === 'on' ? 'AO VIVO' : 'OFFLINE';
+}
+
+function mountTwitchLiveEmbed() {
+  const wrap = document.getElementById('twitchEmbedWrap');
+  const photo = document.getElementById('twitchStatusPhoto');
+  const badge = document.getElementById('twitchStatusBadge');
+  if (!wrap || wrap.dataset.mounted) return;
+
+  const iframe = document.createElement('iframe');
+  iframe.src = `https://player.twitch.tv/?channel=${TWITCH_CHANNEL}&parent=${twitchEmbedParent()}&parent=1anxtz.github.io&parent=localhost&muted=true`;
+  iframe.title = 'UpMinaa ao vivo na Twitch';
+  iframe.allowFullscreen = true;
+  wrap.appendChild(iframe);
+  wrap.classList.add('is-visible');
+  wrap.dataset.mounted = 'true';
+
+  if (photo) photo.style.opacity = '0';
+  if (badge) badge.classList.add('is-hidden');
+}
+
+async function refreshTwitchStatus() {
+  try {
+    const isLive = await fetchTwitchIsLive();
+    if (isLive) {
+      setTwitchBadge('on');
+      setTimeout(mountTwitchLiveEmbed, TWITCH_BADGE_HOLD_MS);
+    } else {
+      setTwitchBadge('off');
+    }
+  } catch (err) {
+    console.error('UpMinaa Fan Hub: failed to check Twitch live status', err);
+    // Mantém o estado padrão (foto + OFFLINE) em caso de falha.
+  }
+}
+
+async function loadLatestTwitchVod() {
+  const card = document.getElementById('twitchVodCard');
+  if (!card) return;
+  try {
+    const vod = await fetchLatestTwitchVod();
+    if (!vod) {
+      card.innerHTML = '<div class="yt-loading">Nenhum VOD encontrado no momento.</div>';
+      return;
+    }
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://player.twitch.tv/?video=${vod.id}&parent=${twitchEmbedParent()}&parent=1anxtz.github.io&parent=localhost&muted=true`;
+    iframe.title = vod.title;
+    iframe.allowFullscreen = true;
+    card.innerHTML = '';
+    card.appendChild(iframe);
+  } catch (err) {
+    console.error('UpMinaa Fan Hub: failed to load latest Twitch VOD', err);
+    card.innerHTML = '<div class="yt-error">Não foi possível carregar o VOD mais recente agora.</div>';
+  }
+}
+
+refreshTwitchStatus();
+loadLatestTwitchVod();
+setInterval(refreshTwitchStatus, TWITCH_RECHECK_MS);
 
 document.addEventListener('DOMContentLoaded', () => {
   /* ---------- Footer year ---------- */
