@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------- Scroll-reveal animations ---------- */
   const revealTargets = document.querySelectorAll(
-    '.about-card, .social-card, .gallery-card, .section-heading, .bio-content'
+    '.about-card, .social-card, .gallery-card, .section-heading, .bio-content, .cosplay-card'
   );
   revealTargets.forEach(el => el.classList.add('reveal'));
 
