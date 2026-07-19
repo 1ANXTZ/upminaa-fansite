@@ -953,3 +953,15 @@ section{ position:relative; padding: 120px 6vw; }
 @media (max-width: 420px){
   .social-grid{ grid-template-columns: 1fr; }
 }
+
+/* ===========================================================
+   PERFORMANCE — lighter animations on small/low-power screens
+=========================================================== */
+@media (max-width: 600px){
+  .hero-scanline,
+  .visualizer,
+  .loader-bars,
+  .orb{
+    display: none;
+  }
+}
