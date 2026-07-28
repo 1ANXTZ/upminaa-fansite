@@ -1,5 +1,6 @@
 /* ===========================================================
-   UPMINAA FAN HUB — CSS FIX
+   UPMINAA FAN HUB
+   STYLE REBUILD
    PART 1/4
    RESET + BASE + HEADER + HERO + BUTTONS
 =========================================================== */
@@ -8,6 +9,7 @@
 /* ===========================================================
    RESET
 =========================================================== */
+
 
 *,
 *::before,
@@ -18,11 +20,13 @@
 }
 
 
+
 html{
 
   scroll-behavior:smooth;
 
 }
+
 
 
 body{
@@ -31,18 +35,16 @@ body{
 
   min-height:100vh;
 
-  background:
-  var(--bg);
+  background:var(--bg);
 
-  color:
-  var(--text);
+  color:var(--text);
 
-  font-family:
-  var(--font-body);
+  font-family:var(--font-body);
 
   overflow-x:hidden;
 
 }
+
 
 
 img{
@@ -54,6 +56,7 @@ img{
 }
 
 
+
 a{
 
   color:inherit;
@@ -61,32 +64,59 @@ a{
 }
 
 
+
+
 /* ===========================================================
-   ROOT FIX
+   ROOT
 =========================================================== */
+
 
 :root{
 
+
   --twitch:#9146ff;
+
   --youtube:#ff0000;
+
   --tiktok:#00f2ea;
+
   --instagram:#e1306c;
 
+  --twitter:#ffffff;
+
+
+
   --live-red:#ff003c;
+
   --offline-gray:#777;
 
+
+
   --purple:#8b5cf6;
+
   --purple-light:#c084fc;
+
   --pink:#ff4fd8;
+
   --cyan:#00f2ea;
 
+
+
   --bg:#08060d;
+
   --bg-soft:#100d18;
 
+
+
   --text:#ffffff;
+
   --text-dim:#aaa;
 
-  --border-soft:rgba(255,255,255,.12);
+
+
+  --border-soft:
+  rgba(255,255,255,.12);
+
 
 
   --font-display:
@@ -94,19 +124,28 @@ a{
   sans-serif;
 
 
+
   --font-body:
   'Rajdhani',
   sans-serif;
 
 
+
   --radius-md:18px;
+
 
 }
 
 
+
+
+
+
+
 /* ===========================================================
-   GLOBAL BACKGROUND
+   BACKGROUND FX
 =========================================================== */
+
 
 
 .bg-fx{
@@ -122,17 +161,23 @@ a{
 }
 
 
+
+
+
 .orb{
 
   position:absolute;
 
   border-radius:50%;
 
-  filter:blur(100px);
+  filter:blur(120px);
 
   opacity:.35;
 
 }
+
+
+
 
 
 .orb-a{
@@ -141,8 +186,7 @@ a{
 
   height:500px;
 
-  background:
-  var(--purple);
+  background:var(--purple);
 
   top:-150px;
 
@@ -151,20 +195,25 @@ a{
 }
 
 
+
+
+
 .orb-b{
 
   width:450px;
 
   height:450px;
 
-  background:
-  var(--cyan);
-
-  bottom:-150px;
+  background:var(--cyan);
 
   right:-150px;
 
+  bottom:-150px;
+
 }
+
+
+
 
 
 .grid-overlay{
@@ -172,6 +221,7 @@ a{
   position:absolute;
 
   inset:0;
+
 
   background-image:
 
@@ -187,18 +237,25 @@ a{
   );
 
 
-  background-size:
-  50px 50px;
+  background-size:50px 50px;
+
 
 }
 
 
+
+
+
+
+
 /* ===========================================================
-   HEADER / NAVBAR
+   HEADER
 =========================================================== */
 
 
+
 .site-header{
+
 
   position:fixed;
 
@@ -208,20 +265,28 @@ a{
 
   width:100%;
 
+
+  padding:
+
+  20px 5vw;
+
+
   z-index:500;
 
-  padding:20px 5vw;
-
-  transition:.3s ease;
 
 }
 
 
+
+
+
 .navbar{
+
 
   max-width:1300px;
 
   margin:auto;
+
 
   display:flex;
 
@@ -229,32 +294,44 @@ a{
 
   justify-content:space-between;
 
-  padding:15px 25px;
+
+  padding:
+
+  15px 25px;
+
+
 
   border:
 
   1px solid var(--border-soft);
 
 
+
   border-radius:999px;
+
 
 
   background:
 
-  rgba(8,6,13,.65);
+  rgba(8,6,13,.7);
 
 
-  backdrop-filter:
-  blur(20px);
+
+  backdrop-filter:blur(20px);
+
 
 }
 
 
 
+
+
+
+
 .brand{
 
-  font-family:
-  var(--font-display);
+
+  font-family:var(--font-display);
 
   font-weight:900;
 
@@ -264,19 +341,27 @@ a{
 
   letter-spacing:2px;
 
+
 }
+
+
+
 
 
 .brand span{
 
-  color:
-  var(--cyan);
+
+  color:var(--cyan);
+
 
 }
 
 
 
+
+
 .nav-links{
+
 
   list-style:none;
 
@@ -288,36 +373,55 @@ a{
 
   margin:0;
 
+
 }
+
+
 
 
 
 .nav-link{
 
+
   text-decoration:none;
 
-  font-family:
-  var(--font-display);
+
+  font-family:var(--font-display);
+
 
   font-size:.8rem;
 
+
   letter-spacing:1px;
+
 
   color:#ccc;
 
-  transition:.3s;
+
+  transition:.3s ease;
+
 
 }
+
+
 
 
 .nav-link:hover{
 
+
   color:white;
 
+
   text-shadow:
+
   0 0 15px var(--purple);
 
+
 }
+
+
+
+
 
 
 
@@ -328,54 +432,90 @@ a{
 }
 
 
+
+
+
+
+
+
 /* ===========================================================
-   SECTIONS
+   SECTION BASE
 =========================================================== */
 
 
+
 section{
+
 
   padding:
 
   120px 5vw;
 
+
 }
 
 
+
+
+
+
+
 .section-heading{
+
 
   text-align:center;
 
   margin-bottom:60px;
 
+
 }
+
+
+
 
 
 .section-eyebrow{
 
-  color:
-  var(--cyan);
 
-  font-family:
-  var(--font-display);
+  color:var(--cyan);
+
+
+  font-family:var(--font-display);
+
 
   letter-spacing:3px;
 
+
   font-size:.75rem;
 
+
 }
+
+
+
 
 
 .section-title{
 
+
   margin:10px 0;
 
-  font-family:
-  var(--font-display);
 
-  font-size:3rem;
+  font-family:var(--font-display);
+
+
+  font-size:
+
+  clamp(2rem,5vw,3rem);
+
 
 }
+
+
+
+
+
+
 
 
 /* ===========================================================
@@ -383,11 +523,15 @@ section{
 =========================================================== */
 
 
+
 .hero{
+
 
   min-height:100vh;
 
+
   display:grid;
+
 
   grid-template-columns:
 
@@ -396,119 +540,188 @@ section{
 
   align-items:center;
 
+
   gap:60px;
 
+
 }
+
+
+
+
+
 
 
 .hero-eyebrow{
 
-  color:
-  var(--cyan);
 
-  font-family:
-  var(--font-display);
+  color:var(--cyan);
+
+
+  font-family:var(--font-display);
+
 
   letter-spacing:3px;
 
+
   font-size:.8rem;
 
+
 }
+
+
+
+
 
 
 
 .hero-title{
 
+
   margin:20px 0;
 
-  font-family:
-  var(--font-display);
+
+  font-family:var(--font-display);
+
 
   font-size:
 
   clamp(3rem,7vw,6rem);
 
+
   line-height:1;
 
+
 }
+
+
 
 
 
 .hero-title span{
 
-  color:
-  var(--cyan);
+
+  color:var(--cyan);
+
 
 }
+
+
+
+
 
 
 
 .hero-desc{
 
+
   max-width:550px;
 
-  color:
-  var(--text-dim);
+
+  color:var(--text-dim);
+
 
   font-size:1.2rem;
 
+
   line-height:1.7;
 
+
 }
+
+
+
+
 
 
 
 .hero-actions{
 
+
   display:flex;
+
 
   gap:20px;
 
+
   margin-top:35px;
+
 
   flex-wrap:wrap;
 
+
 }
+
+
+
+
 
 
 
 .hero-visual{
 
+
   display:flex;
+
 
   justify-content:center;
 
+
 }
+
+
+
+
+
 
 
 
 .hero-frame{
 
+
   width:min(420px,80vw);
+
 
   aspect-ratio:1;
 
+
   border-radius:50%;
+
 
   position:relative;
 
+
   padding:10px;
 
+
 }
+
+
 
 
 
 .hero-photo{
 
+
   width:100%;
+
 
   height:100%;
 
+
   object-fit:cover;
+
 
   border-radius:50%;
 
+
 }
+
+
+
+
+
+
 
 
 /* ===========================================================
@@ -516,41 +729,53 @@ section{
 =========================================================== */
 
 
+
 .btn{
+
 
   display:inline-flex;
 
+
   align-items:center;
 
+
   justify-content:center;
+
+
 
   padding:
 
   14px 28px;
 
 
+
   border-radius:999px;
+
 
   border:
 
   1px solid var(--border-soft);
 
 
-  text-decoration:none;
-
-
-  font-family:
-  var(--font-display);
-
-
-  font-size:.85rem;
-
-  letter-spacing:1px;
-
 
   background:
 
   rgba(255,255,255,.05);
+
+
+
+  text-decoration:none;
+
+
+
+  font-family:var(--font-display);
+
+
+  font-size:.85rem;
+
+
+  letter-spacing:1px;
+
 
 
   transition:.35s ease;
@@ -560,45 +785,144 @@ section{
 
 
 
+
+
 .btn:hover{
+
 
   transform:
 
   translateY(-5px);
 
-}
-
-
-.btn-glow{
-
-  backdrop-filter:
-  blur(10px);
 
 }
+
+
+
 
 
 .btn-icon{
 
+
   margin-right:8px;
+
+
+}
+
+
+
+
+
+.btn-tiktok{
+
+
+  border-color:var(--tiktok);
+
+
+}
+
+
+
+
+
+.btn-twitch{
+
+
+  border-color:var(--twitch);
+
+
+}
+
+
+
+
+
+.btn-youtube{
+
+
+  border-color:var(--youtube);
+
+
+}
+
+
+
+
+
+.btn-tiktok:hover{
+
+
+  background:
+
+  rgba(0,242,234,.15);
+
+
+  box-shadow:
+
+  0 0 35px rgba(0,242,234,.5);
+
+
+}
+
+
+
+
+
+.btn-twitch:hover{
+
+
+  background:
+
+  rgba(145,70,255,.18);
+
+
+  box-shadow:
+
+  0 0 40px rgba(145,70,255,.6);
+
+
+}
+
+
+
+
+
+.btn-youtube:hover{
+
+
+  background:
+
+  rgba(255,0,0,.15);
+
+
+  box-shadow:
+
+  0 0 40px rgba(255,0,0,.5);
+
 
 }/* ===========================================================
    PART 2/4
-   LIVE SYSTEM + BIO + COSPLAY
+   LIVE SYSTEM + BIO + FUN FACTS + COSPLAY
 =========================================================== */
 
 
+
 /* ===========================================================
-   LIVE EFFECT SYSTEM
+   LIVE SYSTEM
 =========================================================== */
 
 
 .hero-frame::before{
 
+
   content:"";
+
 
   position:absolute;
 
+
   inset:-12px;
+
 
   border-radius:50%;
 
@@ -612,17 +936,23 @@ section{
   );
 
 
-  filter:blur(20px);
+  filter:blur(18px);
 
-  opacity:.55;
+
+  opacity:.6;
+
 
   z-index:-1;
+
 
 }
 
 
 
+
+
 .hero-frame.is-live::before{
+
 
   background:
 
@@ -637,22 +967,36 @@ section{
 
   livePulse 1.5s infinite;
 
-}
-
-
-
-.hero-photo{
-
-  position:relative;
-
-  z-index:2;
 
 }
 
 
 
-.hero-photo.is-live,
-.twitch-status-photo.is-live{
+
+
+.profile-live-ring{
+
+
+  position:absolute;
+
+
+  inset:0;
+
+
+  border-radius:50%;
+
+
+  pointer-events:none;
+
+
+}
+
+
+
+
+
+.hero-photo.is-live{
+
 
   border:
 
@@ -662,47 +1006,38 @@ section{
   box-shadow:
 
   0 0 30px var(--live-red),
-  0 0 70px rgba(255,0,60,.6);
+  0 0 80px rgba(255,0,60,.7);
 
 
   animation:
 
   liveGlow 1.5s infinite;
 
+
 }
+
+
 
 
 
 @keyframes liveGlow{
 
 
-  0%{
-
-    box-shadow:
-
-    0 0 20px var(--live-red);
-
-  }
-
-
   50%{
 
-    box-shadow:
-
-    0 0 60px var(--live-red);
-
-  }
-
-
-  100%{
 
     box-shadow:
 
-    0 0 20px var(--live-red);
+    0 0 70px var(--live-red);
+
 
   }
+
 
 }
+
+
+
 
 
 
@@ -711,45 +1046,71 @@ section{
 
   50%{
 
+
     transform:scale(1.05);
 
-    opacity:.8;
 
   }
+
 
 }
 
 
 
-/* ===========================================================
-   LIVE TAGS
-=========================================================== */
 
 
-.live-tag,
-.twitch-status-badge{
+/* Badge dentro da foto */
+
+
+.live-tag{
+
+
+  position:absolute;
+
+
+  bottom:35px;
+
+
+  right:35px;
+
+
+  z-index:20;
 
 
   display:flex;
 
+
   align-items:center;
 
-  gap:10px;
+
+  gap:8px;
+
+
+  padding:
+
+  8px 18px;
+
+
+  border-radius:999px;
 
 
   background:
 
-  rgba(0,0,0,.65);
+  rgba(0,0,0,.75);
 
 
-  backdrop-filter:
+  border:
 
-  blur(15px);
+  1px solid rgba(255,255,255,.2);
 
 
-  font-family:
+  backdrop-filter:blur(15px);
 
-  var(--font-display);
+
+  font-family:var(--font-display);
+
+
+  font-size:.7rem;
 
 
   letter-spacing:2px;
@@ -759,116 +1120,43 @@ section{
 
 
 
-.live-tag{
-
-  position:absolute;
-
-  bottom:25px;
-
-  right:25px;
-
-
-  padding:
-
-  8px 18px;
-
-
-  border-radius:999px;
-
-
-  font-size:.75rem;
-
-
-  color:white;
-
-}
-
-
-
-.live-dot,
-.status-dot{
-
-  width:10px;
-
-  height:10px;
-
-  border-radius:50%;
-
-}
-
 
 
 .live-dot{
 
-  background:
 
-  var(--live-red);
+  width:10px;
+
+
+  height:10px;
+
+
+  border-radius:50%;
+
+
+  background:var(--offline-gray);
+
 
 }
 
 
 
-.twitch-status-badge{
-
-  position:absolute;
-
-  top:20px;
-
-  left:20px;
-
-  padding:
-
-  8px 18px;
 
 
-  border-radius:999px;
-
-  z-index:10;
-
-}
+.hero-frame.is-live .live-dot{
 
 
-
-.twitch-status-badge.is-on{
-
-  border:
-
-  1px solid var(--live-red);
-
-}
-
-
-
-.twitch-status-badge.is-on .status-dot{
-
-  background:
-
-  var(--live-red);
+  background:var(--live-red);
 
 
   animation:
 
   dotPulse 1s infinite;
 
-}
-
-
-
-.twitch-status-badge.is-off{
-
-  color:#aaa;
 
 }
 
 
-
-.twitch-status-badge.is-off .status-dot{
-
-  background:
-
-  var(--offline-gray);
-
-}
 
 
 
@@ -877,71 +1165,102 @@ section{
 
   50%{
 
+
     transform:scale(1.5);
+
 
   }
 
+
 }
+
+
+
+
+
+
+
 
 
 
 /* ===========================================================
-   BIO SECTION
+   BIO
 =========================================================== */
+
 
 
 .bio-content{
 
+
+  max-width:1300px;
+
+
+  margin:auto;
+
+
   display:grid;
+
 
   grid-template-columns:
 
-  420px 1fr;
+  400px 1fr;
 
 
-  gap:50px;
+  gap:60px;
+
 
   align-items:start;
 
+
 }
+
+
 
 
 
 .bio-photo{
 
+
   position:relative;
 
-  border-radius:
 
-  var(--radius-md);
+  border-radius:var(--radius-md);
 
 
   overflow:hidden;
 
+
 }
+
+
 
 
 
 .bio-photo img{
 
+
   width:100%;
 
-  aspect-ratio:
 
-  1 / 1;
+  aspect-ratio:1;
 
 
   object-fit:cover;
+
 
 }
 
 
 
+
+
 .bio-photo-glow{
+
 
   position:absolute;
 
-  inset:-20px;
+
+  inset:-30px;
 
 
   background:
@@ -955,40 +1274,40 @@ section{
 
   z-index:-1;
 
+
 }
+
+
 
 
 
 .bio-facts-row{
 
+
   display:grid;
+
 
   grid-template-columns:
 
   repeat(2,1fr);
 
 
-  gap:20px;
+  gap:18px;
+
 
   margin-bottom:35px;
+
 
 }
 
 
 
+
+
 .bio-fact{
 
-  padding:20px;
 
-
-  border:
-
-  1px solid var(--border-soft);
-
-
-  border-radius:
-
-  var(--radius-md);
+  padding:18px;
 
 
   background:
@@ -996,74 +1315,84 @@ section{
   rgba(255,255,255,.04);
 
 
+  border:
+
+  1px solid var(--border-soft);
+
+
+  border-radius:var(--radius-md);
+
+
   transition:.3s;
 
+
 }
+
+
 
 
 
 .bio-fact:hover{
 
-  transform:
 
-  translateY(-5px);
-
-
-  border-color:
-
-  var(--purple);
+  transform:translateY(-5px);
 
 
-  box-shadow:
+  border-color:var(--purple);
 
-  0 0 25px rgba(139,92,246,.35);
 
 }
+
+
 
 
 
 .bio-fact-label{
 
+
   display:block;
 
 
-  color:
-
-  var(--cyan);
+  color:var(--cyan);
 
 
-  font-family:
-
-  var(--font-display);
+  font-family:var(--font-display);
 
 
-  font-size:.75rem;
+  font-size:.7rem;
 
 
   letter-spacing:2px;
 
 
-  margin-bottom:10px;
+  margin-bottom:8px;
+
 
 }
+
+
 
 
 
 .bio-fact-value{
 
+
   color:white;
 
+
   line-height:1.5;
+
 
 }
 
 
 
+
+
 .bio-paragraph{
 
-  color:
 
-  var(--text-dim);
+  color:var(--text-dim);
 
 
   line-height:1.8;
@@ -1071,58 +1400,149 @@ section{
 
   margin-bottom:20px;
 
+
 }
+
+
 
 
 
 .bio-subtitle{
 
-  font-family:
 
-  var(--font-display);
+  margin-top:30px;
+
+
+  margin-bottom:20px;
+
+
+  font-family:var(--font-display);
+
 
 }
+
+
 
 
 
 .bio-list{
 
+
+  padding-left:20px;
+
+
   display:flex;
+
 
   flex-direction:column;
 
+
   gap:12px;
 
-  color:
 
-  var(--text-dim);
+  color:var(--text-dim);
+
 
 }
 
 
 
-.bio-note{
-
-  margin-top:25px;
-
-  padding:15px;
 
 
-  border-left:
 
-  3px solid var(--purple);
+
+
+
+
+/* ===========================================================
+   FUN FACTS
+=========================================================== */
+
+
+
+.fun-grid{
+
+
+  display:grid;
+
+
+  grid-template-columns:
+
+  repeat(2,1fr);
+
+
+  gap:15px;
+
+
+}
+
+
+
+
+
+.fun-card{
+
+
+  padding:18px;
+
+
+  display:flex;
+
+
+  gap:15px;
+
+
+  align-items:center;
+
+
+  border-radius:var(--radius-md);
 
 
   background:
 
-  rgba(139,92,246,.08);
+  rgba(255,255,255,.04);
 
 
-  color:
+  border:
 
-  var(--text-dim);
+  1px solid var(--border-soft);
+
 
 }
+
+
+
+
+
+.fun-card span{
+
+
+  font-size:1.8rem;
+
+
+}
+
+
+
+
+
+.fun-card p{
+
+
+  margin:0;
+
+
+  color:var(--text-dim);
+
+
+}
+
+
+
+
+
+
+
 
 
 
@@ -1131,27 +1551,41 @@ section{
 =========================================================== */
 
 
+
 .cosplay-layout{
+
+
+  max-width:1250px;
+
+
+  margin:auto;
+
 
   display:grid;
 
+
   grid-template-columns:
 
-  1.1fr 1fr;
+  1fr 1fr;
 
 
   gap:30px;
 
-  max-width:1250px;
-
-  margin:auto;
 
 }
 
 
 
+
+
 .cosplay-featured,
+
+
 .cosplay-card{
+
+
+  overflow:hidden;
+
 
   background:
 
@@ -1163,78 +1597,92 @@ section{
   1px solid var(--border-soft);
 
 
-  border-radius:
-
-  var(--radius-md);
+  border-radius:var(--radius-md);
 
 
-  overflow:hidden;
+  transition:.35s;
 
-
-  transition:.35s ease;
 
 }
 
 
 
+
+
 .cosplay-featured:hover,
+
+
 .cosplay-card:hover{
 
-  transform:
 
-  translateY(-8px);
+  transform:translateY(-8px);
 
 
-  border-color:
-
-  var(--purple);
+  border-color:var(--purple);
 
 
   box-shadow:
 
   0 0 35px rgba(139,92,246,.35);
 
+
 }
+
+
 
 
 
 .cosplay-feature-image{
 
+
   position:relative;
 
+
 }
+
+
 
 
 
 .cosplay-feature-image img{
 
+
   width:100%;
 
-  aspect-ratio:
 
-  4/6;
+  height:550px;
 
 
   object-fit:cover;
 
+
   object-position:center top;
+
 
 }
 
 
 
+
+
 .cosplay-badge{
+
 
   position:absolute;
 
+
   top:20px;
+
 
   left:20px;
 
 
+  z-index:5;
+
+
   padding:
 
-  8px 16px;
+  8px 15px;
 
 
   border-radius:999px;
@@ -1249,127 +1697,157 @@ section{
   );
 
 
-  font-family:
-
-  var(--font-display);
+  font-family:var(--font-display);
 
 
   font-size:.7rem;
 
+
 }
+
+
 
 
 
 .cosplay-info{
 
-  padding:25px;
+
+  padding:18px 22px;
+
 
 }
+
+
 
 
 
 .cosplay-info h3{
 
-  font-family:
 
-  var(--font-display);
+  margin:0 0 5px;
 
 
-  margin:0 0 8px;
+  font-family:var(--font-display);
+
 
 }
+
+
 
 
 
 .cosplay-source{
 
-  color:
 
-  var(--cyan);
+  margin:0 0 10px;
 
-  font-size:.85rem;
+
+  color:var(--cyan);
+
 
 }
+
+
 
 
 
 .cosplay-desc{
 
-  color:
 
-  var(--text-dim);
+  margin:0;
 
 
-  line-height:1.6;
+  color:var(--text-dim);
+
+
+  line-height:1.5;
+
 
 }
 
 
 
+
+
 .cosplay-secondary{
 
+
   display:grid;
+
 
   grid-template-columns:
 
   repeat(2,1fr);
 
 
-  gap:25px;
+  gap:20px;
+
 
 }
+
+
 
 
 
 .cosplay-card .cosplay-photo{
 
+
   width:100%;
 
 
-  aspect-ratio:
-
-  4/5;
+  height:260px;
 
 
   object-fit:cover;
 
+
   object-position:center top;
 
+
 }
+
+
 
 
 
 .cosplay-card .cosplay-info{
 
-  padding:18px;
+
+  padding:15px;
+
 
 }
+
+
+
+
+
+.cosplay-card h3{
+
+
+  font-size:1rem;
+
+
+}
+
+
 
 
 
 .cosplay-note{
 
-  max-width:1000px;
 
-  margin:40px auto 0;
+  max-width:900px;
+
+
+  margin:35px auto 0;
 
 
   text-align:center;
 
 
-  color:
+  color:var(--text-dim);
 
-  var(--text-dim);
-
-}
-
-
-
-.cosplay-note a{
-
-  color:
-
-  var(--cyan);
 
 }/* ===========================================================
    PART 3/4
@@ -1377,14 +1855,23 @@ section{
 =========================================================== */
 
 
+
 /* ===========================================================
-   SOCIAL GRID
+   SOCIAL CARDS
 =========================================================== */
 
 
 .social-grid{
 
+
+  max-width:1200px;
+
+
+  margin:auto;
+
+
   display:grid;
+
 
   grid-template-columns:
 
@@ -1392,6 +1879,7 @@ section{
 
 
   gap:20px;
+
 
 }
 
@@ -1401,18 +1889,24 @@ section{
 
 .social-card{
 
-  position:relative;
 
   min-height:170px;
 
-  padding:25px;
+
+  position:relative;
+
+
+  overflow:hidden;
 
 
   display:flex;
 
+
   flex-direction:column;
 
+
   justify-content:center;
+
 
   align-items:center;
 
@@ -1420,14 +1914,12 @@ section{
   text-decoration:none;
 
 
+  border-radius:var(--radius-md);
+
+
   border:
 
   1px solid var(--border-soft);
-
-
-  border-radius:
-
-  var(--radius-md);
 
 
   background:
@@ -1435,10 +1927,8 @@ section{
   rgba(255,255,255,.04);
 
 
-  overflow:hidden;
-
-
   transition:.35s ease;
+
 
 }
 
@@ -1448,10 +1938,12 @@ section{
 
 .social-card::before{
 
+
   content:"";
 
 
   position:absolute;
+
 
   inset:0;
 
@@ -1459,16 +1951,17 @@ section{
   opacity:0;
 
 
-  transition:.35s ease;
+  transition:.35s;
 
 
   background:
 
   radial-gradient(
     circle,
-    rgba(255,255,255,.15),
+    rgba(255,255,255,.18),
     transparent 70%
   );
+
 
 }
 
@@ -1478,7 +1971,9 @@ section{
 
 .social-card:hover::before{
 
+
   opacity:1;
+
 
 }
 
@@ -1488,9 +1983,11 @@ section{
 
 .social-card:hover{
 
+
   transform:
 
   translateY(-8px);
+
 
 }
 
@@ -1500,7 +1997,9 @@ section{
 
 .social-icon{
 
+
   position:relative;
+
 
   z-index:1;
 
@@ -1510,6 +2009,7 @@ section{
 
   margin-bottom:15px;
 
+
 }
 
 
@@ -1518,7 +2018,9 @@ section{
 
 .social-name{
 
+
   position:relative;
+
 
   z-index:1;
 
@@ -1526,15 +2028,14 @@ section{
   color:white;
 
 
-  font-family:
-
-  var(--font-display);
+  font-family:var(--font-display);
 
 
   font-size:.9rem;
 
 
   letter-spacing:1px;
+
 
 }
 
@@ -1544,20 +2045,21 @@ section{
 
 .social-sub{
 
+
   position:relative;
 
+
   z-index:1;
+
+
+  color:var(--text-dim);
 
 
   margin-top:8px;
 
 
-  color:
-
-  var(--text-dim);
-
-
   font-size:.85rem;
+
 
 }
 
@@ -1565,26 +2067,18 @@ section{
 
 
 
-/* ===========================================================
-   SOCIAL BRAND COLORS
-=========================================================== */
+
+/* Brand colors */
+
 
 
 .social-tiktok{
 
+
   border-color:
 
-  rgba(0,242,234,.45);
+  rgba(0,242,234,.5);
 
-}
-
-
-
-.social-tiktok:hover{
-
-  box-shadow:
-
-  0 0 45px rgba(0,242,234,.5);
 
 }
 
@@ -1592,11 +2086,27 @@ section{
 
 .social-tiktok .social-icon{
 
-  color:
 
-  var(--tiktok);
+  color:var(--tiktok);
+
 
 }
+
+
+
+
+
+.social-tiktok:hover{
+
+
+  box-shadow:
+
+  0 0 45px rgba(0,242,234,.45);
+
+
+}
+
+
 
 
 
@@ -1604,19 +2114,11 @@ section{
 
 .social-twitch{
 
+
   border-color:
 
   rgba(145,70,255,.5);
 
-}
-
-
-
-.social-twitch:hover{
-
-  box-shadow:
-
-  0 0 50px rgba(145,70,255,.7);
 
 }
 
@@ -1624,11 +2126,27 @@ section{
 
 .social-twitch .social-icon{
 
-  color:
 
-  var(--twitch);
+  color:var(--twitch);
+
 
 }
+
+
+
+
+
+.social-twitch:hover{
+
+
+  box-shadow:
+
+  0 0 45px rgba(145,70,255,.6);
+
+
+}
+
+
 
 
 
@@ -1636,19 +2154,11 @@ section{
 
 .social-youtube{
 
+
   border-color:
 
-  rgba(255,0,0,.45);
+  rgba(255,0,0,.5);
 
-}
-
-
-
-.social-youtube:hover{
-
-  box-shadow:
-
-  0 0 45px rgba(255,0,0,.6);
 
 }
 
@@ -1656,11 +2166,27 @@ section{
 
 .social-youtube .social-icon{
 
-  color:
 
-  var(--youtube);
+  color:var(--youtube);
+
 
 }
+
+
+
+
+
+.social-youtube:hover{
+
+
+  box-shadow:
+
+  0 0 45px rgba(255,0,0,.5);
+
+
+}
+
+
 
 
 
@@ -1668,19 +2194,11 @@ section{
 
 .social-instagram{
 
+
   border-color:
 
   rgba(225,48,108,.5);
 
-}
-
-
-
-.social-instagram:hover{
-
-  box-shadow:
-
-  0 0 50px rgba(225,48,108,.6);
 
 }
 
@@ -1688,11 +2206,27 @@ section{
 
 .social-instagram .social-icon{
 
-  color:
 
-  var(--instagram);
+  color:var(--instagram);
+
 
 }
+
+
+
+
+
+.social-instagram:hover{
+
+
+  box-shadow:
+
+  0 0 45px rgba(225,48,108,.5);
+
+
+}
+
+
 
 
 
@@ -1700,21 +2234,14 @@ section{
 
 .social-twitter{
 
+
   border-color:
 
-  rgba(255,255,255,.35);
+  rgba(255,255,255,.3);
+
 
 }
 
-
-
-.social-twitter:hover{
-
-  box-shadow:
-
-  0 0 40px rgba(255,255,255,.3);
-
-}
 
 
 
@@ -1725,7 +2252,15 @@ section{
 =========================================================== */
 
 
+
 .gallery-grid{
+
+
+  max-width:1300px;
+
+
+  margin:auto;
+
 
   display:grid;
 
@@ -1737,6 +2272,7 @@ section{
 
   gap:25px;
 
+
 }
 
 
@@ -1745,18 +2281,17 @@ section{
 
 .gallery-card{
 
+
+  min-height:360px;
+
+
   position:relative;
-
-
-  min-height:350px;
 
 
   overflow:hidden;
 
 
-  border-radius:
-
-  var(--radius-md);
+  border-radius:var(--radius-md);
 
 
   border:
@@ -1768,6 +2303,7 @@ section{
 
   rgba(8,6,13,.85);
 
+
 }
 
 
@@ -1776,13 +2312,19 @@ section{
 
 .embed-card{
 
+
   display:flex;
+
 
   justify-content:center;
 
+
   align-items:center;
 
+
 }
+
+
 
 
 
@@ -1790,73 +2332,37 @@ section{
 
 .gallery-card iframe{
 
+
   width:100%;
+
 
   height:100%;
 
 
-  min-height:350px;
+  min-height:360px;
 
 
   border:0;
 
-}
-
-
-
-
-
-.gallery-tag{
-
-  position:absolute;
-
-
-  bottom:15px;
-
-  left:15px;
-
-
-  padding:
-
-  7px 14px;
-
-
-  border-radius:999px;
-
-
-  background:
-
-  rgba(0,0,0,.65);
-
-
-  backdrop-filter:
-
-  blur(10px);
-
-
-  color:white;
-
-
-  font-size:.8rem;
-
-
-  letter-spacing:1px;
-
-
-  z-index:5;
 
 }
+
+
+
+
+
 
 
 
 
 
 /* ===========================================================
-   TWITCH LIVE PLAYER
+   TWITCH LIVE CARD
 =========================================================== */
 
 
 .live-card{
+
 
   background:
 
@@ -1864,11 +2370,12 @@ section{
 
     145deg,
 
-    rgba(145,70,255,.15),
+    rgba(145,70,255,.18),
 
-    rgba(8,6,13,.9)
+    rgba(8,6,13,.95)
 
   );
+
 
 }
 
@@ -1877,6 +2384,7 @@ section{
 
 
 .twitch-offline-state{
+
 
   position:absolute;
 
@@ -1887,10 +2395,10 @@ section{
   display:flex;
 
 
-  align-items:center;
-
-
   justify-content:center;
+
+
+  align-items:center;
 
 
 }
@@ -1901,15 +2409,23 @@ section{
 
 .twitch-profile-wrapper{
 
-  width:150px;
 
-  height:150px;
+  width:170px;
+
+
+  height:170px;
+
+
+  border-radius:50%;
 
 
   overflow:hidden;
 
 
-  border-radius:50%;
+  border:
+
+  3px solid rgba(255,255,255,.15);
+
 
 }
 
@@ -1919,7 +2435,9 @@ section{
 
 .twitch-status-photo{
 
+
   width:100%;
+
 
   height:100%;
 
@@ -1927,7 +2445,59 @@ section{
   object-fit:cover;
 
 
-  transition:.5s ease;
+}
+
+
+
+
+
+
+
+.twitch-status-badge{
+
+
+  position:absolute;
+
+
+  top:20px;
+
+
+  left:20px;
+
+
+  display:flex;
+
+
+  align-items:center;
+
+
+  gap:10px;
+
+
+  padding:
+
+  8px 18px;
+
+
+  border-radius:999px;
+
+
+  background:
+
+  rgba(0,0,0,.75);
+
+
+  backdrop-filter:blur(15px);
+
+
+  font-family:var(--font-display);
+
+
+  font-size:.7rem;
+
+
+  letter-spacing:2px;
+
 
 }
 
@@ -1935,19 +2505,78 @@ section{
 
 
 
-.live-card:hover .twitch-status-photo{
 
-  transform:
 
-  scale(1.05);
+.status-dot{
+
+
+  width:10px;
+
+
+  height:10px;
+
+
+  border-radius:50%;
+
 
 }
+
+
+
+
+
+
+
+.twitch-status-badge.is-off .status-dot{
+
+
+  background:var(--offline-gray);
+
+
+}
+
+
+
+
+
+
+
+.twitch-status-badge.is-on{
+
+
+  border:
+
+  1px solid var(--live-red);
+
+
+}
+
+
+
+
+
+.twitch-status-badge.is-on .status-dot{
+
+
+  background:var(--live-red);
+
+
+  animation:
+
+  dotPulse 1s infinite;
+
+
+}
+
+
+
 
 
 
 
 
 .twitch-embed-wrap{
+
 
   position:absolute;
 
@@ -1958,7 +2587,8 @@ section{
   opacity:0;
 
 
-  transition:.5s ease;
+  transition:.5s;
+
 
 }
 
@@ -1968,39 +2598,9 @@ section{
 
 .twitch-embed-wrap.is-visible{
 
+
   opacity:1;
 
-}
-
-
-
-
-
-.twitch-embed-wrap iframe{
-
-  width:100%;
-
-  height:100%;
-
-
-  border:0;
-
-}
-
-
-
-
-
-.live-card.live-active{
-
-  border-color:
-
-  rgba(255,0,60,.7);
-
-
-  box-shadow:
-
-  0 0 40px rgba(255,0,60,.35);
 
 }
 
@@ -2010,7 +2610,9 @@ section{
 
 .live-card.live-active .twitch-offline-state{
 
-  opacity:.25;
+
+  opacity:.15;
+
 
 }
 
@@ -2020,31 +2622,15 @@ section{
 
 .live-card.live-active .twitch-embed-wrap{
 
+
   opacity:1;
 
-}
-
-
-
-
-
-/* ===========================================================
-   STATUS PHOTO
-=========================================================== */
-
-
-.twitch-status-photo.is-live{
-
-  border:
-
-  5px solid var(--live-red);
-
-
-  box-shadow:
-
-  0 0 30px var(--live-red);
 
 }
+
+
+
+
 
 
 
@@ -2055,7 +2641,9 @@ section{
 =========================================================== */
 
 
+
 .yt-loading{
+
 
   padding:30px;
 
@@ -2063,14 +2651,11 @@ section{
   text-align:center;
 
 
-  color:
-
-  var(--text-dim);
+  color:var(--text-dim);
 
 
-  font-family:
+  font-family:var(--font-display);
 
-  var(--font-display);
 
 }
 
@@ -2080,9 +2665,53 @@ section{
 
 .yt-video-card iframe{
 
-  aspect-ratio:
 
-  16/9;
+  width:100%;
+
+
+  height:100%;
+
+
+}
+
+
+
+
+
+
+.gallery-tag{
+
+
+  position:absolute;
+
+
+  bottom:15px;
+
+
+  left:15px;
+
+
+  padding:
+
+  7px 15px;
+
+
+  border-radius:999px;
+
+
+  background:
+
+  rgba(0,0,0,.7);
+
+
+  backdrop-filter:blur(10px);
+
+
+  font-size:.8rem;
+
+
+  z-index:10;
+
 
 }
 
@@ -2092,50 +2721,22 @@ section{
 
 .embed-note{
 
-  margin-top:30px;
-
 
   text-align:center;
 
 
-  color:
+  margin-top:30px;
 
-  var(--text-dim);
+
+  color:var(--text-dim);
+
 
 }/* ===========================================================
-   UPMINAA FAN HUB — CSS FIX
    PART 4/4
-   RESPONSIVE + ANIMATIONS + FINAL POLISH
+   FINAL POLISH + RESPONSIVE + ANIMATIONS
 =========================================================== */
 
 
-/* ===========================================================
-   SCROLL REVEAL
-=========================================================== */
-
-
-.reveal{
-
-  opacity:0;
-
-  transform:
-  translateY(40px);
-
-  transition:
-  .7s ease;
-
-}
-
-
-
-.reveal.in-view{
-
-  opacity:1;
-
-  transform:
-  translateY(0);
-
-}
 
 
 
@@ -2146,59 +2747,81 @@ section{
 
 .loader{
 
+
   position:fixed;
+
 
   inset:0;
 
-  background:
-  var(--bg);
+
+  background:#08060d;
+
 
   display:flex;
 
-  align-items:center;
 
   justify-content:center;
 
+
+  align-items:center;
+
+
   z-index:9999;
 
-  transition:
 
-  opacity .5s ease,
-  visibility .5s ease;
+  transition:.5s;
+
 
 }
+
+
 
 
 
 .loader.hidden{
 
+
   opacity:0;
+
 
   visibility:hidden;
 
+
 }
+
+
 
 
 
 .loader-inner{
 
+
   display:flex;
+
 
   flex-direction:column;
 
+
   align-items:center;
 
+
   gap:25px;
+
 
 }
 
 
 
+
+
 .loader-ring{
+
 
   width:80px;
 
+
   height:80px;
+
 
   border-radius:50%;
 
@@ -2208,61 +2831,70 @@ section{
   4px solid rgba(255,255,255,.1);
 
 
-  border-top-color:
-
-  var(--purple);
+  border-top-color:var(--purple);
 
 
   animation:
 
   spin 1s linear infinite;
 
+
 }
+
+
 
 
 
 .loader-tag{
 
-  font-family:
 
-  var(--font-display);
+  font-family:var(--font-display);
 
 
   letter-spacing:5px;
 
-  color:white;
 
 }
+
+
 
 
 
 .loader-bars{
 
+
   display:flex;
 
+
   gap:6px;
+
 
 }
 
 
 
+
+
 .loader-bars span{
 
+
   width:5px;
+
 
   height:25px;
 
 
-  background:
-
-  var(--cyan);
+  background:var(--cyan);
 
 
   animation:
 
   loaderBar .8s infinite;
 
+
 }
+
+
 
 
 
@@ -2295,133 +2927,88 @@ section{
 
 
 
+
+
+
 @keyframes spin{
+
 
   to{
 
-    transform:
-    rotate(360deg);
+    transform:rotate(360deg);
 
   }
 
+
 }
+
+
+
 
 
 
 @keyframes loaderBar{
 
+
   50%{
 
-    transform:
-    scaleY(.4);
+    transform:scaleY(.4);
 
   }
 
+
 }
+
+
+
+
+
+
 
 
 
 /* ===========================================================
-   BACK TO TOP
+   SCROLL REVEAL
 =========================================================== */
 
 
-.back-to-top{
 
-  position:fixed;
-
-  right:30px;
-
-  bottom:30px;
-
-
-  width:50px;
-
-  height:50px;
-
-
-  border-radius:50%;
-
-
-  border:
-
-  1px solid var(--border-soft);
-
-
-  background:
-
-  rgba(139,92,246,.25);
-
-
-  color:white;
-
-
-  font-size:1.5rem;
-
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-
-  cursor:pointer;
-
-
-  backdrop-filter:
-
-  blur(15px);
+.reveal{
 
 
   opacity:0;
 
-  visibility:hidden;
-
 
   transform:
 
-  translateY(20px);
+  translateY(40px);
 
 
-  transition:
+  transition:.7s ease;
 
-  .35s ease;
-
-
-  z-index:200;
 
 }
 
 
 
-.back-to-top.show{
+
+
+.reveal.in-view{
+
 
   opacity:1;
 
-  visibility:visible;
 
+  transform:translateY(0);
 
-  transform:
-
-  translateY(0);
 
 }
 
 
 
-.back-to-top:hover{
-
-  background:
-
-  rgba(139,92,246,.6);
 
 
-  box-shadow:
 
-  0 0 35px rgba(139,92,246,.7);
-
-}
 
 
 
@@ -2432,9 +3019,10 @@ section{
 
 .site-footer{
 
+
   padding:
 
-  60px 5vw;
+  50px 5vw;
 
 
   text-align:center;
@@ -2445,136 +3033,104 @@ section{
   1px solid var(--border-soft);
 
 
-  background:
+  color:var(--text-dim);
 
-  rgba(255,255,255,.02);
 
 }
+
+
 
 
 
 .footer-brand{
 
-  font-family:
 
-  var(--font-display);
-
-
-  font-size:1.5rem;
-
-  letter-spacing:3px;
-
-}
-
-
-
-.footer-brand span{
-
-  color:
-
-  var(--cyan);
-
-}
-
-
-
-.site-footer p{
-
-  color:
-
-  var(--text-dim);
-
-}
-
-
-
-.disclaimer{
-
-  max-width:700px;
-
-  margin:
-
-  25px auto 0;
-
-
-  font-size:.9rem;
-
-}
-
-
-
-/* ===========================================================
-   NETWORK OFFLINE
-=========================================================== */
-
-
-.offline::after{
-
-  content:
-
-  "Sem conexão";
-
-
-  position:fixed;
-
-
-  bottom:20px;
-
-
-  left:50%;
-
-
-  transform:
-
-  translateX(-50%);
-
-
-  padding:
-
-  10px 20px;
-
-
-  border-radius:
-
-  999px;
-
-
-  background:
-
-  rgba(0,0,0,.85);
+  font-family:var(--font-display);
 
 
   color:white;
 
 
-  z-index:9999;
+  font-size:1.3rem;
+
 
 }
+
+
+
+
+
+.footer-brand span{
+
+
+  color:var(--cyan);
+
+
+}
+
+
+
+
+
+.disclaimer{
+
+
+  max-width:700px;
+
+
+  margin:
+
+  20px auto 0;
+
+
+  line-height:1.6;
+
+
+}
+
+
+
+
+
+
 
 
 
 /* ===========================================================
-   PERFORMANCE
+   BACKGROUND EFFECTS
 =========================================================== */
 
 
-.cosplay-card,
-.social-card,
-.gallery-card{
 
-  will-change:
+::selection{
 
-  transform;
+
+  background:var(--purple);
+
+
+  color:white;
+
 
 }
 
 
 
-img{
 
-  content-visibility:auto;
+
+
+html{
+
+
+  scroll-behavior:smooth;
+
 
 }
+
+
+
+
+
+
 
 
 
@@ -2583,17 +3139,19 @@ img{
 =========================================================== */
 
 
+
 @media(max-width:1100px){
+
 
 
 .hero{
 
-  grid-template-columns:
 
-  1fr;
+  grid-template-columns:1fr;
 
 
   text-align:center;
+
 
 }
 
@@ -2601,7 +3159,9 @@ img{
 
 .hero-desc{
 
+
   margin:auto;
+
 
 }
 
@@ -2609,63 +3169,88 @@ img{
 
 .hero-actions{
 
+
   justify-content:center;
 
+
 }
+
+
 
 
 
 .bio-content{
 
-  grid-template-columns:
 
-  1fr;
+  grid-template-columns:1fr;
+
 
 }
+
+
 
 
 
 .bio-photo{
 
-  max-width:500px;
+
+  max-width:450px;
+
 
   margin:auto;
 
+
 }
+
+
 
 
 
 .cosplay-layout{
 
-  grid-template-columns:
 
-  1fr;
+  grid-template-columns:1fr;
+
 
 }
+
+
 
 
 
 .social-grid{
 
+
   grid-template-columns:
 
   repeat(3,1fr);
 
+
 }
+
+
 
 
 
 .gallery-grid{
 
+
   grid-template-columns:
 
   repeat(2,1fr);
 
+
+}
+
+
+
 }
 
 
 
-}
+
+
+
 
 
 
@@ -2674,25 +3259,31 @@ img{
 =========================================================== */
 
 
+
 @media(max-width:850px){
 
 
 
 .site-header{
 
+
   padding:
 
   15px 4vw;
+
 
 }
 
 
 
+
 .navbar{
+
 
   padding:
 
   15px 20px;
+
 
 }
 
@@ -2700,54 +3291,74 @@ img{
 
 .nav-toggle{
 
+
   display:flex;
+
 
   flex-direction:column;
 
+
   gap:5px;
+
 
   background:none;
 
+
   border:0;
+
 
   cursor:pointer;
 
+
 }
+
+
 
 
 
 .nav-toggle span{
 
+
   width:25px;
 
-  height:2px;
+
+  height:3px;
+
 
   background:white;
+
 
 }
 
 
 
+
+
 .nav-links{
+
 
   position:absolute;
 
+
   top:80px;
+
 
   left:0;
 
-  width:100%;
+
+  right:0;
+
+
+  display:none;
 
 
   flex-direction:column;
 
-  align-items:center;
+
+  text-align:center;
 
 
   padding:30px;
-
-
-  border-radius:20px;
 
 
   background:
@@ -2755,76 +3366,122 @@ img{
   rgba(8,6,13,.95);
 
 
-  opacity:0;
+  border-radius:20px;
 
-  pointer-events:none;
-
-
-  transform:
-
-  translateY(-20px);
-
-
-  transition:.3s;
 
 }
+
+
 
 
 
 .nav-links.active{
 
-  opacity:1;
 
-  pointer-events:auto;
+  display:flex;
 
-
-  transform:
-
-  translateY(0);
 
 }
+
+
+
+
+
+
+.section-title{
+
+
+  font-size:2.2rem;
+
+
+}
+
+
 
 
 
 .hero-title{
 
-  font-size:3.5rem;
+
+  font-size:3rem;
+
 
 }
+
+
+
+
+
+.hero-frame{
+
+
+  width:min(330px,80vw);
+
+
+}
+
+
+
+
+
+.bio-facts-row,
+
+
+.fun-grid{
+
+
+  grid-template-columns:1fr;
+
+
+}
+
+
 
 
 
 .social-grid{
 
+
   grid-template-columns:
 
   repeat(2,1fr);
 
+
 }
+
+
 
 
 
 .gallery-grid{
 
-  grid-template-columns:
 
-  1fr;
+  grid-template-columns:1fr;
+
 
 }
+
+
 
 
 
 .cosplay-secondary{
 
-  grid-template-columns:
 
-  1fr;
+  grid-template-columns:1fr;
+
+
+}
+
+
 
 }
 
 
 
-}
+
+
+
 
 
 
@@ -2833,200 +3490,145 @@ img{
 =========================================================== */
 
 
-@media(max-width:600px){
+
+@media(max-width:500px){
 
 
 
 section{
 
+
   padding:
 
-  80px 5vw;
+  90px 5vw;
+
 
 }
 
 
-
-.section-title{
-
-  font-size:2.2rem;
-
-}
 
 
 
 .hero-title{
 
-  font-size:2.8rem;
+
+  font-size:2.5rem;
+
 
 }
 
 
-
-.hero-frame{
-
-  width:
-
-  min(320px,85vw);
-
-}
 
 
 
 .hero-actions{
 
+
   flex-direction:column;
 
+
 }
+
+
 
 
 
 .btn{
 
+
   width:100%;
 
-}
-
-
-
-.bio-facts-row{
-
-  grid-template-columns:
-
-  1fr;
 
 }
+
+
 
 
 
 .social-grid{
 
-  grid-template-columns:
 
-  1fr;
-
-}
-
-
-
-.gallery-card,
-.gallery-card iframe{
-
-  min-height:280px;
-
-}
-
-
-
-.live-tag,
-.twitch-status-badge{
-
-  font-size:.65rem;
-
-}
-
+  grid-template-columns:1fr;
 
 
 }
 
 
 
-/* ===========================================================
-   EXTRA SMALL
-=========================================================== */
 
 
-@media(max-width:420px){
+.live-tag{
 
 
-.brand{
-
-  font-size:1rem;
-
-}
+  bottom:20px;
 
 
+  right:20px;
 
-.hero-title{
-
-  font-size:2.3rem;
-
-}
-
-
-
-.hero-desc{
-
-  font-size:1rem;
-
-}
-
-
-
-.cosplay-badge{
 
   font-size:.6rem;
 
+
+}
+
+
+
+
+
+.cosplay-feature-image img{
+
+
+  height:420px;
+
+
+}
+
+
+
+
+
+.cosplay-card .cosplay-photo{
+
+
+  height:300px;
+
+
 }
 
 
 
 }
+
+
+
+
 
 
 
 /* ===========================================================
-   FINAL TOUCHES
+   PERFORMANCE
 =========================================================== */
 
 
-html{
 
-  scroll-behavior:smooth;
+.cosplay-card,
+.social-card,
+.gallery-card{
+
+
+  will-change:transform;
+
 
 }
 
 
 
-::selection{
-
-  background:
-
-  var(--purple);
 
 
-  color:white;
-
-}
+img{
 
 
+  content-visibility:auto;
 
-body{
-
-  scrollbar-color:
-
-  var(--purple)
-  var(--bg);
-
-}
-
-
-
-/* smooth hover everywhere */
-
-a,
-button{
-
-  -webkit-tap-highlight-color:transparent;
-
-}
-
-
-
-button{
-
-  font-family:
-
-  inherit;
 
 }
