@@ -1,69 +1,1512 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>404 — Page Not Found | Upminaa Fan Hub</title>
-<meta name="description" content="This page doesn't exist — but the UpMinaa Fan Hub does." />
-<link rel="icon" type="image/png" href="upminaa-profile.png" />
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Upminaa | Fan Hub</title>
+
+
+<meta 
+name="description" 
+content="Unofficial fan hub celebrating Upminaa — Twitch streams, cosplay, gaming, clips and community moments.">
+
+
+<meta 
+name="author" 
+content="1ANXTZ">
+
+
+<meta 
+name="robots" 
+content="index, follow">
+
+
+<meta 
+name="theme-color" 
+content="#8b5cf6">
+
+
+
+<link 
+rel="canonical" 
+href="https://1anxtz.github.io/upminaa-fansite/">
+
+
+
+<link 
+rel="icon" 
+type="image/png" 
+href="upminaa-profile.png">
+
+
+<link 
+rel="apple-touch-icon" 
+href="upminaa-profile.png">
+
+
+
+
+
+<!-- Open Graph -->
+
+<meta 
+property="og:type" 
+content="website">
+
+
+<meta 
+property="og:title" 
+content="Upminaa | Fan Hub">
+
+
+<meta 
+property="og:description" 
+content="A community fan hub celebrating Upminaa's streams, cosplay and gaming content.">
+
+
+<meta 
+property="og:image" 
+content="https://1anxtz.github.io/upminaa-fansite/upminaa-profile.png">
+
+
+<meta 
+property="og:url" 
+content="https://1anxtz.github.io/upminaa-fansite/">
+
+
+
+
+
+<!-- Twitter -->
+
+<meta 
+name="twitter:card" 
+content="summary_large_image">
+
+
+<meta 
+name="twitter:title" 
+content="Upminaa | Fan Hub">
+
+
+<meta 
+name="twitter:description" 
+content="Cosplay, gaming, streams and community moments.">
+
+
+<meta 
+name="twitter:image" 
+content="https://1anxtz.github.io/upminaa-fansite/upminaa-profile.png">
+
+
+
+
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css" />
-<style>
-  .error-page{
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 6vw;
-  }
-  .error-code{
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: clamp(4rem, 18vw, 10rem);
-    line-height: 1;
-    background: linear-gradient(135deg, var(--purple-light), var(--cyan));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: none;
-    margin-bottom: 10px;
-  }
-  .error-title{
-    font-family: var(--font-display);
-    font-size: clamp(1.3rem, 4vw, 2rem);
-    color: #fff;
-    margin-bottom: 16px;
-  }
-  .error-desc{
-    color: var(--text-dim);
-    font-size: 1.05rem;
-    max-width: 460px;
-    margin-bottom: 34px;
-  }
-</style>
+
+
+<link 
+href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" 
+rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="style.css">
+
+
 </head>
+
+
+
+
 <body>
 
-<div class="bg-fx" aria-hidden="true">
-  <div class="orb orb-a"></div>
-  <div class="orb orb-b"></div>
-  <div class="grid-overlay"></div>
+
+<div id="loader" class="loader">
+
+
+<div class="loader-inner">
+
+
+<div class="loader-ring"></div>
+
+
+<span class="loader-tag">
+UPMINAA
+</span>
+
+
+
+<div class="loader-bars">
+
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+
 </div>
 
-<div class="error-page">
-  <p class="error-code">404</p>
-  <h1 class="error-title">Looks like this stream went offline.</h1>
-  <p class="error-desc">
-    The page you're looking for doesn't exist — but the rest of the UpMinaa Fan Hub is very much live.
-  </p>
-  <a href="/upminaa-fansite/" class="btn btn-glow btn-twitch">
-    <span class="btn-icon">◀</span> Back to the Fan Hub
-  </a>
+
 </div>
+
+
+</div>
+
+
+
+
+
+<div class="bg-fx">
+
+
+<div class="orb orb-a"></div>
+
+<div class="orb orb-b"></div>
+
+<div class="grid-overlay"></div>
+
+
+</div>
+
+
+
+
+
+
+
+<header class="site-header" id="siteHeader">
+
+
+<nav class="navbar">
+
+
+
+<a href="#home" class="brand">
+
+UPMIN<span>AA</span>
+
+</a>
+
+
+
+
+<button 
+class="nav-toggle"
+id="navToggle"
+aria-label="Open menu"
+aria-expanded="false">
+
+
+<span></span>
+<span></span>
+<span></span>
+
+
+</button>
+
+
+
+
+
+<ul class="nav-links" id="navLinks">
+
+
+<li>
+<a href="#home" class="nav-link">
+Home
+</a>
+</li>
+
+
+
+<li>
+<a href="#about" class="nav-link">
+About
+</a>
+</li>
+
+
+
+<li>
+<a href="#bio" class="nav-link">
+Bio
+</a>
+</li>
+
+
+
+<li>
+<a href="#cosplay" class="nav-link">
+Cosplays
+</a>
+</li>
+
+
+
+<li>
+<a href="#social" class="nav-link">
+Socials
+</a>
+</li>
+
+
+
+<li>
+<a href="#gallery" class="nav-link">
+Gallery
+</a>
+</li>
+
+
+
+</ul>
+
+
+
+</nav>
+
+
+</header>
+
+
+
+
+
+<main>
+
+
+
+
+
+<section id="home" class="hero">
+
+
+
+<div class="hero-content">
+
+
+
+<p class="hero-eyebrow">
+
+// UNOFFICIAL FAN HUB · TWITCH CREATOR
+
+</p>
+
+
+
+
+<h1 class="hero-title">
+
+UPMINAA
+
+</h1>
+
+
+
+
+<p class="hero-desc">
+
+Cosplay, gaming, livestreams and a community built around
+creative content and unforgettable moments.
+
+</p>
+
+
+
+
+
+<div class="hero-actions">
+
+
+
+<a 
+href="https://www.tiktok.com/@upminaa.cos"
+target="_blank"
+rel="noopener noreferrer"
+class="btn btn-glow btn-tiktok">
+
+
+<span class="btn-icon">
+♪
+</span>
+
+
+TikTok
+
+
+</a>
+
+
+
+
+
+<a 
+href="https://www.twitch.tv/upminaa"
+target="_blank"
+rel="noopener noreferrer"
+class="btn btn-glow btn-twitch">
+
+
+<span class="btn-icon">
+▶
+</span>
+
+
+Twitch
+
+
+</a>
+
+
+
+
+
+<a 
+href="https://www.youtube.com/@upminaa"
+target="_blank"
+rel="noopener noreferrer"
+class="btn btn-glow btn-youtube">
+
+
+<span class="btn-icon">
+▶
+</span>
+
+
+YouTube
+
+
+</a>
+
+
+
+
+</div>
+
+
+
+</div></div>
+
+
+
+<div class="hero-visual">
+
+
+<div class="hero-frame" id="profileLiveFrame">
+
+
+<div class="profile-live-ring"></div>
+
+
+
+<img
+src="upminaa-profile.png"
+alt="Upminaa profile picture"
+class="hero-photo"
+id="heroProfilePhoto"
+width="500"
+height="500"
+fetchpriority="high">
+
+
+
+<div class="hero-frame-glow"></div>
+
+
+
+
+<div 
+class="live-tag"
+id="heroLiveStatus">
+
+
+<span class="live-dot"></span>
+
+
+<span class="live-text">
+OFFLINE
+</span>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<div class="visualizer">
+
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<a href="#bio" class="scroll-cue">
+
+<span class="scroll-cue-dot"></span>
+
+</a>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- ===========================
+     BIOGRAPHY
+=========================== -->
+
+<section id="bio" class="bio">
+
+
+
+<div class="section-heading">
+
+
+<p class="section-eyebrow">
+GET TO KNOW
+</p>
+
+
+<h2 class="section-title">
+Biography
+</h2>
+
+
+</div>
+
+
+
+
+
+
+<div class="bio-content">
+
+
+
+
+
+<div class="bio-photo">
+
+
+<img
+src="upminaa-bio-photo.jpg"
+alt="Upminaa biography photo"
+loading="lazy"
+width="600"
+height="600">
+
+
+<div class="bio-photo-glow"></div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="bio-text">
+
+
+
+
+
+<div class="bio-facts-row">
+
+
+
+
+
+<div class="bio-fact">
+
+<span class="bio-fact-label">
+Creator
+</span>
+
+
+<span class="bio-fact-value">
+UpMinaa
+</span>
+
+</div>
+
+
+
+
+
+
+<div class="bio-fact">
+
+<span class="bio-fact-label">
+Country
+</span>
+
+
+<span class="bio-fact-value">
+Germany 🇩🇪
+</span>
+
+</div>
+
+
+
+
+
+
+
+<div class="bio-fact">
+
+<span class="bio-fact-label">
+Content
+</span>
+
+
+<span class="bio-fact-value">
+Cosplay · Gaming · Streaming
+</span>
+
+</div>
+
+
+
+
+
+
+
+<div class="bio-fact">
+
+<span class="bio-fact-label">
+Started
+</span>
+
+
+<span class="bio-fact-value">
+Twitch journey in 2023
+</span>
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="bio-story">
+
+
+<p class="bio-paragraph">
+
+UpMinaa is a content creator known for combining
+cosplay, gaming and livestream entertainment.
+Her community grew through creative character
+interpretations and interactive streams.
+
+</p>
+
+
+
+
+<p class="bio-paragraph">
+
+Her content mixes anime-inspired cosplay,
+gaming sessions and conversations with viewers,
+creating a community focused on creativity and fun.
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<h3 class="bio-subtitle">
+Community & Vibe
+</h3>
+
+
+
+
+
+
+<ul class="bio-list">
+
+
+<li>
+Cosplay-focused content inspired by anime and games.
+</li>
+
+
+<li>
+Gaming streams with a strong community interaction.
+</li>
+
+
+<li>
+Creative transformations into different characters.
+</li>
+
+
+<li>
+A mix of entertainment, humor and streamer personality.
+</li>
+
+
+<li>
+A community built around shared interests in anime, games and cosplay.
+</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+<h3 class="bio-subtitle bio-subtitle-space">
+Fun Facts
+</h3>
+
+
+
+
+
+<div class="fun-grid">
+
+
+
+<div class="fun-card">
+
+<span>
+🎭
+</span>
+
+<p>
+Cosplay is one of the main pillars of her content.
+</p>
+
+</div>
+
+
+
+
+<div class="fun-card">
+
+<span>
+🎮
+</span>
+
+<p>
+Gaming streams are part of her regular content.
+</p>
+
+</div>
+
+
+
+
+<div class="fun-card">
+
+<span>
+✨
+</span>
+
+<p>
+Anime characters are a major inspiration.
+</p>
+
+</div>
+
+
+
+
+<div class="fun-card">
+
+<span>
+🌎
+</span>
+
+<p>
+Her content reaches an international audience.
+</p>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<p class="bio-note">
+
+ℹ️ This is an unofficial fan project created for community appreciation.
+Information can be updated when new public details become available.
+
+</p>
+
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+</section><!-- ===========================
+     COSPLAY SECTION
+=========================== -->
+
+<section id="cosplay" class="cosplay">
+
+
+
+<div class="section-heading">
+
+
+<p class="section-eyebrow">
+CRAFT & CHARACTERS
+</p>
+
+
+<h2 class="section-title">
+Iconic Cosplays
+</h2>
+
+
+<p class="cosplay-intro">
+
+Some of UpMinaa's most recognizable cosplay
+projects and character inspirations.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="cosplay-layout">
+
+
+
+
+
+<article class="cosplay-featured">
+
+
+<div class="cosplay-feature-image">
+
+
+<span class="cosplay-badge">
+VIRAL MOMENT
+</span>
+
+
+
+<img
+src="cosplay-gura.jpg"
+alt="UpMinaa Gawr Gura cosplay"
+class="cosplay-photo"
+loading="lazy">
+
+
+</div>
+
+
+
+
+
+<div class="cosplay-info">
+
+
+<h3>
+Gawr Gura
+</h3>
+
+
+<p class="cosplay-source">
+Hololive EN
+</p>
+
+
+<p class="cosplay-desc">
+
+One of the cosplay moments that helped
+introduce her work to a wider audience.
+
+</p>
+
+
+</div>
+
+
+</article>
+
+
+
+
+
+
+
+<div class="cosplay-secondary">
+
+
+
+
+
+<article class="cosplay-card">
+
+
+<img
+src="cosplay-miku.jpg"
+alt="UpMinaa Hatsune Miku cosplay"
+class="cosplay-photo"
+loading="lazy">
+
+
+<div class="cosplay-info">
+
+
+<h3>
+Hatsune Miku
+</h3>
+
+
+<p class="cosplay-source">
+Vocaloid
+</p>
+
+
+</div>
+
+
+</article>
+
+
+
+
+
+
+
+<article class="cosplay-card">
+
+
+<img
+src="cosplay-frieren.jpg"
+alt="UpMinaa Frieren cosplay"
+class="cosplay-photo"
+loading="lazy">
+
+
+<div class="cosplay-info">
+
+
+<h3>
+Frieren
+</h3>
+
+
+<p class="cosplay-source">
+Frieren: Beyond Journey's End
+</p>
+
+
+</div>
+
+
+</article>
+
+
+
+
+
+
+
+
+<article class="cosplay-card">
+
+
+<img
+src="cosplay-maki.jpg"
+alt="UpMinaa Maki Zenin cosplay"
+class="cosplay-photo"
+loading="lazy">
+
+
+<div class="cosplay-info">
+
+
+<h3>
+Maki Zenin
+</h3>
+
+
+<p class="cosplay-source">
+Jujutsu Kaisen
+</p>
+
+
+</div>
+
+
+</article>
+
+
+
+
+
+
+
+<article class="cosplay-card">
+
+
+<img
+src="cosplay-makima.jpg"
+alt="UpMinaa Makima cosplay"
+class="cosplay-photo"
+loading="lazy">
+
+
+<div class="cosplay-info">
+
+
+<h3>
+Makima
+</h3>
+
+
+<p class="cosplay-source">
+Chainsaw Man
+</p>
+
+
+</div>
+
+
+</article>
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ===========================
+     SOCIAL SECTION
+=========================== -->
+
+
+<section id="social" class="social">
+
+
+
+<div class="section-heading">
+
+
+<p class="section-eyebrow">
+STAY CONNECTED
+</p>
+
+
+<h2 class="section-title">
+Follow The Journey
+</h2>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="social-grid">
+
+
+
+
+
+<a
+href="https://www.tiktok.com/@upminaa.cos"
+target="_blank"
+rel="noopener noreferrer"
+class="social-card social-tiktok">
+
+
+<span class="social-icon">
+♪ 
+</span>
+
+
+<span class="social-name">
+TikTok
+</span>
+
+
+<span class="social-sub">
+Cosplay & Clips
+</span>
+
+
+</a>
+
+
+
+
+
+
+
+
+<a
+href="https://www.twitch.tv/upminaa"
+target="_blank"
+rel="noopener noreferrer"
+class="social-card social-twitch">
+
+
+<span class="social-icon">
+◉
+</span>
+
+
+<span class="social-name">
+Twitch
+</span>
+
+
+<span class="social-sub">
+Live Streams
+</span>
+
+
+</a>
+
+
+
+
+
+
+
+<a
+href="https://www.youtube.com/@upminaa"
+target="_blank"
+rel="noopener noreferrer"
+class="social-card social-youtube">
+
+
+<span class="social-icon">
+▶
+</span>
+
+
+<span class="social-name">
+YouTube
+</span>
+
+
+<span class="social-sub">
+Videos & Highlights
+</span>
+
+
+</a>
+
+
+
+
+
+
+
+<a
+href="https://www.instagram.com/upminaa/"
+target="_blank"
+rel="noopener noreferrer"
+class="social-card social-instagram">
+
+
+<span class="social-icon">
+◎
+</span>
+
+
+<span class="social-name">
+Instagram
+</span>
+
+
+<span class="social-sub">
+Photos & Updates
+</span>
+
+
+</a>
+
+
+
+
+
+
+
+<a
+href="https://x.com/upminaa"
+target="_blank"
+rel="noopener noreferrer"
+class="social-card social-twitter">
+
+
+<span class="social-icon">
+𝕏
+</span>
+
+
+<span class="social-name">
+X / Twitter
+</span>
+
+
+<span class="social-sub">
+Latest News
+</span>
+
+
+</a>
+
+
+
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ===========================
+     GALLERY
+=========================== -->
+
+<section id="gallery" class="gallery">
+
+
+
+<div class="section-heading">
+
+
+<p class="section-eyebrow">
+WATCH
+</p>
+
+
+<h2 class="section-title">
+Streams & Videos
+</h2>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="gallery-grid" id="galleryGrid">
+
+
+
+
+
+<figure 
+class="gallery-card embed-card live-card"
+id="twitchLiveCard">
+
+
+
+<div class="twitch-offline-state"
+id="twitchOfflineState">
+
+
+
+<div class="twitch-profile-wrapper">
+
+
+<img
+src="upminaa-profile.png"
+alt="UpMinaa Twitch status"
+class="twitch-status-photo"
+id="twitchStatusPhoto"
+loading="lazy">
+
+
+</div>
+
+
+
+
+
+
+<div 
+class="twitch-status-badge is-off"
+id="twitchStatusBadge">
+
+
+<span class="status-dot"></span>
+
+
+<span class="status-text">
+OFFLINE
+</span>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div 
+class="twitch-embed-wrap"
+id="twitchEmbedWrap">
+</div>
+
+
+
+
+
+<span class="gallery-tag">
+UpMinaa Twitch
+</span>
+
+
+
+</figure>
+
+
+
+
+
+
+
+<figure class="gallery-card embed-card twitch-vod-card">
+
+
+<div class="yt-loading">
+
+Latest Twitch content
+
+</div>
+
+
+</figure>
+
+
+
+
+
+
+
+<figure class="gallery-card embed-card yt-video-card">
+
+
+<div class="yt-loading">
+
+Recent YouTube videos
+
+</div>
+
+
+</figure>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<p class="embed-note">
+
+The live player updates when UpMinaa is streaming.
+
+</p>
+
+
+
+
+</section>
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+
+
+<footer class="site-footer">
+
+
+
+<p class="footer-brand">
+
+UPMIN<span>AA</span> FAN HUB
+
+</p>
+
+
+
+
+
+<p>
+
+© <span id="year"></span>
+Upminaa Fan Hub.
+
+</p>
+
+
+
+
+
+
+<p class="disclaimer">
+
+This is an unofficial fan-made website.
+Not affiliated with or operated by Upminaa.
+
+Created as a community appreciation project.
+
+</p>
+
+
+
+
+
+</footer>
+
+
+
+
+
+
+
+<script src="script.js"></script>
+
 
 </body>
+
+
 </html>
