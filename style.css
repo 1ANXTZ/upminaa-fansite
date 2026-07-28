@@ -3632,3 +3632,104 @@ img{
 
 
 }
+/* ===========================================================
+   IMAGE LIGHTBOX
+=========================================================== */
+
+
+.image-clickable{
+
+  cursor:pointer;
+
+  transition:.3s ease;
+
+}
+
+
+.image-clickable:hover{
+
+  transform:scale(1.03);
+
+  filter:brightness(1.1);
+
+}
+
+
+
+.lightbox{
+
+  position:fixed;
+
+  inset:0;
+
+  background:
+
+  rgba(0,0,0,.9);
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  z-index:99999;
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transition:.3s ease;
+
+  padding:30px;
+
+}
+
+
+
+.lightbox.active{
+
+  opacity:1;
+
+  visibility:visible;
+
+}
+
+
+
+.lightbox img{
+
+  max-width:95vw;
+
+  max-height:90vh;
+
+  object-fit:contain;
+
+  border-radius:15px;
+
+  box-shadow:
+
+  0 0 50px rgba(139,92,246,.5);
+
+}
+
+
+
+.lightbox-close{
+
+  position:absolute;
+
+  top:25px;
+
+  right:35px;
+
+  font-size:3rem;
+
+  color:white;
+
+  cursor:pointer;
+
+  font-family:Arial;
+
+}
+
+
