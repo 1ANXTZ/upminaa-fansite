@@ -1,28 +1,49 @@
 /* ===========================================================
-   UPMINAA FAN HUB — CSS UPDATE
-   Live System + Social Colors + Cosplay Layout
+   UPMINAA FAN HUB — CSS REBUILD
+   PART 1/4
+   Base + Live System + Hero
 =========================================================== */
 
 
 /* ===========================================================
-   LIVE COLORS
+   ROOT VARIABLES
 =========================================================== */
 
 :root{
 
   --twitch:#9146ff;
-
   --youtube:#ff0000;
-
   --tiktok:#00f2ea;
-
   --instagram:#e1306c;
-
   --twitter:#ffffff;
 
   --live-red:#ff003c;
-
   --offline-gray:#777;
+
+  --purple:#8b5cf6;
+  --purple-light:#c084fc;
+  --pink:#ff4fd8;
+  --cyan:#00f2ea;
+
+  --bg:#08060d;
+  --bg-soft:#100d18;
+
+  --text:#ffffff;
+  --text-dim:#aaa;
+
+  --border-soft:
+  rgba(255,255,255,.12);
+
+  --font-display:
+  'Orbitron',
+  sans-serif;
+
+  --font-body:
+  'Rajdhani',
+  sans-serif;
+
+  --radius-md:
+  18px;
 
 }
 
@@ -30,8 +51,9 @@
 
 
 
+
 /* ===========================================================
-   HERO LIVE PHOTO
+   GLOBAL LIVE EFFECTS
 =========================================================== */
 
 
@@ -39,7 +61,10 @@
 
   position:relative;
 
+  z-index:1;
+
 }
+
 
 
 
@@ -49,9 +74,10 @@
 
   position:absolute;
 
-  inset:-8px;
+  inset:-10px;
 
   border-radius:50%;
+
 
   background:
 
@@ -61,6 +87,11 @@
     var(--cyan)
   );
 
+
+  filter:blur(12px);
+
+  opacity:.7;
+
   z-index:-1;
 
 }
@@ -69,7 +100,21 @@
 
 
 
-/* Quando estiver ao vivo */
+.hero-photo{
+
+  position:relative;
+
+  z-index:2;
+
+  transition:
+
+  .4s ease;
+
+}
+
+
+
+
 
 .hero-photo.is-live,
 .twitch-status-photo.is-live{
@@ -90,9 +135,7 @@
 
   liveGlow 1.5s infinite;
 
-
 }
-
 
 
 
@@ -103,28 +146,37 @@
 
   0%{
 
+
     box-shadow:
 
     0 0 15px var(--live-red);
 
+
   }
+
 
 
   50%{
 
+
     box-shadow:
 
-    0 0 50px var(--live-red),
+
+    0 0 45px var(--live-red),
     0 0 90px rgba(255,0,60,.8);
+
 
   }
 
 
+
   100%{
+
 
     box-shadow:
 
     0 0 15px var(--live-red);
+
 
   }
 
@@ -135,44 +187,22 @@
 
 
 
+
+
 /* ===========================================================
-   TWITCH STATUS BADGE
+   LIVE STATUS BADGES
 =========================================================== */
 
 
+.live-tag,
 .twitch-status-badge{
 
-
-  position:absolute;
-
-  top:20px;
-
-  left:20px;
 
   display:flex;
 
   align-items:center;
 
   gap:10px;
-
-
-  padding:
-
-  8px 18px;
-
-
-  border-radius:999px;
-
-
-  font-family:
-
-  var(--font-display);
-
-
-  font-size:.75rem;
-
-
-  letter-spacing:2px;
 
 
   background:
@@ -185,7 +215,12 @@
   blur(15px);
 
 
-  z-index:5;
+  font-family:
+
+  var(--font-display);
+
+
+  letter-spacing:2px;
 
 
 }
@@ -194,7 +229,37 @@
 
 
 
+.live-tag{
 
+
+  position:absolute;
+
+  bottom:25px;
+
+  right:25px;
+
+
+  padding:
+
+  8px 18px;
+
+
+  border-radius:999px;
+
+
+  color:white;
+
+
+  font-size:.75rem;
+
+
+}
+
+
+
+
+
+.live-dot,
 .status-dot{
 
 
@@ -211,16 +276,59 @@
 
 
 
+.live-dot{
+
+
+  background:
+
+  var(--live-red);
+
+
+}
+
+
+
+
+
+
+.twitch-status-badge{
+
+
+  position:absolute;
+
+  top:20px;
+
+  left:20px;
+
+
+  padding:
+
+  8px 18px;
+
+
+  border-radius:999px;
+
+
+  z-index:10;
+
+
+  font-size:.75rem;
+
+
+}
+
+
+
+
+
 .twitch-status-badge.is-on{
-
-
-  border:
-
-  1px solid var(--live-red);
 
 
   color:#fff;
 
+  border:
+
+  1px solid var(--live-red);
 
 }
 
@@ -234,7 +342,12 @@
   var(--live-red);
 
 
+  animation:
+
+  dotPulse 1s infinite;
+
 }
+
 
 
 
@@ -242,15 +355,16 @@
 .twitch-status-badge.is-off{
 
 
+  color:#aaa;
+
+
   border:
 
   1px solid rgba(255,255,255,.15);
 
 
-  color:#aaa;
-
-
 }
+
 
 
 
@@ -268,20 +382,39 @@
 
 
 
+@keyframes dotPulse{
+
+
+  50%{
+
+
+    transform:
+
+    scale(1.5);
+
+
+  }
+
+
+}
+
+
+
+
+
+
 
 
 /* ===========================================================
-   HERO BUTTON COLORS
+   BUTTON BRAND COLORS
 =========================================================== */
 
 
 .btn-tiktok{
 
-
   border-color:
 
   var(--tiktok);
-
 
 }
 
@@ -306,7 +439,6 @@
 
 
 
-
 .btn-twitch{
 
 
@@ -324,7 +456,7 @@
 
   background:
 
-  rgba(145,70,255,.25);
+  rgba(145,70,255,.2);
 
 
   box-shadow:
@@ -333,6 +465,7 @@
 
 
 }
+
 
 
 
@@ -364,48 +497,18 @@
   0 0 40px rgba(255,0,0,.6);
 
 
-}/* ===========================================================
-   BIO IMPROVEMENTS
-=========================================================== */
-
-
-.bio-facts-row{
-
-  display:grid;
-
-  grid-template-columns:
-
-  repeat(2,1fr);
-
-  gap:20px;
-
 }
 
 
 
 
 
-.bio-fact{
 
 
-  display:flex;
-
-  flex-direction:column;
+.btn-icon{
 
 
-  align-items:center;
-
-
-  justify-content:center;
-
-
-  text-align:center;
-
-
-  min-height:110px;
-
-
-  padding:22px;
+  margin-right:8px;
 
 
 }
@@ -414,25 +517,37 @@
 
 
 
-.bio-fact-label{
+
+.btn-tiktok .btn-icon{
 
 
-  margin-bottom:10px;
+  color:
+
+  var(--tiktok);
 
 
 }
 
 
 
+.btn-twitch .btn-icon{
 
 
-.bio-fact-value{
+  color:
+
+  var(--twitch);
 
 
-  text-align:center;
+}
 
 
-  line-height:1.4;
+
+.btn-youtube .btn-icon{
+
+
+  color:
+
+  var(--youtube);
 
 
 }
@@ -444,652 +559,7 @@
 
 
 /* ===========================================================
-   COSPLAY NEW LAYOUT
-=========================================================== */
-
-
-.cosplay-grid{
-
-
-  display:grid;
-
-
-  grid-template-columns:
-
-  1.15fr 1fr;
-
-
-  gap:30px;
-
-
-  max-width:1250px;
-
-
-}
-
-
-
-
-
-
-/* Gawr Gura destaque */
-
-
-.cosplay-featured{
-
-
-  grid-row:
-
-  span 2;
-
-
-}
-
-
-
-
-
-.cosplay-featured
-.cosplay-photo{
-
-
-  aspect-ratio:
-
-  4/6;
-
-
-}
-
-
-
-
-
-.cosplay-featured
-.cosplay-info{
-
-
-  padding:28px;
-
-
-}
-
-
-
-
-
-.cosplay-badge{
-
-
-  position:absolute;
-
-
-  top:20px;
-
-
-  left:20px;
-
-
-  z-index:3;
-
-
-
-  padding:
-
-  8px 16px;
-
-
-
-  border-radius:999px;
-
-
-
-  background:
-
-  linear-gradient(
-
-    135deg,
-
-    var(--purple),
-
-    var(--pink)
-
-  );
-
-
-
-  color:#fff;
-
-
-
-  font-family:
-
-  var(--font-display);
-
-
-
-  font-size:.7rem;
-
-
-
-  letter-spacing:1px;
-
-
-
-  box-shadow:
-
-  0 0 25px rgba(255,79,216,.5);
-
-
-}
-
-
-
-
-
-
-
-
-/* Outros cosplays */
-
-
-.cosplay-grid
-.cosplay-card:not(.cosplay-featured){
-
-
-  display:flex;
-
-
-  flex-direction:column;
-
-
-}
-
-
-
-
-
-.cosplay-grid
-.cosplay-card:not(.cosplay-featured)
-.cosplay-photo{
-
-
-  aspect-ratio:
-
-  4/5;
-
-
-}
-
-
-
-
-
-
-.cosplay-info{
-
-
-  padding:
-
-  20px;
-
-
-}
-
-
-
-.cosplay-info h3{
-
-
-  font-family:
-
-  var(--font-display);
-
-
-  color:#fff;
-
-
-  margin-bottom:
-
-  8px;
-
-
-}
-
-
-
-.cosplay-source{
-
-
-  color:
-
-  var(--cyan);
-
-
-  font-size:.85rem;
-
-
-  margin-bottom:
-
-  12px;
-
-
-}
-
-
-
-.cosplay-desc{
-
-
-  color:
-
-  var(--text-dim);
-
-
-}
-
-
-
-
-
-
-/* ===========================================================
-   COSPLAY GRID RIGHT SIDE
-=========================================================== */
-
-
-
-.cosplay-grid
-.cosplay-card:not(.cosplay-featured){
-
-
-  display:grid;
-
-
-  grid-template-columns:
-
-  repeat(2,1fr);
-
-
-}
-
-
-
-
-
-.cosplay-grid
-.cosplay-card:not(.cosplay-featured)
-.cosplay-art{
-
-
-  height:100%;
-
-
-}
-
-
-
-
-
-
-/* Ajusta imagem para não cortar rosto */
-
-
-.cosplay-photo{
-
-
-  object-position:
-
-  center top;
-
-
-}
-
-
-
-
-
-
-
-/* ===========================================================
-   RESPONSIVE COSPLAY
-=========================================================== */
-
-
-@media(max-width:1000px){
-
-
-  .cosplay-grid{
-
-
-    grid-template-columns:
-
-    1fr;
-
-
-  }
-
-
-
-  .cosplay-featured{
-
-
-    grid-row:auto;
-
-
-  }
-
-
-
-  .cosplay-grid
-  .cosplay-card:not(.cosplay-featured){
-
-
-    grid-template-columns:
-
-    repeat(2,1fr);
-
-
-  }
-
-
-}
-
-
-
-
-
-
-@media(max-width:600px){
-
-
-  .bio-facts-row{
-
-
-    grid-template-columns:
-
-    1fr;
-
-
-  }
-
-
-
-
-  .cosplay-grid
-  .cosplay-card:not(.cosplay-featured){
-
-
-    grid-template-columns:
-
-    1fr;
-
-
-  }
-
-
-
-}/* ===========================================================
-   SOCIAL MEDIA BRAND COLORS
-=========================================================== */
-
-
-
-.social-card{
-
-
-  position:relative;
-
-  overflow:hidden;
-
-
-}
-
-
-
-
-/* TikTok */
-
-
-.social-tiktok{
-
-
-  border-color:
-
-  rgba(0,242,234,.45);
-
-
-}
-
-
-
-.social-tiktok:hover{
-
-
-  box-shadow:
-
-  0 0 45px rgba(0,242,234,.45);
-
-
-}
-
-
-
-
-
-.social-tiktok .social-icon{
-
-
-  color:
-
-  #00f2ea;
-
-
-  text-shadow:
-
-  0 0 15px #00f2ea;
-
-
-}
-
-
-
-
-
-
-
-/* Twitch */
-
-
-.social-twitch{
-
-
-  border-color:
-
-  rgba(145,70,255,.5);
-
-
-}
-
-
-
-
-.social-twitch:hover{
-
-
-  box-shadow:
-
-  0 0 50px rgba(145,70,255,.7);
-
-
-}
-
-
-
-
-.social-twitch .social-icon{
-
-
-  color:
-
-  #9146ff;
-
-
-  text-shadow:
-
-  0 0 20px #9146ff;
-
-
-}
-
-
-
-
-
-
-
-/* YouTube */
-
-
-.social-youtube{
-
-
-  border-color:
-
-  rgba(255,0,0,.45);
-
-
-}
-
-
-
-
-.social-youtube:hover{
-
-
-  box-shadow:
-
-  0 0 45px rgba(255,0,0,.6);
-
-
-}
-
-
-
-
-.social-youtube .social-icon{
-
-
-  color:
-
-  #ff0000;
-
-
-  text-shadow:
-
-  0 0 20px #ff0000;
-
-
-}
-
-
-
-
-
-
-
-/* Instagram */
-
-
-.social-instagram{
-
-
-  border-color:
-
-  rgba(225,48,108,.5);
-
-
-}
-
-
-
-
-.social-instagram:hover{
-
-
-  box-shadow:
-
-  0 0 50px rgba(225,48,108,.6);
-
-
-}
-
-
-
-
-.social-instagram .social-icon{
-
-
-  color:
-
-  #e1306c;
-
-
-  text-shadow:
-
-  0 0 20px #e1306c;
-
-
-}
-
-
-
-
-
-
-
-/* X / Twitter */
-
-
-.social-twitter{
-
-
-  border-color:
-
-  rgba(255,255,255,.35);
-
-
-}
-
-
-
-
-.social-twitter:hover{
-
-
-  box-shadow:
-
-  0 0 40px rgba(255,255,255,.3);
-
-
-}
-
-
-
-
-.social-twitter .social-icon{
-
-
-  color:#fff;
-
-
-}
-
-
-
-
-
-/* ===========================================================
-   TWITCH PLAYER STYLE
+   TWITCH PLAYER
 =========================================================== */
 
 
@@ -1097,7 +567,6 @@
 
 
   position:absolute;
-
 
   inset:0;
 
@@ -1127,39 +596,15 @@
 
 
 
+
 .twitch-embed-wrap iframe{
 
 
   width:100%;
 
-
   height:100%;
 
-
   border:0;
-
-
-}
-
-
-
-
-
-.live-card{
-
-
-  background:
-
-
-  linear-gradient(
-
-    145deg,
-
-    rgba(145,70,255,.15),
-
-    rgba(8,6,13,.9)
-
-  );
 
 
 }
@@ -1191,14 +636,10 @@
 
 
 
-/* Foto offline dentro do player */
-
-
 .twitch-status-photo{
 
 
   width:100%;
-
 
   height:100%;
 
@@ -1208,12 +649,11 @@
 
   transition:
 
-  opacity .5s ease,
-
-  transform .5s ease;
+  .5s ease;
 
 
 }
+
 
 
 
@@ -1228,6 +668,978 @@
   scale(1.05);
 
 
+}/* ===========================================================
+   PART 2/4
+   BIO + COSPLAY SYSTEM
+=========================================================== */
+
+
+/* ===========================================================
+   BIO SECTION
+=========================================================== */
+
+
+.bio-content{
+
+  display:grid;
+
+  grid-template-columns:
+
+  420px 1fr;
+
+  gap:50px;
+
+  align-items:start;
+
+}
+
+
+
+
+
+.bio-photo{
+
+  position:relative;
+
+  border-radius:
+
+  var(--radius-md);
+
+  overflow:hidden;
+
+
+}
+
+
+
+
+
+.bio-photo img{
+
+  width:100%;
+
+  display:block;
+
+  aspect-ratio:
+
+  1 / 1;
+
+
+  object-fit:cover;
+
+
+}
+
+
+
+
+
+.bio-photo-glow{
+
+
+  position:absolute;
+
+  inset:-20px;
+
+
+  background:
+
+  radial-gradient(
+    circle,
+    rgba(139,92,246,.5),
+    transparent 70%
+  );
+
+
+  z-index:-1;
+
+
+}
+
+
+
+
+
+.bio-facts-row{
+
+
+  display:grid;
+
+
+  grid-template-columns:
+
+  repeat(2,1fr);
+
+
+  gap:20px;
+
+
+  margin-bottom:35px;
+
+
+}
+
+
+
+
+
+
+.bio-fact{
+
+
+  padding:20px;
+
+
+  border:
+
+  1px solid var(--border-soft);
+
+
+  border-radius:
+
+  var(--radius-md);
+
+
+  background:
+
+  rgba(255,255,255,.04);
+
+
+  transition:
+
+  .3s ease;
+
+
+}
+
+
+
+
+.bio-fact:hover{
+
+
+  transform:
+
+  translateY(-5px);
+
+
+  border-color:
+
+  var(--purple);
+
+
+  box-shadow:
+
+  0 0 25px rgba(139,92,246,.35);
+
+
+}
+
+
+
+
+
+.bio-fact-label{
+
+
+  display:block;
+
+
+  font-family:
+
+  var(--font-display);
+
+
+  font-size:.75rem;
+
+
+  letter-spacing:2px;
+
+
+  color:
+
+  var(--cyan);
+
+
+  margin-bottom:10px;
+
+
+}
+
+
+
+
+
+.bio-fact-value{
+
+
+  color:#fff;
+
+
+  line-height:1.5;
+
+
+}
+
+
+
+
+
+.bio-story{
+
+
+  margin-bottom:30px;
+
+
+}
+
+
+
+
+
+.bio-paragraph{
+
+
+  color:
+
+  var(--text-dim);
+
+
+  line-height:1.8;
+
+
+  margin-bottom:20px;
+
+
+}
+
+
+
+
+
+.bio-subtitle{
+
+
+  font-family:
+
+  var(--font-display);
+
+
+  margin-bottom:20px;
+
+
+}
+
+
+
+
+
+.bio-list{
+
+
+  display:flex;
+
+
+  flex-direction:column;
+
+
+  gap:12px;
+
+
+  padding-left:20px;
+
+
+}
+
+
+
+
+
+.bio-list li{
+
+
+  color:
+
+  var(--text-dim);
+
+
+}
+
+
+
+
+
+
+.bio-note{
+
+
+  margin-top:25px;
+
+
+  padding:15px;
+
+
+  border-left:
+
+
+  3px solid var(--purple);
+
+
+  color:
+
+  var(--text-dim);
+
+
+  background:
+
+  rgba(139,92,246,.08);
+
+
+}
+
+
+
+
+
+
+
+/* ===========================================================
+   COSPLAY MAIN LAYOUT
+=========================================================== */
+
+
+
+.cosplay-layout{
+
+
+  display:grid;
+
+
+  grid-template-columns:
+
+
+  1.1fr 1fr;
+
+
+  gap:30px;
+
+
+  max-width:1250px;
+
+
+  margin:auto;
+
+
+}
+
+
+
+
+
+/* ===========================================================
+   FEATURED COSPLAY
+=========================================================== */
+
+
+
+.cosplay-featured{
+
+
+  position:relative;
+
+
+  overflow:hidden;
+
+
+  border-radius:
+
+  var(--radius-md);
+
+
+  background:
+
+  rgba(255,255,255,.04);
+
+
+  border:
+
+  1px solid var(--border-soft);
+
+
+}
+
+
+
+
+
+.cosplay-feature-image{
+
+
+  position:relative;
+
+
+}
+
+
+
+
+
+.cosplay-feature-image img{
+
+
+  width:100%;
+
+
+  aspect-ratio:
+
+  4/6;
+
+
+  object-fit:cover;
+
+
+  object-position:
+
+  center top;
+
+
+}
+
+
+
+
+
+.cosplay-badge{
+
+
+  position:absolute;
+
+
+  top:20px;
+
+
+  left:20px;
+
+
+  z-index:5;
+
+
+  padding:
+
+
+  8px 16px;
+
+
+  border-radius:
+
+  999px;
+
+
+  background:
+
+  linear-gradient(
+    135deg,
+    var(--purple),
+    var(--pink)
+  );
+
+
+  color:white;
+
+
+  font-family:
+
+  var(--font-display);
+
+
+  font-size:.7rem;
+
+
+  letter-spacing:1px;
+
+
+}
+
+
+
+
+
+.cosplay-info{
+
+
+  padding:25px;
+
+
+}
+
+
+
+
+
+.cosplay-info h3{
+
+
+  font-family:
+
+  var(--font-display);
+
+
+  color:white;
+
+
+  margin-bottom:8px;
+
+
+}
+
+
+
+
+
+.cosplay-source{
+
+
+  color:
+
+  var(--cyan);
+
+
+  font-size:.85rem;
+
+
+  margin-bottom:12px;
+
+
+}
+
+
+
+
+
+.cosplay-desc{
+
+
+  color:
+
+  var(--text-dim);
+
+
+  line-height:1.6;
+
+
+}
+
+
+
+
+
+
+
+/* ===========================================================
+   SECONDARY COSPLAY CARDS
+=========================================================== */
+
+
+
+.cosplay-secondary{
+
+
+  display:grid;
+
+
+  grid-template-columns:
+
+
+  repeat(2,1fr);
+
+
+  gap:25px;
+
+
+}
+
+
+
+
+
+
+.cosplay-card{
+
+
+  overflow:hidden;
+
+
+  border-radius:
+
+  var(--radius-md);
+
+
+  background:
+
+  rgba(255,255,255,.04);
+
+
+  border:
+
+  1px solid var(--border-soft);
+
+
+  transition:
+
+  .35s ease;
+
+
+}
+
+
+
+
+
+.cosplay-card:hover{
+
+
+  transform:
+
+  translateY(-8px);
+
+
+  border-color:
+
+  var(--purple);
+
+
+  box-shadow:
+
+
+  0 0 35px rgba(139,92,246,.35);
+
+
+}
+
+
+
+
+
+.cosplay-card .cosplay-photo{
+
+
+  width:100%;
+
+
+  aspect-ratio:
+
+  4/5;
+
+
+  object-fit:cover;
+
+
+  object-position:
+
+  center top;
+
+
+}
+
+
+
+
+
+.cosplay-card .cosplay-info{
+
+
+  padding:18px;
+
+
+}
+
+
+
+
+
+.cosplay-card h3{
+
+
+  font-size:1rem;
+
+
+}
+
+
+
+
+
+
+
+/* ===========================================================
+   COSPLAY NOTE
+=========================================================== */
+
+
+.cosplay-note{
+
+
+  max-width:1000px;
+
+
+  margin:40px auto 0;
+
+
+  text-align:center;
+
+
+  color:
+
+  var(--text-dim);
+
+
+}
+
+
+
+
+
+.cosplay-note a{
+
+
+  color:
+
+  var(--cyan);
+
+
+  text-decoration:none;
+
+
+}
+
+
+
+
+
+.cosplay-note a:hover{
+
+
+  text-decoration:underline;
+
+
+}/* ===========================================================
+   PART 3/4
+   SOCIAL + GALLERY + MEDIA SYSTEM
+=========================================================== */
+
+
+/* ===========================================================
+   SOCIAL GRID
+=========================================================== */
+
+
+.social-grid{
+
+  display:grid;
+
+  grid-template-columns:
+
+  repeat(5,1fr);
+
+  gap:20px;
+
+}
+
+
+
+
+
+.social-card{
+
+
+  position:relative;
+
+
+  min-height:170px;
+
+
+  padding:25px;
+
+
+  display:flex;
+
+
+  flex-direction:column;
+
+
+  justify-content:center;
+
+
+  align-items:center;
+
+
+  text-decoration:none;
+
+
+  border-radius:
+
+  var(--radius-md);
+
+
+  border:
+
+  1px solid var(--border-soft);
+
+
+  background:
+
+  rgba(255,255,255,.04);
+
+
+  overflow:hidden;
+
+
+  transition:
+
+  .35s ease;
+
+
+}
+
+
+
+
+
+
+.social-card::before{
+
+
+  content:"";
+
+
+  position:absolute;
+
+
+  inset:0;
+
+
+  opacity:0;
+
+
+  transition:
+
+  .35s ease;
+
+
+  background:
+
+  radial-gradient(
+    circle,
+    rgba(255,255,255,.15),
+    transparent 70%
+  );
+
+
+}
+
+
+
+
+
+
+.social-card:hover::before{
+
+
+  opacity:1;
+
+
+}
+
+
+
+
+
+.social-card:hover{
+
+
+  transform:
+
+  translateY(-8px);
+
+
+}
+
+
+
+
+
+
+
+.social-icon{
+
+
+  position:relative;
+
+
+  font-size:2.5rem;
+
+
+  margin-bottom:15px;
+
+
+  z-index:1;
+
+
+}
+
+
+
+
+
+.social-name{
+
+
+  position:relative;
+
+
+  z-index:1;
+
+
+  color:white;
+
+
+  font-family:
+
+  var(--font-display);
+
+
+  font-size:.9rem;
+
+
+  letter-spacing:1px;
+
+
+}
+
+
+
+
+
+.social-sub{
+
+
+  position:relative;
+
+
+  z-index:1;
+
+
+  margin-top:8px;
+
+
+  color:
+
+  var(--text-dim);
+
+
+  font-size:.85rem;
+
+
 }
 
 
@@ -1238,15 +1650,242 @@
 
 
 /* ===========================================================
-   GALLERY IMPROVEMENTS
+   SOCIAL BRAND COLORS
 =========================================================== */
+
+
+.social-tiktok{
+
+
+  border-color:
+
+  rgba(0,242,234,.45);
+
+
+}
+
+
+
+.social-tiktok:hover{
+
+
+  box-shadow:
+
+  0 0 45px rgba(0,242,234,.5);
+
+
+}
+
+
+
+.social-tiktok .social-icon{
+
+
+  color:#00f2ea;
+
+
+}
+
+
+
+
+
+
+
+.social-twitch{
+
+
+  border-color:
+
+  rgba(145,70,255,.5);
+
+
+}
+
+
+
+.social-twitch:hover{
+
+
+  box-shadow:
+
+  0 0 50px rgba(145,70,255,.7);
+
+
+}
+
+
+
+.social-twitch .social-icon{
+
+
+  color:#9146ff;
+
+
+}
+
+
+
+
+
+
+
+.social-youtube{
+
+
+  border-color:
+
+  rgba(255,0,0,.45);
+
+
+}
+
+
+
+.social-youtube:hover{
+
+
+  box-shadow:
+
+  0 0 45px rgba(255,0,0,.6);
+
+
+}
+
+
+
+.social-youtube .social-icon{
+
+
+  color:#ff0000;
+
+
+}
+
+
+
+
+
+
+
+.social-instagram{
+
+
+  border-color:
+
+  rgba(225,48,108,.5);
+
+
+}
+
+
+
+.social-instagram:hover{
+
+
+  box-shadow:
+
+  0 0 50px rgba(225,48,108,.6);
+
+
+}
+
+
+
+.social-instagram .social-icon{
+
+
+  color:#e1306c;
+
+
+}
+
+
+
+
+
+
+
+.social-twitter{
+
+
+  border-color:
+
+  rgba(255,255,255,.35);
+
+
+}
+
+
+
+.social-twitter:hover{
+
+
+  box-shadow:
+
+  0 0 40px rgba(255,255,255,.3);
+
+
+}
+
+
+
+
+
+
+
+
+/* ===========================================================
+   GALLERY GRID
+=========================================================== */
+
+
+.gallery-grid{
+
+
+  display:grid;
+
+
+  grid-template-columns:
+
+
+  repeat(3,1fr);
+
+
+  gap:25px;
+
+
+}
+
+
+
+
+
 
 
 .gallery-card{
 
 
-  background:
+  position:relative;
 
+
+  min-height:350px;
+
+
+  overflow:hidden;
+
+
+  border-radius:
+
+  var(--radius-md);
+
+
+  border:
+
+  1px solid var(--border-soft);
+
+
+  background:
 
   rgba(8,6,13,.85);
 
@@ -1260,79 +1899,25 @@
 .gallery-card iframe{
 
 
-  border-radius:
-
-  var(--radius-md);
-
-
-}
-
-
-
-
-
-.gallery-tag{
-
-
-  position:absolute;
-
-
-  bottom:15px;
-
-
-  left:15px;
-
-
-
-  padding:
-
-  7px 14px;
-
-
-
-  border-radius:
-
-  999px;
-
-
-
-  background:
-
-  rgba(0,0,0,.65);
-
-
-
-  backdrop-filter:
-
-  blur(10px);
-
-
-
-  color:#fff;
-
-
-
-  font-size:.8rem;
-
-
-
-  letter-spacing:1px;
-
-
-}
-
-
-
-
-
-
-/* Loading cards */
-
-
-.yt-loading{
+  width:100%;
 
 
   height:100%;
+
+
+  min-height:350px;
+
+
+  border:0;
+
+
+}
+
+
+
+
+
+.embed-card{
 
 
   display:flex;
@@ -1342,6 +1927,152 @@
 
 
   justify-content:center;
+
+
+}
+
+
+
+
+
+
+
+/* ===========================================================
+   TWITCH LIVE CARD
+=========================================================== */
+
+
+.live-card{
+
+
+  background:
+
+
+  linear-gradient(
+
+    145deg,
+
+    rgba(145,70,255,.15),
+
+    rgba(8,6,13,.9)
+
+  );
+
+
+}
+
+
+
+
+
+
+.twitch-offline-state{
+
+
+  position:absolute;
+
+
+  inset:0;
+
+
+  display:flex;
+
+
+  align-items:center;
+
+
+  justify-content:center;
+
+
+}
+
+
+
+
+
+.twitch-profile-wrapper{
+
+
+  width:150px;
+
+
+  height:150px;
+
+
+  overflow:hidden;
+
+
+  border-radius:50%;
+
+
+}
+
+
+
+
+
+
+
+.twitch-status-photo{
+
+
+  width:100%;
+
+
+  height:100%;
+
+
+  object-fit:cover;
+
+
+}
+
+
+
+
+
+.live-active
+.twitch-offline-state{
+
+
+  opacity:.25;
+
+
+}
+
+
+
+
+
+.live-card.live-active
+.twitch-embed-wrap{
+
+
+  opacity:1;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ===========================================================
+   VOD + YOUTUBE LOADING
+=========================================================== */
+
+
+.yt-loading{
+
+
+  padding:30px;
+
+
+  text-align:center;
 
 
   color:
@@ -1362,18 +2093,70 @@
 
 
 
+.yt-video-card iframe{
+
+
+  aspect-ratio:
+
+  16/9;
+
+
+}
+
+
+
+
+
+
+
 /* ===========================================================
-   BUTTON ICONS
+   GALLERY TAG
 =========================================================== */
 
 
-.btn-icon{
+.gallery-tag{
 
 
-  margin-right:8px;
+  position:absolute;
 
 
-  font-size:1rem;
+  bottom:15px;
+
+
+  left:15px;
+
+
+  padding:
+
+
+  7px 14px;
+
+
+  border-radius:
+
+  999px;
+
+
+  background:
+
+  rgba(0,0,0,.65);
+
+
+  backdrop-filter:
+
+  blur(10px);
+
+
+  color:white;
+
+
+  font-size:.8rem;
+
+
+  letter-spacing:1px;
+
+
+  z-index:5;
 
 
 }
@@ -1381,36 +2164,82 @@
 
 
 
-.btn-tiktok .btn-icon{
 
 
-  color:#00f2ea;
-
-
-}
-
-
-
-.btn-twitch .btn-icon{
-
-
-  color:#9146ff;
-
-
-}
-
-
-
-.btn-youtube .btn-icon{
-
-
-  color:#ff0000;
-
-
-}
 
 /* ===========================================================
-   BACK TO TOP BUTTON
+   EMBED NOTE
+=========================================================== */
+
+
+.embed-note{
+
+
+  margin-top:30px;
+
+
+  text-align:center;
+
+
+  color:
+
+  var(--text-dim);
+
+
+}/* ===========================================================
+   PART 4/4
+   RESPONSIVE + ANIMATIONS + FINAL POLISH
+=========================================================== */
+
+
+/* ===========================================================
+   SCROLL REVEAL
+=========================================================== */
+
+
+.reveal{
+
+
+  opacity:0;
+
+
+  transform:
+
+  translateY(40px);
+
+
+  transition:
+
+  .7s ease;
+
+
+}
+
+
+
+
+
+.reveal.in-view{
+
+
+  opacity:1;
+
+
+  transform:
+
+  translateY(0);
+
+
+}
+
+
+
+
+
+
+
+/* ===========================================================
+   BACK TO TOP
 =========================================================== */
 
 
@@ -1426,16 +2255,13 @@
   bottom:30px;
 
 
-
   width:50px;
 
 
   height:50px;
 
 
-
   border-radius:50%;
-
 
 
   border:
@@ -1443,19 +2269,15 @@
   1px solid var(--border-soft);
 
 
-
   background:
 
-  rgba(139,47,224,.25);
+  rgba(139,92,246,.25);
 
 
-
-  color:#fff;
-
+  color:white;
 
 
   font-size:1.5rem;
-
 
 
   display:flex;
@@ -1467,19 +2289,18 @@
   justify-content:center;
 
 
+  cursor:pointer;
+
 
   backdrop-filter:
 
   blur(15px);
 
 
-
   opacity:0;
 
 
-
   visibility:hidden;
-
 
 
   transform:
@@ -1487,11 +2308,9 @@
   translateY(20px);
 
 
-
   transition:
 
   .35s ease;
-
 
 
   z-index:200;
@@ -1512,14 +2331,13 @@
   visibility:visible;
 
 
-
   transform:
 
   translateY(0);
 
 
-
 }
+
 
 
 
@@ -1529,14 +2347,12 @@
 
   background:
 
-  rgba(139,47,224,.6);
-
+  rgba(139,92,246,.6);
 
 
   box-shadow:
 
-  0 0 35px rgba(139,47,224,.7);
-
+  0 0 35px rgba(139,92,246,.7);
 
 
 }
@@ -1547,35 +2363,121 @@
 
 
 
-
 /* ===========================================================
-   EXTRA LIVE POLISH
+   LOADER
 =========================================================== */
 
 
-.live-tag{
+.loader{
+
+
+  position:fixed;
+
+
+  inset:0;
 
 
   background:
 
-  rgba(255,0,60,.9);
+  #08060d;
+
+
+  display:flex;
+
+
+  align-items:center;
+
+
+  justify-content:center;
+
+
+  z-index:9999;
+
+
+  transition:
+
+  opacity .5s ease,
+
+  visibility .5s ease;
+
+
+}
 
 
 
-  color:white;
+
+
+.loader.hidden{
+
+
+  opacity:0;
+
+
+  visibility:hidden;
+
+
+}
 
 
 
-  padding:
-
-  8px 18px;
 
 
+.loader-inner{
 
-  border-radius:
 
-  999px;
+  display:flex;
 
+
+  flex-direction:column;
+
+
+  align-items:center;
+
+
+  gap:25px;
+
+
+}
+
+
+
+
+
+.loader-ring{
+
+
+  width:80px;
+
+
+  height:80px;
+
+
+  border-radius:50%;
+
+
+  border:
+
+
+  4px solid rgba(255,255,255,.1);
+
+
+  border-top-color:
+
+  var(--purple);
+
+
+  animation:
+
+  spin 1s linear infinite;
+
+
+}
+
+
+
+
+
+.loader-tag{
 
 
   font-family:
@@ -1583,19 +2485,10 @@
   var(--font-display);
 
 
-
-  font-size:.75rem;
-
+  letter-spacing:5px;
 
 
-  letter-spacing:2px;
-
-
-
-  animation:
-
-  liveTagPulse 1.5s infinite;
-
+  color:white;
 
 
 }
@@ -1604,20 +2497,107 @@
 
 
 
-@keyframes liveTagPulse{
+.loader-bars{
+
+
+  display:flex;
+
+
+  gap:6px;
+
+
+}
+
+
+
+
+
+.loader-bars span{
+
+
+  width:5px;
+
+
+  height:25px;
+
+
+  background:
+
+  var(--cyan);
+
+
+  animation:
+
+  loaderBar .8s infinite;
+
+
+}
+
+
+
+
+
+.loader-bars span:nth-child(2){
+
+  animation-delay:.1s;
+
+}
+
+
+.loader-bars span:nth-child(3){
+
+  animation-delay:.2s;
+
+}
+
+
+.loader-bars span:nth-child(4){
+
+  animation-delay:.3s;
+
+}
+
+
+.loader-bars span:nth-child(5){
+
+  animation-delay:.4s;
+
+}
+
+
+
+
+
+
+
+@keyframes spin{
+
+
+  to{
+
+    transform:
+
+    rotate(360deg);
+
+  }
+
+}
+
+
+
+
+
+
+@keyframes loaderBar{
 
 
   50%{
 
-
     transform:
 
-    scale(1.08);
-
-
+    scaleY(.4);
 
   }
-
 
 }
 
@@ -1629,7 +2609,63 @@
 
 
 /* ===========================================================
-   PERFORMANCE
+   NETWORK OFFLINE
+=========================================================== */
+
+
+.offline::after{
+
+
+  content:
+
+  "Sem conexão";
+
+
+  position:fixed;
+
+
+  bottom:20px;
+
+
+  left:50%;
+
+
+  transform:
+
+  translateX(-50%);
+
+
+  padding:
+
+  10px 20px;
+
+
+  border-radius:
+
+  999px;
+
+
+  background:
+
+  rgba(0,0,0,.85);
+
+
+  color:white;
+
+
+  z-index:9999;
+
+
+}
+
+
+
+
+
+
+
+/* ===========================================================
+   IMAGE PERFORMANCE
 =========================================================== */
 
 
@@ -1644,10 +2680,12 @@ img{
 
 
 
+
+
+
 .cosplay-card,
 .social-card,
-.gallery-card,
-.card{
+.gallery-card{
 
 
   will-change:
@@ -1683,15 +2721,17 @@ img{
 
 
 
-.hero-frame{
+
+.bio-content{
 
 
-  width:
+  grid-template-columns:
 
-  min(380px,80vw);
+  1fr;
 
 
 }
+
 
 
 
@@ -1707,7 +2747,20 @@ img{
 
 
 
-.cosplay-grid{
+
+.gallery-grid{
+
+
+  grid-template-columns:
+
+  repeat(2,1fr);
+
+
+}
+
+
+
+.cosplay-layout{
 
 
   grid-template-columns:
@@ -1747,6 +2800,7 @@ img{
 
 
 
+
 .hero-actions{
 
 
@@ -1754,6 +2808,7 @@ img{
 
 
 }
+
 
 
 
@@ -1768,7 +2823,8 @@ img{
 
 
 
-.bio-content{
+
+.bio-facts-row{
 
 
   grid-template-columns:
@@ -1777,20 +2833,6 @@ img{
 
 
 }
-
-
-
-
-
-.bio-photo{
-
-
-  max-width:320px;
-
-
-}
-
-
 
 
 
@@ -1824,23 +2866,19 @@ img{
 
 
 
-.twitch-status-badge{
+.cosplay-secondary{
 
 
-  top:15px;
+  grid-template-columns:
 
-
-  left:15px;
-
-
-}
-
+  1fr;
 
 
 }
 
 
 
+}
 
 
 
@@ -1855,7 +2893,7 @@ section{
 
   padding:
 
-  90px 5vw;
+  80px 5vw;
 
 
 }
@@ -1876,19 +2914,6 @@ section{
 
 
 
-
-.btn{
-
-
-  width:100%;
-
-
-}
-
-
-
-
-
 .hero-actions{
 
 
@@ -1901,10 +2926,10 @@ section{
 
 
 
-.bio-fact{
+.btn{
 
 
-  min-height:100px;
+  width:100%;
 
 
 }
@@ -1927,13 +2952,11 @@ section{
 
 
 
-.cosplay-featured
-.cosplay-photo{
+.gallery-card,
+.gallery-card iframe{
 
 
-  aspect-ratio:
-
-  3/4;
+  min-height:280px;
 
 
 }
@@ -1955,18 +2978,23 @@ section{
 
 
 
+
+.cosplay-feature-image img{
+
+
+  aspect-ratio:
+
+  3/4;
+
+
 }
 
 
 
+}
 
 
 
-
-
-/* ===========================================================
-   SMALL DEVICES
-=========================================================== */
 
 
 @media(max-width:420px){
@@ -2001,6 +3029,7 @@ section{
 
 
 
+.live-tag,
 .twitch-status-badge{
 
 
@@ -2021,57 +3050,33 @@ section{
 
 
 /* ===========================================================
-   OFFLINE MODE
+   FINAL SMOOTHNESS
 =========================================================== */
 
 
-.offline::after{
+html{
 
 
-  content:
+  scroll-behavior:
 
-  "Sem conexão";
-
-
-  position:fixed;
+  smooth;
 
 
-  bottom:20px;
-
-
-  left:50%;
+}
 
 
 
-  transform:
 
-  translateX(-50%);
 
+::selection{
 
 
   background:
 
-  rgba(0,0,0,.8);
+  var(--purple);
 
 
-
-  color:#fff;
-
-
-
-  padding:
-
-  10px 20px;
-
-
-
-  border-radius:
-
-  999px;
-
-
-
-  z-index:9999;
+  color:white;
 
 
 }
