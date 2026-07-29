@@ -1,28 +1,35 @@
-// ===============================
-// UPMINAA FAN HUB SCRIPT
-// Developed by 1ANXTZ
-// ===============================
+/* ===========================
+   UPMINAA FAN HUB
+   MAIN JAVASCRIPT
+=========================== */
+
+
+/*
+   Back To Top Button
+*/
+
+
+const backTopButton = document.querySelector(".back-top");
 
 
 
-// BACK TO TOP
-
-const backTop = document.querySelector(".back-top");
+if (backTopButton) {
 
 
-if(backTop){
+window.addEventListener("scroll", () => {
 
 
-window.addEventListener("scroll",()=>{
+if (window.scrollY > 500) {
 
 
-if(window.scrollY > 500){
+backTopButton.classList.add("show");
 
-backTop.classList.add("show");
 
-}else{
+} else {
 
-backTop.classList.remove("show");
+
+backTopButton.classList.remove("show");
+
 
 }
 
@@ -31,7 +38,9 @@ backTop.classList.remove("show");
 
 
 
-backTop.addEventListener("click",()=>{
+
+
+backTopButton.addEventListener("click", () => {
 
 
 window.scrollTo({
@@ -54,14 +63,26 @@ behavior:"smooth"
 
 
 
-// SCROLL REVEAL ANIMATION
 
 
-const sections = document.querySelectorAll("section");
+/*
+   Scroll Reveal Animation
+*/
+
+
+const animatedElements = document.querySelectorAll(
+
+".cosplay-card, .gallery-card, .community-card, .youtube-card, .information-source"
+
+);
 
 
 
-const revealObserver = new IntersectionObserver((entries)=>{
+
+
+const revealObserver = new IntersectionObserver(
+
+(entries)=>{
 
 
 entries.forEach(entry=>{
@@ -75,85 +96,82 @@ entry.target.style.opacity="1";
 entry.target.style.transform="translateY(0)";
 
 
-}
-
-
-});
-
-
-},{
-
-threshold:0.15
-
-});
-
-
-
-sections.forEach(section=>{
-
-
-section.style.opacity="0";
-
-section.style.transform="translateY(40px)";
-
-section.style.transition="all .8s ease";
-
-
-revealObserver.observe(section);
-
-
-});
-
-
-
-
-
-
-
-
-// AUTOMATIC COPYRIGHT YEAR
-
-
-const copyright = document.querySelector(".copyright");
-
-
-if(copyright){
-
-
-const year = new Date().getFullYear();
-
-
-copyright.innerHTML = 
-`© ${year} Upminaa Fan Hub`;
+revealObserver.unobserve(entry.target);
 
 
 }
 
 
+});
+
+
+},
+
+{
+
+threshold:.15
+
+}
+
+);
 
 
 
 
 
-// IMAGE ERROR HANDLER
+
+
+animatedElements.forEach(element=>{
+
+
+element.style.opacity="0";
+
+
+element.style.transform="translateY(40px)";
+
+
+element.style.transition=
+
+"all .6s ease";
+
+
+
+revealObserver.observe(element);
+
+
+});
+
+
+
+
+
+
+
+
+
+/*
+   Image Error Detection
+
+   Ajuda encontrar imagens quebradas
+*/
 
 
 const images = document.querySelectorAll("img");
 
 
 
-images.forEach(img=>{
+images.forEach(image=>{
 
 
-img.addEventListener("error",()=>{
-
-
-img.style.display="none";
+image.addEventListener("error",()=>{
 
 
 console.warn(
+
 "Image failed to load:",
-img.src
+
+image.src
+
 );
 
 
@@ -161,76 +179,196 @@ img.src
 
 
 });
-// ===============================
-// GALLERY IMAGE PREVIEW
-// ===============================
-
-
-const galleryImages = document.querySelectorAll(".gallery-item img");
-
-
-
-if(galleryImages.length){
-
-
-
-const modal = document.createElement("div");
-
-
-modal.className = "image-modal";
-
-
-
-modal.innerHTML = `
-
-<div class="modal-content">
-
-<img src="" alt="Expanded gallery image">
-
-</div>
-
-`;
-
-
-
-document.body.appendChild(modal);
 
 
 
 
-const modalImage = modal.querySelector("img");
 
 
 
 
-galleryImages.forEach(image=>{
+
+/*
+   Current Year Footer
+*/
 
 
-image.addEventListener("click",()=>{
+const year = document.querySelector(".copyright");
 
 
-modalImage.src = image.src;
+if(year){
 
 
-modal.classList.add("active");
+year.innerHTML = year.innerHTML.replace(
+
+"2026",
+
+new Date().getFullYear()
+
+);
+
+
+}/* ===========================
+   TWITCH LIVE STATUS SYSTEM
+=========================== */
+
+
+/*
+
+Temporary Twitch status system.
+
+Later we can connect:
+- Twitch API
+- Stream title
+- Game category
+- Viewers
+- Thumbnail
+
+*/
+
+
+const twitchStatus = {
+
+
+online:false,
+
+
+title:"",
+
+
+game:"",
+
+
+viewers:0
+
+
+};
+
+
+
+
+
+
+
+
+
+function updateTwitchStatus(){
+
+
+
+const liveContainers = document.querySelectorAll(
+
+".live-header, .live-indicator"
+
+);
+
+
+
+const statusText = document.querySelector(
+
+"#liveStatus"
+
+);
+
+
+
+
+
+const playerCard = document.querySelector(
+
+".live-player-card"
+
+);
+
+
+
+
+
+
+if(twitchStatus.online){
+
+
+
+
+
+if(statusText){
+
+
+statusText.textContent="LIVE NOW";
+
+
+}
+
+
+
+
+
+if(playerCard){
+
+
+playerCard.classList.add("live");
+
+
+}
+
+
+
+
+
+liveContainers.forEach(container=>{
+
+
+container.classList.add("online");
 
 
 });
 
 
+
+
+
+}else{
+
+
+
+
+
+if(statusText){
+
+
+statusText.textContent="OFFLINE";
+
+
+}
+
+
+
+
+
+if(playerCard){
+
+
+playerCard.classList.remove("live");
+
+
+}
+
+
+
+
+
+liveContainers.forEach(container=>{
+
+
+container.classList.remove("online");
+
+
 });
 
 
 
+}
 
-
-modal.addEventListener("click",()=>{
-
-
-modal.classList.remove("active");
-
-
-});
 
 
 
@@ -244,57 +382,380 @@ modal.classList.remove("active");
 
 
 
-// ===============================
-// SOCIAL LINKS PLACEHOLDER CHECK
-// ===============================
+/*
+
+Simulation mode
+
+Remove later when API is connected
+
+*/
 
 
-const links = document.querySelectorAll("a");
+function simulateTwitch(){
 
 
 
-links.forEach(link=>{
+// Change to true to test LIVE mode
+
+
+twitchStatus.online=false;
+
+
+
+updateTwitchStatus();
+
+
+
+}
+
+
+
+
+
+
+
+simulateTwitch();
+
+
+
+
+
+
+
+
+
+/*
+   Open Twitch links safely
+*/
+
+
+const twitchLinks = document.querySelectorAll(
+
+'a[href*="twitch.tv"]'
+
+);
+
+
+
+twitchLinks.forEach(link=>{
+
+
+link.addEventListener("click",()=>{
+
+
+console.log(
+
+"Opening Twitch profile"
+
+);
+
+
+});
+
+
+});/* ===========================
+   YOUTUBE CONTENT SYSTEM
+=========================== */
+
+
+/*
+
+Future integration:
+
+YouTube API will provide:
+
+- Latest videos
+- Shorts
+- Titles
+- Thumbnails
+- Publish date
+- Video links
+
+
+*/
+
+
+const youtubeContent = {
+
+
+shorts:[
+
+
+{
+
+
+title:"Latest YouTube Short",
+
+
+thumbnail:"",
+
+
+url:"#"
+
+
+},
+
+
+
+{
+
+
+title:"Popular YouTube Short",
+
+
+thumbnail:"",
+
+
+url:"#"
+
+
+}
+
+
+
+],
+
+
+
+
+
+videos:[
+
+
+{
+
+
+title:"Latest Video",
+
+
+thumbnail:"",
+
+
+url:"#"
+
+
+},
+
+
+
+{
+
+
+title:"Featured Video",
+
+
+thumbnail:"",
+
+
+url:"#"
+
+
+}
+
+
+
+]
+
+
+};
+
+
+
+
+
+
+
+
+
+function renderYoutubeContent(){
+
+
+
+const youtubeCards = document.querySelectorAll(
+
+".youtube-card"
+
+);
+
+
+
+
+const content = [
+
+
+...youtubeContent.shorts,
+
+
+...youtubeContent.videos
+
+
+];
+
+
+
+
+
+
+
+youtubeCards.forEach((card,index)=>{
+
+
+
+const item = content[index];
+
+
+
+if(!item) return;
+
+
+
+
+
+const title = card.querySelector("h3");
+
+
+
+const description = card.querySelector("p");
+
+
+
+
+
+if(title){
+
+
+title.textContent=item.title;
+
+
+}
+
+
+
+
+
+if(description){
+
+
+description.textContent=
+
+"Automatically updated from YouTube.";
+
+
+}
+
+
+
+
+
+
+if(item.thumbnail){
+
+
+const placeholder = card.querySelector(
+
+".youtube-placeholder"
+
+);
+
+
+
+if(placeholder){
+
+
+placeholder.style.backgroundImage=
+
+`url(${item.thumbnail})`;
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+});
+
+
+
+
+
+}
+
+
+
+
+
+
+
+renderYoutubeContent();
+
+
+
+
+
+
+
+
+
+/* ===========================
+   SMOOTH INTERNAL LINKS
+=========================== */
+
+
+const internalLinks = document.querySelectorAll(
+
+'a[href^="#"]'
+
+);
+
+
+
+internalLinks.forEach(link=>{
 
 
 link.addEventListener("click",(event)=>{
 
 
-if(link.getAttribute("href")==="#"){
+
+const target = document.querySelector(
+
+link.getAttribute("href")
+
+);
+
+
+
+
+
+if(target){
+
 
 
 event.preventDefault();
 
 
-console.log(
-"This link still needs to be configured."
-);
+
+
+target.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
 
 
 }
 
 
-});
-
 
 });
 
-
-
-
-
-
-
-
-
-// ===============================
-// SIMPLE PERFORMANCE SETTINGS
-// ===============================
-
-
-window.addEventListener("load",()=>{
-
-
-document.body.classList.add("loaded");
 
 
 });
@@ -305,18 +766,17 @@ document.body.classList.add("loaded");
 
 
 
-// ===============================
-// FUTURE TWITCH STATUS AREA
-// ===============================
 
 
-// Later you can connect Twitch API here
-// to automatically change:
-// OFFLINE -> LIVE
-// and update stream information.
-
+/* ===========================
+   SITE READY MESSAGE
+=========================== */
 
 
 console.log(
-"Upminaa Fan Hub loaded successfully 🚀"
+
+"%cUpminaa Fan Hub loaded successfully 💜",
+
+"color:#8b5cf6;font-size:16px;font-weight:bold;"
+
 );
