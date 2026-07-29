@@ -1,86 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
 
+
 <meta charset="UTF-8">
+
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
+
 <title>
-Upminaa Fan Hub | Cosplay, Gaming & Community
+Upminaa Fan Hub | Cosplay, Gaming & Streams
 </title>
 
 
-<meta
-name="description"
-content="Upminaa Fan Hub featuring cosplay, gaming, Twitch streams, community moments and creator highlights."
->
+
+<meta name="description"
+
+content="Unofficial fan hub dedicated to Upminaa, featuring cosplay, gaming moments, streams and community highlights.">
 
 
-<meta
-name="author"
-content="1ANXTZ"
->
+
+<link rel="stylesheet" href="./css/style.css">
 
 
-<meta
-name="theme-color"
-content="#8b5cf6"
->
 
+<link rel="icon" href="./assets/images/favicon.svg">
 
-<meta
-property="og:title"
-content="Upminaa Fan Hub"
->
-
-
-<meta
-property="og:description"
-content="A fan-made community hub dedicated to Upminaa."
->
-
-
-<meta
-property="og:type"
-content="website"
->
-
-
-<link
-rel="icon"
-type="image/png"
-href="./assets/images/favicon.png"
->
-
-
-<link
-rel="stylesheet"
-href="./css/style.css"
->
 
 
 </head>
 
 
 
+
+
+
+
 <body>
 
 
-<header class="hero">
+
+
+
+
+<header class="navbar">
+
+
+
+<div class="logo">
+
+UPMINAA
+
+</div>
+
+
+
+
+<nav>
+
+
+<a href="#about">
+About
+</a>
+
+
+<a href="#cosplay">
+Cosplay
+</a>
+
+
+<a href="#gallery">
+Gallery
+</a>
+
+
+<a href="#live">
+Live
+</a>
+
+
+<a href="#videos">
+Videos
+</a>
+
+
+<a href="#community">
+Community
+</a>
+
+
+</nav>
+
+
+
+</header>
+
+
+
+
+
+
+
+
+<main>
+
+
+
+
+
+
+<section class="hero">
+
+
+
 
 
 <div class="hero-background"></div>
 
 
 
+
+
+
+
 <div class="hero-container">
 
 
-
-<div class="profile-area">
 
 
 
@@ -89,17 +138,16 @@ href="./css/style.css"
 
 <img
 
-src="./assets/images/profile/upminaa-profile.png"
+src="./assets/images/profile/upminaa-profile.jpg"
 
-alt="Upminaa profile picture"
+alt="Mina known as Upminaa"
 
-loading="lazy"
+loading="eager"
 
 >
 
 
-
-<div class="live-status offline">
+<div class="live-status" id="heroLiveStatus">
 
 
 <span></span>
@@ -118,17 +166,27 @@ OFFLINE
 
 
 
+
+
+
 <h1>
-UPMINAA
+MINA
 </h1>
+
+
+
 
 
 
 <p class="subtitle">
 
-COSPLAY • GAMING • CONTENT CREATOR
+Known online as Upminaa
 
 </p>
+
+
+
+
 
 
 
@@ -142,11 +200,9 @@ COSPLAY • GAMING • CONTENT CREATOR
 
 href="https://www.twitch.tv/upminaa"
 
-class="social twitch"
-
 target="_blank"
 
-rel="noopener noreferrer"
+class="social twitch"
 
 >
 
@@ -162,11 +218,9 @@ Twitch
 
 href="https://www.instagram.com/upminaa/"
 
-class="social instagram"
-
 target="_blank"
 
-rel="noopener noreferrer"
+class="social instagram"
 
 >
 
@@ -178,41 +232,39 @@ Instagram
 
 
 
+
 <a
 
-href="https://www.tiktok.com/@upminaa.cos"
-
-class="social tiktok"
+href="https://www.youtube.com/@upminaa"
 
 target="_blank"
 
-rel="noopener noreferrer"
+class="social youtube"
 
 >
 
-TikTok
+YouTube
 
 </a>
 
 
 
-</div>
-
-
-
-</div>
-
 
 
 </div>
 
 
 
-</header><main>
+
+
+</div>
 
 
 
-<section class="about-section">
+
+
+
+</section><section id="about" class="about-section">
 
 
 
@@ -225,16 +277,17 @@ ABOUT
 
 
 <h2>
-About Upminaa
+About Mina
 </h2>
 
 
 <p>
-Learn more about the creator behind the content.
+The creator behind Upminaa.
 </p>
 
 
 </div>
+
 
 
 
@@ -247,6 +300,7 @@ Learn more about the creator behind the content.
 
 
 
+
 <div class="about-image-box">
 
 
@@ -254,11 +308,12 @@ Learn more about the creator behind the content.
 
 src="./assets/images/profile/upminaa-bio-photo.jpg"
 
-alt="Upminaa biography photo"
+alt="Mina biography photo"
 
 loading="lazy"
 
 >
+
 
 
 </div>
@@ -270,8 +325,8 @@ loading="lazy"
 
 
 
-
 <div class="about-content">
+
 
 
 
@@ -300,13 +355,11 @@ Mina
 
 
 
-
-
 <div class="fact-card">
 
 
 <h3>
-Known As
+Known as
 </h3>
 
 
@@ -316,31 +369,6 @@ Upminaa
 
 
 </div>
-
-
-
-
-
-
-
-
-<div class="fact-card">
-
-
-<h3>
-Country
-</h3>
-
-
-<p>
-Germany 🇩🇪
-</p>
-
-
-</div>
-
-
-
 
 
 
@@ -365,6 +393,24 @@ Cosplay • Gaming • Streaming
 
 
 
+<div class="fact-card">
+
+
+<h3>
+Platforms
+</h3>
+
+
+<p>
+Twitch • YouTube • Instagram
+</p>
+
+
+</div>
+
+
+
+
 
 </div>
 
@@ -379,42 +425,28 @@ Cosplay • Gaming • Streaming
 <div class="bio-text">
 
 
-
 <p>
 
 Mina, known online as Upminaa, is a content creator
-focused on cosplay, gaming and livestream entertainment.
+recognized for her cosplay projects, gaming streams
+and community interaction.
 
 </p>
-
-
 
 
 
 <p>
 
-Her content combines character cosplay,
-gaming sessions and interaction with her community,
-creating a space focused on creativity and entertainment.
+Her content combines character interpretation,
+gaming entertainment and livestream moments,
+creating a community focused on creativity and fun.
 
 </p>
-
-
-
-
-
-<p>
-
-Through social media platforms and livestreams,
-she became known for her cosplay projects,
-gaming content and community presence.
-
-</p>
-
 
 
 
 </div>
+
 
 
 
@@ -426,34 +458,29 @@ gaming content and community presence.
 <div class="information-source">
 
 
-
 <h3>
-Information Sources
+Information Source
 </h3>
-
 
 
 <p>
 
-The information presented in this section was collected
-from publicly available sources such as official social
-profiles, public content platforms and community information.
+Information displayed here is based on publicly
+available creator profiles, social platforms and
+content shared online.
 
 </p>
 
 
-
-
 <span>
 
-This is an unofficial fan project created for appreciation
-and does not represent official information from Upminaa.
+Unofficial fan project created for appreciation.
+Not affiliated with the creator.
 
 </span>
 
 
 
-
 </div>
 
 
@@ -462,10 +489,6 @@ and does not represent official information from Upminaa.
 
 
 
-</div>
-
-
-
 
 </div>
 
@@ -473,7 +496,27 @@ and does not represent official information from Upminaa.
 
 
 
-</section><section class="cosplay-section">
+
+</div>
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<section id="cosplay" class="cosplay-section">
+
+
 
 
 
@@ -486,12 +529,12 @@ COSPLAY
 
 
 <h2>
-Iconic Cosplays
+Featured Cosplays
 </h2>
 
 
 <p>
-Discover some of the most memorable character transformations.
+Character transformations and iconic looks.
 </p>
 
 
@@ -504,8 +547,6 @@ Discover some of the most memorable character transformations.
 
 
 
-<!-- FEATURED COSPLAY -->
-
 
 <div class="featured-cosplay-card">
 
@@ -515,28 +556,22 @@ Discover some of the most memorable character transformations.
 
 <a
 
-href="./assets/images/cosplay/cosplay-gura.jpg"
+href="./assets/images/cosplay/gawr-gura.jpg"
 
 class="cosplay-link"
 
 >
 
 
-<div class="featured-image">
-
-
 <img
 
-src="./assets/images/cosplay/cosplay-gura.jpg"
+src="./assets/images/cosplay/gawr-gura.jpg"
 
 alt="Upminaa Gawr Gura cosplay"
 
 loading="lazy"
 
 >
-
-
-</div>
 
 
 </a>
@@ -554,7 +589,7 @@ loading="lazy"
 
 <span class="cosplay-badge">
 
-VIRAL COSPLAY
+ICONIC COSPLAY
 
 </span>
 
@@ -570,27 +605,12 @@ Gawr Gura
 
 
 
-<p class="cosplay-source">
-
-Hololive EN
-
-</p>
-
-
-
-
-
-
 <p>
 
-One of Upminaa's most recognizable cosplay projects.
-The Gawr Gura cosplay became one of the highlights
-associated with her online presence and helped bring
-more attention to her creative work.
+One of the most recognizable cosplay projects
+associated with Upminaa's online presence.
 
 </p>
-
-
 
 
 
@@ -598,7 +618,7 @@ more attention to her creative work.
 <p>
 
 Character:
-Gawr Gura from Hololive English.
+Gawr Gura — Hololive English.
 
 </p>
 
@@ -606,24 +626,6 @@ Gawr Gura from Hololive English.
 
 
 
-
-<div class="information-source">
-
-
-<p>
-
-Cosplay information is based on publicly available
-posts, social media content and community references.
-
-</p>
-
-
-</div>
-
-
-
-
-
 </div>
 
 
@@ -639,9 +641,6 @@ posts, social media content and community references.
 
 
 
-
-
-<!-- OTHER COSPLAYS -->
 
 
 <div class="cosplay-grid">
@@ -650,13 +649,14 @@ posts, social media content and community references.
 
 
 
-<article class="cosplay-card">
 
+
+<article class="cosplay-card">
 
 
 <a
 
-href="./assets/images/cosplay/cosplay-makima.jpg"
+href="./assets/images/cosplay/makima.jpg"
 
 class="cosplay-link"
 
@@ -665,9 +665,9 @@ class="cosplay-link"
 
 <img
 
-src="./assets/images/cosplay/cosplay-makima.jpg"
+src="./assets/images/cosplay/makima.jpg"
 
-alt="Upminaa Makima cosplay"
+alt="Makima cosplay"
 
 loading="lazy"
 
@@ -675,7 +675,6 @@ loading="lazy"
 
 
 </a>
-
 
 
 
@@ -693,15 +692,6 @@ Chainsaw Man
 
 
 
-<p class="cosplay-description">
-
-A character interpretation inspired by the
-Chainsaw Man universe.
-
-</p>
-
-
-
 </div>
 
 
@@ -718,10 +708,9 @@ Chainsaw Man universe.
 <article class="cosplay-card">
 
 
-
 <a
 
-href="./assets/images/cosplay/cosplay-maki.jpg"
+href="./assets/images/cosplay/maki.jpg"
 
 class="cosplay-link"
 
@@ -730,9 +719,9 @@ class="cosplay-link"
 
 <img
 
-src="./assets/images/cosplay/cosplay-maki.jpg"
+src="./assets/images/cosplay/maki.jpg"
 
-alt="Upminaa Maki Zenin cosplay"
+alt="Maki Zenin cosplay"
 
 loading="lazy"
 
@@ -740,8 +729,6 @@ loading="lazy"
 
 
 </a>
-
-
 
 
 
@@ -759,15 +746,6 @@ Jujutsu Kaisen
 
 
 
-<p class="cosplay-description">
-
-A cosplay inspired by one of the popular
-characters from Jujutsu Kaisen.
-
-</p>
-
-
-
 </div>
 
 
@@ -784,10 +762,9 @@ characters from Jujutsu Kaisen.
 <article class="cosplay-card">
 
 
-
 <a
 
-href="./assets/images/cosplay/cosplay-miku.jpg"
+href="./assets/images/cosplay/miku.jpg"
 
 class="cosplay-link"
 
@@ -796,9 +773,9 @@ class="cosplay-link"
 
 <img
 
-src="./assets/images/cosplay/cosplay-miku.jpg"
+src="./assets/images/cosplay/miku.jpg"
 
-alt="Upminaa Hatsune Miku cosplay"
+alt="Hatsune Miku cosplay"
 
 loading="lazy"
 
@@ -806,8 +783,6 @@ loading="lazy"
 
 
 </a>
-
-
 
 
 
@@ -825,15 +800,6 @@ Vocaloid
 
 
 
-<p class="cosplay-description">
-
-A colorful cosplay based on the famous
-virtual singer character.
-
-</p>
-
-
-
 </div>
 
 
@@ -846,67 +812,23 @@ virtual singer character.
 
 
 
-
-<article class="cosplay-card">
-
-
-
-<a
-
-href="./assets/images/cosplay/cosplay-frieren.jpg"
-
-class="cosplay-link"
-
->
-
-
-<img
-
-src="./assets/images/cosplay/cosplay-frieren.jpg"
-
-alt="Upminaa Frieren cosplay"
-
-loading="lazy"
-
->
-
-
-</a>
+</div>
 
 
 
 
 
-<div class="cosplay-info">
 
 
-<h3>
-Frieren
-</h3>
+<div class="information-source">
 
 
 <p>
-Frieren: Beyond Journey's End
-</p>
 
-
-
-<p class="cosplay-description">
-
-A fantasy-inspired cosplay from the
-popular anime series.
+Cosplay information is based on publicly available
+posts and references from creator content.
 
 </p>
-
-
-
-</div>
-
-
-</article>
-
-
-
 
 
 </div>
@@ -916,7 +838,8 @@ popular anime series.
 
 
 
-</section><section class="gallery-section">
+
+</section><section id="gallery" class="gallery-section">
 
 
 
@@ -929,17 +852,16 @@ GALLERY
 
 
 <h2>
-Moments & Memories
+Moments
 </h2>
 
 
 <p>
-Photos, gaming moments, cosplay projects and community highlights.
+Cosplay, gaming and community memories.
 </p>
 
 
 </div>
-
 
 
 
@@ -953,8 +875,7 @@ Photos, gaming moments, cosplay projects and community highlights.
 
 
 
-
-<div class="gallery-item">
+<article class="gallery-item">
 
 
 <a
@@ -981,8 +902,6 @@ loading="lazy"
 
 
 
-
-
 <div class="gallery-info">
 
 
@@ -991,12 +910,8 @@ Mina
 </h3>
 
 
-
 <p>
-
-A main highlight photo representing
-Upminaa's creator identity.
-
+Creator identity highlight.
 </p>
 
 
@@ -1004,9 +919,7 @@ Upminaa's creator identity.
 </div>
 
 
-
-</div>
-
+</article>
 
 
 
@@ -1016,7 +929,7 @@ Upminaa's creator identity.
 
 
 
-<div class="gallery-item">
+<article class="gallery-item">
 
 
 <a
@@ -1032,7 +945,7 @@ class="gallery-link"
 
 src="./assets/images/gallery/behind-the-scenes.jpg"
 
-alt="Behind the scenes moment"
+alt="Behind the scenes"
 
 loading="lazy"
 
@@ -1040,8 +953,6 @@ loading="lazy"
 
 
 </a>
-
-
 
 
 
@@ -1053,12 +964,8 @@ Behind The Scenes
 </h3>
 
 
-
 <p>
-
-A look at the creative process behind
-cosplay and content creation.
-
+Cosplay creation moments.
 </p>
 
 
@@ -1066,9 +973,7 @@ cosplay and content creation.
 </div>
 
 
-
-</div>
-
+</article>
 
 
 
@@ -1078,87 +983,7 @@ cosplay and content creation.
 
 
 
-<div class="gallery-item fanart-item">
-
-
-<a
-
-href="./assets/images/gallery/fanart.jpg"
-
-class="gallery-link"
-
->
-
-
-<img
-
-src="./assets/images/gallery/fanart.jpg"
-
-alt="Fanart created by community artist"
-
-loading="lazy"
-
->
-
-
-</a>
-
-
-
-
-
-<div class="gallery-info">
-
-
-<h3>
-Community Fanart
-</h3>
-
-
-
-<p>
-
-Artwork created by a community artist
-as a fan appreciation piece.
-
-</p>
-
-
-
-
-<a
-
-href="https://www.instagram.com/someguywhoarts/"
-
-class="artist-credit"
-
-target="_blank"
-
-rel="noopener noreferrer"
-
->
-
-@someguywhoarts
-
-</a>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="gallery-item gaming-gallery">
+<article class="gallery-item gaming-gallery">
 
 
 <a
@@ -1174,7 +999,7 @@ class="gallery-link"
 
 src="./assets/images/gallery/gaming.jpg"
 
-alt="Upminaa gaming moment"
+alt="Gaming horror moment"
 
 loading="lazy"
 
@@ -1185,22 +1010,16 @@ loading="lazy"
 
 
 
-
-
 <div class="gallery-info">
 
 
 <h3>
-Gaming Moments
+Gaming
 </h3>
 
 
-
 <p>
-
-Streams, games and memorable moments
-from the gaming community.
-
+Gaming sessions and horror moments.
 </p>
 
 
@@ -1208,18 +1027,69 @@ from the gaming community.
 </div>
 
 
+</article>
+
+
+
+
+
+
+
+
+
+<article class="gallery-item">
+
+
+<a
+
+href="./assets/images/gallery/fanart.jpg"
+
+class="gallery-link"
+
+>
+
+
+<img
+
+src="./assets/images/gallery/fanart.jpg"
+
+alt="Community fanart"
+
+loading="lazy"
+
+>
+
+
+</a>
+
+
+
+<div class="gallery-info">
+
+
+<h3>
+Fanart
+</h3>
+
+
+<p>
+Community artwork.
+</p>
+
+
 
 </div>
 
 
+</article>
+
+
+
 
 
 
 
 </div>
-
-
-
 
 
 
@@ -1231,16 +1101,13 @@ from the gaming community.
 
 <p>
 
-Gallery images and descriptions are based on
-publicly available content shared through social
-media platforms and community posts.
+Gallery content comes from publicly available
+creator posts and community content.
 
 </p>
 
 
 </div>
-
-
 
 
 
@@ -1255,7 +1122,7 @@ media platforms and community posts.
 
 
 
-<section class="community-section">
+<section id="live" class="live-section">
 
 
 
@@ -1263,186 +1130,22 @@ media platforms and community posts.
 
 
 <p class="section-tag">
-COMMUNITY
+TWITCH
 </p>
 
 
 <h2>
-Upminaa Community
+Live Stream
 </h2>
 
 
 <p>
-A space celebrating fans, creativity and shared moments.
+Watch Upminaa live directly here.
 </p>
 
 
 </div>
 
-
-
-
-
-
-
-<div class="community-grid">
-
-
-
-
-
-
-
-<div class="community-card">
-
-
-<h3>
-💜 Fans
-</h3>
-
-
-<p>
-
-A community built around support,
-interaction and shared interests.
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="community-card">
-
-
-<h3>
-🎭 Cosplay
-</h3>
-
-
-<p>
-
-Fans connected through character creation,
-anime inspiration and creative projects.
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="community-card">
-
-
-<h3>
-🎮 Gaming
-</h3>
-
-
-<p>
-
-Gaming sessions that bring viewers together
-through entertainment and interaction.
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="community-card">
-
-
-<h3>
-⭐ Highlights
-</h3>
-
-
-<p>
-
-Memorable streams, clips and special moments
-shared with the community.
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="information-source">
-
-
-<p>
-
-Community descriptions are based on public content,
-social interactions and visible community activities.
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-</section><section class="live-section">
-
-
-
-<div class="section-header">
-
-
-<p class="section-tag">
-LIVE
-</p>
-
-
-<h2>
-Twitch Streams
-</h2>
-
-
-<p>
-Watch live streams and the latest content from Upminaa.
-</p>
-
-
-</div>
 
 
 
@@ -1456,10 +1159,9 @@ Watch live streams and the latest content from Upminaa.
 
 
 
+<div class="live-player-card">
 
 
-
-<div class="live-player-card offline">
 
 
 
@@ -1470,7 +1172,7 @@ Watch live streams and the latest content from Upminaa.
 
 
 <h3 id="liveStatus">
-OFFLINE
+Checking...
 </h3>
 
 
@@ -1488,13 +1190,13 @@ OFFLINE
 
 <iframe
 
-src="https://player.twitch.tv/?channel=upminaa&parent=1anxtz.github.io"
+id="twitchPlayer"
 
-height="400"
+src="https://player.twitch.tv/?channel=upminaa&parent=1anxtz.github.io&autoplay=false"
 
-width="100%"
+allowfullscreen
 
-allowfullscreen>
+>
 
 </iframe>
 
@@ -1507,43 +1209,7 @@ allowfullscreen>
 
 
 
-
-
-<p>
-
-The Twitch player automatically displays
-the live stream when Upminaa is online.
-
-</p>
-
-
-
-
-
-
-
-<a
-
-href="https://www.twitch.tv/upminaa"
-
-target="_blank"
-
-rel="noopener noreferrer"
-
-class="live-button"
-
->
-
-Open Twitch
-
-</a>
-
-
-
-
-
 </div>
-
 
 
 
@@ -1563,43 +1229,36 @@ Latest Stream
 
 
 
-
 <div class="vod-preview">
-
 
 
 <iframe
 
-src=""
+id="latestTwitchVod"
 
-title="Latest Upminaa Twitch VOD"
+src=""
 
 allowfullscreen>
 
 </iframe>
 
 
-
 </div>
 
 
 
 
 
+<p id="vodMessage">
 
-<p>
-
-The latest available stream will appear here
-when Twitch API integration is added.
+Latest stream will appear here when connected
+to Twitch API.
 
 </p>
 
 
 
-
-
 </div>
-
 
 
 
@@ -1609,24 +1268,6 @@ when Twitch API integration is added.
 
 </div>
 
-
-
-
-
-
-
-<div class="information-source">
-
-
-<p>
-
-Live information comes from Twitch public content.
-Automatic updates require Twitch API integration.
-
-</p>
-
-
-</div>
 
 
 
@@ -1642,11 +1283,7 @@ Automatic updates require Twitch API integration.
 
 
 
-
-
-
-
-<section class="youtube-section">
+<section id="videos" class="youtube-section">
 
 
 
@@ -1654,22 +1291,21 @@ Automatic updates require Twitch API integration.
 
 
 <p class="section-tag">
-VIDEOS
+YOUTUBE
 </p>
 
 
 <h2>
-YouTube Highlights
+Videos
 </h2>
 
 
 <p>
-Watch videos and shorts directly from the fan hub.
+Latest videos and shorts.
 </p>
 
 
 </div>
-
 
 
 
@@ -1683,21 +1319,18 @@ Watch videos and shorts directly from the fan hub.
 
 
 
-
 <div class="youtube-card">
-
 
 
 <iframe
 
 src="https://www.youtube.com/embed/VIDEO_ID_1"
 
-title="Upminaa YouTube video"
+title="Latest video"
 
 allowfullscreen>
 
 </iframe>
-
 
 
 <h3>
@@ -1714,25 +1347,22 @@ Latest Video
 
 
 
-
 <div class="youtube-card">
-
 
 
 <iframe
 
 src="https://www.youtube.com/embed/VIDEO_ID_2"
 
-title="Upminaa YouTube video"
+title="Video"
 
 allowfullscreen>
 
 </iframe>
 
 
-
 <h3>
-Community Video
+Video
 </h3>
 
 
@@ -1745,31 +1375,27 @@ Community Video
 
 
 
-
 <div class="youtube-card">
-
 
 
 <iframe
 
 src="https://www.youtube.com/embed/VIDEO_ID_3"
 
-title="Upminaa YouTube short"
+title="Short"
 
 allowfullscreen>
 
 </iframe>
 
 
-
 <h3>
-YouTube Short
+Short
 </h3>
 
 
 
 </div>
-
 
 
 
@@ -1780,21 +1406,19 @@ YouTube Short
 <div class="youtube-card">
 
 
-
 <iframe
 
 src="https://www.youtube.com/embed/VIDEO_ID_4"
 
-title="Upminaa YouTube short"
+title="Short"
 
 allowfullscreen>
 
 </iframe>
 
 
-
 <h3>
-YouTube Short
+Short
 </h3>
 
 
@@ -1804,27 +1428,6 @@ YouTube Short
 
 
 
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="information-source">
-
-
-<p>
-
-Video content is embedded from Upminaa's public
-YouTube channel. Video IDs can later be updated
-automatically through YouTube API integration.
-
-</p>
 
 
 </div>
@@ -1843,7 +1446,7 @@ automatically through YouTube API integration.
 
 
 
-<section class="social-section">
+<section id="community" class="community-section">
 
 
 
@@ -1851,17 +1454,37 @@ automatically through YouTube API integration.
 
 
 <p class="section-tag">
-SOCIAL MEDIA
+COMMUNITY
 </p>
 
 
 <h2>
-Follow Upminaa
+Upminaa Community
 </h2>
 
 
+</div>
+
+
+
+
+
+
+
+<div class="community-grid">
+
+
+
+
+
+<div class="community-card">
+
+<h3>
+💜 Fans
+</h3>
+
 <p>
-Official social platforms and community links.
+People supporting her content and projects.
 </p>
 
 
@@ -1873,144 +1496,14 @@ Official social platforms and community links.
 
 
 
-
-<div class="social-grid">
-
-
-
-
-
-
-<a
-
-href="https://www.twitch.tv/upminaa"
-
-target="_blank"
-
-rel="noopener noreferrer"
-
-class="social-card twitch"
-
->
-
-Twitch
-
-</a>
-
-
-
-
-
-
-
-
-<a
-
-href="https://www.instagram.com/upminaa/"
-
-target="_blank"
-
-rel="noopener noreferrer"
-
-class="social-card instagram"
-
->
-
-Instagram
-
-</a>
-
-
-
-
-
-
-
-
-<a
-
-href="https://www.tiktok.com/@upminaa.cos"
-
-target="_blank"
-
-rel="noopener noreferrer"
-
-class="social-card tiktok"
-
->
-
-TikTok
-
-</a>
-
-
-
-
-
-
-
-
-<a
-
-href="https://www.youtube.com/@upminaa"
-
-target="_blank"
-
-rel="noopener noreferrer"
-
-class="social-card youtube"
-
->
-
-YouTube
-
-</a>
-
-
-
-
-
-
-
-<a
-
-href="https://x.com/upminaa"
-
-target="_blank"
-
-rel="noopener noreferrer"
-
-class="social-card twitter"
-
->
-
-X / Twitter
-
-</a>
-
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-<div class="information-source">
-
+<div class="community-card">
+
+<h3>
+🎭 Cosplay
+</h3>
 
 <p>
-
-Social links are based on publicly available profiles
-associated with Upminaa.
-
+Fans connected through creativity.
 </p>
 
 
@@ -2020,11 +1513,66 @@ associated with Upminaa.
 
 
 
-</section><footer class="footer">
+
+
+<div class="community-card">
+
+<h3>
+🎮 Gaming
+</h3>
+
+<p>
+Shared gaming experiences and streams.
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="community-card">
+
+<h3>
+⭐ Highlights
+</h3>
+
+<p>
+Memorable moments from the community.
+</p>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<footer class="footer">
 
 
 <div class="footer-content">
-
 
 
 <h2>
@@ -2032,70 +1580,32 @@ UPMINAA FAN HUB
 </h2>
 
 
-
-
 <p>
-
-Developed by 
-<strong>
-1ANXTZ
-</strong>
-
+Developed by 1ANXTZ
 </p>
-
-
-
-
-
-<p>
-
-Fan-made website created for appreciation
-and community purposes.
-
-</p>
-
-
-
-
-
-<div class="footer-links">
-
 
 
 <a
 
-href="https://www.instagram.com/1anxtz/"
+href="https://instagram.com/1anxtz"
 
 target="_blank"
 
-rel="noopener noreferrer"
+class="footer-instagram"
 
 >
 
-Instagram
-@1anxtz
+Instagram @1anxtz
 
 </a>
 
 
 
-</div>
-
-
-
-
-
-
-
 <p class="copyright">
 
-© 2026 Upminaa Fan Hub.
-This is an unofficial fan-made website.
+© 2026 Unofficial Fan Project
 
 </p>
-
-
-
 
 
 </div>
@@ -2111,65 +1621,17 @@ This is an unofficial fan-made website.
 
 
 
-<button
-
-class="back-top"
-
-aria-label="Back to top"
-
->
-
-↑
-
-</button>
+<div id="imageLightbox" class="image-lightbox">
 
 
-
-
-
-
-
-
-
-<!-- IMAGE LIGHTBOX -->
-
-
-<div
-
-id="imageLightbox"
-
-class="image-lightbox"
-
->
-
-
-
-<button
-
-class="lightbox-close"
-
-aria-label="Close image"
-
->
+<button class="lightbox-close">
 
 ×
 
 </button>
 
 
-
-
-
-<img
-
-id="lightboxImage"
-
-src=""
-
-alt="Expanded image"
-
->
-
+<img id="lightboxImage" alt="">
 
 
 </div>
@@ -2181,14 +1643,9 @@ alt="Expanded image"
 
 
 
-
 <script src="./js/main.js"></script>
 
 
-
-
-
 </body>
-
 
 </html>
