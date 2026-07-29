@@ -1,67 +1,103 @@
-/* =========================
-   RESET + BASE
-========================= */
+/* ===========================
+   UPMINAA FAN HUB
+   MAIN STYLE
+=========================== */
+
+
+
+:root {
+
+  --bg-main: #080812;
+  --bg-card: #11111f;
+
+  --purple: #8b5cf6;
+  --purple-light: #c084fc;
+
+  --text-main: #ffffff;
+  --text-muted: #a1a1aa;
+
+  --border: rgba(255,255,255,0.08);
+
+  --twitch: #9146ff;
+  --youtube: #ff0033;
+  --instagram: #e1306c;
+  --tiktok: #00f2ea;
+
+  --shadow:
+  0 0 30px rgba(139,92,246,.25);
+
+}
+
+
+
+
+
 
 
 * {
 
-  margin: 0;
-
-  padding: 0;
-
-  box-sizing: border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 
 }
+
+
 
 
 
 html {
 
-  scroll-behavior: smooth;
+  scroll-behavior:smooth;
 
 }
+
+
 
 
 
 body {
 
-  background: #09090f;
+  background:
 
-  color: #ffffff;
+  radial-gradient(
+  circle at top,
+  rgba(139,92,246,.15),
+  transparent 40%
+  ),
 
-  font-family: 'Inter', sans-serif;
+  var(--bg-main);
 
-  overflow-x: hidden;
+  color:var(--text-main);
+
+  font-family:
+  "Rajdhani",
+  Arial,
+  sans-serif;
+
+  overflow-x:hidden;
 
 }
+
+
 
 
 
 img {
 
-  max-width: 100%;
-
-  display: block;
+  max-width:100%;
+  display:block;
 
 }
+
+
 
 
 
 a {
 
-  color: inherit;
-
-  text-decoration: none;
-
-}
-
-
-
-button {
-
-  font-family: inherit;
-
-  cursor: pointer;
+  text-decoration:none;
+  color:inherit;
 
 }
 
@@ -69,24 +105,25 @@ button {
 
 
 
-/* =========================
+/* ===========================
    HERO
-========================= */
+=========================== */
+
+
+
 
 
 .hero {
 
-  position: relative;
+  min-height:100vh;
 
-  min-height: 100vh;
+  display:flex;
 
-  display: flex;
+  align-items:center;
 
-  align-items: center;
+  position:relative;
 
-  justify-content: center;
-
-  overflow: hidden;
+  overflow:hidden;
 
 }
 
@@ -96,23 +133,60 @@ button {
 
 .hero-background {
 
-  position: absolute;
 
-  inset: 0;
+position:absolute;
 
-  background:
+inset:0;
 
-  radial-gradient(
-    circle at top,
-    rgba(139,92,246,.35),
-    transparent 50%
-  ),
 
-  linear-gradient(
-    180deg,
-    #11111b,
-    #09090f
-  );
+background:
+
+linear-gradient(
+135deg,
+rgba(139,92,246,.35),
+transparent 45%
+),
+
+url("../assets/images/gallery/main.jpg");
+
+
+background-size:cover;
+
+background-position:center;
+
+filter:
+
+brightness(.35)
+blur(1px);
+
+
+z-index:-2;
+
+
+}
+
+
+
+
+
+.hero-background::after {
+
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+
+background:
+
+linear-gradient(
+180deg,
+transparent,
+var(--bg-main)
+);
+
 
 }
 
@@ -122,15 +196,22 @@ button {
 
 .hero-container {
 
-  position: relative;
 
-  z-index: 2;
+width:90%;
 
-  width: 100%;
+max-width:1200px;
 
-  max-width: 1200px;
+margin:auto;
 
-  padding: 40px 20px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:50px;
+
 
 }
 
@@ -138,9 +219,11 @@ button {
 
 
 
-.profile-area {
+.hero-content {
 
-  text-align: center;
+
+max-width:600px;
+
 
 }
 
@@ -148,15 +231,17 @@ button {
 
 
 
-.profile-image {
+.hero-tag {
 
-  position: relative;
 
-  width: 230px;
+color:var(--purple-light);
 
-  height: 230px;
+font-size:.9rem;
 
-  margin: 0 auto 30px;
+letter-spacing:3px;
+
+margin-bottom:20px;
+
 
 }
 
@@ -164,21 +249,27 @@ button {
 
 
 
-.profile-image img {
+.hero-content h1 {
 
-  width: 100%;
 
-  height: 100%;
+font-size:
 
-  object-fit: cover;
+clamp(3rem,8vw,6rem);
 
-  border-radius: 50%;
 
-  border: 4px solid rgba(139,92,246,.7);
+font-weight:900;
 
-  box-shadow:
 
-  0 0 40px rgba(139,92,246,.5);
+font-family:
+"Orbitron",
+sans-serif;
+
+
+text-shadow:
+
+0 0 30px
+rgba(139,92,246,.8);
+
 
 }
 
@@ -186,29 +277,18 @@ button {
 
 
 
-.live-status {
+.hero-description {
 
-  position: absolute;
 
-  bottom: 10px;
+font-size:1.2rem;
 
-  right: 10px;
+color:var(--text-muted);
 
-  padding: 8px 15px;
+margin:25px 0;
 
-  border-radius: 30px;
 
-  background: rgba(0,0,0,.8);
+line-height:1.6;
 
-  font-size: 13px;
-
-  font-weight: 700;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 8px;
 
 }
 
@@ -216,15 +296,10 @@ button {
 
 
 
-.live-status span {
+.hero-profile {
 
-  width: 10px;
 
-  height: 10px;
-
-  border-radius: 50%;
-
-  background: #777;
+position:relative;
 
 }
 
@@ -232,13 +307,34 @@ button {
 
 
 
-.profile-area h1 {
+.profile-frame {
 
-  font-size: clamp(45px,8vw,80px);
 
-  font-family: 'Orbitron', sans-serif;
+width:360px;
 
-  letter-spacing: 5px;
+height:360px;
+
+
+border-radius:50%;
+
+
+padding:10px;
+
+
+background:
+
+linear-gradient(
+135deg,
+var(--purple),
+transparent
+);
+
+
+box-shadow:
+
+0 0 60px
+rgba(139,92,246,.5);
+
 
 }
 
@@ -246,13 +342,19 @@ button {
 
 
 
-.subtitle {
+.hero-image {
 
-  margin-top: 15px;
 
-  color: #c4c4d4;
+width:100%;
 
-  font-size: 18px;
+height:100%;
+
+
+object-fit:cover;
+
+
+border-radius:50%;
+
 
 }
 
@@ -260,22 +362,73 @@ button {
 
 
 
-/* =========================
+.live-badge {
+
+
+position:absolute;
+
+bottom:20px;
+
+left:50%;
+
+
+transform:
+
+translateX(-50%);
+
+
+padding:8px 20px;
+
+
+border-radius:30px;
+
+
+background:#111;
+
+
+border:1px solid var(--border);
+
+
+font-weight:bold;
+
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+
+}
+
+
+
+
+
+.live-badge span {
+
+
+width:10px;
+
+height:10px;
+
+background:#777;
+
+border-radius:50%;
+
+
+}/* ===========================
    SOCIAL BUTTONS
-========================= */
+=========================== */
 
 
 .social-buttons {
 
-  display: flex;
+  display:flex;
 
-  justify-content: center;
+  flex-wrap:wrap;
 
-  gap: 15px;
-
-  margin-top: 35px;
-
-  flex-wrap: wrap;
+  gap:15px;
 
 }
 
@@ -283,19 +436,35 @@ button {
 
 
 
-.social {
+.social-btn {
 
-  padding: 12px 25px;
 
-  border-radius: 30px;
+display:flex;
 
-  background:
+align-items:center;
 
-  rgba(255,255,255,.08);
+justify-content:center;
 
-  border: 1px solid rgba(255,255,255,.15);
+gap:10px;
 
-  transition: .3s ease;
+
+padding:14px 25px;
+
+
+border-radius:12px;
+
+
+font-weight:700;
+
+
+transition:.3s ease;
+
+
+border:1px solid transparent;
+
+
+font-size:1rem;
+
 
 }
 
@@ -303,66 +472,11 @@ button {
 
 
 
-.social:hover {
-
-  transform: translateY(-5px);
-
-  background:
-
-  rgba(139,92,246,.4);
-
-  box-shadow:
-
-  0 0 25px rgba(139,92,246,.4);
-
-}/* =========================
-   SECTIONS
-========================= */
+.social-btn span {
 
 
-section {
+font-size:1.3rem;
 
-  max-width: 1200px;
-
-  margin: 0 auto;
-
-  padding: 100px 20px;
-
-}
-
-
-
-.section-title {
-
-  text-align: center;
-
-  margin-bottom: 60px;
-
-}
-
-
-
-.section-title h2 {
-
-  font-family: 'Orbitron', sans-serif;
-
-  font-size: clamp(30px,5vw,45px);
-
-  margin-bottom: 15px;
-
-}
-
-
-
-.section-title p {
-
-  color: #c4c4d4;
-
-  max-width: 650px;
-
-  margin: auto;
-
-  line-height: 1.6;
 
 }
 
@@ -370,20 +484,18 @@ section {
 
 
 
-/* =========================
-   ABOUT
-========================= */
+.social-btn:hover {
 
 
-.about-content {
+transform:
 
-  display: grid;
+translateY(-5px);
 
-  grid-template-columns: 1fr 1fr;
 
-  gap: 50px;
+box-shadow:
 
-  align-items: center;
+0 10px 30px rgba(0,0,0,.35);
+
 
 }
 
@@ -391,21 +503,24 @@ section {
 
 
 
-.about-image img {
+/* Twitch */
 
-  width: 100%;
 
-  max-width: 450px;
+.twitch-btn {
 
-  margin: auto;
 
-  border-radius: 30px;
+background:
 
-  border: 1px solid rgba(139,92,246,.3);
+rgba(145,70,255,.15);
 
-  box-shadow:
 
-  0 0 35px rgba(139,92,246,.25);
+border-color:
+
+var(--twitch);
+
+
+color:#fff;
+
 
 }
 
@@ -413,13 +528,18 @@ section {
 
 
 
-.about-text {
+.twitch-btn:hover {
 
-  color: #d4d4d8;
 
-  line-height: 1.8;
+background:
 
-  font-size: 17px;
+var(--twitch);
+
+
+box-shadow:
+
+0 0 30px rgba(145,70,255,.6);
+
 
 }
 
@@ -427,9 +547,22 @@ section {
 
 
 
-.about-text p {
 
-  margin-bottom: 20px;
+/* Instagram */
+
+
+.instagram-btn {
+
+
+background:
+
+linear-gradient(
+135deg,
+#833ab4,
+#fd1d1d,
+#fcb045
+);
+
 
 }
 
@@ -437,18 +570,787 @@ section {
 
 
 
-/* =========================
-   COSPLAY
-========================= */
+.instagram-btn:hover {
+
+
+box-shadow:
+
+0 0 35px rgba(225,48,108,.6);
+
+
+}
+
+
+
+
+
+
+/* TikTok */
+
+
+.tiktok-btn {
+
+
+background:#050505;
+
+
+border-color:
+
+var(--tiktok);
+
+
+}
+
+
+
+
+
+.tiktok-btn:hover {
+
+
+box-shadow:
+
+0 0 30px rgba(0,242,234,.5);
+
+
+}
+
+
+
+
+
+
+/* YouTube */
+
+
+.youtube-btn {
+
+
+background:
+
+rgba(255,0,51,.15);
+
+
+border-color:
+
+var(--youtube);
+
+
+}
+
+
+
+
+
+.youtube-btn:hover {
+
+
+background:
+
+var(--youtube);
+
+
+box-shadow:
+
+0 0 30px rgba(255,0,51,.5);
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ===========================
+   SECTION HEADER
+=========================== */
+
+
+
+.section-header {
+
+
+text-align:center;
+
+
+max-width:750px;
+
+
+margin:
+
+100px auto 50px;
+
+
+padding:0 20px;
+
+
+}
+
+
+
+
+.section-tag {
+
+
+color:
+
+var(--purple-light);
+
+
+letter-spacing:
+
+4px;
+
+
+font-size:.85rem;
+
+
+font-weight:700;
+
+
+margin-bottom:15px;
+
+
+}
+
+
+
+
+.section-header h2 {
+
+
+font-family:
+
+"Orbitron",
+sans-serif;
+
+
+font-size:
+
+clamp(2rem,5vw,3rem);
+
+
+margin-bottom:15px;
+
+
+}
+
+
+
+
+.section-header p {
+
+
+color:
+
+var(--text-muted);
+
+
+font-size:1.1rem;
+
+
+line-height:1.6;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ===========================
+   ABOUT SECTION
+=========================== */
+
+
+
+.about-section {
+
+
+width:90%;
+
+
+max-width:1200px;
+
+
+margin:auto;
+
+
+}
+
+
+
+
+
+.about-layout {
+
+
+display:grid;
+
+
+grid-template-columns:
+
+400px 1fr;
+
+
+gap:50px;
+
+
+align-items:center;
+
+
+}
+
+
+
+
+
+.about-image-box {
+
+
+border-radius:25px;
+
+
+overflow:hidden;
+
+
+border:
+
+1px solid var(--border);
+
+
+box-shadow:
+
+var(--shadow);
+
+
+}
+
+
+
+
+
+.about-image-box img {
+
+
+width:100%;
+
+
+height:450px;
+
+
+object-fit:cover;
+
+
+}
+
+
+
+
+
+.about-content p {
+
+
+color:
+
+var(--text-muted);
+
+
+font-size:1.15rem;
+
+
+line-height:1.8;
+
+
+margin-bottom:20px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ===========================
+   FACT CARDS
+=========================== */
+
+
+.creator-facts {
+
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(2,1fr);
+
+
+gap:15px;
+
+
+margin-top:35px;
+
+
+}
+
+
+
+
+
+.fact-card {
+
+
+background:
+
+var(--bg-card);
+
+
+border:
+
+1px solid var(--border);
+
+
+padding:20px;
+
+
+border-radius:15px;
+
+
+transition:.3s;
+
+
+}
+
+
+
+
+
+.fact-card:hover {
+
+
+transform:
+
+translateY(-5px);
+
+
+border-color:
+
+var(--purple);
+
+
+box-shadow:
+
+var(--shadow);
+
+
+}
+
+
+
+
+
+.fact-card h3 {
+
+
+color:
+
+var(--purple-light);
+
+
+font-size:1rem;
+
+
+margin-bottom:8px;
+
+
+}
+
+
+
+
+
+.fact-card p {
+
+
+margin:0;
+
+
+color:white;
+
+
+font-size:1rem;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ===========================
+   SOURCES BOX
+=========================== */
+
+
+.information-source {
+
+
+margin-top:50px;
+
+
+padding:25px;
+
+
+background:
+
+rgba(139,92,246,.08);
+
+
+border-left:
+
+4px solid var(--purple);
+
+
+border-radius:15px;
+
+
+}
+
+
+
+
+
+.information-source h3 {
+
+
+margin-bottom:15px;
+
+
+font-family:
+
+"Orbitron",
+sans-serif;
+
+
+}
+
+
+
+
+
+.information-source p {
+
+
+color:
+
+var(--text-muted);
+
+
+line-height:1.7;
+
+
+}
+
+
+
+
+
+.update-date {
+
+
+margin-top:10px;
+
+
+font-size:.9rem;
+
+
+}/* ===========================
+   FEATURED COSPLAY
+=========================== */
+
+
+.featured-cosplay-section,
+.cosplays-section,
+.gallery-section {
+
+  width:90%;
+  max-width:1200px;
+  margin:auto;
+
+}
+
+
+
+
+
+.featured-cosplay-card {
+
+
+display:grid;
+
+
+grid-template-columns:
+
+1.2fr 1fr;
+
+
+gap:40px;
+
+
+background:
+
+var(--bg-card);
+
+
+border:
+
+1px solid var(--border);
+
+
+border-radius:30px;
+
+
+overflow:hidden;
+
+
+box-shadow:
+
+var(--shadow);
+
+
+}
+
+
+
+
+
+.featured-image {
+
+
+position:relative;
+
+
+min-height:550px;
+
+
+}
+
+
+
+
+
+.featured-image img {
+
+
+width:100%;
+
+
+height:100%;
+
+
+object-fit:cover;
+
+
+}
+
+
+
+
+
+.featured-badge {
+
+
+position:absolute;
+
+
+top:25px;
+
+
+left:25px;
+
+
+padding:12px 20px;
+
+
+border-radius:30px;
+
+
+background:
+
+var(--purple);
+
+
+font-weight:800;
+
+
+font-size:.9rem;
+
+
+box-shadow:
+
+0 0 25px rgba(139,92,246,.7);
+
+
+}
+
+
+
+
+
+.featured-content {
+
+
+padding:40px;
+
+
+display:flex;
+
+
+flex-direction:column;
+
+
+justify-content:center;
+
+
+}
+
+
+
+
+
+.featured-content h3 {
+
+
+font-family:
+
+"Orbitron",
+sans-serif;
+
+
+font-size:3rem;
+
+
+margin-bottom:10px;
+
+
+}
+
+
+
+
+
+.cosplay-source {
+
+
+color:
+
+var(--purple-light);
+
+
+font-weight:bold;
+
+
+margin-bottom:20px;
+
+
+}
+
+
+
+
+
+.featured-content p {
+
+
+color:
+
+var(--text-muted);
+
+
+line-height:1.7;
+
+
+font-size:1.1rem;
+
+
+}
+
+
+
+
+
+.cosplay-credit {
+
+
+margin-top:25px;
+
+
+padding:15px;
+
+
+background:
+
+rgba(255,255,255,.05);
+
+
+border-radius:12px;
+
+
+color:
+
+#aaa;
+
+
+font-size:.9rem;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ===========================
+   COSPLAY GRID
+=========================== */
+
 
 
 .cosplay-grid {
 
-  display: grid;
 
-  grid-template-columns: repeat(4,1fr);
+display:grid;
 
-  gap: 30px;
+
+grid-template-columns:
+
+repeat(4,1fr);
+
+
+gap:25px;
+
 
 }
 
@@ -458,17 +1360,25 @@ section {
 
 .cosplay-card {
 
-  background:
 
-  rgba(255,255,255,.05);
+background:
 
-  border: 1px solid rgba(139,92,246,.3);
+var(--bg-card);
 
-  border-radius: 25px;
 
-  overflow: hidden;
+border:
 
-  transition: .3s ease;
+1px solid var(--border);
+
+
+border-radius:20px;
+
+
+overflow:hidden;
+
+
+transition:.3s;
+
 
 }
 
@@ -478,11 +1388,21 @@ section {
 
 .cosplay-card:hover {
 
-  transform: translateY(-10px);
 
-  box-shadow:
+transform:
 
-  0 0 35px rgba(139,92,246,.35);
+translateY(-10px);
+
+
+border-color:
+
+var(--purple);
+
+
+box-shadow:
+
+var(--shadow);
+
 
 }
 
@@ -490,37 +1410,17 @@ section {
 
 
 
-.cosplay-image {
-
-  height: 420px;
-
-  overflow: hidden;
-
-}
+.cosplay-card img {
 
 
+width:100%;
 
 
-
-.cosplay-image img {
-
-  width: 100%;
-
-  height: 100%;
-
-  object-fit: cover;
-
-  transition: .5s ease;
-
-}
+height:320px;
 
 
+object-fit:cover;
 
-
-
-.cosplay-card:hover .cosplay-image img {
-
-  transform: scale(1.1);
 
 }
 
@@ -530,7 +1430,9 @@ section {
 
 .cosplay-info {
 
-  padding: 25px;
+
+padding:20px;
+
 
 }
 
@@ -540,9 +1442,15 @@ section {
 
 .cosplay-info h3 {
 
-  font-family: 'Orbitron', sans-serif;
 
-  margin-bottom: 10px;
+font-family:
+
+"Orbitron",
+sans-serif;
+
+
+margin-bottom:8px;
+
 
 }
 
@@ -552,9 +1460,11 @@ section {
 
 .cosplay-info p {
 
-  color: #c4c4d4;
 
-  margin-bottom: 20px;
+color:
+
+var(--text-muted);
+
 
 }
 
@@ -562,46 +1472,29 @@ section {
 
 
 
-.cosplay-button {
-
-  padding: 10px 20px;
-
-  border-radius: 20px;
-
-  border: none;
-
-  background:
-
-  rgba(139,92,246,.25);
-
-  color: white;
-
-  transition: .3s ease;
-
-}
 
 
 
 
-
-.cosplay-button:hover {
-
-  background:
-
-  rgba(139,92,246,.7);
-
-}/* =========================
+/* ===========================
    GALLERY
-========================= */
+=========================== */
+
 
 
 .gallery-grid {
 
-  display: grid;
 
-  grid-template-columns: repeat(4,1fr);
+display:grid;
 
-  gap: 25px;
+
+grid-template-columns:
+
+repeat(2,1fr);
+
+
+gap:30px;
+
 
 }
 
@@ -609,21 +1502,27 @@ section {
 
 
 
-.gallery-item {
+.gallery-card {
 
-  position: relative;
 
-  overflow: hidden;
+background:
 
-  border-radius: 25px;
+var(--bg-card);
 
-  border: 1px solid rgba(139,92,246,.3);
 
-  background:
+border-radius:20px;
 
-  rgba(255,255,255,.05);
 
-  transition: .3s ease;
+overflow:hidden;
+
+
+border:
+
+1px solid var(--border);
+
+
+transition:.3s;
+
 
 }
 
@@ -631,13 +1530,18 @@ section {
 
 
 
-.gallery-item:hover {
+.gallery-card:hover {
 
-  transform: translateY(-8px);
 
-  box-shadow:
+transform:
 
-  0 0 35px rgba(139,92,246,.35);
+translateY(-8px);
+
+
+box-shadow:
+
+var(--shadow);
+
 
 }
 
@@ -645,15 +1549,17 @@ section {
 
 
 
-.gallery-item img {
+.gallery-card img {
 
-  width: 100%;
 
-  height: 330px;
+width:100%;
 
-  object-fit: cover;
 
-  transition: .5s ease;
+height:400px;
+
+
+object-fit:cover;
+
 
 }
 
@@ -661,9 +1567,25 @@ section {
 
 
 
-.gallery-item:hover img {
 
-  transform: scale(1.08);
+
+
+
+/*
+Gaming image correction
+
+Ajusta o enquadramento:
+rosto + personagem/jogo
+*/
+
+
+.gaming-gallery img {
+
+
+object-position:
+
+center center;
+
 
 }
 
@@ -671,14 +1593,50 @@ section {
 
 
 
-/* =========================
-   FANART CREDIT
-========================= */
+
+.gallery-info {
 
 
-.fanart-item {
+padding:25px;
 
-  position: relative;
+
+}
+
+
+
+
+
+.gallery-info h3 {
+
+
+font-family:
+
+"Orbitron",
+sans-serif;
+
+
+font-size:1.4rem;
+
+
+margin-bottom:10px;
+
+
+}
+
+
+
+
+
+.gallery-info p {
+
+
+color:
+
+var(--text-muted);
+
+
+line-height:1.6;
+
 
 }
 
@@ -688,31 +1646,20 @@ section {
 
 .artist-credit {
 
-  position: absolute;
 
-  bottom: 12px;
+display:inline-block;
 
-  right: 12px;
 
-  padding: 8px 14px;
+margin-top:15px;
 
-  border-radius: 12px;
 
-  background:
+color:
 
-  rgba(0,0,0,.75);
+var(--purple-light);
 
-  color: white;
 
-  font-size: 14px;
+font-weight:bold;
 
-  font-weight: 700;
-
-  border: 1px solid rgba(255,255,255,.2);
-
-  backdrop-filter: blur(8px);
-
-  transition: .3s ease;
 
 }
 
@@ -722,209 +1669,46 @@ section {
 
 .artist-credit:hover {
 
-  background:
 
-  rgba(139,92,246,.85);
+text-decoration:underline;
 
-  transform: translateY(-3px);
 
-}
-
-
-
-
-
-/* =========================
-   LIVE SECTION
-========================= */
-
-
-.live-container {
-
-  display: grid;
-
-  grid-template-columns: 1fr 1fr;
-
-  gap: 40px;
-
-  align-items: center;
-
-}
-
-
-
-
-
-.stream-status {
-
-  background:
-
-  rgba(255,255,255,.05);
-
-  padding: 40px;
-
-  border-radius: 25px;
-
-  border:
-
-  1px solid rgba(139,92,246,.3);
-
-}
-
-
-
-
-
-.live-indicator {
-
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 10px;
-
-  padding: 8px 18px;
-
-  border-radius: 30px;
-
-  background:
-
-  rgba(255,255,255,.08);
-
-  margin-bottom: 25px;
-
-  font-weight: 700;
-
-}
-
-
-
-
-
-.live-indicator span {
-
-  width: 10px;
-
-  height: 10px;
-
-  background: #777;
-
-  border-radius: 50%;
-
-}
-
-
-
-
-
-.stream-status h3 {
-
-  font-family: 'Orbitron', sans-serif;
-
-  font-size: 30px;
-
-  margin-bottom: 15px;
-
-}
-
-
-
-
-
-.stream-status p {
-
-  color: #c4c4d4;
-
-  line-height: 1.7;
-
-  margin-bottom: 25px;
-
-}
-
-
-
-
-
-.live-button {
-
-  display: inline-block;
-
-  padding: 12px 25px;
-
-  border-radius: 30px;
-
-  background:
-
-  rgba(139,92,246,.5);
-
-  color: white;
-
-  transition: .3s ease;
-
-}
-
-
-
-
-
-.live-button:hover {
-
-  background:
-
-  rgba(139,92,246,.9);
-
-  transform: translateY(-3px);
-
-}
-
-
-
-
-
-.stream-preview {
-
-  height: 350px;
-
-  border-radius: 25px;
-
-  border:
-
-  1px solid rgba(139,92,246,.3);
-
-  background:
-
-  rgba(255,255,255,.05);
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-}
-
-
-
-
-
-.twitch-placeholder {
-
-  color: #c4c4d4;
-
-  font-size: 20px;
-
-}/* =========================
+}/* ===========================
    COMMUNITY
-========================= */
+=========================== */
+
+
+.community-section,
+.live-section,
+.youtube-section {
+
+
+width:90%;
+
+max-width:1200px;
+
+margin:auto;
+
+
+}
+
+
+
 
 
 .community-grid {
 
-  display: grid;
 
-  grid-template-columns: repeat(3,1fr);
+display:grid;
 
-  gap: 25px;
+
+grid-template-columns:
+
+repeat(4,1fr);
+
+
+gap:25px;
+
 
 }
 
@@ -934,19 +1718,28 @@ section {
 
 .community-card {
 
-  background:
 
-  rgba(255,255,255,.05);
+background:
 
-  border:
+var(--bg-card);
 
-  1px solid rgba(139,92,246,.3);
 
-  padding: 35px;
+border:
 
-  border-radius: 25px;
+1px solid var(--border);
 
-  transition: .3s ease;
+
+border-radius:20px;
+
+
+padding:30px;
+
+
+text-align:center;
+
+
+transition:.3s;
+
 
 }
 
@@ -956,11 +1749,21 @@ section {
 
 .community-card:hover {
 
-  transform: translateY(-8px);
 
-  box-shadow:
+transform:
 
-  0 0 30px rgba(139,92,246,.35);
+translateY(-8px);
+
+
+border-color:
+
+var(--purple);
+
+
+box-shadow:
+
+var(--shadow);
+
 
 }
 
@@ -970,11 +1773,18 @@ section {
 
 .community-card h3 {
 
-  font-family: 'Orbitron', sans-serif;
 
-  margin-bottom: 15px;
+font-family:
 
-  font-size: 25px;
+"Orbitron",
+sans-serif;
+
+
+margin-bottom:15px;
+
+
+font-size:1.4rem;
+
 
 }
 
@@ -984,9 +1794,14 @@ section {
 
 .community-card p {
 
-  color: #c4c4d4;
 
-  line-height: 1.6;
+color:
+
+var(--text-muted);
+
+
+line-height:1.6;
+
 
 }
 
@@ -994,24 +1809,630 @@ section {
 
 
 
-/* =========================
+
+
+
+
+/* ===========================
+   LIVE SECTION
+=========================== */
+
+
+
+.live-layout {
+
+
+display:grid;
+
+
+grid-template-columns:
+
+2fr 1fr;
+
+
+gap:30px;
+
+
+}
+
+
+
+
+
+.live-player-card,
+.latest-stream-card {
+
+
+background:
+
+var(--bg-card);
+
+
+border:
+
+1px solid var(--border);
+
+
+border-radius:25px;
+
+
+padding:25px;
+
+
+}
+
+
+
+
+
+
+
+
+
+.live-header {
+
+
+display:flex;
+
+
+align-items:center;
+
+
+gap:10px;
+
+
+font-weight:bold;
+
+
+margin-bottom:20px;
+
+
+}
+
+
+
+
+
+.live-dot {
+
+
+width:12px;
+
+
+height:12px;
+
+
+background:#777;
+
+
+border-radius:50%;
+
+
+}
+
+
+
+
+
+.live-player-card.live .live-dot {
+
+
+background:red;
+
+
+box-shadow:
+
+0 0 15px red;
+
+
+}
+
+
+
+
+
+.twitch-player {
+
+
+height:400px;
+
+
+background:#050505;
+
+
+border-radius:20px;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+justify-content:center;
+
+
+}
+
+
+
+
+
+.player-placeholder {
+
+
+text-align:center;
+
+
+color:
+
+var(--text-muted);
+
+
+}
+
+
+
+
+
+.player-placeholder p:first-child {
+
+
+font-size:1.5rem;
+
+
+color:white;
+
+
+font-weight:bold;
+
+
+}
+
+
+
+
+
+.player-info {
+
+
+margin-top:10px;
+
+
+}
+
+
+
+
+
+.live-information {
+
+
+margin-top:25px;
+
+
+}
+
+
+
+
+
+.live-information h3 {
+
+
+font-family:
+
+"Orbitron",
+sans-serif;
+
+
+margin-bottom:10px;
+
+
+}
+
+
+
+
+
+.live-information p {
+
+
+color:
+
+var(--text-muted);
+
+
+line-height:1.6;
+
+
+}
+
+
+
+
+
+.twitch-open-button {
+
+
+display:inline-block;
+
+
+margin-top:20px;
+
+
+padding:12px 25px;
+
+
+border-radius:12px;
+
+
+background:
+
+var(--twitch);
+
+
+font-weight:bold;
+
+
+transition:.3s;
+
+
+}
+
+
+
+
+
+.twitch-open-button:hover {
+
+
+box-shadow:
+
+0 0 30px rgba(145,70,255,.7);
+
+
+transform:
+
+translateY(-4px);
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ===========================
+   LATEST STREAM
+=========================== */
+
+
+
+.stream-thumbnail {
+
+
+margin:20px 0;
+
+
+overflow:hidden;
+
+
+border-radius:15px;
+
+
+}
+
+
+
+
+
+.stream-thumbnail img {
+
+
+width:100%;
+
+
+height:220px;
+
+
+object-fit:cover;
+
+
+}
+
+
+
+
+
+.stream-info h4 {
+
+
+font-size:1.3rem;
+
+
+margin-bottom:10px;
+
+
+}
+
+
+
+
+
+.stream-info p {
+
+
+color:
+
+var(--text-muted);
+
+
+}
+
+
+
+
+
+.stream-info a {
+
+
+display:inline-block;
+
+
+margin-top:15px;
+
+
+color:
+
+var(--purple-light);
+
+
+font-weight:bold;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ===========================
+   YOUTUBE
+=========================== */
+
+
+
+.youtube-grid {
+
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(4,1fr);
+
+
+gap:25px;
+
+
+}
+
+
+
+
+
+.youtube-card {
+
+
+background:
+
+var(--bg-card);
+
+
+border:
+
+1px solid var(--border);
+
+
+border-radius:20px;
+
+
+overflow:hidden;
+
+
+transition:.3s;
+
+
+}
+
+
+
+
+
+.youtube-card:hover {
+
+
+transform:
+
+translateY(-8px);
+
+
+box-shadow:
+
+var(--shadow);
+
+
+border-color:
+
+#ff0033;
+
+
+}
+
+
+
+
+
+.youtube-placeholder {
+
+
+height:220px;
+
+
+background:
+
+
+linear-gradient(
+
+135deg,
+
+#151522,
+
+#080812
+
+);
+
+
+display:flex;
+
+
+align-items:center;
+
+
+justify-content:center;
+
+
+}
+
+
+
+
+
+.youtube-placeholder span {
+
+
+padding:10px 20px;
+
+
+border-radius:30px;
+
+
+background:#ff0033;
+
+
+font-weight:bold;
+
+
+}
+
+
+
+
+
+.youtube-card h3 {
+
+
+padding:
+
+20px 20px 10px;
+
+
+font-family:
+
+"Orbitron",
+sans-serif;
+
+
+}
+
+
+
+
+
+.youtube-card p {
+
+
+padding:
+
+0 20px 20px;
+
+
+color:
+
+var(--text-muted);
+
+
+line-height:1.5;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ===========================
+   INFORMATION BOX
+=========================== */
+
+
+
+.live-section .information-source,
+.youtube-section .information-source {
+
+
+margin-top:40px;
+
+
+}/* ===========================
    FOOTER
-========================= */
+=========================== */
 
 
 .footer {
 
-  background:
 
-  rgba(255,255,255,.03);
+margin-top:100px;
 
-  border-top:
 
-  1px solid rgba(255,255,255,.1);
+padding:60px 20px;
 
-  padding: 60px 20px;
 
-  text-align: center;
+background:
+
+
+linear-gradient(
+
+180deg,
+
+transparent,
+
+#050508
+
+);
+
+
+border-top:
+
+1px solid var(--border);
+
+
+text-align:center;
+
 
 }
 
@@ -1019,11 +2440,14 @@ section {
 
 
 
-.footer-content h2 {
+.footer-content {
 
-  font-family: 'Orbitron', sans-serif;
 
-  margin-bottom: 20px;
+max-width:900px;
+
+
+margin:auto;
+
 
 }
 
@@ -1031,9 +2455,20 @@ section {
 
 
 
-.footer-content p {
+.footer h2 {
 
-  color: #c4c4d4;
+
+font-family:
+
+"Orbitron",
+sans-serif;
+
+
+font-size:2rem;
+
+
+margin-bottom:20px;
+
 
 }
 
@@ -1041,17 +2476,16 @@ section {
 
 
 
-.footer-links {
+.footer p {
 
-  display: flex;
 
-  justify-content: center;
+color:
 
-  gap: 25px;
+var(--text-muted);
 
-  margin: 30px 0;
 
-  flex-wrap: wrap;
+line-height:1.7;
+
 
 }
 
@@ -1059,9 +2493,11 @@ section {
 
 
 
-.footer-links a {
+.footer-creator {
 
-  transition: .3s ease;
+
+margin:30px 0;
+
 
 }
 
@@ -1069,11 +2505,92 @@ section {
 
 
 
-.footer-links a:hover {
+.footer-creator a {
 
-  color:
 
-  #a78bfa;
+color:
+
+var(--purple-light);
+
+
+font-size:1.2rem;
+
+
+font-weight:bold;
+
+
+}
+
+
+
+
+
+.footer-creator a:hover {
+
+
+text-decoration:underline;
+
+
+}
+
+
+
+
+
+.footer-disclaimer {
+
+
+padding:25px;
+
+
+margin-top:30px;
+
+
+background:
+
+rgba(255,255,255,.04);
+
+
+border-radius:15px;
+
+
+}
+
+
+
+
+
+.footer-sources {
+
+
+margin-top:30px;
+
+
+padding-top:25px;
+
+
+border-top:
+
+1px solid var(--border);
+
+
+}
+
+
+
+
+
+.footer-sources h3 {
+
+
+font-family:
+
+"Orbitron",
+sans-serif;
+
+
+margin-bottom:10px;
+
 
 }
 
@@ -1083,7 +2600,12 @@ section {
 
 .copyright {
 
-  font-size: 14px;
+
+margin-top:40px;
+
+
+font-size:.9rem;
+
 
 }
 
@@ -1091,42 +2613,82 @@ section {
 
 
 
-/* =========================
+
+
+
+
+/* ===========================
    BACK TO TOP
-========================= */
+=========================== */
+
 
 
 .back-top {
 
-  position: fixed;
 
-  right: 25px;
+position:fixed;
 
-  bottom: 25px;
 
-  width: 50px;
+right:30px;
 
-  height: 50px;
 
-  border-radius: 50%;
+bottom:30px;
 
-  border: none;
 
-  background:
+width:50px;
 
-  rgba(139,92,246,.8);
 
-  color:white;
+height:50px;
 
-  font-size: 22px;
 
-  display:flex;
+border-radius:50%;
 
-  align-items:center;
 
-  justify-content:center;
+border:none;
 
-  transition:.3s ease;
+
+background:
+
+var(--purple);
+
+
+color:white;
+
+
+font-size:1.5rem;
+
+
+cursor:pointer;
+
+
+opacity:0;
+
+
+pointer-events:none;
+
+
+transition:.3s;
+
+
+box-shadow:
+
+0 0 25px rgba(139,92,246,.5);
+
+
+}
+
+
+
+
+
+.back-top.show {
+
+
+opacity:1;
+
+
+pointer-events:auto;
+
 
 }
 
@@ -1136,7 +2698,11 @@ section {
 
 .back-top:hover {
 
-  transform: translateY(-5px);
+
+transform:
+
+translateY(-5px);
+
 
 }
 
@@ -1144,54 +2710,242 @@ section {
 
 
 
-/* =========================
-   RESPONSIVE
-========================= */
 
 
 
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+
+
+
+@keyframes fadeUp {
+
+
+from {
+
+
+opacity:0;
+
+
+transform:
+
+translateY(40px);
+
+
+}
+
+
+
+to {
+
+
+opacity:1;
+
+
+transform:
+
+translateY(0);
+
+
+}
+
+
+
+}
+
+
+
+
+
+.hero-content,
+.hero-profile {
+
+
+animation:
+
+fadeUp .8s ease forwards;
+
+
+}
+
+
+
+
+
+.cosplay-card,
+.gallery-card,
+.community-card,
+.youtube-card {
+
+
+animation:
+
+fadeUp .6s ease forwards;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ===========================
+   RESPONSIVE TABLET
+=========================== */
 
 
 @media(max-width:1000px){
 
 
-  .cosplay-grid {
-
-    grid-template-columns: repeat(2,1fr);
-
-  }
 
 
 
-  .gallery-grid {
-
-    grid-template-columns: repeat(2,1fr);
-
-  }
+.hero-container {
 
 
+flex-direction:column-reverse;
 
-  .about-content {
 
-    grid-template-columns:1fr;
+text-align:center;
 
-  }
+
+}
 
 
 
-  .live-container {
-
-    grid-template-columns:1fr;
-
-  }
 
 
+.social-buttons {
 
-  .community-grid {
 
-    grid-template-columns:1fr;
+justify-content:center;
 
-  }
+
+}
+
+
+
+
+
+.profile-frame {
+
+
+width:280px;
+
+
+height:280px;
+
+
+}
+
+
+
+
+
+.about-layout {
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+
+
+.about-image-box img {
+
+
+height:500px;
+
+
+}
+
+
+
+
+
+.featured-cosplay-card {
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+
+
+.featured-image {
+
+
+height:500px;
+
+
+}
+
+
+
+
+
+.cosplay-grid {
+
+
+grid-template-columns:
+
+repeat(2,1fr);
+
+
+}
+
+
+
+
+
+.community-grid {
+
+
+grid-template-columns:
+
+repeat(2,1fr);
+
+
+}
+
+
+
+
+
+.live-layout {
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+
+
+.youtube-grid {
+
+
+grid-template-columns:
+
+repeat(2,1fr);
+
+
+}
+
 
 
 }
@@ -1202,92 +2956,251 @@ section {
 
 
 
+
+
+/* ===========================
+   MOBILE
+=========================== */
+
+
 @media(max-width:600px){
 
 
-  section {
-
-    padding:70px 15px;
-
-  }
 
 
 
-  .profile-image {
-
-    width:180px;
-
-    height:180px;
-
-  }
+.hero {
 
 
+min-height:auto;
 
-  .profile-area h1 {
 
-    letter-spacing:2px;
+padding:80px 0;
 
-  }
+
+}
 
 
 
-  .social-buttons {
-
-    flex-direction:column;
-
-    align-items:center;
-
-  }
 
 
+.hero-container {
 
-  .social {
 
-    width:100%;
+width:92%;
 
-    max-width:280px;
 
-  }
+}
 
 
 
-  .cosplay-grid {
-
-    grid-template-columns:1fr;
-
-  }
 
 
+.hero-content h1 {
 
-  .gallery-grid {
 
-    grid-template-columns:1fr;
+font-size:3rem;
 
-  }
+
+}
 
 
 
-  .gallery-item img {
-
-    height:280px;
-
-  }
 
 
+.hero-description {
 
-  .stream-status {
 
-    padding:25px;
+font-size:1rem;
 
-  }
+
+}
 
 
 
-  .stream-preview {
 
-    height:250px;
 
-  }
+.social-buttons {
+
+
+flex-direction:column;
+
+
+}
+
+
+
+
+
+.social-btn {
+
+
+width:100%;
+
+
+}
+
+
+
+
+
+.profile-frame {
+
+
+width:220px;
+
+
+height:220px;
+
+
+}
+
+
+
+
+
+.section-header {
+
+
+margin-top:70px;
+
+
+}
+
+
+
+
+
+.creator-facts {
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+
+
+.about-image-box img {
+
+
+height:350px;
+
+
+}
+
+
+
+
+
+.featured-content {
+
+
+padding:25px;
+
+
+}
+
+
+
+
+
+.featured-content h3 {
+
+
+font-size:2rem;
+
+
+}
+
+
+
+
+
+.cosplay-grid {
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+
+
+.gallery-grid {
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+
+
+.gallery-card img {
+
+
+height:300px;
+
+
+}
+
+
+
+
+
+.community-grid {
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+
+
+.youtube-grid {
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+
+
+.twitch-player {
+
+
+height:250px;
+
+
+}
+
+
+
+
+
+.back-top {
+
+
+right:20px;
+
+
+bottom:20px;
+
+
+}
 
 
 }
