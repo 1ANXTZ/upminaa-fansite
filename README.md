@@ -1,63 +1,153 @@
-# UpMinaa Fan Hub
+# Upminaa Fan Hub 💜
 
-An unofficial, fan-made hub celebrating **UpMinaa** — streamer, cosplayer and content creator. Built as a tribute site by the fan community, not affiliated with or endorsed by UpMinaa.
+A fan-made website dedicated to **Upminaa**, featuring cosplay showcases, gaming content, community highlights and creator information.
 
-🔗 **Live site:** https://1anxtz.github.io/upminaa-fansite/
+This project was built as a front-end practice project focused on creating a modern, responsive and visually immersive fan experience.
 
-## Features
+---
 
-- 🎨 Custom dark/neon design (no framework, pure HTML/CSS/JS)
-- 📱 Fully responsive layout
-- 🔴 Live Twitch status badge — automatically detects when she's live and swaps to an embedded player
-- 📺 Latest Twitch VOD embedded automatically
-- ▶️ Latest YouTube videos pulled automatically from the channel's RSS feed
-- 👗 Iconic cosplay showcase gallery
-- 📖 Biography section with fun facts
-- ✨ Scroll-reveal animations, parallax background, and cursor-tilt effects
-- ♿ Accessibility touches: semantic HTML, `aria-*` attributes, visible focus states
+## ✨ Features
 
-## Built with
+* 🎭 **Cosplay Showcase**
 
-- HTML5
-- CSS3 (custom properties, Grid, Flexbox, animations)
-- Vanilla JavaScript (Fetch API, Intersection Observer, DOM manipulation)
-- [Twitch's public GQL endpoint](https://gql.twitch.tv/gql) for live status (read-only, no secrets involved)
-- YouTube RSS feed for latest uploads
+  * Character galleries with dedicated cosplay cards.
 
-## Project structure
+* 🖼️ **Gallery System**
 
-```
+  * Main creator photos
+  * Behind-the-scenes moments
+  * Fanart showcase with artist credit
+  * Gaming content highlights
+
+* 🎨 **Fanart Credits**
+
+  * Fan creations include clickable artist attribution.
+
+* 🎮 **Gaming Section**
+
+  * Content focused on streams and gaming moments.
+
+* 📺 **Live Section**
+
+  * Stream area prepared for Twitch integration.
+
+* 💜 **Community Section**
+
+  * Dedicated space for fans and memorable moments.
+
+* 📱 **Responsive Design**
+
+  * Optimized for desktop, tablet and mobile devices.
+
+* ✨ **Modern UI**
+
+  * Dark theme
+  * Purple neon aesthetic
+  * Smooth hover effects and animations
+
+---
+
+## 🛠️ Technologies Used
+
+* HTML5
+* CSS3
+* JavaScript
+* Responsive Web Design
+
+---
+
+## 📂 Project Structure
+
+```text
 upminaa-fansite/
+
 ├── index.html
-├── 404.html
-├── README.md
-├── style.css
-├── script.js
-├── upminaa-profile.png
-├── upminaa-bio-photo.jpg
-├── cosplay-gura.jpg
-├── cosplay-miku.jpg
-├── cosplay-frieren.jpg
-├── cosplay-maki.jpg
-└── cosplay-makima.jpg
+
+├── css/
+│   └── style.css
+
+├── js/
+│   └── main.js
+
+└── assets/
+    │
+    └── images/
+        │
+        ├── favicon.svg
+        │
+        ├── profile/
+        │   ├── upminaa-profile.png
+        │   └── upminaa-bio-photo.jpg
+        │
+        ├── cosplay/
+        │   ├── cosplay-makima.jpg
+        │   ├── cosplay-maki.jpg
+        │   ├── cosplay-miku.jpg
+        │   └── cosplay-frieren.jpg
+        │
+        └── gallery/
+            ├── gallery-main.jpg
+            ├── gallery-behind-the-scenes.jpg
+            ├── gallery-fanart.jpg
+            └── gallery-gaming.jpg
 ```
 
-## Running locally
+---
 
-No build step needed — it's a static site. Just clone the repo and open `index.html` in a browser, or serve it with any static file server:
+## 🖼️ Gallery Credits
+
+Fanart displayed in the gallery belongs to the respective artist.
+
+Artist:
+
+* Instagram: [@someguywhoarts](https://www.instagram.com/someguywhoarts/)
+
+All credits are provided to the original creator.
+
+---
+
+## 🚀 Running the Project
+
+Clone the repository:
 
 ```bash
 git clone https://github.com/1ANXTZ/upminaa-fansite.git
-cd upminaa-fansite
-python3 -m http.server 8000
 ```
 
-Then visit `http://localhost:8000`.
+Open the project folder and launch:
 
-## Disclaimer
+```text
+index.html
+```
 
-This is an unofficial, fan-made website created purely out of appreciation for the content and community. All rights to images and likeness belong to their respective owners.
+No additional dependencies are required.
 
-## Author
+---
 
-Made with 💜 by [1ANXTZ](https://github.com/1ANXTZ)
+## 📌 Project Status
+
+🚧 Active development
+
+Future improvements may include:
+
+* Twitch API integration
+* Dynamic content updates
+* More creator information
+* Additional fan features
+
+---
+
+## 👨‍💻 Developer
+
+Created by **1ANXTZ**
+
+GitHub:
+https://github.com/1ANXTZ
+
+---
+
+## ⚠️ Disclaimer
+
+This is an unofficial fan-made project created for educational and portfolio purposes.
+
+All images and creator-related assets belong to their respective owners.
