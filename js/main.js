@@ -4,15 +4,23 @@
 ===================================== */
 
 
+"use strict";
+
+
+
+
 
 document.addEventListener(
 "DOMContentLoaded",
-()=>{
+function(){
+
 
 
 console.log(
-"Upminaa Fan Hub loaded successfully"
+"Upminaa Fan Hub initialized"
 );
+
+
 
 
 
@@ -22,21 +30,25 @@ initLightbox();
 initBackTop();
 
 
-initImageProtection();
-
-
 initScrollReveal();
 
 
-initFooterYear();
+initImageProtection();
+
+
+initSmoothScroll();
 
 
 initTwitchStatus();
 
 
+initVideoPlaceholders();
+
+
+
 
 });/* =====================================
-   IMAGE LIGHTBOX SYSTEM
+   IMAGE LIGHTBOX
 ===================================== */
 
 
@@ -44,29 +56,25 @@ function initLightbox(){
 
 
 
-const imageLinks = 
-document.querySelectorAll(
+const links = document.querySelectorAll(
 ".cosplay-link, .gallery-link"
 );
 
 
 
-const lightbox =
-document.querySelector(
+const lightbox = document.querySelector(
 "#imageLightbox"
 );
 
 
 
-const lightboxImage =
-document.querySelector(
+const image = document.querySelector(
 "#lightboxImage"
 );
 
 
 
-const closeButton =
-document.querySelector(
+const close = document.querySelector(
 ".lightbox-close"
 );
 
@@ -76,7 +84,7 @@ document.querySelector(
 
 if(
 !lightbox ||
-!lightboxImage
+!image
 ){
 
 return;
@@ -89,50 +97,14 @@ return;
 
 
 
-
-imageLinks.forEach(
-(link)=>{
+function openLightbox(src, alt){
 
 
 
-link.addEventListener(
-"click",
-(event)=>{
+image.src = src;
 
 
-
-event.preventDefault();
-
-
-
-
-
-const image =
-link.querySelector(
-"img"
-);
-
-
-
-
-
-if(!image){
-
-return;
-
-}
-
-
-
-
-
-lightboxImage.src =
-image.src;
-
-
-
-lightboxImage.alt =
-image.alt;
+image.alt = alt;
 
 
 
@@ -142,20 +114,12 @@ lightbox.classList.add(
 
 
 
-
-
 document.body.style.overflow =
 "hidden";
 
 
 
-});
-
-
-
-});
-
-
+}
 
 
 
@@ -173,6 +137,10 @@ lightbox.classList.remove(
 
 
 
+image.src = "";
+
+
+
 document.body.style.overflow =
 "";
 
@@ -187,12 +155,51 @@ document.body.style.overflow =
 
 
 
-closeButton?.addEventListener(
+links.forEach(
+(link)=>{
+
+
+
+link.addEventListener(
 "click",
-()=>{
+function(event){
 
 
-closeLightbox();
+
+event.preventDefault();
+
+
+
+
+
+const img =
+link.querySelector(
+"img"
+);
+
+
+
+
+
+if(!img){
+
+return;
+
+}
+
+
+
+
+
+openLightbox(
+img.src,
+img.alt
+);
+
+
+
+});
+
 
 
 });
@@ -205,9 +212,22 @@ closeLightbox();
 
 
 
+close?.addEventListener(
+"click",
+closeLightbox
+);
+
+
+
+
+
+
+
+
+
 lightbox.addEventListener(
 "click",
-(event)=>{
+function(event){
 
 
 
@@ -235,7 +255,7 @@ closeLightbox();
 
 document.addEventListener(
 "keydown",
-(event)=>{
+function(event){
 
 
 
@@ -255,10 +275,8 @@ closeLightbox();
 
 
 
-
-
 }/* =====================================
-   BACK TO TOP BUTTON
+   BACK TO TOP
 ===================================== */
 
 
@@ -286,13 +304,17 @@ return;
 
 
 
+
+
 window.addEventListener(
 "scroll",
-()=>{
+function(){
 
 
 
-if(window.scrollY > 500){
+if(
+window.scrollY > 500
+){
 
 
 
@@ -328,7 +350,7 @@ button.classList.remove(
 
 button.addEventListener(
 "click",
-()=>{
+function(){
 
 
 
@@ -357,7 +379,7 @@ behavior:"smooth"
 
 
 /* =====================================
-   SCROLL REVEAL ANIMATION
+   SCROLL REVEAL
 ===================================== */
 
 
@@ -384,7 +406,9 @@ document.querySelectorAll(
 
 
 
-if(!elements.length){
+if(
+!elements.length
+){
 
 return;
 
@@ -396,25 +420,27 @@ return;
 
 
 
+
 const observer =
 new IntersectionObserver(
-(entries)=>{
+function(entries){
 
 
 
 entries.forEach(
-(entry)=>{
+function(entry){
 
 
 
-if(entry.isIntersecting){
+if(
+entry.isIntersecting
+){
 
 
 
 entry.target.classList.add(
 "visible"
 );
-
 
 
 
@@ -449,7 +475,8 @@ threshold:.15
 
 
 elements.forEach(
-(element)=>{
+function(element){
+
 
 
 observer.observe(
@@ -473,7 +500,7 @@ element
 
 
 /* =====================================
-   IMAGE ERROR PROTECTION
+   IMAGE ERROR HANDLER
 ===================================== */
 
 
@@ -491,19 +518,21 @@ document.querySelectorAll(
 
 
 
+
+
 images.forEach(
-(image)=>{
+function(image){
 
 
 
 image.addEventListener(
 "error",
-()=>{
+function(){
 
 
 
 console.warn(
-"Failed image:",
+"Image not found:",
 image.src
 );
 
@@ -511,13 +540,13 @@ image.src
 
 
 
+image.style.objectFit =
+"cover";
+
+
+
 image.style.opacity =
-"0.35";
-
-
-
-image.alt =
-"Image unavailable";
+"0.4";
 
 
 
@@ -540,52 +569,80 @@ image.alt =
 
 
 /* =====================================
-   AUTOMATIC FOOTER YEAR
+   SMOOTH SCROLL
 ===================================== */
 
 
-function initFooterYear(){
+function initSmoothScroll(){
 
 
 
-const copyright =
-document.querySelector(
-".copyright"
+const links =
+document.querySelectorAll(
+'a[href^="#"]'
 );
 
 
 
 
 
-if(!copyright){
 
-return;
+
+
+links.forEach(
+function(link){
+
+
+
+link.addEventListener(
+"click",
+function(event){
+
+
+
+const target =
+document.querySelector(
+link.getAttribute("href")
+);
+
+
+
+
+
+if(target){
+
+
+
+event.preventDefault();
+
+
+
+
+
+target.scrollIntoView({
+
+behavior:"smooth",
+
+block:"start"
+
+});
+
+
 
 }
 
 
 
+});
 
 
 
-const year =
-new Date()
-.getFullYear();
-
-
-
-
-
-copyright.innerHTML =
-copyright.innerHTML.replace(
-/20\d\d/,
-year
-);
+});
 
 
 
 }/* =====================================
-   TWITCH STATUS SYSTEM
+   TWITCH PLAYER STATUS
 ===================================== */
 
 
@@ -593,27 +650,23 @@ function initTwitchStatus(){
 
 
 
-const liveCard =
-document.querySelector(
-".live-player-card"
-);
-
-
-
-const liveStatus =
+const status =
 document.querySelector(
 "#liveStatus"
 );
 
 
 
+const heroStatus =
+document.querySelector(
+"#heroLiveStatus"
+);
 
 
 
-if(
-!liveCard ||
-!liveStatus
-){
+
+
+if(!status){
 
 return;
 
@@ -623,15 +676,17 @@ return;
 
 
 
+
 /*
 
-O GitHub Pages não consegue
-consultar a Twitch API diretamente
-sem expor chave.
+GitHub Pages não consegue
+consultar Twitch API diretamente.
 
-Por enquanto o player funciona
-normalmente e o status fica preparado
-para API futura.
+Esse sistema deixa o player pronto
+e evita erro visual.
+
+A API real deve ficar em
+Netlify Function futuramente.
 
 */
 
@@ -639,9 +694,10 @@ para API futura.
 
 
 
-const iframe =
-liveCard.querySelector(
-"iframe"
+
+const player =
+document.querySelector(
+"#twitchPlayer"
 );
 
 
@@ -649,18 +705,35 @@ liveCard.querySelector(
 
 
 
-if(iframe){
+
+if(player){
 
 
 
-liveStatus.textContent =
-"STREAM PLAYER READY";
+status.textContent =
+"PLAYER READY";
 
 
 
 }
 
 
+
+
+
+if(heroStatus){
+
+
+
+heroStatus.innerHTML =
+`
+<span></span>
+STREAM AVAILABLE
+`;
+
+
+
+}
 
 
 
@@ -675,7 +748,74 @@ liveStatus.textContent =
 
 
 /* =====================================
-   IFRAME ERROR PROTECTION
+   YOUTUBE VIDEO HANDLER
+===================================== */
+
+
+function initVideoPlaceholders(){
+
+
+
+const videos =
+document.querySelectorAll(
+".youtube-card iframe"
+);
+
+
+
+
+
+
+if(!videos.length){
+
+return;
+
+}
+
+
+
+
+
+
+
+videos.forEach(
+(video)=>{
+
+
+
+if(
+video.src.includes(
+"VIDEO_ID"
+)
+){
+
+
+
+video.parentElement.style.display =
+"none";
+
+
+
+}
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================================
+   IFRAME LOAD CHECK
 ===================================== */
 
 
@@ -727,73 +867,28 @@ frame.classList.add(
 
 
 
-
 /* =====================================
-   SMOOTH INTERNAL LINKS
+   FOOTER YEAR
 ===================================== */
 
 
-function initSmoothLinks(){
+function updateFooterYear(){
 
 
 
-const links =
-document.querySelectorAll(
-'a[href^="#"]'
-);
-
-
-
-
-
-
-links.forEach(
-(link)=>{
-
-
-
-link.addEventListener(
-"click",
-(event)=>{
-
-
-
-const target =
+const copyright =
 document.querySelector(
-link.getAttribute("href")
+".copyright"
 );
 
 
 
 
 
-if(target){
 
+if(!copyright){
 
-
-event.preventDefault();
-
-
-
-target.scrollIntoView({
-
-behavior:"smooth"
-
-});
-
-
-
-}
-
-
-
-});
-
-
-
-});
-
-
+return;
 
 }
 
@@ -803,22 +898,31 @@ behavior:"smooth"
 
 
 
+copyright.textContent =
+copyright.textContent.replace(
+/20\d{2}/,
+new Date()
+.getFullYear()
+);
 
 
-/* =====================================
-   FINAL INITIALIZATION
-===================================== */
+
+}
+
+
+
 
 
 document.addEventListener(
 "DOMContentLoaded",
-()=>{
+function(){
+
 
 
 initIframeProtection();
 
 
-initSmoothLinks();
+updateFooterYear();
 
 
 
