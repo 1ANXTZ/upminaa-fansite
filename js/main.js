@@ -1,12 +1,8 @@
 /* =====================================
    UPMINAA FAN HUB
-   Main Javascript
+   MAIN JAVASCRIPT
 ===================================== */
 
-
-/* =====================================
-   GLOBAL SETTINGS
-===================================== */
 
 
 document.addEventListener(
@@ -15,22 +11,27 @@ document.addEventListener(
 
 
 console.log(
-"Upminaa Fan Hub loaded"
+"Upminaa Fan Hub loaded successfully"
 );
 
 
 
 initLightbox();
 
+
 initBackTop();
 
-initImageFallback();
 
-initYear();
+initImageProtection();
 
-initLiveSystem();
 
-initYoutubeSystem();
+initScrollReveal();
+
+
+initFooterYear();
+
+
+initTwitchStatus();
 
 
 
@@ -42,7 +43,8 @@ initYoutubeSystem();
 function initLightbox(){
 
 
-const imageLinks =
+
+const imageLinks = 
 document.querySelectorAll(
 ".cosplay-link, .gallery-link"
 );
@@ -72,7 +74,10 @@ document.querySelector(
 
 
 
-if(!lightbox || !lightboxImage){
+if(
+!lightbox ||
+!lightboxImage
+){
 
 return;
 
@@ -82,8 +87,12 @@ return;
 
 
 
+
+
+
 imageLinks.forEach(
 (link)=>{
+
 
 
 link.addEventListener(
@@ -91,7 +100,10 @@ link.addEventListener(
 (event)=>{
 
 
+
 event.preventDefault();
+
+
 
 
 
@@ -102,11 +114,14 @@ link.querySelector(
 
 
 
+
+
 if(!image){
 
 return;
 
 }
+
 
 
 
@@ -127,6 +142,8 @@ lightbox.classList.add(
 
 
 
+
+
 document.body.style.overflow =
 "hidden";
 
@@ -135,21 +152,6 @@ document.body.style.overflow =
 });
 
 
-});
-
-
-
-
-
-
-
-closeButton?.addEventListener(
-"click",
-()=>{
-
-
-closeImage();
-
 
 });
 
@@ -159,52 +161,9 @@ closeImage();
 
 
 
-lightbox.addEventListener(
-"click",
-(event)=>{
 
 
-if(event.target === lightbox){
-
-
-closeImage();
-
-
-}
-
-
-});
-
-
-
-
-
-
-
-document.addEventListener(
-"keydown",
-(event)=>{
-
-
-if(event.key === "Escape"){
-
-
-closeImage();
-
-
-}
-
-
-
-});
-
-
-
-
-
-
-
-function closeImage(){
+function closeLightbox(){
 
 
 
@@ -220,6 +179,81 @@ document.body.style.overflow =
 
 
 }
+
+
+
+
+
+
+
+
+closeButton?.addEventListener(
+"click",
+()=>{
+
+
+closeLightbox();
+
+
+});
+
+
+
+
+
+
+
+
+
+lightbox.addEventListener(
+"click",
+(event)=>{
+
+
+
+if(
+event.target === lightbox
+){
+
+
+closeLightbox();
+
+
+}
+
+
+
+});
+
+
+
+
+
+
+
+
+
+document.addEventListener(
+"keydown",
+(event)=>{
+
+
+
+if(
+event.key === "Escape"
+){
+
+
+closeLightbox();
+
+
+}
+
+
+
+});
+
+
 
 
 
@@ -239,6 +273,8 @@ document.querySelector(
 
 
 
+
+
 if(!button){
 
 return;
@@ -249,12 +285,15 @@ return;
 
 
 
+
 window.addEventListener(
 "scroll",
 ()=>{
 
 
+
 if(window.scrollY > 500){
+
 
 
 button.classList.add(
@@ -264,6 +303,7 @@ button.classList.add(
 
 
 }else{
+
 
 
 button.classList.remove(
@@ -284,9 +324,12 @@ button.classList.remove(
 
 
 
+
+
 button.addEventListener(
 "click",
 ()=>{
+
 
 
 window.scrollTo({
@@ -314,123 +357,6 @@ behavior:"smooth"
 
 
 /* =====================================
-   IMAGE FALLBACK SYSTEM
-===================================== */
-
-
-function initImageFallback(){
-
-
-
-const images =
-document.querySelectorAll(
-"img"
-);
-
-
-
-
-
-
-images.forEach(
-(image)=>{
-
-
-
-image.addEventListener(
-"error",
-()=>{
-
-
-
-console.warn(
-"Image failed:",
-image.src
-);
-
-
-
-
-image.style.filter =
-"grayscale(1)";
-
-
-
-image.style.opacity =
-"0.4";
-
-
-
-});
-
-
-});
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================
-   FOOTER YEAR UPDATE
-===================================== */
-
-
-function initYear(){
-
-
-
-const year =
-new Date()
-.getFullYear();
-
-
-
-
-
-const copyright =
-document.querySelector(
-".copyright"
-);
-
-
-
-
-
-if(copyright){
-
-
-
-copyright.innerHTML =
-copyright.innerHTML.replace(
-/20\d\d/,
-year
-);
-
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================
    SCROLL REVEAL ANIMATION
 ===================================== */
 
@@ -441,8 +367,30 @@ function initScrollReveal(){
 
 const elements =
 document.querySelectorAll(
-".fact-card, .cosplay-card, .gallery-card, .community-card, .youtube-card, .live-player-card"
+`
+.fact-card,
+.cosplay-card,
+.featured-cosplay-card,
+.gallery-item,
+.community-card,
+.youtube-card,
+.live-player-card,
+.latest-stream-card
+`
 );
+
+
+
+
+
+
+if(!elements.length){
+
+return;
+
+}
+
+
 
 
 
@@ -458,6 +406,7 @@ entries.forEach(
 (entry)=>{
 
 
+
 if(entry.isIntersecting){
 
 
@@ -465,6 +414,7 @@ if(entry.isIntersecting){
 entry.target.classList.add(
 "visible"
 );
+
 
 
 
@@ -497,6 +447,7 @@ threshold:.15
 
 
 
+
 elements.forEach(
 (element)=>{
 
@@ -522,31 +473,91 @@ element
 
 
 /* =====================================
-   MOBILE MENU SUPPORT
+   IMAGE ERROR PROTECTION
 ===================================== */
 
 
-function initMobileMenu(){
+function initImageProtection(){
 
 
 
-const button =
-document.querySelector(
-".menu-toggle"
-);
-
-
-
-const menu =
-document.querySelector(
-".nav-links"
+const images =
+document.querySelectorAll(
+"img"
 );
 
 
 
 
 
-if(!button || !menu){
+
+images.forEach(
+(image)=>{
+
+
+
+image.addEventListener(
+"error",
+()=>{
+
+
+
+console.warn(
+"Failed image:",
+image.src
+);
+
+
+
+
+
+image.style.opacity =
+"0.35";
+
+
+
+image.alt =
+"Image unavailable";
+
+
+
+});
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================================
+   AUTOMATIC FOOTER YEAR
+===================================== */
+
+
+function initFooterYear(){
+
+
+
+const copyright =
+document.querySelector(
+".copyright"
+);
+
+
+
+
+
+if(!copyright){
 
 return;
 
@@ -557,40 +568,28 @@ return;
 
 
 
-button.addEventListener(
-"click",
-()=>{
+const year =
+new Date()
+.getFullYear();
 
 
 
-menu.classList.toggle(
-"active"
+
+
+copyright.innerHTML =
+copyright.innerHTML.replace(
+/20\d\d/,
+year
 );
-
-
-
-button.classList.toggle(
-"open"
-);
-
-
-
-});
 
 
 
 }/* =====================================
-   TWITCH LIVE SYSTEM
+   TWITCH STATUS SYSTEM
 ===================================== */
 
 
-async function initLiveSystem(){
-
-
-const status =
-document.querySelector(
-"#liveStatus"
-);
+function initTwitchStatus(){
 
 
 
@@ -601,8 +600,20 @@ document.querySelector(
 
 
 
+const liveStatus =
+document.querySelector(
+"#liveStatus"
+);
 
-if(!status || !liveCard){
+
+
+
+
+
+if(
+!liveCard ||
+!liveStatus
+){
 
 return;
 
@@ -612,99 +623,38 @@ return;
 
 
 
-try{
+/*
+
+O GitHub Pages não consegue
+consultar a Twitch API diretamente
+sem expor chave.
+
+Por enquanto o player funciona
+normalmente e o status fica preparado
+para API futura.
+
+*/
 
 
 
-const response =
-await fetch(
-"/api/twitch"
+
+
+const iframe =
+liveCard.querySelector(
+"iframe"
 );
 
 
 
 
 
-if(!response.ok){
 
-throw new Error(
-"Twitch API unavailable"
-);
-
-}
+if(iframe){
 
 
 
-
-
-const data =
-await response.json();
-
-
-
-
-
-
-
-if(data.online){
-
-
-
-status.textContent =
-"LIVE NOW";
-
-
-
-liveCard.classList.remove(
-"offline"
-);
-
-
-
-liveCard.classList.add(
-"online"
-);
-
-
-
-
-if(data.viewers){
-
-
-
-status.textContent +=
-
-" • "
-+
-data.viewers
-+
-" viewers";
-
-
-}
-
-
-
-
-
-}else{
-
-
-
-status.textContent =
-"OFFLINE";
-
-
-
-liveCard.classList.remove(
-"online"
-);
-
-
-
-liveCard.classList.add(
-"offline"
-);
+liveStatus.textContent =
+"STREAM PLAYER READY";
 
 
 
@@ -714,32 +664,7 @@ liveCard.classList.add(
 
 
 
-}catch(error){
-
-
-
-console.log(
-"Twitch API waiting setup:",
-error.message
-);
-
-
-
-status.textContent =
-"OFFLINE";
-
-
-
 }
-
-
-
-
-
-
-
-}
-
 
 
 
@@ -750,189 +675,42 @@ status.textContent =
 
 
 /* =====================================
-   AUTO REFRESH LIVE STATUS
+   IFRAME ERROR PROTECTION
 ===================================== */
 
 
-function startLiveRefresh(){
+function initIframeProtection(){
 
 
 
-setInterval(
+const frames =
+document.querySelectorAll(
+"iframe"
+);
+
+
+
+
+
+
+frames.forEach(
+(frame)=>{
+
+
+
+frame.addEventListener(
+"load",
 ()=>{
 
 
-initLiveSystem();
 
-
-
-},
-60000
+frame.classList.add(
+"loaded"
 );
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================
-   YOUTUBE VIDEO SYSTEM
-===================================== */
-
-
-async function initYoutubeSystem(){
-
-
-
-const players =
-document.querySelectorAll(
-".youtube-card iframe"
-);
-
-
-
-
-
-if(!players.length){
-
-return;
-
-}
-
-
-
-
-
-
-try{
-
-
-
-const response =
-await fetch(
-"/api/youtube"
-);
-
-
-
-
-
-
-if(!response.ok){
-
-throw new Error(
-"YouTube API unavailable"
-);
-
-}
-
-
-
-
-
-
-const videos =
-await response.json();
-
-
-
-
-
-
-players.forEach(
-(player,index)=>{
-
-
-
-const video =
-videos[index];
-
-
-
-if(video){
-
-
-
-player.src =
-
-"https://www.youtube.com/embed/"
-
-+
-video.id;
-
-
-
-}
 
 
 
 });
-
-
-
-
-
-
-}catch(error){
-
-
-
-console.log(
-"YouTube API waiting setup:",
-error.message
-);
-
-
-
-}
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================
-   AUTO LOAD YOUTUBE WHEN READY
-===================================== */
-
-
-function setupYoutubePlaceholders(){
-
-
-
-const cards =
-document.querySelectorAll(
-".youtube-card"
-);
-
-
-
-
-
-
-cards.forEach(
-(card,index)=>{
-
-
-
-card.dataset.position =
-index + 1;
 
 
 
@@ -950,28 +728,98 @@ index + 1;
 
 
 
-
 /* =====================================
-   API STARTUP
+   SMOOTH INTERNAL LINKS
 ===================================== */
 
 
-
-function initAPISystems(){
-
+function initSmoothLinks(){
 
 
-initLiveSystem();
+
+const links =
+document.querySelectorAll(
+'a[href^="#"]'
+);
 
 
-initYoutubeSystem();
 
 
-setupYoutubePlaceholders();
 
 
-startLiveRefresh();
+links.forEach(
+(link)=>{
+
+
+
+link.addEventListener(
+"click",
+(event)=>{
+
+
+
+const target =
+document.querySelector(
+link.getAttribute("href")
+);
+
+
+
+
+
+if(target){
+
+
+
+event.preventDefault();
+
+
+
+target.scrollIntoView({
+
+behavior:"smooth"
+
+});
 
 
 
 }
+
+
+
+});
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* =====================================
+   FINAL INITIALIZATION
+===================================== */
+
+
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
+
+
+initIframeProtection();
+
+
+initSmoothLinks();
+
+
+
+});
