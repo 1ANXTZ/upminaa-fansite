@@ -1,19 +1,14 @@
-/* =====================================
-   UPMINAA FAN HUB
-   MAIN JAVASCRIPT
-===================================== */
-
-
-"use strict";
-
-
-
+/*
+=====================================
+UPMINAA FAN HUB
+main.js
+=====================================
+*/
 
 
 document.addEventListener(
 "DOMContentLoaded",
-function(){
-
+()=>{
 
 
 console.log(
@@ -22,72 +17,127 @@ console.log(
 
 
 
+/*
+=====================================
+SMOOTH SCROLL
+=====================================
+*/
 
 
-initLightbox();
+document
+.querySelectorAll(
+'a[href^="#"]'
+)
+.forEach(link=>{
 
 
-initBackTop();
+link.addEventListener(
+"click",
+event=>{
 
 
-initScrollReveal();
-
-
-initImageProtection();
-
-
-initSmoothScroll();
-
-
-initTwitchStatus();
-
-
-initVideoPlaceholders();
-
-
-
-
-});/* =====================================
-   IMAGE LIGHTBOX
-===================================== */
-
-
-function initLightbox(){
-
-
-
-const links = document.querySelectorAll(
-".cosplay-link, .gallery-link"
+const target =
+document.querySelector(
+link.getAttribute("href")
 );
 
 
 
-const lightbox = document.querySelector(
-"#imageLightbox"
+if(target){
+
+
+event.preventDefault();
+
+
+
+target.scrollIntoView({
+
+behavior:"smooth",
+
+block:"start"
+
+});
+
+
+}
+
+
+});
+
+
+});
+
+
+
+
+
+
+
+
+/*
+=====================================
+BACK TO TOP
+=====================================
+*/
+
+
+const backTop =
+document.querySelector(
+".back-top"
 );
 
 
 
-const image = document.querySelector(
-"#lightboxImage"
+if(backTop){
+
+
+
+window.addEventListener(
+"scroll",
+()=>{
+
+
+if(window.scrollY > 500){
+
+
+backTop.classList.add(
+"show"
 );
 
 
+}else{
 
-const close = document.querySelector(
-".lightbox-close"
+
+backTop.classList.remove(
+"show"
 );
 
 
+}
+
+
+});
 
 
 
-if(
-!lightbox ||
-!image
-){
 
-return;
+
+backTop.addEventListener(
+"click",
+()=>{
+
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+
+});
+
 
 }
 
@@ -97,14 +147,171 @@ return;
 
 
 
-function openLightbox(src, alt){
+
+
+/*
+=====================================
+CARD REVEAL ANIMATION
+=====================================
+*/
+
+
+const animatedElements =
+document.querySelectorAll(
+`
+.fact-card,
+.cosplay-card,
+.gallery-item,
+.youtube-card,
+.live-player-card,
+.latest-stream-card
+`
+);
 
 
 
-image.src = src;
+if(animatedElements.length){
 
 
-image.alt = alt;
+
+const observer =
+new IntersectionObserver(
+(entries)=>{
+
+
+entries.forEach(
+entry=>{
+
+
+if(entry.isIntersecting){
+
+
+entry.target.classList.add(
+"visible"
+);
+
+
+observer.unobserve(
+entry.target
+);
+
+
+}
+
+
+});
+
+
+},
+{
+
+threshold:.15
+
+});
+
+
+
+
+
+animatedElements.forEach(
+element=>{
+
+
+observer.observe(
+element
+);
+
+
+});
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+=====================================
+REMOVE BROKEN IFRAME SOURCES
+=====================================
+*/
+
+
+document
+.querySelectorAll(
+"iframe"
+)
+.forEach(frame=>{
+
+
+frame.addEventListener(
+"error",
+()=>{
+
+
+console.warn(
+"Iframe failed:",
+frame.src
+);
+
+
+});
+
+
+
+});
+
+
+
+
+
+
+});/*
+=====================================
+LIGHTBOX
+=====================================
+*/
+
+
+const lightbox =
+document.querySelector(
+"#imageLightbox"
+);
+
+
+
+const lightboxImage =
+document.querySelector(
+"#lightboxImage"
+);
+
+
+
+const closeLightbox =
+document.querySelector(
+".lightbox-close"
+);
+
+
+
+
+
+
+function openLightbox(imageSrc){
+
+
+if(!lightbox || !lightboxImage)
+return;
+
+
+
+lightboxImage.src =
+imageSrc;
 
 
 
@@ -118,7 +325,6 @@ document.body.style.overflow =
 "hidden";
 
 
-
 }
 
 
@@ -126,8 +332,11 @@ document.body.style.overflow =
 
 
 
+function closeImageLightbox(){
 
-function closeLightbox(){
+
+if(!lightbox)
+return;
 
 
 
@@ -137,13 +346,8 @@ lightbox.classList.remove(
 
 
 
-image.src = "";
-
-
-
 document.body.style.overflow =
 "";
-
 
 
 }
@@ -154,36 +358,74 @@ document.body.style.overflow =
 
 
 
+/*
+=====================================
+IMAGENS CLICÁVEIS
+=====================================
+*/
 
-links.forEach(
-(link)=>{
+
+document
+.querySelectorAll(
+".cosplay-link, .gallery-link"
+)
+.forEach(item=>{
 
 
-
-link.addEventListener(
+item.addEventListener(
 "click",
-function(event){
-
+event=>{
 
 
 event.preventDefault();
 
 
 
-
-
-const img =
-link.querySelector(
+const image =
+item.querySelector(
 "img"
 );
 
 
 
+if(image){
 
 
-if(!img){
+openLightbox(
+image.src
+);
 
-return;
+
+}
+
+
+
+});
+
+
+});
+
+
+
+
+
+
+
+/*
+=====================================
+FECHAR LIGHTBOX
+=====================================
+*/
+
+
+if(closeLightbox){
+
+
+closeLightbox.addEventListener(
+"click",
+closeImageLightbox
+);
+
 
 }
 
@@ -191,44 +433,13 @@ return;
 
 
 
-openLightbox(
-img.src,
-img.alt
-);
 
-
-
-});
-
-
-
-});
-
-
-
-
-
-
-
-
-
-close?.addEventListener(
-"click",
-closeLightbox
-);
-
-
-
-
-
-
-
+if(lightbox){
 
 
 lightbox.addEventListener(
 "click",
-function(event){
-
+event=>{
 
 
 if(
@@ -236,17 +447,16 @@ event.target === lightbox
 ){
 
 
-closeLightbox();
+closeImageLightbox();
 
 
 }
 
 
-
 });
 
 
-
+}
 
 
 
@@ -255,113 +465,47 @@ closeLightbox();
 
 document.addEventListener(
 "keydown",
-function(event){
-
+event=>{
 
 
 if(
 event.key === "Escape"
+&&
+lightbox?.classList.contains("active")
 ){
 
 
-closeLightbox();
+closeImageLightbox();
 
 
 }
 
 
-
-});
-
-
-
-}/* =====================================
-   BACK TO TOP
-===================================== */
+});/*
+=====================================
+TWITCH PLAYER
+=====================================
+*/
 
 
-function initBackTop(){
-
-
-
-const button =
+const twitchFrame =
 document.querySelector(
-".back-top"
+".twitch-player iframe"
 );
 
 
 
+if(twitchFrame){
 
 
-if(!button){
-
-return;
-
-}
+twitchFrame.addEventListener(
+"load",
+()=>{
 
 
-
-
-
-
-
-
-window.addEventListener(
-"scroll",
-function(){
-
-
-
-if(
-window.scrollY > 500
-){
-
-
-
-button.classList.add(
-"show"
+console.log(
+"Twitch player loaded"
 );
-
-
-
-}else{
-
-
-
-button.classList.remove(
-"show"
-);
-
-
-
-}
-
-
-
-});
-
-
-
-
-
-
-
-
-
-button.addEventListener(
-"click",
-function(){
-
-
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
 
 
 });
@@ -378,174 +522,114 @@ behavior:"smooth"
 
 
 
-/* =====================================
-   SCROLL REVEAL
-===================================== */
+/*
+=====================================
+YOUTUBE PLAYERS
+=====================================
+*/
 
 
-function initScrollReveal(){
-
-
-
-const elements =
+const youtubeFrames =
 document.querySelectorAll(
-`
-.fact-card,
-.cosplay-card,
-.featured-cosplay-card,
-.gallery-item,
-.community-card,
-.youtube-card,
-.live-player-card,
-.latest-stream-card
-`
+".youtube-card iframe"
 );
 
 
 
+youtubeFrames.forEach(
+(frame)=>{
 
+
+const src =
+frame.getAttribute(
+"src"
+);
+
+
+
+/*
+ Remove players sem ID real
+*/
 
 
 if(
-!elements.length
-){
-
-return;
-
-}
-
-
-
-
-
-
-
-
-const observer =
-new IntersectionObserver(
-function(entries){
-
-
-
-entries.forEach(
-function(entry){
-
-
-
-if(
-entry.isIntersecting
+!src ||
+src.includes(
+"VIDEO_ID"
+)
 ){
 
 
-
-entry.target.classList.add(
-"visible"
-);
-
-
-
-observer.unobserve(
-entry.target
-);
-
-
-
-}
-
-
-
-});
-
-
-
-},
-{
-
-threshold:.15
-
-}
-
-);
-
-
-
-
-
-
-
-
-elements.forEach(
-function(element){
-
-
-
-observer.observe(
-element
-);
-
-
-
-});
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================
-   IMAGE ERROR HANDLER
-===================================== */
-
-
-function initImageProtection(){
-
-
-
-const images =
-document.querySelectorAll(
-"img"
-);
-
-
-
-
-
-
-
-
-images.forEach(
-function(image){
-
-
-
-image.addEventListener(
-"error",
-function(){
+frame.parentElement.style.display =
+"none";
 
 
 
 console.warn(
-"Image not found:",
-image.src
+"YouTube iframe sem vídeo configurado"
+);
+
+
+return;
+
+
+}
+
+
+
+
+frame.addEventListener(
+"load",
+()=>{
+
+
+console.log(
+"YouTube player loaded"
+);
+
+
+});
+
+
+
+});
+
+
+
+
+
+
+
+
+
+/*
+=====================================
+IMAGENS QUEBRADAS
+=====================================
+*/
+
+
+document
+.querySelectorAll(
+"img"
+)
+.forEach(
+(img)=>{
+
+
+img.addEventListener(
+"error",
+()=>{
+
+
+console.warn(
+"Imagem não encontrada:",
+img.src
 );
 
 
 
-
-
-image.style.objectFit =
-"cover";
-
-
-
-image.style.opacity =
+img.style.opacity =
 "0.4";
 
 
@@ -558,119 +642,46 @@ image.style.opacity =
 
 
 
-}
 
 
 
 
 
+/*
+=====================================
+LINKS SOCIAIS
+=====================================
+*/
 
 
-
-
-/* =====================================
-   SMOOTH SCROLL
-===================================== */
-
-
-function initSmoothScroll(){
-
-
-
-const links =
+const socialLinks =
 document.querySelectorAll(
-'a[href^="#"]'
+".social-card"
 );
 
 
 
-
-
-
-
-
-links.forEach(
-function(link){
-
+socialLinks.forEach(
+(link)=>{
 
 
 link.addEventListener(
 "click",
-function(event){
+()=>{
 
 
-
-const target =
-document.querySelector(
-link.getAttribute("href")
+console.log(
+"Social opened:",
+link.textContent.trim()
 );
-
-
-
-
-
-if(target){
-
-
-
-event.preventDefault();
-
-
-
-
-
-target.scrollIntoView({
-
-behavior:"smooth",
-
-block:"start"
-
-});
-
-
-
-}
-
 
 
 });
 
 
-
 });
 
 
-
-}/* =====================================
-   TWITCH PLAYER STATUS
-===================================== */
-
-
-function initTwitchStatus(){
-
-
-
-const status =
-document.querySelector(
-"#liveStatus"
-);
-
-
-
-const heroStatus =
-document.querySelector(
-"#heroLiveStatus"
-);
-
-
-
-
-
-if(!status){
-
-return;
-
-}
 
 
 
@@ -678,252 +689,21 @@ return;
 
 
 /*
-
-GitHub Pages não consegue
-consultar Twitch API diretamente.
-
-Esse sistema deixa o player pronto
-e evita erro visual.
-
-A API real deve ficar em
-Netlify Function futuramente.
-
+=====================================
+PROTEÇÃO CONTRA ERROS
+=====================================
 */
 
 
+window.addEventListener(
+"error",
+(event)=>{
 
 
-
-
-const player =
-document.querySelector(
-"#twitchPlayer"
+console.warn(
+"Frontend error:",
+event.message
 );
-
-
-
-
-
-
-
-if(player){
-
-
-
-status.textContent =
-"PLAYER READY";
-
-
-
-}
-
-
-
-
-
-if(heroStatus){
-
-
-
-heroStatus.innerHTML =
-`
-<span></span>
-STREAM AVAILABLE
-`;
-
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================
-   YOUTUBE VIDEO HANDLER
-===================================== */
-
-
-function initVideoPlaceholders(){
-
-
-
-const videos =
-document.querySelectorAll(
-".youtube-card iframe"
-);
-
-
-
-
-
-
-if(!videos.length){
-
-return;
-
-}
-
-
-
-
-
-
-
-videos.forEach(
-(video)=>{
-
-
-
-if(
-video.src.includes(
-"VIDEO_ID"
-)
-){
-
-
-
-video.parentElement.style.display =
-"none";
-
-
-
-}
-
-
-
-});
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================
-   IFRAME LOAD CHECK
-===================================== */
-
-
-function initIframeProtection(){
-
-
-
-const frames =
-document.querySelectorAll(
-"iframe"
-);
-
-
-
-
-
-
-frames.forEach(
-(frame)=>{
-
-
-
-frame.addEventListener(
-"load",
-()=>{
-
-
-
-frame.classList.add(
-"loaded"
-);
-
-
-
-});
-
-
-
-});
-
-
-
-}
-
-
-
-
-
-
-
-
-/* =====================================
-   FOOTER YEAR
-===================================== */
-
-
-function updateFooterYear(){
-
-
-
-const copyright =
-document.querySelector(
-".copyright"
-);
-
-
-
-
-
-
-if(!copyright){
-
-return;
-
-}
-
-
-
-
-
-
-
-copyright.textContent =
-copyright.textContent.replace(
-/20\d{2}/,
-new Date()
-.getFullYear()
-);
-
-
-
-}
-
-
-
-
-
-document.addEventListener(
-"DOMContentLoaded",
-function(){
-
-
-
-initIframeProtection();
-
-
-updateFooterYear();
-
 
 
 });
