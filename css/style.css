@@ -1,128 +1,68 @@
-/* =========================
-   RESET
-========================= */
+/*
+=====================================
+UPMINAA FAN HUB
+MAIN STYLESHEET
+=====================================
+*/
+
+
+/* ================================
+RESET
+================================ */
+
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
 }
+
 
 
 html {
-    scroll-behavior: smooth;
+
+scroll-behavior:smooth;
+
 }
+
 
 
 body {
 
-    background: #09090f;
-    color: #ffffff;
+font-family:
+"Inter",
+Arial,
+sans-serif;
 
-    font-family:
-    Inter,
-    Arial,
-    Helvetica,
-    sans-serif;
+background:#0d0d14;
 
-    line-height: 1.6;
+color:#ffffff;
+
+line-height:1.6;
+
+overflow-x:hidden;
 
 }
+
 
 
 img {
 
-    max-width: 100%;
-    display: block;
+max-width:100%;
+
+display:block;
 
 }
+
 
 
 a {
 
-    text-decoration: none;
-    color: inherit;
+text-decoration:none;
 
-}
-
-
-ul {
-
-    list-style: none;
-
-}
-
-
-button,
-input,
-textarea {
-
-    font-family: inherit;
-
-}
-
-
-
-
-
-
-
-/* =========================
-   VARIABLES
-========================= */
-
-
-:root {
-
-    --background:
-    #09090f;
-
-    --surface:
-    #12121b;
-
-    --surface-light:
-    #1b1b27;
-
-    --primary:
-    #ff4fa3;
-
-    --secondary:
-    #8b5cf6;
-
-    --text:
-    #ffffff;
-
-    --text-muted:
-    #b5b5c7;
-
-    --border:
-    rgba(255,255,255,0.08);
-
-
-    --radius:
-    18px;
-
-
-    --transition:
-    .3s ease;
-
-}
-
-
-
-
-
-
-
-/* =========================
-   GLOBAL STRUCTURE
-========================= */
-
-
-.page-wrapper {
-
-    width: 100%;
-    overflow: hidden;
+color:inherit;
 
 }
 
@@ -130,59 +70,9 @@ textarea {
 
 .container {
 
-    width:
-    min(1200px, 90%);
+width:min(1200px,90%);
 
-    margin:
-    0 auto;
-
-}
-
-
-
-.section {
-
-    padding:
-    90px 0;
-
-}
-
-
-
-.section-header {
-
-    text-align:
-    center;
-
-    margin-bottom:
-    50px;
-
-}
-
-
-
-.section-header h2 {
-
-    font-size:
-    2.5rem;
-
-    margin-bottom:
-    15px;
-
-}
-
-
-
-.section-header p {
-
-    color:
-    var(--text-muted);
-
-    max-width:
-    650px;
-
-    margin:
-    0 auto;
+margin:auto;
 
 }
 
@@ -192,77 +82,95 @@ textarea {
 
 
 
-/* =========================
-   BUTTONS
-========================= */
+/* ================================
+COLORS
+================================ */
 
 
-.btn {
-
-    display:
-    inline-flex;
-
-    align-items:
-    center;
-
-    justify-content:
-    center;
+:root {
 
 
-    padding:
-    14px 30px;
+--bg-main:#0d0d14;
+
+--bg-card:#171722;
+
+--bg-soft:#202033;
 
 
-    border-radius:
-    50px;
+--primary:#ff7ac8;
+
+--secondary:#8b7cff;
 
 
-    font-weight:
-    700;
+--text:#ffffff;
+
+--muted:#b8b8c7;
 
 
-    transition:
-    var(--transition);
+--border:
+rgba(255,255,255,.08);
 
 
 }
 
 
 
-.btn-primary {
-
-    background:
-    linear-gradient(
-        135deg,
-        var(--primary),
-        var(--secondary)
-    );
 
 
-    color:
-    white;
+/* ================================
+SECTION DEFAULT
+================================ */
+
+
+section {
+
+padding:100px 0;
 
 }
 
 
 
-.btn-secondary {
+.section-title {
 
-    background:
-    var(--surface);
+text-align:center;
 
-
-    border:
-    1px solid var(--border);
+margin-bottom:50px;
 
 }
 
 
 
-.btn:hover {
+.section-title span {
 
-    transform:
-    translateY(-3px);
+color:var(--primary);
+
+font-size:.9rem;
+
+text-transform:uppercase;
+
+letter-spacing:3px;
+
+}
+
+
+
+.section-title h2 {
+
+font-size:2.5rem;
+
+margin-top:10px;
+
+}
+
+
+
+.section-title p {
+
+color:var(--muted);
+
+max-width:700px;
+
+margin:15px auto;
 
 }
 
@@ -272,82 +180,54 @@ textarea {
 
 
 
-/* =========================
-   IMAGE EFFECT
-========================= */
+/* ================================
+NAVBAR
+================================ */
 
 
-.reveal-image {
+.site-header {
 
-    overflow:
-    hidden;
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+z-index:1000;
+
+
+background:
+rgba(13,13,20,.85);
+
+
+backdrop-filter:blur(12px);
+
+
+border-bottom:
+1px solid var(--border);
+
 
 }
 
 
 
-.reveal-image img {
+.navbar {
 
-    transition:
-    transform .4s ease;
+height:80px;
 
-}
+width:min(1200px,90%);
 
-
-
-.reveal-image:hover img {
-
-    transform:
-    scale(1.05);
-
-}/* =========================
-   HEADER
-========================= */
+margin:auto;
 
 
-.header {
+display:flex;
 
-    position:
-    sticky;
+align-items:center;
 
-    top:
-    0;
+justify-content:space-between;
 
-    z-index:
-    1000;
-
-
-    background:
-    rgba(9,9,15,0.85);
-
-
-    backdrop-filter:
-    blur(12px);
-
-
-    border-bottom:
-    1px solid var(--border);
-
-}
-
-
-
-.header-container {
-
-    display:
-    flex;
-
-
-    align-items:
-    center;
-
-
-    justify-content:
-    space-between;
-
-
-    min-height:
-    80px;
 
 }
 
@@ -355,49 +235,23 @@ textarea {
 
 .logo {
 
-    font-size:
-    1.5rem;
+font-size:1.4rem;
 
+font-weight:800;
 
-    font-weight:
-    800;
-
-
-    letter-spacing:
-    -0.5px;
+color:var(--primary);
 
 }
 
-
-
-.logo span {
-
-    color:
-    var(--primary);
-
-}
-
-
-
-
-
-
-
-/* NAVIGATION */
 
 
 .nav-links {
 
-    display:
-    flex;
+display:flex;
 
+gap:30px;
 
-    align-items:
-    center;
-
-
-    gap:
-    30px;
+list-style:none;
 
 }
 
@@ -405,16 +259,10 @@ textarea {
 
 .nav-links a {
 
-    color:
-    var(--text-muted);
 
+color:var(--muted);
 
-    font-weight:
-    600;
-
-
-    transition:
-    var(--transition);
+transition:.3s;
 
 }
 
@@ -422,33 +270,8 @@ textarea {
 
 .nav-links a:hover {
 
-    color:
-    var(--primary);
 
-}
-
-
-
-.menu-toggle {
-
-    display:
-    none;
-
-
-    background:
-    transparent;
-
-
-    border:
-    none;
-
-
-    color:
-    white;
-
-
-    font-size:
-    1.8rem;
+color:white;
 
 }
 
@@ -458,61 +281,43 @@ textarea {
 
 
 
-/* =========================
-   HERO
-========================= */
+/* ================================
+HERO
+================================ */
 
 
 .hero {
 
-    min-height:
-    calc(100vh - 80px);
+padding-top:150px;
+
+min-height:100vh;
 
 
-    display:
-    flex;
+display:flex;
 
+align-items:center;
 
-    align-items:
-    center;
-
-
-    padding:
-    80px 0;
 
 }
-
-
-
-.hero-container {
-
-    display:
-    grid;
-
-
-    grid-template-columns:
-    1fr 1fr;
-
-
-    align-items:
-    center;
-
-
-    gap:
-    60px;
-
-}
-
-
-
-
 
 
 
 .hero-content {
 
-    max-width:
-    600px;
+
+width:min(1200px,90%);
+
+margin:auto;
+
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:50px;
+
+align-items:center;
+
 
 }
 
@@ -520,32 +325,15 @@ textarea {
 
 .hero-tag {
 
-    display:
-    inline-block;
 
+color:var(--primary);
 
-    padding:
-    8px 18px;
+font-weight:700;
 
+letter-spacing:2px;
 
-    border-radius:
-    50px;
+font-size:.8rem;
 
-
-    background:
-    rgba(255,79,163,0.12);
-
-
-    color:
-    var(--primary);
-
-
-    font-weight:
-    700;
-
-
-    margin-bottom:
-    25px;
 
 }
 
@@ -553,37 +341,13 @@ textarea {
 
 .hero h1 {
 
-    font-size:
-    clamp(2.5rem,5vw,4rem);
 
+font-size:4rem;
 
-    line-height:
-    1.1;
+line-height:1.1;
 
+margin:20px 0;
 
-    margin-bottom:
-    25px;
-
-}
-
-
-
-.hero h1 span {
-
-    background:
-    linear-gradient(
-        135deg,
-        var(--primary),
-        var(--secondary)
-    );
-
-
-    -webkit-background-clip:
-    text;
-
-
-    color:
-    transparent;
 
 }
 
@@ -591,149 +355,517 @@ textarea {
 
 .hero p {
 
-    color:
-    var(--text-muted);
 
+color:var(--muted);
 
-    font-size:
-    1.1rem;
+font-size:1.15rem;
 
+max-width:550px;
 
-    margin-bottom:
-    35px;
 
 }
-
-
-
-
 
 
 
 .hero-buttons {
 
-    display:
-    flex;
+
+display:flex;
+
+gap:20px;
+
+margin-top:35px;
 
 
-    gap:
-    18px;
+}
 
 
-    flex-wrap:
-    wrap;
+
+.primary-btn,
+.secondary-btn {
+
+
+padding:14px 30px;
+
+border-radius:30px;
+
+font-weight:700;
+
+transition:.3s;
+
+
+}
+
+
+
+.primary-btn {
+
+
+background:var(--primary);
+
+color:#111;
+
+
+}
+
+
+
+.secondary-btn {
+
+
+border:1px solid var(--border);
+
+background:var(--bg-card);
+
+
+}
+
+
+
+.primary-btn:hover,
+.secondary-btn:hover {
+
+
+transform:translateY(-3px);
 
 }
 
 
 
 
-
-
-
-/* HERO IMAGE */
-
-
-.hero-image {
-
-    display:
-    flex;
-
-
-    justify-content:
-    center;
-
-
-    align-items:
-    center;
-
-}
 
 
 
 .hero-image img {
 
-    width:
-    100%;
+
+width:100%;
+
+height:500px;
+
+object-fit:cover;
 
 
-    max-width:
-    450px;
+border-radius:25px;
 
 
-    aspect-ratio:
-    1 / 1;
+box-shadow:
+0 20px 60px rgba(0,0,0,.4);
 
-
-    object-fit:
-    cover;
-
-
-    border-radius:
-    30px;
-
-
-    border:
-    1px solid var(--border);
-
-
-    box-shadow:
-    var(--shadow);
-
-}/* =========================
-   ABOUT SECTION
-========================= */
-
-
-.about-content {
-
-    display:
-    grid;
-
-
-    grid-template-columns:
-    0.9fr 1.1fr;
-
-
-    gap:
-    50px;
-
-
-    align-items:
-    center;
 
 }
 
 
 
 
+
+
+
+/* ================================
+ABOUT
+================================ */
+
+
+.about-container {
+
+
+width:min(1200px,90%);
+
+margin:auto;
+
+
+display:grid;
+
+grid-template-columns:400px 1fr;
+
+gap:60px;
+
+align-items:center;
+
+
+}
 
 
 
 .about-image img {
 
-    width:
-    100%;
+
+height:500px;
+
+width:100%;
+
+object-fit:cover;
 
 
-    aspect-ratio:
-    1 / 1;
+border-radius:25px;
 
 
-    object-fit:
-    cover;
+}
 
 
-    border-radius:
-    25px;
 
 
-    border:
-    1px solid var(--border);
+
+.info-cards {
 
 
-    box-shadow:
-    var(--shadow);
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:20px;
+
+
+}
+
+
+
+.fact-card {
+
+
+background:var(--bg-card);
+
+border:1px solid var(--border);
+
+
+padding:25px;
+
+border-radius:18px;
+
+
+}
+
+
+
+.fact-card h3 {
+
+
+font-size:1rem;
+
+color:var(--primary);
+
+margin-bottom:8px;
+
+
+}
+
+
+
+.fact-card p {
+
+
+color:var(--muted);
+
+}
+
+
+
+
+
+
+.about-description {
+
+
+margin-top:30px;
+
+
+}
+
+
+
+.about-description p {
+
+
+color:var(--muted);
+
+margin-bottom:18px;
+
+
+}/* ================================
+COSPLAYS
+================================ */
+
+
+.cosplays-section {
+
+width:100%;
+
+}
+
+
+
+
+/* FEATURED */
+
+.featured-cosplays {
+
+
+width:min(1200px,90%);
+
+margin:auto;
+
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:30px;
+
+
+}
+
+
+
+.cosplay-card {
+
+
+background:var(--bg-card);
+
+border:
+1px solid var(--border);
+
+
+border-radius:22px;
+
+
+overflow:hidden;
+
+
+transition:.35s;
+
+
+}
+
+
+
+.cosplay-card:hover {
+
+
+transform:translateY(-8px);
+
+
+}
+
+
+
+
+
+.cosplay-link {
+
+
+display:block;
+
+overflow:hidden;
+
+
+}
+
+
+
+
+.cosplay-card img {
+
+
+width:100%;
+
+
+height:100%;
+
+
+object-fit:cover;
+
+
+transition:.5s;
+
+
+}
+
+
+
+.cosplay-card:hover img {
+
+
+transform:scale(1.05);
+
+
+}
+
+
+
+
+
+
+/* FEATURED SIZE */
+
+
+.featured-card {
+
+
+height:560px;
+
+
+position:relative;
+
+
+}
+
+
+
+.featured-card .cosplay-link {
+
+
+height:100%;
+
+
+}
+
+
+
+.featured-card img {
+
+
+height:100%;
+
+
+}
+
+
+
+
+
+.featured-card::after {
+
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+
+background:
+linear-gradient(
+transparent 40%,
+rgba(0,0,0,.8)
+);
+
+
+pointer-events:none;
+
+
+}
+
+
+
+
+
+.cosplay-info {
+
+
+padding:25px;
+
+
+position:relative;
+
+z-index:2;
+
+
+}
+
+
+
+.featured-card .cosplay-info {
+
+
+position:absolute;
+
+bottom:0;
+
+left:0;
+
+width:100%;
+
+
+}
+
+
+
+.cosplay-label {
+
+
+display:inline-block;
+
+
+background:var(--primary);
+
+color:#111;
+
+
+padding:6px 15px;
+
+
+border-radius:20px;
+
+
+font-size:.75rem;
+
+
+font-weight:800;
+
+
+margin-bottom:12px;
+
+
+}
+
+
+
+
+
+.cosplay-info h3 {
+
+
+font-size:1.8rem;
+
+
+}
+
+
+
+.cosplay-info p {
+
+
+color:var(--muted);
+
+
+}
+
+
+
+
+
+
+.source-box {
+
+
+margin-top:15px;
+
+
+font-size:.85rem;
+
+
+color:var(--muted);
+
+
+}
+
+
+
+.source-box a {
+
+
+color:var(--primary);
+
 
 }
 
@@ -743,151 +875,31 @@ textarea {
 
 
 
-.about-text h3 {
 
-    font-size:
-    2rem;
 
+/* ================================
+POPULAR GRID 2X2
+================================ */
 
-    margin-bottom:
-    20px;
 
-}
 
+.popular-cosplays {
 
 
-.about-text p {
+width:min(1200px,90%);
 
-    color:
-    var(--text-muted);
+margin:40px auto 0;
 
 
-    margin-bottom:
-    20px;
+display:grid;
 
-}
 
+grid-template-columns:
+repeat(2,1fr);
 
 
+gap:25px;
 
-
-
-
-/* =========================
-   BIO CARDS
-========================= */
-
-
-.bio-cards {
-
-    display:
-    grid;
-
-
-    grid-template-columns:
-    repeat(2, 1fr);
-
-
-    gap:
-    18px;
-
-
-    margin-bottom:
-    30px;
-
-}
-
-
-
-.bio-card {
-
-    background:
-    var(--surface);
-
-
-    border:
-    1px solid var(--border);
-
-
-    padding:
-    20px;
-
-
-    border-radius:
-    var(--radius);
-
-
-    transition:
-    var(--transition);
-
-}
-
-
-
-.bio-card:hover {
-
-    transform:
-    translateY(-5px);
-
-
-    border-color:
-    rgba(255,79,163,0.5);
-
-}
-
-
-
-.bio-card h4 {
-
-    color:
-    var(--primary);
-
-
-    font-size:
-    .95rem;
-
-
-    margin-bottom:
-    8px;
-
-}
-
-
-
-.bio-card p {
-
-    color:
-    white;
-
-
-    margin:
-    0;
-
-
-    font-size:
-    .95rem;
-
-}/* =========================
-   COSPLAYS SECTION
-========================= */
-
-
-.characters-grid {
-
-    display:
-    grid;
-
-
-    grid-template-columns:
-    1fr 1fr;
-
-
-    gap:
-    24px;
-
-
-    align-items:
-    stretch;
 
 }
 
@@ -897,100 +909,64 @@ textarea {
 
 
 
-/* FEATURED COSPLAY */
+.popular-cosplays .cosplay-card {
 
 
-.character-card.featured {
+height:320px;
 
-    grid-row:
-    span 2;
-
-}
-
-
-
-.character-card {
-
-    background:
-    var(--surface);
-
-
-    border:
-    1px solid var(--border);
-
-
-    border-radius:
-    var(--radius);
-
-
-    overflow:
-    hidden;
-
-
-    transition:
-    var(--transition);
-
-}
-
-
-
-.character-card:hover {
-
-    transform:
-    translateY(-6px);
-
-
-    border-color:
-    rgba(255,79,163,0.5);
 
 }
 
 
 
 
+.popular-cosplays .cosplay-link {
 
 
+height:220px;
 
-/* IMAGE AREA */
-
-
-.character-image {
-
-    width:
-    100%;
-
-
-    aspect-ratio:
-    1 / 1;
-
-
-    overflow:
-    hidden;
-
-
-    background:
-    var(--surface-light);
 
 }
 
 
 
-.character-image img {
-
-    width:
-    100%;
+.popular-cosplays img {
 
 
-    height:
-    100%;
+height:220px;
 
 
-    object-fit:
-    cover;
+}
 
 
-    object-position:
-    center;
+
+
+.popular-cosplays .cosplay-info {
+
+
+padding:20px;
+
+
+}
+
+
+
+.popular-cosplays .cosplay-info h3 {
+
+
+font-size:1.35rem;
+
+
+}
+
+
+
+
+.popular-cosplays .source-box {
+
+
+display:none;
+
 
 }
 
@@ -1000,102 +976,97 @@ textarea {
 
 
 
-/* GURA FEATURE */
 
 
-.character-card.featured .character-image {
-
-    aspect-ratio:
-    1 / 1;
-
-
-}
+/* ================================
+IMAGE POSITION CONTROL
+================================ */
 
 
-
-.character-card.featured {
-
-    height:
-    100%;
-
-}
+/*
+ Ajustes individuais para evitar
+ cortes ruins nas fotos
+*/
 
 
+.cosplay-gura img {
 
-
-
-
-
-/* INFORMATION */
-
-
-.character-info {
-
-    padding:
-    20px;
+object-position:center;
 
 }
 
 
 
-.character-info h3 {
+.cosplay-miku-br img {
 
-    font-size:
-    1.25rem;
-
-
-    margin-bottom:
-    10px;
+object-position:center;
 
 }
 
 
 
-.character-info p {
+.cosplay-marin img {
 
-    color:
-    var(--text-muted);
-
-
-    font-size:
-    .95rem;
+object-position:center top;
 
 }
 
 
 
+.cosplay-frieren img {
+
+object-position:center top;
+
+}
 
 
 
+.cosplay-nino img {
 
-/* SECONDARY COSPLAYS GRID */
+object-position:center;
+
+}
 
 
-.characters-grid > .character-card:not(.featured) {
 
-    display:
-    block;
+.cosplay-miku-nakano img {
 
-}/* =========================
-   GALLERY SECTION
-========================= */
+object-position:center;
+
+}/* ================================
+GALLERY
+================================ */
+
+
+.gallery-section {
+
+
+width:100%;
+
+
+}
+
 
 
 .gallery-grid {
 
-    display:
-    grid;
+
+width:min(1200px,90%);
+
+margin:auto;
 
 
-    grid-template-columns:
-    repeat(4, 1fr);
+display:grid;
 
 
-    gap:
-    20px;
+grid-template-columns:
+repeat(2,1fr);
+
+
+gap:30px;
+
 
 }
-
 
 
 
@@ -1104,62 +1075,122 @@ textarea {
 
 .gallery-item {
 
-    position:
-    relative;
+
+background:var(--bg-card);
 
 
-    overflow:
-    hidden;
+border:
+1px solid var(--border);
 
 
-    border-radius:
-    var(--radius);
+border-radius:22px;
 
 
-    background:
-    var(--surface);
+overflow:hidden;
 
 
-    border:
-    1px solid var(--border);
+transition:.35s;
 
-
-    cursor:
-    pointer;
-
-
-    aspect-ratio:
-    1 / 1;
 
 }
 
 
 
-.gallery-item img {
 
-    width:
-    100%;
+.gallery-item:hover {
 
 
-    height:
-    100%;
+transform:translateY(-6px);
 
-
-    object-fit:
-    cover;
-
-
-    transition:
-    transform .4s ease;
 
 }
+
+
+
+
+
+
+.gallery-link {
+
+
+display:block;
+
+
+height:350px;
+
+
+overflow:hidden;
+
+
+}
+
+
+
+
+
+.gallery-link img {
+
+
+width:100%;
+
+
+height:100%;
+
+
+object-fit:cover;
+
+
+transition:.5s;
+
+
+}
+
 
 
 
 .gallery-item:hover img {
 
-    transform:
-    scale(1.08);
+
+transform:scale(1.06);
+
+
+}
+
+
+
+
+
+
+.gallery-info {
+
+
+padding:25px;
+
+
+}
+
+
+
+
+
+.gallery-info h3 {
+
+
+font-size:1.4rem;
+
+
+margin-bottom:10px;
+
+
+}
+
+
+
+.gallery-info p {
+
+
+color:var(--muted);
+
 
 }
 
@@ -1169,114 +1200,89 @@ textarea {
 
 
 
-/* =========================
-   IMAGE MODAL
-========================= */
 
 
-.image-modal {
-
-    position:
-    fixed;
-
-
-    inset:
-    0;
+/* ================================
+LIGHTBOX
+================================ */
 
 
-    display:
-    none;
+
+.lightbox {
 
 
-    align-items:
-    center;
+position:fixed;
 
 
-    justify-content:
-    center;
+inset:0;
 
 
-    background:
-    rgba(0,0,0,.85);
+background:
+rgba(0,0,0,.9);
 
 
-    z-index:
-    2000;
+display:flex;
 
 
-    padding:
-    30px;
+align-items:center;
+
+
+justify-content:center;
+
+
+padding:40px;
+
+
+opacity:0;
+
+
+visibility:hidden;
+
+
+transition:.3s;
+
+
+z-index:2000;
+
 
 }
 
 
 
-.image-modal.active {
 
-    display:
-    flex;
+
+.lightbox.active {
+
+
+opacity:1;
+
+
+visibility:visible;
+
 
 }
 
 
 
 
+.lightbox img {
 
 
-
-.modal-content {
-
-    position:
-    relative;
+max-width:90%;
 
 
-    max-width:
-    900px;
+max-height:85vh;
 
 
-    width:
-    100%;
+object-fit:contain;
 
 
-    background:
-    var(--surface);
+border-radius:20px;
 
 
-    border-radius:
-    var(--radius);
+box-shadow:
+0 20px 60px rgba(0,0,0,.5);
 
-
-    padding:
-    25px;
-
-
-    border:
-    1px solid var(--border);
-
-
-    box-shadow:
-    var(--shadow);
-
-}
-
-
-
-.modal-content img {
-
-    width:
-    100%;
-
-
-    max-height:
-    70vh;
-
-
-    object-fit:
-    contain;
-
-
-    border-radius:
-    15px;
 
 }
 
@@ -1286,29 +1292,89 @@ textarea {
 
 
 
-.modal-info {
+.lightbox-close {
 
-    margin-top:
-    20px;
+
+position:absolute;
+
+
+top:30px;
+
+
+right:40px;
+
+
+background:none;
+
+
+border:none;
+
+
+color:white;
+
+
+font-size:3rem;
+
+
+cursor:pointer;
+
 
 }
 
 
 
-.modal-info h3 {
 
-    margin-bottom:
-    10px;
+
+
+
+/* ================================
+REFERENCES
+================================ */
+
+
+.references-section {
+
+
+width:min(1200px,90%);
+
+
+margin:70px auto 0;
+
+
+background:var(--bg-card);
+
+
+padding:35px;
+
+
+border-radius:25px;
+
+
+border:
+1px solid var(--border);
 
 
 }
 
 
 
-.modal-info p {
 
-    color:
-    var(--text-muted);
+
+.reference-cards {
+
+
+display:grid;
+
+
+grid-template-columns:
+repeat(2,1fr);
+
+
+gap:25px;
+
+
+margin-top:30px;
+
 
 }
 
@@ -1316,66 +1382,198 @@ textarea {
 
 
 
+.reference-card {
 
 
-.modal-close {
-
-    position:
-    absolute;
+background:var(--bg-soft);
 
 
-    top:
-    15px;
+padding:25px;
 
 
-    right:
-    20px;
+border-radius:18px;
 
 
-    width:
-    40px;
+}
 
 
-    height:
-    40px;
+
+.reference-card h4 {
 
 
-    border-radius:
-    50%;
+color:var(--primary);
 
 
-    border:
-    none;
+margin-bottom:10px;
 
 
-    background:
-    var(--primary);
+}
 
 
-    color:
-    white;
+
+.reference-card p {
 
 
-    font-size:
-    1.5rem;
+color:var(--muted);
 
 
-    z-index:
-    2;
+margin-bottom:15px;
 
-}/* =========================
-   MEDIA CONTENT
-========================= */
+
+}
+
+
+
+.reference-card a {
+
+
+color:var(--primary);
+
+
+font-weight:700;
+
+
+}/* ================================
+MEDIA SECTION
+================================ */
 
 
 .media-section {
 
-    background:
-    linear-gradient(
-        180deg,
-        transparent,
-        rgba(255,255,255,0.02)
-    );
+width:100%;
+
+}
+
+
+
+
+
+.media-group {
+
+
+width:min(1200px,90%);
+
+
+margin:
+
+0 auto 70px;
+
+
+}
+
+
+
+.media-title {
+
+
+font-size:1.8rem;
+
+
+margin-bottom:30px;
+
+
+color:white;
+
+
+}
+
+
+
+
+
+
+/* ================================
+TWITCH
+================================ */
+
+
+
+.twitch-grid {
+
+
+display:grid;
+
+
+grid-template-columns:
+repeat(2,1fr);
+
+
+gap:35px;
+
+
+}
+
+
+
+
+
+.live-player-card {
+
+
+background:var(--bg-card);
+
+
+border:
+1px solid var(--border);
+
+
+border-radius:22px;
+
+
+overflow:hidden;
+
+
+transition:.3s;
+
+
+}
+
+
+
+
+
+.live-player-card:hover {
+
+
+transform:translateY(-5px);
+
+
+}
+
+
+
+
+
+.player-wrapper {
+
+
+width:100%;
+
+
+background:#000;
+
+
+aspect-ratio:
+16 / 9;
+
+
+}
+
+
+
+
+
+.player-wrapper iframe {
+
+
+width:100%;
+
+
+height:100%;
+
+
+border:0;
+
 
 }
 
@@ -1385,18 +1583,67 @@ textarea {
 
 
 
-.media-grid {
-
-    display:
-    grid;
+.player-info {
 
 
-    grid-template-columns:
-    repeat(2, 1fr);
+padding:25px;
 
 
-    gap:
-    25px;
+}
+
+
+
+
+
+.player-info h4 {
+
+
+font-size:1.4rem;
+
+
+margin-bottom:10px;
+
+
+}
+
+
+
+
+.player-info p {
+
+
+color:var(--muted);
+
+
+margin-bottom:20px;
+
+
+}
+
+
+
+
+
+.player-info a {
+
+
+display:inline-block;
+
+
+padding:10px 22px;
+
+
+border-radius:25px;
+
+
+background:var(--primary);
+
+
+color:#111;
+
+
+font-weight:700;
+
 
 }
 
@@ -1406,189 +1653,121 @@ textarea {
 
 
 
-.media-card {
 
-    background:
-    var(--surface);
 
+/* ================================
+YOUTUBE
+================================ */
 
-    border:
-    1px solid var(--border);
 
 
-    border-radius:
-    var(--radius);
-
-
-    overflow:
-    hidden;
-
-
-    padding:
-    20px;
-
-}
-
-
-
-.media-card h3 {
-
-    margin-bottom:
-    15px;
-
-
-    font-size:
-    1.3rem;
-
-}
-
-
-
-.media-card p {
-
-    color:
-    var(--text-muted);
-
-
-    margin-bottom:
-    20px;
-
-}
-
-
-
-
-
-
-
-/* EMBEDS */
-
-
-.embed-container {
-
-    position:
-    relative;
-
-
-    width:
-    100%;
-
-
-    aspect-ratio:
-    16 / 9;
-
-
-    overflow:
-    hidden;
-
-
-    border-radius:
-    14px;
-
-
-    background:
-    #000;
-
-}
-
-
-
-.embed-container iframe {
-
-    position:
-    absolute;
-
-
-    inset:
-    0;
-
-
-    width:
-    100%;
-
-
-    height:
-    100%;
-
-
-    border:
-    0;
-
-}
-
-
-
-
-
-
-
-/* TWITCH LIVE */
-
-.twitch-live {
-
-    border:
-    1px solid rgba(255,79,163,.25);
-
-}
-
-
-
-.twitch-live::before {
-
-    content:
-    "LIVE";
-
-
-    display:
-    inline-block;
-
-
-    background:
-    #9146ff;
-
-
-    padding:
-    5px 12px;
-
-
-    border-radius:
-    20px;
-
-
-    font-size:
-    .8rem;
-
-
-    font-weight:
-    700;
-
-
-    margin-bottom:
-    15px;
-
-}
-
-
-
-
-
-
-
-/* YOUTUBE GRID */
 
 
 .youtube-grid {
 
-    display:
-    grid;
+
+display:grid;
 
 
-    grid-template-columns:
-    repeat(2,1fr);
+grid-template-columns:
+repeat(2,1fr);
 
 
-    gap:
-    25px;
+gap:35px;
+
+
+}
+
+
+
+
+
+.youtube-card {
+
+
+background:var(--bg-card);
+
+
+border:
+1px solid var(--border);
+
+
+border-radius:22px;
+
+
+overflow:hidden;
+
+
+transition:.3s;
+
+
+}
+
+
+
+
+.youtube-card:hover {
+
+
+transform:translateY(-5px);
+
+
+}
+
+
+
+
+
+.video-info {
+
+
+padding:25px;
+
+
+}
+
+
+
+
+
+.video-info h4 {
+
+
+font-size:1.4rem;
+
+
+margin-bottom:10px;
+
+
+}
+
+
+
+
+
+.video-info p {
+
+
+color:var(--muted);
+
+
+margin-bottom:20px;
+
+
+}
+
+
+
+
+
+.video-info a {
+
+
+color:var(--primary);
+
+
+font-weight:700;
+
 
 }
 
@@ -1598,113 +1777,108 @@ textarea {
 
 
 
-.video-card {
 
-    background:
-    var(--surface);
-
-
-    border:
-    1px solid var(--border);
+/* ================================
+MEDIA MOBILE
+================================ */
 
 
-    border-radius:
-    var(--radius);
+
+@media(max-width:900px){
 
 
-    padding:
-    15px;
+.twitch-grid,
+.youtube-grid {
+
+
+grid-template-columns:1fr;
+
 
 }
 
 
 
-.video-card h4 {
-
-    margin-top:
-    15px;
-
-}/* =========================
-   COMMUNITY SECTION
-========================= */
+}/* ================================
+COMMUNITY SECTION
+================================ */
 
 
-.community-content {
-
-    display:
-    grid;
+.community-section {
 
 
-    grid-template-columns:
-    repeat(2,1fr);
+width:100%;
 
-
-    gap:
-    25px;
 
 }
 
 
 
-.community-card {
-
-    background:
-    var(--surface);
 
 
-    border:
-    1px solid var(--border);
+.social-grid {
 
 
-    padding:
-    30px;
+width:min(1200px,90%);
 
 
-    border-radius:
-    var(--radius);
+margin:auto;
 
 
-    transition:
-    var(--transition);
+display:grid;
+
+
+grid-template-columns:
+repeat(3,1fr);
+
+
+gap:30px;
+
 
 }
 
 
 
-.community-card:hover {
-
-    transform:
-    translateY(-5px);
 
 
-    border-color:
-    rgba(255,79,163,.5);
+.social-card {
+
+
+background:var(--bg-card);
+
+
+border:
+
+1px solid var(--border);
+
+
+border-radius:22px;
+
+
+padding:30px;
+
+
+display:flex;
+
+
+flex-direction:column;
+
+
+gap:20px;
+
+
+transition:.3s;
+
 
 }
 
 
 
-.community-card h3 {
 
-    font-size:
-    1.5rem;
+.social-card:hover {
 
 
-    margin-bottom:
-    15px;
+transform:translateY(-8px);
 
-}
-
-
-
-.community-card p {
-
-    color:
-    var(--text-muted);
-
-
-    margin-bottom:
-    25px;
 
 }
 
@@ -1713,60 +1887,35 @@ textarea {
 
 
 
-
-/* SOCIAL LINKS */
-
-
-.social-links {
-
-    display:
-    flex;
+.social-icon {
 
 
-    flex-wrap:
-    wrap;
+width:60px;
 
 
-    gap:
-    15px;
-
-}
+height:60px;
 
 
-
-.social-links a {
-
-    padding:
-    12px 20px;
+border-radius:18px;
 
 
-    border-radius:
-    50px;
+display:flex;
 
 
-    background:
-    var(--surface-light);
+align-items:center;
 
 
-    border:
-    1px solid var(--border);
+justify-content:center;
 
 
-    transition:
-    var(--transition);
-
-}
+font-size:2rem;
 
 
-
-.social-links a:hover {
-
-    background:
-    var(--primary);
+font-weight:800;
 
 
-    color:
-    white;
+color:white;
+
 
 }
 
@@ -1775,85 +1924,72 @@ textarea {
 
 
 
-
-/* =========================
-   CREDITS
-========================= */
+.social-info h3 {
 
 
-.credits-section {
+font-size:1.5rem;
 
-    padding:
-    70px 0;
+
+margin-bottom:8px;
+
 
 }
 
 
 
-.credits-grid {
-
-    display:
-    grid;
 
 
-    grid-template-columns:
-    repeat(2,1fr);
+.social-info p {
 
 
-    gap:
-    25px;
+color:var(--muted);
+
+
+margin-bottom:20px;
+
 
 }
 
 
 
-.credit-card {
-
-    background:
-    var(--surface);
 
 
-    border:
-    1px solid var(--border);
+.social-info a {
 
 
-    border-radius:
-    var(--radius);
+display:inline-flex;
 
 
-    padding:
-    25px;
+align-items:center;
+
+
+justify-content:center;
+
+
+padding:12px 25px;
+
+
+border-radius:30px;
+
+
+font-weight:700;
+
+
+transition:.3s;
+
 
 }
 
 
 
-.credit-card h3 {
-
-    margin-bottom:
-    10px;
-
-}
 
 
 
-.credit-card p {
-
-    color:
-    var(--text-muted);
-
-}
+.social-info a:hover {
 
 
+transform:translateY(-3px);
 
-.credit-card a {
-
-    color:
-    var(--primary);
-
-
-    font-weight:
-    700;
 
 }
 
@@ -1863,95 +1999,400 @@ textarea {
 
 
 
-/* =========================
-   FOOTER
-========================= */
 
 
-.footer {
-
-    background:
-    #06060b;
-
-
-    border-top:
-    1px solid var(--border);
+/* ================================
+PLATFORM COLORS
+================================ */
 
 
-    padding:
-    60px 0 25px;
+
+
+
+/* Instagram */
+
+
+.instagram .social-icon {
+
+
+background:
+
+linear-gradient(
+135deg,
+#feda75,
+#d62976,
+#962fbf
+);
+
 
 }
+
+
+
+.instagram .social-info a {
+
+
+background:#d62976;
+
+
+color:white;
+
+
+}
+
+
+
+
+
+
+
+
+/* TikTok */
+
+
+.tiktok .social-icon {
+
+
+background:#000;
+
+
+border:1px solid white;
+
+
+}
+
+
+
+.tiktok .social-info a {
+
+
+background:#000;
+
+
+border:1px solid white;
+
+
+color:white;
+
+
+}
+
+
+
+
+
+
+
+
+/* Twitch */
+
+
+.twitch .social-icon {
+
+
+background:#9146ff;
+
+
+}
+
+
+
+.twitch .social-info a {
+
+
+background:#9146ff;
+
+
+color:white;
+
+
+}
+
+
+
+
+
+
+
+
+/* YouTube */
+
+
+.youtube .social-icon {
+
+
+background:#ff0000;
+
+
+}
+
+
+
+.youtube .social-info a {
+
+
+background:#ff0000;
+
+
+color:white;
+
+
+}
+
+
+
+
+
+
+
+
+/* X */
+
+
+.twitter .social-icon {
+
+
+background:#050505;
+
+
+border:1px solid #333;
+
+
+}
+
+
+
+.twitter .social-info a {
+
+
+background:#050505;
+
+
+border:1px solid #333;
+
+
+color:white;
+
+
+}
+
+
+
+
+
+
+
+
+/* ================================
+REFERENCES
+================================ */
+
+
+
+
+
+.references-section {
+
+
+margin-top:80px;
+
+
+}
+
+
+
+.references-section h3 {
+
+
+font-size:1.8rem;
+
+
+margin-bottom:15px;
+
+
+}
+
+
+
+
+
+.references-section > p {
+
+
+color:var(--muted);
+
+
+}
+
+
+
+
+.reference-cards {
+
+
+display:grid;
+
+
+grid-template-columns:
+repeat(2,1fr);
+
+
+gap:25px;
+
+
+margin-top:30px;
+
+
+}
+
+
+
+
+
+
+
+.reference-card {
+
+
+background:var(--bg-soft);
+
+
+padding:25px;
+
+
+border-radius:18px;
+
+
+border:
+
+1px solid var(--border);
+
+
+}
+
+
+
+
+.reference-card a {
+
+
+color:var(--primary);
+
+
+font-weight:700;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================================
+SOCIAL RESPONSIVE
+================================ */
+
+
+@media(max-width:1000px){
+
+
+.social-grid {
+
+
+grid-template-columns:
+repeat(2,1fr);
+
+
+}
+
+
+
+}
+
+
+
+
+@media(max-width:650px){
+
+
+.social-grid {
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+.reference-cards {
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+}/* ================================
+FOOTER
+================================ */
+
+
+.site-footer {
+
+
+padding:50px 20px;
+
+
+background:#080810;
+
+
+border-top:
+
+1px solid var(--border);
+
+
+text-align:center;
+
+
+}
+
+
 
 
 
 .footer-content {
 
-    display:
-    grid;
+
+width:min(900px,90%);
 
 
-    grid-template-columns:
-    2fr 1fr 1fr;
-
-
-    gap:
-    40px;
-
-}
-
-
-
-.footer h3,
-.footer h4 {
-
-    margin-bottom:
-    15px;
-
-}
-
-
-
-.footer p {
-
-    color:
-    var(--text-muted);
-
-}
-
-
-
-.footer-links ul {
-
-    display:
-    flex;
-
-
-    flex-direction:
-    column;
-
-
-    gap:
-    10px;
-
-}
-
-
-
-.footer-links a {
-
-    color:
-    var(--text-muted);
+margin:auto;
 
 
 }
 
 
 
-.footer-links a:hover {
 
-    color:
-    var(--primary);
+
+.footer-content h3 {
+
+
+font-size:1.5rem;
+
+
+color:var(--primary);
+
+
+margin-bottom:15px;
+
 
 }
 
@@ -1959,136 +2400,25 @@ textarea {
 
 
 
+.footer-content p {
 
 
-.footer-social .social-links {
+color:var(--muted);
 
-    flex-direction:
-    column;
 
 }
 
 
 
-.footer-bottom {
-
-    margin-top:
-    40px;
 
 
-    padding-top:
-    20px;
+.copyright {
 
 
-    border-top:
-    1px solid var(--border);
+margin-top:20px;
 
 
-    text-align:
-    center;
-
-
-    color:
-    var(--text-muted);
-
-
-    font-size:
-    .9rem;
-
-}/* =========================
-   RESPONSIVE
-========================= */
-
-
-@media (max-width: 1024px) {
-
-
-    .hero-container {
-
-        grid-template-columns:
-        1fr;
-
-
-        text-align:
-        center;
-
-    }
-
-
-
-    .hero-content {
-
-        margin:
-        0 auto;
-
-    }
-
-
-
-    .hero-buttons {
-
-        justify-content:
-        center;
-
-    }
-
-
-
-    .about-content {
-
-        grid-template-columns:
-        1fr;
-
-    }
-
-
-
-    .about-image {
-
-        max-width:
-        500px;
-
-
-        margin:
-        0 auto;
-
-    }
-
-
-
-    .characters-grid {
-
-        grid-template-columns:
-        1fr;
-
-    }
-
-
-
-    .character-card.featured {
-
-        grid-row:
-        auto;
-
-    }
-
-
-
-    .gallery-grid {
-
-        grid-template-columns:
-        repeat(2,1fr);
-
-    }
-
-
-
-    .footer-content {
-
-        grid-template-columns:
-        1fr 1fr;
-
-    }
+font-size:.9rem;
 
 
 }
@@ -2099,208 +2429,81 @@ textarea {
 
 
 
-@media (max-width: 768px) {
 
 
-    .section {
+/* ================================
+BACK TO TOP
+================================ */
 
-        padding:
-        60px 0;
 
-    }
 
+.back-top {
 
 
-    .section-header h2 {
+position:fixed;
 
-        font-size:
-        2rem;
 
-    }
+right:30px;
 
 
+bottom:30px;
 
 
+width:50px;
 
 
+height:50px;
 
-    /* HEADER */
 
+border-radius:50%;
 
-    .nav-links {
 
-        display:
-        none;
+background:var(--primary);
 
-    }
 
+color:#111;
 
 
-    .menu-toggle {
+display:flex;
 
-        display:
-        block;
 
-    }
+align-items:center;
 
 
+justify-content:center;
 
 
+font-size:1.5rem;
 
 
+cursor:pointer;
 
-    /* HERO */
 
+opacity:0;
 
-    .hero {
 
-        padding:
-        50px 0;
+visibility:hidden;
 
-    }
 
+transition:.3s;
 
 
-    .hero h1 {
+z-index:999;
 
-        font-size:
-        2.3rem;
 
-    }
+}
 
 
 
 
 
+.back-top.show {
 
 
-    /* BIO */
+opacity:1;
 
 
-    .bio-cards {
-
-        grid-template-columns:
-        1fr;
-
-    }
-
-
-
-
-
-
-
-    /* COSPLAYS */
-
-
-    .characters-grid {
-
-        grid-template-columns:
-        1fr;
-
-    }
-
-
-
-    .cosplays-grid-secondary {
-
-        grid-template-columns:
-        repeat(2,1fr);
-
-    }
-
-
-
-
-
-
-
-    /* GALLERY */
-
-
-    .gallery-grid {
-
-        grid-template-columns:
-        repeat(2,1fr);
-
-    }
-
-
-
-
-
-
-
-    /* MEDIA */
-
-
-    .media-grid,
-    .youtube-grid {
-
-        grid-template-columns:
-        1fr;
-
-    }
-
-
-
-
-
-
-
-    /* COMMUNITY */
-
-
-    .community-content {
-
-        grid-template-columns:
-        1fr;
-
-    }
-
-
-
-
-
-
-
-    /* CREDITS */
-
-
-    .credits-grid {
-
-        grid-template-columns:
-        1fr;
-
-    }
-
-
-
-
-
-
-
-    /* FOOTER */
-
-
-    .footer-content {
-
-        grid-template-columns:
-        1fr;
-
-        text-align:
-        center;
-
-    }
-
-
-
-    .footer-social .social-links {
-
-        align-items:
-        center;
-
-    }
+visibility:visible;
 
 
 }
@@ -2311,51 +2514,913 @@ textarea {
 
 
 
-@media (max-width: 480px) {
 
 
-    .container {
-
-        width:
-        92%;
-
-    }
+/* ================================
+NAVBAR MOBILE
+================================ */
 
 
 
-    .gallery-grid {
 
-        grid-template-columns:
-        1fr;
 
-    }
+@media(max-width:900px){
 
 
 
-    .cosplays-grid-secondary {
-
-        grid-template-columns:
-        1fr;
-
-    }
+.navbar {
 
 
-
-    .hero-buttons {
-
-        flex-direction:
-        column;
-
-    }
+height:auto;
 
 
+padding:20px 0;
 
-    .btn {
 
-        width:
-        100%;
+flex-direction:column;
 
-    }
+
+gap:20px;
+
+
+}
+
+
+
+.nav-links {
+
+
+gap:15px;
+
+
+flex-wrap:wrap;
+
+
+justify-content:center;
+
+
+}
+
+
+
+
+.hero-content {
+
+
+grid-template-columns:1fr;
+
+
+text-align:center;
+
+
+}
+
+
+
+
+.hero h1 {
+
+
+font-size:3rem;
+
+
+}
+
+
+
+.hero p {
+
+
+margin:auto;
+
+
+}
+
+
+
+.hero-buttons {
+
+
+justify-content:center;
+
+
+}
+
+
+
+
+.hero-image img {
+
+
+height:400px;
+
+
+}
+
+
+
+
+
+.about-container {
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+
+.about-image img {
+
+
+height:450px;
+
+
+}
+
+
+
+
+
+.featured-cosplays {
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+
+.popular-cosplays {
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+
+.gallery-grid {
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+
+
+}/* ================================
+ANIMATIONS
+================================ */
+
+
+
+.fact-card,
+.cosplay-card,
+.gallery-item,
+.youtube-card,
+.live-player-card,
+.social-card {
+
+
+opacity:0;
+
+
+transform:
+translateY(40px);
+
+
+transition:
+
+opacity .7s ease,
+transform .7s ease;
+
+
+}
+
+
+
+
+
+.fact-card.visible,
+.cosplay-card.visible,
+.gallery-item.visible,
+.youtube-card.visible,
+.live-player-card.visible,
+.social-card.visible {
+
+
+opacity:1;
+
+
+transform:
+
+translateY(0);
+
+
+}
+
+
+
+
+
+
+
+
+/* ================================
+CARD HOVER EFFECTS
+================================ */
+
+
+
+.fact-card:hover {
+
+
+border-color:
+
+rgba(255,122,200,.5);
+
+
+}
+
+
+
+
+
+.gallery-item:hover,
+.cosplay-card:hover,
+.live-player-card:hover,
+.youtube-card:hover,
+.social-card:hover {
+
+
+border-color:
+
+rgba(255,122,200,.4);
+
+
+}
+
+
+
+
+
+
+
+
+/* ================================
+BUTTON ANIMATIONS
+================================ */
+
+
+
+.primary-btn,
+.secondary-btn,
+.social-info a,
+.player-info a {
+
+
+position:relative;
+
+
+overflow:hidden;
+
+
+}
+
+
+
+.primary-btn::before,
+.secondary-btn::before,
+.social-info a::before,
+.player-info a::before {
+
+
+content:"";
+
+
+position:absolute;
+
+
+inset:0;
+
+
+background:
+
+rgba(255,255,255,.15);
+
+
+transform:
+
+translateX(-100%);
+
+
+transition:.4s;
+
+
+}
+
+
+
+
+
+.primary-btn:hover::before,
+.secondary-btn:hover::before,
+.social-info a:hover::before,
+.player-info a:hover::before {
+
+
+transform:
+
+translateX(0);
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================================
+IMAGE SMOOTH EFFECT
+================================ */
+
+
+
+.hero-image img,
+.about-image img,
+.gallery-item img,
+.cosplay-card img {
+
+
+animation:
+
+imageFade .8s ease;
+
+
+}
+
+
+
+
+
+@keyframes imageFade {
+
+
+from {
+
+
+opacity:0;
+
+
+}
+
+
+
+to {
+
+
+opacity:1;
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================================
+SCROLL OFFSET
+================================ */
+
+
+
+section {
+
+
+scroll-margin-top:100px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================================
+SOURCE BOX STYLE
+================================ */
+
+
+
+.source-box {
+
+
+padding-top:10px;
+
+
+}
+
+
+
+.source-box strong {
+
+
+color:white;
+
+
+}
+
+
+
+
+.source-box a:hover {
+
+
+text-decoration:underline;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================================
+LIGHTBOX ANIMATION
+================================ */
+
+
+
+.lightbox.active img {
+
+
+animation:
+
+zoomIn .3s ease;
+
+
+}
+
+
+
+
+
+@keyframes zoomIn {
+
+
+from {
+
+
+transform:scale(.8);
+
+
+opacity:0;
+
+
+}
+
+
+
+to {
+
+
+transform:scale(1);
+
+
+opacity:1;
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================================
+TEXT SELECTION
+================================ */
+
+
+
+::selection {
+
+
+background:var(--primary);
+
+
+color:#111;
+
+
+}/* ================================
+FINAL IMAGE SETTINGS
+================================ */
+
+
+
+.hero-image img {
+
+
+object-position:center;
+
+
+}
+
+
+
+
+.about-image img {
+
+
+object-position:center;
+
+
+}
+
+
+
+
+
+
+
+/* ================================
+COSPLAY IMAGE CONTROL
+================================ */
+
+
+
+.featured-card img {
+
+
+object-fit:cover;
+
+
+object-position:center;
+
+
+}
+
+
+
+
+.popular-cosplays img {
+
+
+object-fit:cover;
+
+
+object-position:center top;
+
+
+}
+
+
+
+
+
+/*
+ Individual adjustments
+ Caso alguma foto tenha corte ruim
+*/
+
+
+.cosplay-card:nth-child(1) img {
+
+
+object-position:center;
+
+
+}
+
+
+
+.cosplay-card:nth-child(2) img {
+
+
+object-position:center top;
+
+
+}
+
+
+
+.cosplay-card:nth-child(3) img {
+
+
+object-position:center;
+
+
+}
+
+
+
+.cosplay-card:nth-child(4) img {
+
+
+object-position:center;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================================
+GALLERY IMAGE CONTROL
+================================ */
+
+
+
+.gallery-item:nth-child(1) img {
+
+
+object-position:center;
+
+
+}
+
+
+
+.gallery-item:nth-child(2) img {
+
+
+object-position:center;
+
+
+}
+
+
+
+.gallery-item:nth-child(3) img {
+
+
+object-position:center;
+
+
+}
+
+
+
+.gallery-item:nth-child(4) img {
+
+
+object-position:center;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================================
+SPACING FINAL TOUCHES
+================================ */
+
+
+
+.cosplays-section,
+.gallery-section,
+.media-section,
+.community-section {
+
+
+overflow:hidden;
+
+
+}
+
+
+
+
+
+.media-group + .media-group {
+
+
+margin-top:80px;
+
+
+}
+
+
+
+
+
+.community-section {
+
+
+padding-bottom:120px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ================================
+SMALL DEVICES
+================================ */
+
+
+
+@media(max-width:600px){
+
+
+
+section {
+
+
+padding:70px 0;
+
+
+}
+
+
+
+
+
+.hero {
+
+
+padding-top:120px;
+
+
+}
+
+
+
+
+
+.hero h1 {
+
+
+font-size:2.4rem;
+
+
+}
+
+
+
+
+
+.hero-buttons {
+
+
+flex-direction:column;
+
+
+align-items:center;
+
+
+}
+
+
+
+
+
+.primary-btn,
+.secondary-btn {
+
+
+width:220px;
+
+
+text-align:center;
+
+
+}
+
+
+
+
+
+.info-cards {
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+
+
+.featured-card {
+
+
+height:450px;
+
+
+}
+
+
+
+
+
+.popular-cosplays .cosplay-card {
+
+
+height:auto;
+
+
+}
+
+
+
+
+
+.popular-cosplays .cosplay-link {
+
+
+height:280px;
+
+
+}
+
+
+
+
+
+.gallery-link {
+
+
+height:280px;
+
+
+}
+
+
+
+
+
+.lightbox {
+
+
+padding:20px;
+
+
+}
+
+
+
+.lightbox img {
+
+
+max-width:95%;
+
+
+}
 
 
 
