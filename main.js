@@ -2,6 +2,7 @@
 =====================================
 UPMINAA FAN HUB
 main.js
+NEON VERSION
 =====================================
 */
 
@@ -52,6 +53,7 @@ if(target){
 event.preventDefault();
 
 
+
 target.scrollIntoView({
 
 behavior:"smooth",
@@ -76,6 +78,7 @@ block:"start"
 
 
 
+
 /*
 =====================================
 MOBILE MENU
@@ -89,10 +92,12 @@ document.querySelector(
 );
 
 
+
 const navigation =
 document.querySelector(
 ".nav-links"
 );
+
 
 
 
@@ -168,6 +173,7 @@ entry.target.classList.add(
 );
 
 
+
 observer.unobserve(
 entry.target
 );
@@ -190,6 +196,7 @@ threshold:0.15
 
 
 
+
 revealItems.forEach(
 item=>{
 
@@ -203,6 +210,7 @@ item
 
 
 }
+
 
 
 
@@ -232,8 +240,11 @@ image.addEventListener(
 
 
 console.warn(
+
 "Image not found:",
+
 image.src
+
 );
 
 
@@ -245,6 +256,46 @@ image.classList.add(
 
 
 });
+
+
+});
+
+
+
+
+
+
+
+
+/*
+=====================================
+IMAGE LAZY LOADING
+=====================================
+*/
+
+
+document
+.querySelectorAll(
+"img"
+)
+.forEach(
+image=>{
+
+
+if(
+!image.hasAttribute(
+"loading"
+)
+){
+
+
+image.setAttribute(
+"loading",
+"lazy"
+);
+
+
+}
 
 
 });
@@ -271,10 +322,8 @@ document.querySelector(
 
 const lightboxClose =
 document.querySelector(
-".lightbox-close"
+"#lightboxClose"
 );
-
-
 
 
 
@@ -283,8 +332,7 @@ document.querySelector(
 
 function openLightbox(
 image,
-title = "",
-description = ""
+title=""
 ){
 
 
@@ -329,12 +377,12 @@ document.body.style.overflow =
 
 
 
-
 function closeLightbox(){
 
 
-
-if(!imageLightbox){
+if(
+!imageLightbox
+){
 
 return;
 
@@ -363,9 +411,11 @@ document.body.style.overflow =
 
 
 
+
+
 /*
 =====================================
-GALLERY CLICK
+GALLERY IMAGES
 =====================================
 */
 
@@ -407,7 +457,7 @@ image.alt
 
 /*
 =====================================
-COSPLAY CLICK
+COSPLAY IMAGES
 =====================================
 */
 
@@ -436,6 +486,8 @@ const title =
 card?.querySelector(
 "h3"
 );
+
+
 
 
 
@@ -487,10 +539,6 @@ closeLightbox
 
 
 
-
-
-
-
 if(imageLightbox){
 
 
@@ -514,8 +562,6 @@ closeLightbox();
 
 
 }
-
-
 
 
 
@@ -575,23 +621,11 @@ frame.addEventListener(
 
 
 console.log(
+
 "Twitch player loaded:",
+
 frame.src
-);
 
-
-});
-
-
-
-frame.addEventListener(
-"error",
-()=>{
-
-
-console.warn(
-"Twitch player error:",
-frame.src
 );
 
 
@@ -634,23 +668,11 @@ frame.addEventListener(
 
 
 console.log(
+
 "YouTube player loaded:",
+
 frame.src
-);
 
-
-});
-
-
-
-frame.addEventListener(
-"error",
-()=>{
-
-
-console.warn(
-"YouTube player error:",
-frame.src
 );
 
 
@@ -679,8 +701,11 @@ link.addEventListener(
 
 
 console.log(
+
 "Opening social:",
+
 link.href
+
 );
 
 
@@ -732,6 +757,7 @@ backTop.classList.add(
 );
 
 
+
 }else{
 
 
@@ -740,10 +766,14 @@ backTop.classList.remove(
 );
 
 
+
 }
 
 
 });
+
+
+
 
 
 
@@ -766,7 +796,39 @@ behavior:"smooth"
 });
 
 
+
 }
+
+
+
+
+
+
+
+
+
+/*
+=====================================
+EXTERNAL LINKS
+=====================================
+*/
+
+
+document
+.querySelectorAll(
+'a[target="_blank"]'
+)
+.forEach(
+link=>{
+
+
+link.setAttribute(
+"rel",
+"noopener noreferrer"
+);
+
+
+});
 
 
 
@@ -789,8 +851,11 @@ event=>{
 
 
 console.warn(
+
 "Frontend error:",
+
 event.message
+
 );
 
 
@@ -803,11 +868,20 @@ event.message
 
 
 
+
 /*
 =====================================
-END DOM CONTENT LOADED
+FINAL CHECK
 =====================================
 */
+
+
+console.log(
+
+"Upminaa Fan Hub loaded successfully"
+
+);
+
 
 
 });
