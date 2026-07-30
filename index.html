@@ -1,35 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-<title>
-Upminaa Fan Hub
-</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<meta 
-name="description"
-content="Upminaa Fan Hub - Cosplay, gaming, videos and social media."
->
+    <title>Upminaa Fan Hub</title>
 
 
-<link
-rel="icon"
-type="image/png"
-href="./assets/images/favicon.png"
->
+    <meta 
+        name="description" 
+        content="O maior hub de fãs da Mina. Notícias, galeria, vídeos, comunidade e conteúdos exclusivos."
+    >
 
 
-<link
-rel="stylesheet"
-href="./CSS/style.css"
->
+    <meta 
+        name="theme-color" 
+        content="#09090f"
+    >
+
+
+    <!-- Open Graph -->
+
+    <meta property="og:title" content="Upminaa Fan Hub">
+
+    <meta 
+        property="og:description" 
+        content="Comunidade, conteúdos e novidades do universo Mina."
+    >
+
+    <meta 
+        property="og:type" 
+        content="website"
+    >
+
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="assets/css/style.css">
 
 
 </head>
@@ -38,49 +49,72 @@ href="./CSS/style.css"
 <body>
 
 
-<header class="navbar">
+<div class="page-wrapper">
 
 
-<div class="logo">
-UPMINAA FAN HUB
-</div>
+<!-- =========================
+     HEADER
+========================= -->
+
+
+<header class="header">
+
+
+    <div class="container header-container">
+
+
+        <a href="#" class="logo">
+
+            Upminaa
+            <span>Fan Hub</span>
+
+        </a>
 
 
 
-
-<nav>
-
-<a href="#home">
-Home
-</a>
+        <nav class="nav">
 
 
-<a href="#about">
-About
-</a>
+            <a href="#home">
+                Início
+            </a>
 
 
-<a href="#cosplay">
-Cosplay
-</a>
+            <a href="#about">
+                Sobre
+            </a>
 
 
-<a href="#gallery">
-Gallery
-</a>
+            <a href="#gallery">
+                Galeria
+            </a>
 
 
-<a href="#videos">
-Videos
-</a>
+            <a href="#news">
+                Notícias
+            </a>
 
 
-<a href="#social">
-Social
-</a>
+            <a href="#community">
+                Comunidade
+            </a>
 
 
-</nav>
+        </nav>
+
+
+
+        <button 
+            class="menu-toggle"
+            aria-label="Abrir menu"
+        >
+
+            ☰
+
+        </button>
+
+
+    </div>
 
 
 </header>
@@ -89,80 +123,84 @@ Social
 
 
 
+<!-- =========================
+     HERO SECTION
+========================= -->
+
+
 <main>
 
 
-
-
-
-<section
-id="home"
-class="hero"
+<section 
+    class="hero"
+    id="home"
 >
 
 
 
-
-<div class="hero-background"></div>
-
+<div class="container hero-container">
 
 
 
-
-<div class="profile-container">
-
-
-<img
-src="./assets/images/profile/upminaa-profile.png"
-alt="Upminaa profile picture"
-class="profile-image"
->
+<div class="hero-content">
 
 
-</div>
+<span class="hero-tag">
 
+    ✨ Fan Hub Oficial
 
-
+</span>
 
 
 
 <h1>
-UPMINAA
+
+    Bem-vindo ao 
+    <span>
+        Upminaa
+    </span>
+    Fan Hub
+
 </h1>
 
 
 
 <p>
-Cosplay, gaming and community.
+
+    Um espaço criado para reunir fãs,
+    novidades, conteúdos exclusivos,
+    galeria, vídeos e uma comunidade apaixonada.
+
 </p>
-
-
-
 
 
 
 <div class="hero-buttons">
 
 
-
-<a
-href="#social"
-class="hero-btn"
+<a 
+    href="#community"
+    class="btn btn-primary btn-premium"
 >
-Follow
+
+    Entrar na Comunidade
+
 </a>
 
 
 
-
-<a
-href="#videos"
-class="hero-btn"
+<a 
+    href="#gallery"
+    class="btn btn-outline"
 >
-Watch
+
+    Explorar Galeria
+
 </a>
 
 
+
+</div>
 
 
 </div>
@@ -170,10 +208,36 @@ Watch
 
 
 
-</section><section
-id="about"
-class="about section"
+
+<div class="hero-image reveal-image">
+
+
+<img 
+    src="assets/images/hero.png"
+    alt="Upminaa Fan Hub"
 >
+
+
+</div>
+
+
+
+
+</div>
+
+
+</section><!-- =========================
+     ABOUT SECTION
+========================= -->
+
+
+<section 
+    class="section about-section"
+    id="about"
+>
+
+
+<div class="container">
 
 
 
@@ -181,19 +245,21 @@ class="about section"
 
 
 <h2>
-About Upminaa
+
+    Sobre o Fan Hub
+
 </h2>
 
 
-
 <p>
-Learn more about the creator, cosplayer and streamer.
+
+    Conheça o projeto, sua comunidade
+    e tudo que faz esse espaço ser especial.
+
 </p>
 
 
 </div>
-
-
 
 
 
@@ -203,23 +269,16 @@ Learn more about the creator, cosplayer and streamer.
 
 
 
+<div class="about-image reveal-image">
 
 
-<div class="about-image">
-
-
-<img
-src="./assets/images/profile/upminaa-bio-photo.jpg"
-alt="Upminaa biography photo"
-loading="lazy"
+<img 
+    src="assets/images/about.png"
+    alt="Sobre Upminaa Fan Hub"
 >
 
 
 </div>
-
-
-
-
 
 
 
@@ -228,150 +287,73 @@ loading="lazy"
 
 
 <h3>
-Cosplay • Gaming • Community
-</h3>
 
+    Uma comunidade feita por fãs
 
-
-
-<p>
-Upminaa is a content creator focused on cosplay,
-gaming and interaction with her community.
-</p>
-
-
-
-
-
-<p>
-This fan hub collects her content, photos,
-videos and social media links in one place.
-</p>
-
-
-
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="info-cards">
-
-
-
-
-
-<div class="info-card">
-
-
-<div class="info-icon">
-🎭
-</div>
-
-
-
-<h3>
-Cosplay
 </h3>
 
 
 
 <p>
-Creative costumes and character transformations.
+
+    O Upminaa Fan Hub nasceu para reunir
+    informações, conteúdos, momentos marcantes
+    e criar um espaço onde fãs possam interagir.
+
 </p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="info-card">
-
-
-<div class="info-icon">
-🎮
-</div>
-
-
-
-<h3>
-Gaming
-</h3>
 
 
 
 <p>
-Games, streams and entertainment content.
+
+    Aqui você encontra novidades,
+    imagens, vídeos, eventos e tudo relacionado
+    ao universo da comunidade.
+
 </p>
 
 
 
-</div>
-
-
-
-
-
-
-
-
-<div class="info-card">
-
-
-<div class="info-icon">
-💜
-</div>
-
-
-
-<h3>
-Community
-</h3>
-
-
-
-<p>
-A place for fans and supporters.
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-</div>
-
-
-
-
-
-</section><section
-id="cosplay"
-class="cosplay section"
+<a 
+    href="#community"
+    class="btn btn-primary"
 >
+
+    Fazer parte
+
+</a>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- =========================
+     CHARACTERS SECTION
+========================= -->
+
+
+<section
+    class="section characters-section"
+    id="characters"
+>
+
+
+<div class="container">
 
 
 
@@ -379,15 +361,18 @@ class="cosplay section"
 
 
 <h2>
-Cosplay Gallery
+
+    Personagens
+
 </h2>
 
 
-
 <p>
-Explore Upminaa's cosplay creations.
-</p>
 
+    Conheça os principais destaques
+    e conteúdos do Fan Hub.
+
+</p>
 
 
 </div>
@@ -396,46 +381,49 @@ Explore Upminaa's cosplay creations.
 
 
 
-
-
-
-
-<div class="cosplay-grid">
-
+<div class="characters-grid">
 
 
 
 
 
+<article class="character-card">
 
-<article class="cosplay-card">
 
+<div class="character-image">
 
 
 <img
-src="./assets/images/cosplay/cosplay-gura.jpg"
-alt="Upminaa Gura cosplay"
-loading="lazy"
+    src="assets/images/character-1.png"
+    alt="Personagem destaque"
 >
-
-
-
-
-<div class="cosplay-overlay">
-
-
-<h3>
-Gura
-</h3>
-
-
-<p>
-Cosplay
-</p>
 
 
 </div>
 
+
+
+<div class="character-info">
+
+
+<h3>
+
+    Destaque 01
+
+</h3>
+
+
+
+<p>
+
+    Informações e detalhes
+    sobre este conteúdo.
+
+</p>
+
+
+
+</div>
 
 
 </article>
@@ -446,36 +434,43 @@ Cosplay
 
 
 
+<article class="character-card">
 
 
-<article class="cosplay-card">
-
+<div class="character-image">
 
 
 <img
-src="./assets/images/cosplay/cosplay-makima.jpg"
-alt="Upminaa Makima cosplay"
-loading="lazy"
+    src="assets/images/character-2.png"
+    alt="Personagem destaque"
 >
-
-
-
-
-<div class="cosplay-overlay">
-
-
-<h3>
-Makima
-</h3>
-
-
-<p>
-Cosplay
-</p>
 
 
 </div>
 
+
+
+<div class="character-info">
+
+
+<h3>
+
+    Destaque 02
+
+</h3>
+
+
+
+<p>
+
+    Informações e detalhes
+    sobre este conteúdo.
+
+</p>
+
+
+
+</div>
 
 
 </article>
@@ -486,36 +481,43 @@ Cosplay
 
 
 
+<article class="character-card">
 
 
-<article class="cosplay-card">
-
+<div class="character-image">
 
 
 <img
-src="./assets/images/cosplay/cosplay-miku.jpg"
-alt="Upminaa Miku cosplay"
-loading="lazy"
+    src="assets/images/character-3.png"
+    alt="Personagem destaque"
 >
-
-
-
-
-<div class="cosplay-overlay">
-
-
-<h3>
-Miku
-</h3>
-
-
-<p>
-Cosplay
-</p>
 
 
 </div>
 
+
+
+<div class="character-info">
+
+
+<h3>
+
+    Destaque 03
+
+</h3>
+
+
+
+<p>
+
+    Informações e detalhes
+    sobre este conteúdo.
+
+</p>
+
+
+
+</div>
 
 
 </article>
@@ -526,36 +528,43 @@ Cosplay
 
 
 
+<article class="character-card">
 
 
-<article class="cosplay-card">
-
+<div class="character-image">
 
 
 <img
-src="./assets/images/cosplay/cosplay-frieren.jpg"
-alt="Upminaa Frieren cosplay"
-loading="lazy"
+    src="assets/images/character-4.png"
+    alt="Personagem destaque"
 >
-
-
-
-
-<div class="cosplay-overlay">
-
-
-<h3>
-Frieren
-</h3>
-
-
-<p>
-Cosplay
-</p>
 
 
 </div>
 
+
+
+<div class="character-info">
+
+
+<h3>
+
+    Destaque 04
+
+</h3>
+
+
+
+<p>
+
+    Informações e detalhes
+    sobre este conteúdo.
+
+</p>
+
+
+
+</div>
 
 
 </article>
@@ -564,58 +573,24 @@ Cosplay
 
 
 
-
-
-
-
-<article class="cosplay-card">
-
-
-
-<img
-src="./assets/images/cosplay/cosplay-maki.jpg"
-alt="Upminaa Maki cosplay"
-loading="lazy"
->
-
-
-
-
-<div class="cosplay-overlay">
-
-
-<h3>
-Maki
-</h3>
-
-
-<p>
-Cosplay
-</p>
+</div>
 
 
 </div>
 
 
-
-</article>
-
-
-
+</section><!-- =========================
+     GALLERY SECTION
+========================= -->
 
 
-
-
-</div>
-
-
-
-
-
-</section><section
-id="gallery"
-class="gallery section"
+<section
+    class="section gallery-section"
+    id="gallery"
 >
+
+
+<div class="container">
 
 
 
@@ -623,22 +598,21 @@ class="gallery section"
 
 
 <h2>
-Gallery
+
+    Galeria
+
 </h2>
 
 
-
 <p>
-Photos, memories and community moments.
+
+    Confira imagens, momentos
+    e conteúdos especiais da comunidade.
+
 </p>
 
 
-
 </div>
-
-
-
-
 
 
 
@@ -650,227 +624,88 @@ Photos, memories and community moments.
 
 
 
-
-
-<article class="gallery-card">
-
+<div class="gallery-item reveal-image">
 
 
 <img
-src="./assets/images/gallery/main.jpg"
-alt="Upminaa main gallery image"
-loading="lazy"
+    src="assets/images/gallery-1.png"
+    alt="Galeria Upminaa Fan Hub"
 >
-
-
-
-
-<div class="gallery-overlay">
-
-
-<h3>
-Main
-</h3>
 
 
 </div>
 
 
 
-</article>
 
 
-
-
-
-
-
-
-
-<article class="gallery-card">
-
+<div class="gallery-item reveal-image">
 
 
 <img
-src="./assets/images/gallery/gaming.jpg"
-alt="Gaming content"
-loading="lazy"
+    src="assets/images/gallery-2.png"
+    alt="Galeria Upminaa Fan Hub"
 >
-
-
-
-
-<div class="gallery-overlay">
-
-
-<h3>
-Gaming
-</h3>
 
 
 </div>
 
 
 
-</article>
 
 
-
-
-
-
-
-
-
-<article class="gallery-card">
-
+<div class="gallery-item reveal-image">
 
 
 <img
-src="./assets/images/gallery/fanart.jpg"
-alt="Fanart collection"
-loading="lazy"
+    src="assets/images/gallery-3.png"
+    alt="Galeria Upminaa Fan Hub"
 >
-
-
-
-
-<div class="gallery-overlay">
-
-
-<h3>
-Fanart
-</h3>
 
 
 </div>
 
 
 
-</article>
 
 
-
-
-
-
-
-
-
-<article class="gallery-card">
-
+<div class="gallery-item reveal-image">
 
 
 <img
-src="./assets/images/gallery/behind-the-scenes.jpg"
-alt="Behind the scenes"
-loading="lazy"
+    src="assets/images/gallery-4.png"
+    alt="Galeria Upminaa Fan Hub"
 >
 
 
-
-
-<div class="gallery-overlay">
-
-
-<h3>
-Behind the Scenes
-</h3>
-
-
-</div>
-
-
-
-</article>
-
-
-
-
-
-
-
 </div>
 
 
 
 
 
-</section><section
-id="videos"
-class="videos section"
+<div class="gallery-item reveal-image">
+
+
+<img
+    src="assets/images/gallery-5.png"
+    alt="Galeria Upminaa Fan Hub"
 >
 
 
-
-<div class="section-header">
-
-
-<h2>
-Videos & Live Streams
-</h2>
-
-
-
-<p>
-Watch Upminaa's content.
-</p>
-
-
-
 </div>
 
 
 
 
 
+<div class="gallery-item reveal-image">
 
 
-
-
-<div class="players-grid">
-
-
-
-
-
-
-
-<div class="player-card">
-
-
-
-<h3>
-Twitch Live
-</h3>
-
-
-
-
-<div class="twitch-container">
-
-
-<iframe
-src="https://player.twitch.tv/?channel=upminaa&parent=lovely-cranachan-feeba6.netlify.app&autoplay=false"
-frameborder="0"
-allowfullscreen="true">
-</iframe>
-
-
-
-</div>
-
-
-
-
-<a
-href="https://www.twitch.tv/upminaa"
-target="_blank"
-class="watch-button twitch-button"
+<img
+    src="assets/images/gallery-6.png"
+    alt="Galeria Upminaa Fan Hub"
 >
-Watch Twitch
-</a>
-
 
 
 </div>
@@ -878,62 +713,10 @@ Watch Twitch
 
 
 
-
-
-
-
-
-<div class="player-card">
-
-
-
-<h3>
-YouTube
-</h3>
-
-
-
-
-<div class="youtube-container">
-
-
-
-<iframe
-src="https://www.youtube.com/embed/"
-title="Upminaa YouTube"
-frameborder="0"
-allowfullscreen>
-</iframe>
-
-
-
 </div>
 
 
-
-
-<a
-href="https://www.youtube.com/"
-target="_blank"
-class="watch-button youtube-button"
->
-Watch YouTube
-</a>
-
-
-
 </div>
-
-
-
-
-
-
-
-</div>
-
-
-
 
 
 </section>
@@ -943,13 +726,18 @@ Watch YouTube
 
 
 
-
+<!-- =========================
+     COMMUNITY SECTION
+========================= -->
 
 
 <section
-id="social"
-class="social section"
+    class="section community-section"
+    id="community"
 >
+
+
+<div class="container">
 
 
 
@@ -957,97 +745,60 @@ class="social section"
 
 
 <h2>
-Social Media
+
+    Comunidade
+
 </h2>
 
 
+<p>
+
+    Faça parte do espaço onde fãs
+    compartilham experiências.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="community-content">
+
+
+
+
+
+<div class="community-card">
+
+
+<h3>
+
+    Redes sociais
+
+</h3>
+
 
 <p>
-Follow Upminaa on every platform.
+
+    Acompanhe novidades,
+    interaja com outros fãs
+    e fique por dentro de tudo.
+
 </p>
 
 
 
-</div>
-
-
-
-
-
-
-
-
-
-<div class="social-grid">
-
-
-
-
-
 <a
-href="#"
-class="social-card twitch"
-target="_blank"
+    href="#"
+    class="btn btn-primary"
 >
-Twitch
+
+    Entrar na comunidade
+
 </a>
-
-
-
-
-
-
-<a
-href="#"
-class="social-card instagram"
-target="_blank"
->
-Instagram
-</a>
-
-
-
-
-
-
-<a
-href="#"
-class="social-card youtube"
-target="_blank"
->
-YouTube
-</a>
-
-
-
-
-
-
-<a
-href="#"
-class="social-card tiktok"
-target="_blank"
->
-TikTok
-</a>
-
-
-
-
-
-
-<a
-href="#"
-class="social-card twitter"
-target="_blank"
->
-X
-</a>
-
-
-
-
-
 
 
 </div>
@@ -1056,36 +807,467 @@ X
 
 
 
-</section>
+<div class="community-card">
+
+
+<h3>
+
+    Eventos
+
+</h3>
+
+
+<p>
+
+    Veja momentos especiais,
+    participações e conteúdos
+    exclusivos.
+
+</p>
 
 
 
-
-
-
-
-
-
-<div
-id="imageLightbox"
-class="lightbox"
+<a
+    href="#gallery"
+    class="btn btn-secondary"
 >
+
+    Ver galeria
+
+</a>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+</section><!-- =========================
+     CONTACT SECTION
+========================= -->
+
+
+<section
+    class="section contact-section"
+    id="contact"
+>
+
+
+<div class="container">
+
+
+
+<div class="section-header">
+
+
+<h2>
+
+    Contato
+
+</h2>
+
+
+<p>
+
+    Entre em contato e envie
+    sua mensagem para o Fan Hub.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="contact-content">
+
+
+
+
+
+<div class="contact-info">
+
+
+
+<h3>
+
+    Fale conosco
+
+</h3>
+
+
+
+<p>
+
+    Tem alguma sugestão,
+    dúvida ou ideia para o projeto?
+
+</p>
+
+
+
+<ul>
+
+
+<li>
+
+    📧 Email: contato@upminaa.com
+
+</li>
+
+
+<li>
+
+    🌐 Comunidade oficial
+
+</li>
+
+
+<li>
+
+    ⭐ Apoie o projeto
+
+</li>
+
+
+</ul>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="contact-form">
+
+
+
+<form>
+
+
+
+
+<div class="form-group">
+
+
+<label for="name">
+
+    Nome
+
+</label>
+
+
+<input
+    type="text"
+    id="name"
+    name="name"
+    placeholder="Seu nome"
+    required
+>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label for="email">
+
+    Email
+
+</label>
+
+
+<input
+    type="email"
+    id="email"
+    name="email"
+    placeholder="Seu email"
+    required
+>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label for="message">
+
+    Mensagem
+
+</label>
+
+
+<textarea
+    id="message"
+    name="message"
+    rows="5"
+    placeholder="Digite sua mensagem"
+    required
+></textarea>
+
+
+</div>
+
+
+
+
+
 
 
 <button
-class="lightbox-close"
+    type="submit"
+    class="btn btn-primary"
 >
-×
+
+Enviar mensagem
+
 </button>
 
 
 
 
-<img
-id="lightboxImage"
-src=""
-alt="Expanded image"
+</form>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+</section><!-- =========================
+     FOOTER
+========================= -->
+
+
+<footer class="footer">
+
+
+<div class="container">
+
+
+
+
+
+<div class="footer-content">
+
+
+
+
+
+<div class="footer-brand">
+
+
+<h3>
+
+    Upminaa Fan Hub
+
+</h3>
+
+
+<p>
+
+    Um espaço criado por fãs
+    para compartilhar momentos,
+    conteúdos e experiências.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="footer-links">
+
+
+
+<h4>
+
+    Navegação
+
+</h4>
+
+
+
+<ul>
+
+
+<li>
+
+<a href="#home">
+
+    Início
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="#about">
+
+    Sobre
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="#characters">
+
+    Personagens
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="#gallery">
+
+    Galeria
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="#community">
+
+    Comunidade
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="#contact">
+
+    Contato
+
+</a>
+
+</li>
+
+
+</ul>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="footer-social">
+
+
+
+<h4>
+
+    Redes
+
+</h4>
+
+
+
+<div class="social-links">
+
+
+
+<a
+    href="#"
+    aria-label="Instagram"
 >
+
+    Instagram
+
+</a>
+
+
+
+<a
+    href="#"
+    aria-label="Twitter"
+>
+
+    Twitter
+
+</a>
+
+
+
+<a
+    href="#"
+    aria-label="Discord"
+>
+
+    Discord
+
+</a>
+
+
+
+</div>
+
+
+</div>
+
+
+
 
 
 
@@ -1097,29 +1279,24 @@ alt="Expanded image"
 
 
 
-
-
-<footer class="footer">
-
-
-
-<h2>
-UPMINAA FAN HUB
-</h2>
-
+<div class="footer-bottom">
 
 
 <p>
-A fan-made project for organizing Upminaa's content,
-cosplays, gaming and social links.
+
+    © 2026 Upminaa Fan Hub.
+    Todos os direitos reservados.
+
 </p>
 
 
+</div>
 
-<p>
-© 2026 Upminaa Fan Hub
-</p>
 
+
+
+
+</div>
 
 
 </footer>
@@ -1130,28 +1307,12 @@ cosplays, gaming and social links.
 
 
 
+<!-- =========================
+     SCRIPTS
+========================= -->
 
 
-<button
-class="back-top"
->
-↑
-</button>
-
-
-
-
-
-
-
-
-
-<script
-type="module"
-src="./js/main.js"
-></script>
-
-
+<script src="js/main.js"></script>
 
 
 
