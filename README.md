@@ -102,34 +102,32 @@ Links das redes sociais oficiais:
 - Smooth Scroll---
 
 # 📂 Estrutura do projeto
+
+```text
 upminaa-fansite/
 
 │
 ├── index.html
-│
+├── style.css
+├── main.js
 ├── README.md
-│
 ├── LICENSE
 │
-│── style.css
-│ 
-│
-│── main.js
-├── assets/
-│
-│ └── images/
-│ │
-│ ├── favicon.png
-│ │
-│ ├── profile/
-│ │ └── imagens principais
-│ │
-│ ├── cosplay/
-│ │ └── imagens dos cosplays
-│ │
-│ └── gallery/
-│ └── imagens da galeria
-
+└── assets/
+    │
+    └── images/
+        │
+        ├── favicon.png
+        │
+        ├── profile/
+        │   └── imagens principais da criadora
+        │
+        ├── cosplay/
+        │   └── imagens dos cosplays
+        │
+        └── gallery/
+            └── imagens da galeria
+```
 ---
 
 # 🚀 Como executar
