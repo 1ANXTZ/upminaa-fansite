@@ -30,7 +30,8 @@ document
 .querySelectorAll(
 'a[href^="#"]'
 )
-.forEach(link=>{
+.forEach(
+link=>{
 
 
 link.addEventListener(
@@ -51,7 +52,6 @@ if(target){
 event.preventDefault();
 
 
-
 target.scrollIntoView({
 
 behavior:"smooth",
@@ -68,6 +68,7 @@ block:"start"
 
 
 });
+
 
 
 
@@ -119,6 +120,8 @@ navigation.classList.toggle(
 
 
 
+
+
 /*
 =====================================
 SCROLL REVEAL
@@ -129,24 +132,28 @@ SCROLL REVEAL
 const revealItems =
 document.querySelectorAll(
 `
-.bio-card,
-.character-card,
-.gallery-item,
-.media-card,
+.cosplay-card,
+.gallery-card,
+.stream-card,
 .video-card,
-.community-card,
-.credit-card
+.social-card,
+.reference-card,
+.fact-card,
+.source-card
 `
 );
+
+
 
 
 
 if(revealItems.length){
 
 
+
 const observer =
 new IntersectionObserver(
-(entries)=>{
+entries=>{
 
 
 entries.forEach(
@@ -159,7 +166,6 @@ if(entry.isIntersecting){
 entry.target.classList.add(
 "visible"
 );
-
 
 
 observer.unobserve(
@@ -183,6 +189,7 @@ threshold:0.15
 
 
 
+
 revealItems.forEach(
 item=>{
 
@@ -196,6 +203,7 @@ item
 
 
 }
+
 
 
 
@@ -235,53 +243,35 @@ image.classList.add(
 );
 
 
-});
-
 
 });
 
 
-
-
-
-});/*
+});
+/*
 =====================================
-IMAGE MODAL
+IMAGE LIGHTBOX
 =====================================
 */
 
 
-const imageModal =
+const imageLightbox =
 document.querySelector(
-"#imageModal"
+"#imageLightbox"
 );
 
 
 
-const modalImage =
+const lightboxImage =
 document.querySelector(
-"#modalImage"
+"#lightboxImage"
 );
 
 
 
-const modalTitle =
+const lightboxClose =
 document.querySelector(
-"#modalTitle"
-);
-
-
-
-const modalDescription =
-document.querySelector(
-"#modalDescription"
-);
-
-
-
-const modalClose =
-document.querySelector(
-".modal-close"
+".lightbox-close"
 );
 
 
@@ -290,17 +280,18 @@ document.querySelector(
 
 
 
-function openImageModal(
+
+function openLightbox(
 image,
-title = "Gallery image",
-description = "Community content."
+title = "",
+description = ""
 ){
 
 
 
 if(
-!imageModal ||
-!modalImage
+!imageLightbox ||
+!lightboxImage
 ){
 
 return;
@@ -309,32 +300,17 @@ return;
 
 
 
-
-modalImage.src =
+lightboxImage.src =
 image;
 
 
 
-if(modalTitle){
-
-modalTitle.textContent =
-title;
-
-}
+lightboxImage.alt =
+title || "Expanded image";
 
 
 
-if(modalDescription){
-
-modalDescription.textContent =
-description;
-
-}
-
-
-
-
-imageModal.classList.add(
+imageLightbox.classList.add(
 "active"
 );
 
@@ -344,6 +320,7 @@ document.body.style.overflow =
 "hidden";
 
 
+
 }
 
 
@@ -353,12 +330,11 @@ document.body.style.overflow =
 
 
 
-
-function closeImageModal(){
-
+function closeLightbox(){
 
 
-if(!imageModal){
+
+if(!imageLightbox){
 
 return;
 
@@ -366,7 +342,7 @@ return;
 
 
 
-imageModal.classList.remove(
+imageLightbox.classList.remove(
 "active"
 );
 
@@ -396,37 +372,24 @@ GALLERY CLICK
 
 document
 .querySelectorAll(
-".gallery-item"
+".gallery-card img"
 )
 .forEach(
-item=>{
+image=>{
 
 
-item.addEventListener(
+image.addEventListener(
 "click",
 ()=>{
 
 
-const image =
-item.querySelector(
-"img"
-);
-
-
-
-if(image){
-
-
-openImageModal(
+openLightbox(
 
 image.src,
 
 image.alt
 
 );
-
-
-}
 
 
 });
@@ -451,57 +414,42 @@ COSPLAY CLICK
 
 document
 .querySelectorAll(
-".character-card"
+".cosplay-card img"
 )
 .forEach(
-card=>{
+image=>{
 
 
-card.addEventListener(
+image.addEventListener(
 "click",
 ()=>{
 
 
-const image =
-card.querySelector(
-"img"
+const card =
+image.closest(
+".cosplay-card"
 );
 
 
 
 const title =
-card.querySelector(
+card?.querySelector(
 "h3"
 );
 
 
 
-const description =
-card.querySelector(
-"p"
-);
-
-
-
-if(image){
-
-
-openImageModal(
+openLightbox(
 
 image.src,
 
-title ?
-title.textContent :
-"Cosplay",
-
-description ?
-description.textContent :
-"Cosplay content."
+title
+?
+title.textContent
+:
+"Cosplay"
 
 );
-
-
-}
 
 
 });
@@ -519,17 +467,17 @@ description.textContent :
 
 /*
 =====================================
-CLOSE BUTTON
+CLOSE LIGHTBOX
 =====================================
 */
 
 
-if(modalClose){
+if(lightboxClose){
 
 
-modalClose.addEventListener(
+lightboxClose.addEventListener(
 "click",
-closeImageModal
+closeLightbox
 );
 
 
@@ -543,27 +491,20 @@ closeImageModal
 
 
 
-/*
-=====================================
-CLICK OUTSIDE MODAL
-=====================================
-*/
+if(imageLightbox){
 
 
-if(imageModal){
-
-
-imageModal.addEventListener(
+imageLightbox.addEventListener(
 "click",
 event=>{
 
 
 if(
-event.target === imageModal
+event.target === imageLightbox
 ){
 
 
-closeImageModal();
+closeLightbox();
 
 
 }
@@ -580,13 +521,6 @@ closeImageModal();
 
 
 
-
-
-/*
-=====================================
-ESC CLOSE
-=====================================
-*/
 
 
 document.addEventListener(
@@ -596,18 +530,26 @@ event=>{
 
 if(
 event.key === "Escape"
-&&
-imageModal?.classList.contains("active")
 ){
 
 
-closeImageModal();
+closeLightbox();
 
 
 }
 
 
-});/*
+});
+
+
+
+
+
+
+
+
+
+/*
 =====================================
 TWITCH PLAYERS
 =====================================
@@ -616,13 +558,15 @@ TWITCH PLAYERS
 
 const twitchFrames =
 document.querySelectorAll(
-".twitch-live iframe"
+".stream-card iframe"
 );
 
 
 
+
+
 twitchFrames.forEach(
-(frame)=>{
+frame=>{
 
 
 frame.addEventListener(
@@ -633,7 +577,6 @@ frame.addEventListener(
 console.log(
 "Twitch player loaded:",
 frame.src
-
 );
 
 
@@ -649,7 +592,6 @@ frame.addEventListener(
 console.warn(
 "Twitch player error:",
 frame.src
-
 );
 
 
@@ -680,31 +622,10 @@ document.querySelectorAll(
 
 
 
+
+
 youtubeFrames.forEach(
-(frame)=>{
-
-
-const source =
-frame.getAttribute(
-"src"
-);
-
-
-
-if(!source){
-
-
-console.warn(
-"YouTube player without source"
-);
-
-
-
-return;
-
-
-}
-
+frame=>{
 
 
 frame.addEventListener(
@@ -714,8 +635,7 @@ frame.addEventListener(
 
 console.log(
 "YouTube player loaded:",
-source
-
+frame.src
 );
 
 
@@ -729,9 +649,8 @@ frame.addEventListener(
 
 
 console.warn(
-"YouTube iframe error:",
-source
-
+"YouTube player error:",
+frame.src
 );
 
 
@@ -739,28 +658,19 @@ source
 
 
 });
-
-
-
-
-
-
-
-
-
 /*
 =====================================
-EXTERNAL LINKS
+SOCIAL LINKS
 =====================================
 */
 
 
 document
 .querySelectorAll(
-".social-links a"
+".social-card a"
 )
 .forEach(
-(link)=>{
+link=>{
 
 
 link.addEventListener(
@@ -770,8 +680,7 @@ link.addEventListener(
 
 console.log(
 "Opening social:",
-link.textContent.trim()
-
+link.href
 );
 
 
@@ -802,6 +711,8 @@ document.querySelector(
 
 
 
+
+
 if(backTop){
 
 
@@ -811,7 +722,9 @@ window.addEventListener(
 ()=>{
 
 
-if(window.scrollY > 500){
+if(
+window.scrollY > 500
+){
 
 
 backTop.classList.add(
@@ -878,12 +791,23 @@ event=>{
 console.warn(
 "Frontend error:",
 event.message
-
 );
 
 
 });
 
+
+
+
+
+
+
+
+/*
+=====================================
+END DOM CONTENT LOADED
+=====================================
+*/
 
 
 });
