@@ -1,153 +1,79 @@
-# Upminaa Fan Hub 💜
+# 🌸 Upminaa Fan Hub
 
-A fan-made website dedicated to **Upminaa**, featuring cosplay showcases, gaming content, community highlights and creator information.
+![Upminaa Fan Hub](assets/images/favicon.png)
 
-This project was built as a front-end practice project focused on creating a modern, responsive and visually immersive fan experience.
+Um fan site dedicado à criadora de conteúdo **Upminaa**, reunindo informações públicas, cosplays, galeria, streams, vídeos e links oficiais em uma única plataforma.
 
----
-
-## ✨ Features
-
-* 🎭 **Cosplay Showcase**
-
-  * Character galleries with dedicated cosplay cards.
-
-* 🖼️ **Gallery System**
-
-  * Main creator photos
-  * Behind-the-scenes moments
-  * Fanart showcase with artist credit
-  * Gaming content highlights
-
-* 🎨 **Fanart Credits**
-
-  * Fan creations include clickable artist attribution.
-
-* 🎮 **Gaming Section**
-
-  * Content focused on streams and gaming moments.
-
-* 📺 **Live Section**
-
-  * Stream area prepared for Twitch integration.
-
-* 💜 **Community Section**
-
-  * Dedicated space for fans and memorable moments.
-
-* 📱 **Responsive Design**
-
-  * Optimized for desktop, tablet and mobile devices.
-
-* ✨ **Modern UI**
-
-  * Dark theme
-  * Purple neon aesthetic
-  * Smooth hover effects and animations
+O projeto foi desenvolvido como um projeto de estudo e portfólio, focado em desenvolvimento front-end, organização de conteúdo e criação de uma experiência visual moderna para fãs.
 
 ---
 
-## 🛠️ Technologies Used
+## ✨ Funcionalidades
 
-* HTML5
-* CSS3
-* JavaScript
-* Responsive Web Design
+### 🏠 Home / Hero Section
+- Apresentação do Fan Hub
+- Imagem principal da criadora
+- Indicador de status LIVE
+- Navegação rápida entre seções
 
----
+### 👤 About
+- Biografia da criadora
+- Cards com informações principais
+- Área de descrição personalizada
 
-## 📂 Project Structure
+### 🎭 Cosplays
+- Área de cosplays destacados
+- Cards com informações individuais
+- Imagens com enquadramento otimizado
+- Sistema de visualização ampliada
 
-```text
-upminaa-fansite/
+### 🖼️ Gallery
+- Galeria de momentos
+- Bastidores
+- Fanart da comunidade
+- Créditos dos artistas
 
-├── index.html
+### 📺 Media
+- Players da Twitch
+- Área de vídeos do YouTube
+- Links para plataformas oficiais
 
-├── css/
-│   └── style.css
+### 🌐 Community
+Links das redes sociais:
 
-├── js/
-│   └── main.js
+- Instagram
+- TikTok
+- Twitch
+- YouTube
+- X/Twitter
 
-└── assets/
-    │
-    └── images/
-        │
-        ├── favicon.svg
-        │
-        ├── profile/
-        │   ├── upminaa-profile.png
-        │   └── upminaa-bio-photo.jpg
-        │
-        ├── cosplay/
-        │   ├── cosplay-makima.jpg
-        │   ├── cosplay-maki.jpg
-        │   ├── cosplay-miku.jpg
-        │   └── cosplay-frieren.jpg
-        │
-        └── gallery/
-            ├── gallery-main.jpg
-            ├── gallery-behind-the-scenes.jpg
-            ├── gallery-fanart.jpg
-            └── gallery-gaming.jpg
-```
-
----
-
-## 🖼️ Gallery Credits
-
-Fanart displayed in the gallery belongs to the respective artist.
-
-Artist:
-
-* Instagram: [@someguywhoarts](https://www.instagram.com/someguywhoarts/)
-
-All credits are provided to the original creator.
+### 🔍 Experiência do usuário
+- Design neon moderno
+- Animações de entrada
+- Efeitos hover
+- Lightbox para imagens
+- Layout responsivo para mobile e desktop
+- Navegação suave
 
 ---
 
-## 🚀 Running the Project
+# 🛠️ Tecnologias utilizadas
 
-Clone the repository:
+## Front-end
 
-```bash
-git clone https://github.com/1ANXTZ/upminaa-fansite.git
-```
+- HTML5
+- CSS3
+- JavaScript Vanilla
 
-Open the project folder and launch:
+## Recursos utilizados
 
-```text
-index.html
-```
-
-No additional dependencies are required.
-
----
-
-## 📌 Project Status
-
-🚧 Active development
-
-Future improvements may include:
-
-* Twitch API integration
-* Dynamic content updates
-* More creator information
-* Additional fan features
+- CSS Grid
+- CSS Flexbox
+- Intersection Observer API
+- DOM Manipulation
+- Responsive Design
+- Lightbox personalizado
 
 ---
 
-## 👨‍💻 Developer
-
-Created by **1ANXTZ**
-
-GitHub:
-https://github.com/1ANXTZ
-
----
-
-## ⚠️ Disclaimer
-
-This is an unofficial fan-made project created for educational and portfolio purposes.
-
-All images and creator-related assets belong to their respective owners.
+# 📂 Estrutura do projeto
