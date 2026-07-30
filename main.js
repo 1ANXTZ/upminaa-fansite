@@ -20,6 +20,7 @@ console.log(
 
 
 
+
 /*
 =====================================
 SMOOTH SCROLL
@@ -31,7 +32,8 @@ document
 .querySelectorAll(
 'a[href^="#"]'
 )
-.forEach(link=>{
+.forEach(
+link=>{
 
 
 link.addEventListener(
@@ -50,6 +52,7 @@ if(target){
 
 
 event.preventDefault();
+
 
 
 target.scrollIntoView({
@@ -90,14 +93,17 @@ document.querySelector(
 );
 
 
-const nav =
+
+const navigation =
 document.querySelector(
 ".nav-links"
 );
 
 
 
-if(menuButton && nav){
+
+
+if(menuButton && navigation){
 
 
 menuButton.addEventListener(
@@ -105,7 +111,7 @@ menuButton.addEventListener(
 ()=>{
 
 
-nav.classList.toggle(
+navigation.classList.toggle(
 "active"
 );
 
@@ -130,18 +136,16 @@ SCROLL REVEAL
 */
 
 
-const revealElements =
+const revealItems =
 document.querySelectorAll(
 `
-.detail-card,
 .fact-card,
 .cosplay-card,
 .gallery-card,
 .live-player-card,
 .youtube-card,
 .social-card,
-.reference-card,
-.source-card
+.reference-card
 `
 );
 
@@ -149,7 +153,8 @@ document.querySelectorAll(
 
 
 
-if(revealElements.length){
+if(revealItems.length){
+
 
 
 const observer =
@@ -157,7 +162,8 @@ new IntersectionObserver(
 entries=>{
 
 
-entries.forEach(entry=>{
+entries.forEach(
+entry=>{
 
 
 if(entry.isIntersecting){
@@ -193,12 +199,13 @@ threshold:.15
 
 
 
-revealElements.forEach(
-element=>{
+
+revealItems.forEach(
+item=>{
 
 
 observer.observe(
-element
+item
 );
 
 
@@ -226,7 +233,8 @@ document
 .querySelectorAll(
 "img"
 )
-.forEach(image=>{
+.forEach(
+image=>{
 
 
 image.addEventListener(
@@ -263,16 +271,25 @@ document.querySelector(
 );
 
 
+
 const lightboxImage =
 document.querySelector(
 "#lightboxImage"
 );
 
 
+
 const lightboxClose =
 document.querySelector(
 ".lightbox-close"
 );
+
+
+
+
+
+let savedScrollPosition = 0;
+
 
 
 
@@ -298,6 +315,12 @@ return;
 
 
 
+savedScrollPosition =
+window.scrollY;
+
+
+
+
 lightboxImage.src =
 src;
 
@@ -316,6 +339,7 @@ lightbox.classList.add(
 
 document.body.style.overflow =
 "hidden";
+
 
 
 }
@@ -337,6 +361,7 @@ return;
 
 
 
+
 lightbox.classList.remove(
 "active"
 );
@@ -345,6 +370,23 @@ lightbox.classList.remove(
 
 document.body.style.overflow =
 "";
+
+
+
+setTimeout(()=>{
+
+
+window.scrollTo({
+
+top:savedScrollPosition,
+
+behavior:"instant"
+
+});
+
+
+},10);
+
 
 
 }
@@ -360,7 +402,6 @@ document.body.style.overflow =
 /*
 =====================================
 CLICKABLE IMAGES
-COSPLAY + GALLERY
 =====================================
 */
 
@@ -386,9 +427,16 @@ image.style.cursor =
 
 
 
+
 image.addEventListener(
 "click",
-()=>{
+event=>{
+
+
+event.preventDefault();
+
+
+
 
 
 const card =
@@ -398,10 +446,14 @@ image.closest(
 
 
 
+
+
 const title =
 card?.querySelector(
 "h3"
 );
+
+
 
 
 
@@ -434,7 +486,7 @@ image.alt
 
 /*
 =====================================
-CLOSE BUTTON
+CLOSE LIGHTBOX
 =====================================
 */
 
@@ -455,13 +507,6 @@ closeLightbox
 
 
 
-
-
-/*
-=====================================
-CLICK OUTSIDE IMAGE
-=====================================
-*/
 
 
 if(lightbox){
@@ -493,14 +538,6 @@ closeLightbox();
 
 
 
-
-
-
-/*
-=====================================
-ESC CLOSE
-=====================================
-*/
 
 
 document.addEventListener(
@@ -567,24 +604,14 @@ player.addEventListener(
 
 
 console.warn(
-"Twitch player failed"
+"Twitch player error"
 );
 
 
 });
 
 
-});
-
-
-
-
-
-
-
-
-
-/*
+});/*
 =====================================
 YOUTUBE PLAYER CHECK
 =====================================
@@ -622,16 +649,26 @@ player.addEventListener(
 
 
 console.warn(
-"YouTube player failed"
+"YouTube player error"
 );
 
 
 });
 
 
-});/*
+});
+
+
+
+
+
+
+
+
+
+/*
 =====================================
-SOCIAL LINKS TRACKING
+SOCIAL LINKS
 =====================================
 */
 
@@ -722,7 +759,6 @@ backTop.classList.remove(
 
 
 
-
 backTop.addEventListener(
 "click",
 ()=>{
@@ -764,23 +800,6 @@ document.querySelector(
 
 
 
-/*
- 
-Estados:
-
-offline:
-.live-status.offline
-
-online:
-.live-status.online
-
-
-A troca real depende da API do Twitch.
-Este bloco deixa preparado
-para receber o retorno da API.
-
-*/
-
 
 
 function updateLiveStatus(
@@ -796,6 +815,7 @@ return;
 
 
 
+
 if(isLive){
 
 
@@ -804,9 +824,11 @@ liveBadge.classList.remove(
 );
 
 
+
 liveBadge.classList.add(
 "online"
 );
+
 
 
 liveBadge.textContent =
@@ -841,8 +863,22 @@ liveBadge.textContent =
 
 
 
+/*
 
-// Estado inicial
+Por padrão começa offline.
+
+Quando conectar a Twitch API:
+
+updateLiveStatus(true);
+
+para vermelho.
+
+updateLiveStatus(false);
+
+para cinza.
+
+*/
+
 
 updateLiveStatus(false);
 
@@ -884,9 +920,10 @@ event.message
 
 
 
+
 /*
 =====================================
-END
+END DOM CONTENT LOADED
 =====================================
 */
 
