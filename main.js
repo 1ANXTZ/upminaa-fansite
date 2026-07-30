@@ -1,8 +1,7 @@
 /*
 =====================================
 UPMINAA FAN HUB
-main.js
-NEON VERSION
+MAIN JAVASCRIPT
 =====================================
 */
 
@@ -31,8 +30,7 @@ document
 .querySelectorAll(
 'a[href^="#"]'
 )
-.forEach(
-link=>{
+.forEach(link=>{
 
 
 link.addEventListener(
@@ -92,16 +90,14 @@ document.querySelector(
 );
 
 
-
-const navigation =
+const nav =
 document.querySelector(
 ".nav-links"
 );
 
 
 
-
-if(menuButton && navigation){
+if(menuButton && nav){
 
 
 menuButton.addEventListener(
@@ -109,9 +105,10 @@ menuButton.addEventListener(
 ()=>{
 
 
-navigation.classList.toggle(
+nav.classList.toggle(
 "active"
 );
+
 
 
 });
@@ -134,7 +131,7 @@ SCROLL REVEAL
 */
 
 
-const revealItems =
+const revealElements =
 document.querySelectorAll(
 `
 .cosplay-card,
@@ -143,7 +140,8 @@ document.querySelectorAll(
 .video-card,
 .social-card,
 .reference-card,
-.fact-card,
+.bio-card,
+.detail-card,
 .source-card
 `
 );
@@ -152,20 +150,17 @@ document.querySelectorAll(
 
 
 
-if(revealItems.length){
-
-
 
 const observer =
 new IntersectionObserver(
 entries=>{
 
 
-entries.forEach(
-entry=>{
+entries.forEach(entry=>{
 
 
 if(entry.isIntersecting){
+
 
 
 entry.target.classList.add(
@@ -179,7 +174,9 @@ entry.target
 );
 
 
+
 }
+
 
 
 });
@@ -197,105 +194,14 @@ threshold:0.15
 
 
 
-revealItems.forEach(
-item=>{
+revealElements.forEach(
+element=>{
 
 
 observer.observe(
-item
+element
 );
 
-
-});
-
-
-}
-
-
-
-
-
-
-
-
-
-/*
-=====================================
-IMAGE ERROR CHECK
-=====================================
-*/
-
-
-document
-.querySelectorAll(
-"img"
-)
-.forEach(
-image=>{
-
-
-image.addEventListener(
-"error",
-()=>{
-
-
-console.warn(
-
-"Image not found:",
-
-image.src
-
-);
-
-
-
-image.classList.add(
-"image-error"
-);
-
-
-
-});
-
-
-});
-
-
-
-
-
-
-
-
-/*
-=====================================
-IMAGE LAZY LOADING
-=====================================
-*/
-
-
-document
-.querySelectorAll(
-"img"
-)
-.forEach(
-image=>{
-
-
-if(
-!image.hasAttribute(
-"loading"
-)
-){
-
-
-image.setAttribute(
-"loading",
-"lazy"
-);
-
-
-}
 
 
 });
@@ -306,7 +212,7 @@ IMAGE LIGHTBOX
 */
 
 
-const imageLightbox =
+const lightbox =
 document.querySelector(
 "#imageLightbox"
 );
@@ -320,7 +226,7 @@ document.querySelector(
 
 
 
-const lightboxClose =
+const closeButton =
 document.querySelector(
 "#lightboxClose"
 );
@@ -331,14 +237,13 @@ document.querySelector(
 
 
 function openLightbox(
-image,
-title=""
+imageSrc,
+imageAlt
 ){
 
 
-
 if(
-!imageLightbox ||
+!lightbox ||
 !lightboxImage
 ){
 
@@ -349,16 +254,16 @@ return;
 
 
 lightboxImage.src =
-image;
+imageSrc;
 
 
 
 lightboxImage.alt =
-title || "Expanded image";
+imageAlt || "Expanded image";
 
 
 
-imageLightbox.classList.add(
+lightbox.classList.add(
 "active"
 );
 
@@ -377,12 +282,11 @@ document.body.style.overflow =
 
 
 
+
 function closeLightbox(){
 
 
-if(
-!imageLightbox
-){
+if(!lightbox){
 
 return;
 
@@ -390,7 +294,7 @@ return;
 
 
 
-imageLightbox.classList.remove(
+lightbox.classList.remove(
 "active"
 );
 
@@ -411,8 +315,6 @@ document.body.style.overflow =
 
 
 
-
-
 /*
 =====================================
 GALLERY IMAGES
@@ -424,8 +326,12 @@ document
 .querySelectorAll(
 ".gallery-card img"
 )
-.forEach(
-image=>{
+.forEach(image=>{
+
+
+image.style.cursor =
+"pointer";
+
 
 
 image.addEventListener(
@@ -440,6 +346,7 @@ image.src,
 image.alt
 
 );
+
 
 
 });
@@ -466,8 +373,12 @@ document
 .querySelectorAll(
 ".cosplay-card img"
 )
-.forEach(
-image=>{
+.forEach(image=>{
+
+
+image.style.cursor =
+"pointer";
+
 
 
 image.addEventListener(
@@ -489,8 +400,6 @@ card?.querySelector(
 
 
 
-
-
 openLightbox(
 
 image.src,
@@ -502,6 +411,7 @@ title.textContent
 "Cosplay"
 
 );
+
 
 
 });
@@ -519,18 +429,19 @@ title.textContent
 
 /*
 =====================================
-CLOSE LIGHTBOX
+CLOSE BUTTON
 =====================================
 */
 
 
-if(lightboxClose){
+if(closeButton){
 
 
-lightboxClose.addEventListener(
+closeButton.addEventListener(
 "click",
 closeLightbox
 );
+
 
 
 }
@@ -539,16 +450,26 @@ closeLightbox
 
 
 
-if(imageLightbox){
 
 
-imageLightbox.addEventListener(
+
+/*
+=====================================
+CLICK OUTSIDE IMAGE
+=====================================
+*/
+
+
+if(lightbox){
+
+
+lightbox.addEventListener(
 "click",
 event=>{
 
 
 if(
-event.target === imageLightbox
+event.target === lightbox
 ){
 
 
@@ -556,6 +477,7 @@ closeLightbox();
 
 
 }
+
 
 
 });
@@ -567,6 +489,14 @@ closeLightbox();
 
 
 
+
+
+
+/*
+=====================================
+ESC KEY
+=====================================
+*/
 
 
 document.addEventListener(
@@ -585,6 +515,42 @@ closeLightbox();
 }
 
 
+
+});/*
+=====================================
+IMAGE ERROR CHECK
+=====================================
+*/
+
+
+document
+.querySelectorAll(
+"img"
+)
+.forEach(image=>{
+
+
+image.addEventListener(
+"error",
+()=>{
+
+
+console.warn(
+"Image not found:",
+image.src
+);
+
+
+
+image.classList.add(
+"image-error"
+);
+
+
+
+});
+
+
 });
 
 
@@ -597,9 +563,14 @@ closeLightbox();
 
 /*
 =====================================
-TWITCH PLAYERS
+TWITCH SYSTEM
 =====================================
 */
+
+
+const TWITCH_CHANNEL =
+"upminaa";
+
 
 
 const twitchFrames =
@@ -612,7 +583,7 @@ document.querySelectorAll(
 
 
 twitchFrames.forEach(
-frame=>{
+(frame,index)=>{
 
 
 frame.addEventListener(
@@ -621,15 +592,30 @@ frame.addEventListener(
 
 
 console.log(
-
 "Twitch player loaded:",
-
-frame.src
-
+index + 1
 );
 
 
+
 });
+
+
+
+frame.addEventListener(
+"error",
+()=>{
+
+
+console.warn(
+"Twitch player error:",
+frame.src
+);
+
+
+
+});
+
 
 
 });
@@ -644,55 +630,208 @@ frame.src
 
 /*
 =====================================
-YOUTUBE PLAYERS
+YOUTUBE AUTO UPDATE
 =====================================
 */
 
 
-const youtubeFrames =
-document.querySelectorAll(
-".video-card iframe"
-);
+/*
+
+Para ativar:
+
+1 - criar uma API Key do YouTube
+2 - colocar abaixo
+3 - colocar o ID do canal
+
+*/
+
+
+
+
+const YOUTUBE_API_KEY =
+"YOUR_API_KEY";
+
+
+
+const YOUTUBE_CHANNEL_ID =
+"YOUR_CHANNEL_ID";
 
 
 
 
 
-youtubeFrames.forEach(
-frame=>{
 
 
-frame.addEventListener(
-"load",
-()=>{
+async function loadYoutubeVideos(){
 
+
+
+if(
+YOUTUBE_API_KEY === "YOUR_API_KEY"
+||
+YOUTUBE_CHANNEL_ID === "YOUR_CHANNEL_ID"
+){
 
 console.log(
+"YouTube API not configured"
+);
 
-"YouTube player loaded:",
 
-frame.src
+return;
+
+
+}
+
+
+
+
+
+try{
+
+
+const response =
+await fetch(
+
+`https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${YOUTUBE_CHANNEL_ID}&part=snippet,id&order=date&maxResults=4`
 
 );
 
 
+
+const data =
+await response.json();
+
+
+
+
+
+const videos =
+data.items.filter(
+item=>
+
+item.id.kind ===
+"youtube#video"
+
+);
+
+
+
+
+
+const containers =
+document.querySelectorAll(
+".video-card"
+);
+
+
+
+
+
+videos.forEach(
+(video,index)=>{
+
+
+
+if(containers[index]){
+
+
+
+const iframe =
+containers[index]
+.querySelector(
+"iframe"
+);
+
+
+
+if(iframe){
+
+
+
+iframe.src =
+
+`https://www.youtube.com/embed/${video.id.videoId}`;
+
+
+
+}
+
+
+
+
+
+const title =
+containers[index]
+.querySelector(
+"h4"
+);
+
+
+
+if(title){
+
+
+
+title.textContent =
+video.snippet.title;
+
+
+
+}
+
+
+
+}
+
+
+
 });
 
 
-});
+
+
+}
+catch(error){
+
+
+console.error(
+"Youtube error:",
+error
+);
+
+
+
+}
+
+
+
+}
+
+
+
+
+loadYoutubeVideos();
+
+
+
+
+
+
+
+
+
 /*
 =====================================
-SOCIAL LINKS
+SOCIAL LINKS TRACK
 =====================================
 */
 
 
 document
 .querySelectorAll(
-".social-card a"
+".social-content a"
 )
-.forEach(
-link=>{
+.forEach(link=>{
 
 
 link.addEventListener(
@@ -701,104 +840,16 @@ link.addEventListener(
 
 
 console.log(
-
-"Opening social:",
-
+"Opening:",
 link.href
-
-);
-
-
-});
-
-
-});
-
-
-
-
-
-
-
-
-
-/*
-=====================================
-BACK TO TOP
-=====================================
-*/
-
-
-const backTop =
-document.querySelector(
-".back-top"
 );
 
 
 
-
-
-if(backTop){
-
-
-
-window.addEventListener(
-"scroll",
-()=>{
-
-
-if(
-window.scrollY > 500
-){
-
-
-backTop.classList.add(
-"show"
-);
-
-
-
-}else{
-
-
-backTop.classList.remove(
-"show"
-);
-
-
-
-}
-
-
-});
-
-
-
-
-
-
-
-
-backTop.addEventListener(
-"click",
-()=>{
-
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
 });
 
 
 });
-
-
-
-}
-
 
 
 
@@ -818,8 +869,7 @@ document
 .querySelectorAll(
 'a[target="_blank"]'
 )
-.forEach(
-link=>{
+.forEach(link=>{
 
 
 link.setAttribute(
@@ -828,7 +878,158 @@ link.setAttribute(
 );
 
 
+
+});/*
+=====================================
+BACK TO TOP
+=====================================
+*/
+
+
+const backTop =
+document.querySelector(
+".back-top"
+);
+
+
+
+
+if(backTop){
+
+
+
+window.addEventListener(
+"scroll",
+()=>{
+
+
+
+if(
+window.scrollY > 600
+){
+
+
+
+backTop.classList.add(
+"show"
+);
+
+
+
+}
+else
+{
+
+
+
+backTop.classList.remove(
+"show"
+);
+
+
+
+}
+
+
+
 });
+
+
+
+
+
+
+backTop.addEventListener(
+"click",
+()=>{
+
+
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+=====================================
+LAZY LOAD IMAGES
+=====================================
+*/
+
+
+document
+.querySelectorAll(
+"img"
+)
+.forEach(
+image=>{
+
+
+image.loading =
+"lazy";
+
+
+
+});
+
+
+
+
+
+
+
+
+
+/*
+=====================================
+CURRENT YEAR
+=====================================
+*/
+
+
+const year =
+document.querySelector(
+".copyright"
+);
+
+
+
+if(year){
+
+
+year.innerHTML =
+
+year.innerHTML.replace(
+
+"2026",
+
+new Date()
+.getFullYear()
+
+);
+
+
+
+}
 
 
 
@@ -859,6 +1060,7 @@ event.message
 );
 
 
+
 });
 
 
@@ -871,14 +1073,14 @@ event.message
 
 /*
 =====================================
-FINAL CHECK
+PAGE READY
 =====================================
 */
 
 
 console.log(
 
-"Upminaa Fan Hub loaded successfully"
+"Upminaa Fan Hub fully loaded"
 
 );
 
