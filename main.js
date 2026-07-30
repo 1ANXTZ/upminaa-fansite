@@ -2,6 +2,7 @@
 =====================================
 UPMINAA FAN HUB
 main.js
+FINAL VERSION
 =====================================
 */
 
@@ -14,6 +15,8 @@ document.addEventListener(
 console.log(
 "Upminaa Fan Hub initialized"
 );
+
+
 
 
 
@@ -49,7 +52,6 @@ if(target){
 event.preventDefault();
 
 
-
 target.scrollIntoView({
 
 behavior:"smooth",
@@ -73,6 +75,8 @@ block:"start"
 
 
 
+
+
 /*
 =====================================
 MOBILE MENU
@@ -86,14 +90,14 @@ document.querySelector(
 );
 
 
-const navigation =
+const nav =
 document.querySelector(
 ".nav-links"
 );
 
 
 
-if(menuButton && navigation){
+if(menuButton && nav){
 
 
 menuButton.addEventListener(
@@ -101,7 +105,7 @@ menuButton.addEventListener(
 ()=>{
 
 
-navigation.classList.toggle(
+nav.classList.toggle(
 "active"
 );
 
@@ -117,6 +121,8 @@ navigation.classList.toggle(
 
 
 
+
+
 /*
 =====================================
 SCROLL REVEAL
@@ -124,17 +130,18 @@ SCROLL REVEAL
 */
 
 
-const revealItems =
+const revealElements =
 document.querySelectorAll(
 `
+.detail-card,
+.fact-card,
 .cosplay-card,
 .gallery-card,
 .live-player-card,
 .youtube-card,
 .social-card,
 .reference-card,
-.bio-card,
-.detail-card
+.source-card
 `
 );
 
@@ -142,8 +149,7 @@ document.querySelectorAll(
 
 
 
-if(revealItems.length){
-
+if(revealElements.length){
 
 
 const observer =
@@ -151,8 +157,7 @@ new IntersectionObserver(
 entries=>{
 
 
-entries.forEach(
-entry=>{
+entries.forEach(entry=>{
 
 
 if(entry.isIntersecting){
@@ -169,7 +174,6 @@ entry.target
 );
 
 
-
 }
 
 
@@ -179,7 +183,9 @@ entry.target
 },
 {
 
+
 threshold:.15
+
 
 });
 
@@ -187,18 +193,21 @@ threshold:.15
 
 
 
+revealElements.forEach(
+element=>{
 
-revealItems.forEach(
-item=>{
 
-
-observer.observe(item);
+observer.observe(
+element
+);
 
 
 });
 
 
 }
+
+
 
 
 
@@ -214,7 +223,9 @@ IMAGE ERROR CHECK
 
 
 document
-.querySelectorAll("img")
+.querySelectorAll(
+"img"
+)
 .forEach(image=>{
 
 
@@ -224,7 +235,7 @@ image.addEventListener(
 
 
 console.warn(
-"Image missing:",
+"Image not found:",
 image.src
 );
 
@@ -239,15 +250,14 @@ image.classList.add(
 });
 
 
-});
-/*
+});/*
 =====================================
 IMAGE LIGHTBOX
 =====================================
 */
 
 
-const imageLightbox =
+const lightbox =
 document.querySelector(
 "#imageLightbox"
 );
@@ -261,18 +271,23 @@ document.querySelector(
 
 const lightboxClose =
 document.querySelector(
-"#lightboxClose"
+".lightbox-close"
 );
 
 
 
 
 
-function openLightbox(src, alt="Image"){
+
+function openLightbox(
+src,
+altText=""
+){
+
 
 
 if(
-!imageLightbox ||
+!lightbox ||
 !lightboxImage
 ){
 
@@ -282,14 +297,18 @@ return;
 
 
 
-lightboxImage.src = src;
+
+lightboxImage.src =
+src;
 
 
-lightboxImage.alt = alt;
+
+lightboxImage.alt =
+altText;
 
 
 
-imageLightbox.classList.add(
+lightbox.classList.add(
 "active"
 );
 
@@ -297,7 +316,6 @@ imageLightbox.classList.add(
 
 document.body.style.overflow =
 "hidden";
-
 
 
 }
@@ -311,7 +329,7 @@ document.body.style.overflow =
 function closeLightbox(){
 
 
-if(!imageLightbox){
+if(!lightbox){
 
 return;
 
@@ -319,7 +337,7 @@ return;
 
 
 
-imageLightbox.classList.remove(
+lightbox.classList.remove(
 "active"
 );
 
@@ -329,7 +347,6 @@ document.body.style.overflow =
 "";
 
 
-
 }
 
 
@@ -342,20 +359,30 @@ document.body.style.overflow =
 
 /*
 =====================================
-COSPLAY IMAGES
+CLICKABLE IMAGES
+COSPLAY + GALLERY
 =====================================
 */
 
 
-document
-.querySelectorAll(
-".cosplay-card img"
-)
-.forEach(image=>{
+const clickableImages =
+document.querySelectorAll(
+`
+.cosplay-card img,
+.gallery-card img
+`
+);
+
+
+
+
+
+clickableImages.forEach(
+image=>{
 
 
 image.style.cursor =
-"zoom-in";
+"pointer";
 
 
 
@@ -366,7 +393,7 @@ image.addEventListener(
 
 const card =
 image.closest(
-".cosplay-card"
+".cosplay-card, .gallery-card"
 );
 
 
@@ -386,72 +413,7 @@ title
 ?
 title.textContent
 :
-"Cosplay"
-
-);
-
-
-
-});
-
-
-});
-
-
-
-
-
-
-
-
-
-/*
-=====================================
-GALLERY IMAGES
-=====================================
-*/
-
-
-document
-.querySelectorAll(
-".gallery-card img"
-)
-.forEach(image=>{
-
-
-image.style.cursor =
-"zoom-in";
-
-
-
-image.addEventListener(
-"click",
-()=>{
-
-
-const card =
-image.closest(
-".gallery-card"
-);
-
-
-
-const title =
-card?.querySelector(
-"h3"
-);
-
-
-
-openLightbox(
-
-image.src,
-
-title
-?
-title.textContent
-:
-"Gallery image"
+image.alt
 
 );
 
@@ -495,7 +457,6 @@ closeLightbox
 
 
 
-
 /*
 =====================================
 CLICK OUTSIDE IMAGE
@@ -503,16 +464,16 @@ CLICK OUTSIDE IMAGE
 */
 
 
-if(imageLightbox){
+if(lightbox){
 
 
-imageLightbox.addEventListener(
+lightbox.addEventListener(
 "click",
 event=>{
 
 
 if(
-event.target === imageLightbox
+event.target === lightbox
 ){
 
 
@@ -558,118 +519,7 @@ closeLightbox();
 }
 
 
-
-});/*
-=====================================
-TWITCH STATUS
-=====================================
-*/
-
-
-const liveBadge =
-document.querySelector(
-".live-status"
-);
-
-
-
-async function updateTwitchStatus(){
-
-
-if(!liveBadge){
-
-return;
-
-}
-
-
-
-try{
-
-
-/*
- 
-A API oficial da Twitch exige
-OAuth no backend.
-
-Por enquanto deixamos
-o sistema preparado para
-receber o status real.
-
-*/
-
-
-const isLive =
-false;
-
-
-
-if(isLive){
-
-
-liveBadge.classList.remove(
-"offline"
-);
-
-
-liveBadge.classList.add(
-"online"
-);
-
-
-
-liveBadge.innerHTML =
-`
-<span></span>
-LIVE
-`;
-
-
-
-}else{
-
-
-liveBadge.classList.remove(
-"online"
-);
-
-
-liveBadge.classList.add(
-"offline"
-);
-
-
-
-liveBadge.innerHTML =
-`
-<span></span>
-OFFLINE
-`;
-
-
-
-}
-
-
-
-}catch(error){
-
-
-console.warn(
-"Twitch status error:",
-error
-);
-
-
-
-}
-
-
-}
-
-
-
-updateTwitchStatus();
+});
 
 
 
@@ -681,43 +531,50 @@ updateTwitchStatus();
 
 /*
 =====================================
-YOUTUBE AUTO UPDATE
+TWITCH PLAYER CHECK
 =====================================
 */
 
 
-/*
-
-Para atualizar automaticamente
-os últimos vídeos do YouTube
-é necessário usar:
-
-- YouTube Data API
-- ou backend próprio
-
-O HTML fica preparado
-para receber os vídeos.
-
-*/
-
-
-const youtubeCards =
+const twitchPlayers =
 document.querySelectorAll(
-".youtube-card"
+".player-wrapper iframe"
 );
 
 
 
-if(youtubeCards.length){
+twitchPlayers.forEach(
+player=>{
+
+
+player.addEventListener(
+"load",
+()=>{
 
 
 console.log(
-"YouTube cards ready:",
-youtubeCards.length
+"Twitch player loaded"
 );
 
 
-}
+});
+
+
+
+player.addEventListener(
+"error",
+()=>{
+
+
+console.warn(
+"Twitch player failed"
+);
+
+
+});
+
+
+});
 
 
 
@@ -729,18 +586,62 @@ youtubeCards.length
 
 /*
 =====================================
-SOCIAL LINKS TRACK
+YOUTUBE PLAYER CHECK
+=====================================
+*/
+
+
+const youtubePlayers =
+document.querySelectorAll(
+".video-wrapper iframe"
+);
+
+
+
+youtubePlayers.forEach(
+player=>{
+
+
+player.addEventListener(
+"load",
+()=>{
+
+
+console.log(
+"YouTube player loaded"
+);
+
+
+});
+
+
+
+player.addEventListener(
+"error",
+()=>{
+
+
+console.warn(
+"YouTube player failed"
+);
+
+
+});
+
+
+});/*
+=====================================
+SOCIAL LINKS TRACKING
 =====================================
 */
 
 
 document
 .querySelectorAll(
-".social-info a,
-.reference-card a,
-.player-info a"
+".social-card a"
 )
-.forEach(link=>{
+.forEach(
+link=>{
 
 
 link.addEventListener(
@@ -749,10 +650,9 @@ link.addEventListener(
 
 
 console.log(
-"External link opened:",
+"Opening social:",
 link.href
 );
-
 
 
 });
@@ -782,6 +682,7 @@ document.querySelector(
 
 
 
+
 if(backTop){
 
 
@@ -792,7 +693,7 @@ window.addEventListener(
 
 
 if(
-window.scrollY > 600
+window.scrollY > 500
 ){
 
 
@@ -814,8 +715,8 @@ backTop.classList.remove(
 }
 
 
-
 });
+
 
 
 
@@ -836,11 +737,114 @@ behavior:"smooth"
 });
 
 
-
 });
 
 
 }
+
+
+
+
+
+
+
+
+
+/*
+=====================================
+LIVE STATUS
+=====================================
+*/
+
+
+const liveBadge =
+document.querySelector(
+".live-status"
+);
+
+
+
+/*
+ 
+Estados:
+
+offline:
+.live-status.offline
+
+online:
+.live-status.online
+
+
+A troca real depende da API do Twitch.
+Este bloco deixa preparado
+para receber o retorno da API.
+
+*/
+
+
+
+function updateLiveStatus(
+isLive
+){
+
+
+if(!liveBadge){
+
+return;
+
+}
+
+
+
+if(isLive){
+
+
+liveBadge.classList.remove(
+"offline"
+);
+
+
+liveBadge.classList.add(
+"online"
+);
+
+
+liveBadge.textContent =
+"● LIVE";
+
+
+
+}else{
+
+
+liveBadge.classList.remove(
+"online"
+);
+
+
+
+liveBadge.classList.add(
+"offline"
+);
+
+
+
+liveBadge.textContent =
+"● OFFLINE";
+
+
+}
+
+
+}
+
+
+
+
+
+// Estado inicial
+
+updateLiveStatus(false);
 
 
 
@@ -863,14 +867,15 @@ event=>{
 
 
 console.warn(
+
 "Frontend error:",
+
 event.message
+
 );
 
 
-
 });
-
 
 
 
