@@ -1,7 +1,7 @@
 /*
 =====================================
 UPMINAA FAN HUB
-MAIN STYLESHEET
+NEON CYBER MAIN STYLESHEET
 =====================================
 */
 
@@ -36,7 +36,17 @@ font-family:
 Arial,
 sans-serif;
 
-background:#0d0d14;
+
+background:
+
+radial-gradient(
+circle at top,
+rgba(255,79,216,.15),
+transparent 35%
+),
+
+#070712;
+
 
 color:#ffffff;
 
@@ -68,47 +78,47 @@ color:inherit;
 
 
 
-.container {
-
-width:min(1200px,90%);
-
-margin:auto;
-
-}
-
-
-
-
 
 
 
 /* ================================
-COLORS
+VARIABLES
 ================================ */
 
 
 :root {
 
 
---bg-main:#0d0d14;
+--bg-main:#070712;
 
---bg-card:#171722;
+--bg-card:#11111f;
 
---bg-soft:#202033;
+--bg-soft:#19192b;
 
 
---primary:#ff7ac8;
+--primary:#ff4fd8;
 
---secondary:#8b7cff;
+--secondary:#8c5cff;
+
+
+--neon-pink:#ff4fd8;
+
+--neon-purple:#8c5cff;
+
+--neon-blue:#00f7ff;
+
+--neon-red:#ff003c;
 
 
 --text:#ffffff;
 
---muted:#b8b8c7;
+--muted:#b9b9ca;
 
 
 --border:
-rgba(255,255,255,.08);
+
+rgba(255,255,255,.12);
+
 
 
 }
@@ -117,8 +127,9 @@ rgba(255,255,255,.08);
 
 
 
+
 /* ================================
-SECTION DEFAULT
+GLOBAL
 ================================ */
 
 
@@ -126,15 +137,22 @@ section {
 
 padding:100px 0;
 
+scroll-margin-top:100px;
+
 }
 
 
 
 .section-title {
 
-text-align:center;
+width:min(900px,90%);
 
-margin-bottom:50px;
+margin:
+
+0 auto 60px;
+
+
+text-align:center;
 
 }
 
@@ -142,13 +160,26 @@ margin-bottom:50px;
 
 .section-title span {
 
+
 color:var(--primary);
 
-font-size:.9rem;
+
+font-size:.85rem;
+
 
 text-transform:uppercase;
 
-letter-spacing:3px;
+
+letter-spacing:4px;
+
+
+font-weight:800;
+
+
+text-shadow:
+
+0 0 15px var(--primary);
+
 
 }
 
@@ -156,9 +187,12 @@ letter-spacing:3px;
 
 .section-title h2 {
 
-font-size:2.5rem;
+
+font-size:2.6rem;
+
 
 margin-top:10px;
+
 
 }
 
@@ -166,14 +200,14 @@ margin-top:10px;
 
 .section-title p {
 
+
 color:var(--muted);
 
-max-width:700px;
 
-margin:15px auto;
+margin-top:15px;
+
 
 }
-
 
 
 
@@ -185,28 +219,42 @@ NAVBAR
 ================================ */
 
 
+
 .site-header {
+
 
 position:fixed;
 
+
 top:0;
+
 
 left:0;
 
+
 width:100%;
+
 
 z-index:1000;
 
 
+
 background:
-rgba(13,13,20,.85);
+
+rgba(7,7,18,.80);
 
 
-backdrop-filter:blur(12px);
+
+backdrop-filter:
+
+blur(15px);
+
 
 
 border-bottom:
-1px solid var(--border);
+
+1px solid rgba(255,79,216,.2);
+
 
 
 }
@@ -215,16 +263,21 @@ border-bottom:
 
 .navbar {
 
+
 height:80px;
 
+
 width:min(1200px,90%);
+
 
 margin:auto;
 
 
 display:flex;
 
+
 align-items:center;
+
 
 justify-content:space-between;
 
@@ -235,11 +288,21 @@ justify-content:space-between;
 
 .logo {
 
-font-size:1.4rem;
 
-font-weight:800;
+font-size:1.5rem;
+
+
+font-weight:900;
+
 
 color:var(--primary);
+
+
+
+text-shadow:
+
+0 0 15px var(--primary);
+
 
 }
 
@@ -247,11 +310,15 @@ color:var(--primary);
 
 .nav-links {
 
+
 display:flex;
+
 
 gap:30px;
 
+
 list-style:none;
+
 
 }
 
@@ -262,7 +329,12 @@ list-style:none;
 
 color:var(--muted);
 
+
+font-weight:600;
+
+
 transition:.3s;
+
 
 }
 
@@ -272,6 +344,12 @@ transition:.3s;
 
 
 color:white;
+
+
+text-shadow:
+
+0 0 15px var(--primary);
+
 
 }
 
@@ -286,16 +364,30 @@ HERO
 ================================ */
 
 
-.hero {
+
+.hero-section {
+
 
 padding-top:150px;
+
 
 min-height:100vh;
 
 
 display:flex;
 
+
 align-items:center;
+
+
+}
+
+
+
+.hero-section {
+
+
+width:100%;
 
 
 }
@@ -307,14 +399,20 @@ align-items:center;
 
 width:min(1200px,90%);
 
+
 margin:auto;
 
 
 display:grid;
 
-grid-template-columns:1fr 1fr;
 
-gap:50px;
+grid-template-columns:
+
+1fr 1fr;
+
+
+gap:60px;
+
 
 align-items:center;
 
@@ -326,131 +424,73 @@ align-items:center;
 .hero-tag {
 
 
+display:inline-block;
+
+
 color:var(--primary);
 
-font-weight:700;
 
-letter-spacing:2px;
+font-weight:800;
 
-font-size:.8rem;
+
+letter-spacing:3px;
+
+
+font-size:.85rem;
+
+
+
+text-shadow:
+
+0 0 15px var(--primary);
 
 
 }
 
 
 
-.hero h1 {
+.hero-content h1 {
 
 
 font-size:4rem;
 
+
 line-height:1.1;
+
 
 margin:20px 0;
 
 
+background:
+
+linear-gradient(
+90deg,
+#ff4fd8,
+#8c5cff
+);
+
+
+
+-webkit-background-clip:text;
+
+
+-webkit-text-fill-color:transparent;
+
+
 }
 
 
 
-.hero p {
+.hero-content p {
 
 
 color:var(--muted);
 
+
 font-size:1.15rem;
 
+
 max-width:550px;
-
-
-}
-
-
-
-.hero-buttons {
-
-
-display:flex;
-
-gap:20px;
-
-margin-top:35px;
-
-
-}
-
-
-
-.primary-btn,
-.secondary-btn {
-
-
-padding:14px 30px;
-
-border-radius:30px;
-
-font-weight:700;
-
-transition:.3s;
-
-
-}
-
-
-
-.primary-btn {
-
-
-background:var(--primary);
-
-color:#111;
-
-
-}
-
-
-
-.secondary-btn {
-
-
-border:1px solid var(--border);
-
-background:var(--bg-card);
-
-
-}
-
-
-
-.primary-btn:hover,
-.secondary-btn:hover {
-
-
-transform:translateY(-3px);
-
-}
-
-
-
-
-
-
-
-.hero-image img {
-
-
-width:100%;
-
-height:500px;
-
-object-fit:cover;
-
-
-border-radius:25px;
-
-
-box-shadow:
-0 20px 60px rgba(0,0,0,.4);
 
 
 }
@@ -462,8 +502,219 @@ box-shadow:
 
 
 /* ================================
-ABOUT
+HERO BUTTONS
 ================================ */
+
+
+
+.hero-buttons {
+
+
+display:flex;
+
+
+gap:20px;
+
+
+margin-top:35px;
+
+
+}
+
+
+
+.primary-button,
+.secondary-button {
+
+
+padding:
+
+14px 32px;
+
+
+border-radius:30px;
+
+
+font-weight:800;
+
+
+transition:.3s;
+
+
+position:relative;
+
+
+overflow:hidden;
+
+
+}
+
+
+
+.primary-button {
+
+
+background:
+
+linear-gradient(
+135deg,
+var(--primary),
+var(--secondary)
+);
+
+
+
+color:white;
+
+
+
+box-shadow:
+
+
+0 0 25px rgba(255,79,216,.6);
+
+
+
+}
+
+
+
+.secondary-button {
+
+
+background:
+
+var(--bg-card);
+
+
+
+border:
+
+1px solid var(--secondary);
+
+
+
+box-shadow:
+
+
+0 0 20px rgba(140,92,255,.5);
+
+
+
+}
+
+
+
+.primary-button:hover,
+.secondary-button:hover {
+
+
+transform:
+
+translateY(-5px);
+
+
+}
+
+
+
+.primary-button::before,
+.secondary-button::before {
+
+
+content:"";
+
+
+position:absolute;
+
+
+inset:0;
+
+
+background:
+
+rgba(255,255,255,.2);
+
+
+transform:
+
+translateX(-100%);
+
+
+transition:.4s;
+
+
+}
+
+
+
+.primary-button:hover::before,
+.secondary-button:hover::before {
+
+
+transform:
+
+translateX(0);
+
+
+}
+
+
+
+
+
+
+
+/* ================================
+HERO IMAGE
+================================ */
+
+
+
+.hero-image img {
+
+
+width:100%;
+
+
+height:500px;
+
+
+object-fit:cover;
+
+
+border-radius:25px;
+
+
+
+border:
+
+1px solid rgba(255,79,216,.4);
+
+
+
+box-shadow:
+
+
+0 0 35px rgba(255,79,216,.35);
+
+
+
+}
+
+
+/* ================================
+ABOUT SECTION
+================================ */
+
+
+.about-section {
+
+width:100%;
+
+}
+
+
 
 
 .about-container {
@@ -471,14 +722,20 @@ ABOUT
 
 width:min(1200px,90%);
 
+
 margin:auto;
 
 
 display:grid;
 
-grid-template-columns:400px 1fr;
+
+grid-template-columns:
+
+400px 1fr;
+
 
 gap:60px;
+
 
 align-items:center;
 
@@ -487,12 +744,16 @@ align-items:center;
 
 
 
+
+
 .about-image img {
+
+
+width:100%;
 
 
 height:500px;
 
-width:100%;
 
 object-fit:cover;
 
@@ -500,54 +761,173 @@ object-fit:cover;
 border-radius:25px;
 
 
+
+border:
+
+1px solid rgba(255,79,216,.35);
+
+
+
+box-shadow:
+
+
+0 0 35px rgba(255,79,216,.25);
+
+
+
 }
 
 
 
 
 
-.info-cards {
+
+.about-content p {
+
+
+color:var(--muted);
+
+
+margin-bottom:20px;
+
+
+font-size:1.05rem;
+
+
+}
+
+
+
+
+
+.about-content p::first-letter {
+
+
+color:var(--primary);
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================================
+FACT GRID
+================================ */
+
+
+.fact-grid {
 
 
 display:grid;
 
-grid-template-columns:repeat(2,1fr);
+
+grid-template-columns:
+
+repeat(2,1fr);
+
 
 gap:20px;
 
 
+margin-top:35px;
+
+
 }
+
+
 
 
 
 .fact-card {
 
 
-background:var(--bg-card);
+background:
 
-border:1px solid var(--border);
+linear-gradient(
+
+145deg,
+
+rgba(255,255,255,.05),
+
+rgba(255,255,255,.01)
+
+);
+
+
+
+border:
+
+1px solid rgba(255,79,216,.2);
+
 
 
 padding:25px;
 
-border-radius:18px;
+
+border-radius:20px;
+
+
+transition:.35s;
 
 
 }
+
+
+
+.fact-card:hover {
+
+
+transform:
+
+translateY(-8px);
+
+
+
+border-color:
+
+var(--primary);
+
+
+
+box-shadow:
+
+
+0 0 30px rgba(255,79,216,.35);
+
+
+
+}
+
+
 
 
 
 .fact-card h3 {
 
 
-font-size:1rem;
-
 color:var(--primary);
 
-margin-bottom:8px;
+
+margin-bottom:10px;
+
+
+
+text-shadow:
+
+
+0 0 15px var(--primary);
+
 
 
 }
+
+
 
 
 
@@ -556,6 +936,7 @@ margin-bottom:8px;
 
 color:var(--muted);
 
+
 }
 
 
@@ -563,7 +944,89 @@ color:var(--muted);
 
 
 
-.about-description {
+
+
+/* ================================
+SOURCE AREA
+================================ */
+
+
+.sources-area {
+
+
+margin-top:70px;
+
+
+padding:35px;
+
+
+background:
+
+
+rgba(255,255,255,.03);
+
+
+
+border-radius:25px;
+
+
+
+border:
+
+1px solid rgba(140,92,255,.25);
+
+
+
+box-shadow:
+
+
+0 0 30px rgba(140,92,255,.15);
+
+
+
+}
+
+
+
+.sources-area h3 {
+
+
+font-size:1.8rem;
+
+
+margin-bottom:10px;
+
+
+}
+
+
+
+.sources-area > p {
+
+
+color:var(--muted);
+
+
+}
+
+
+
+
+
+.source-grid {
+
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(3,1fr);
+
+
+
+gap:25px;
+
 
 
 margin-top:30px;
@@ -573,16 +1036,206 @@ margin-top:30px;
 
 
 
-.about-description p {
+
+
+
+.source-card {
+
+
+background:
+
+var(--bg-soft);
+
+
+
+padding:25px;
+
+
+border-radius:18px;
+
+
+
+border:
+
+1px solid var(--border);
+
+
+
+transition:.3s;
+
+
+}
+
+
+
+
+.source-card:hover {
+
+
+transform:
+
+translateY(-6px);
+
+
+
+border-color:
+
+var(--secondary);
+
+
+
+box-shadow:
+
+
+0 0 25px rgba(140,92,255,.35);
+
+
+
+}
+
+
+
+
+
+.source-card h4 {
+
+
+color:var(--secondary);
+
+
+margin-bottom:10px;
+
+
+
+}
+
+
+
+
+
+.source-card p {
 
 
 color:var(--muted);
 
-margin-bottom:18px;
+
+margin-bottom:15px;
+
+
+
+}
+
+
+
+
+
+.source-card a {
+
+
+color:var(--primary);
+
+
+font-weight:700;
+
+
+
+}
+
+
+
+.source-card a:hover {
+
+
+text-shadow:
+
+
+0 0 15px var(--primary);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================================
+GENERAL CARD EFFECT
+================================ */
+
+
+.fact-card,
+.source-card {
+
+
+backdrop-filter:
+
+blur(10px);
+
+
+}
+
+
+
+
+
+
+
+
+/* ================================
+MOBILE ABOUT
+================================ */
+
+
+
+@media(max-width:900px){
+
+
+.about-container {
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+.about-image img {
+
+
+height:450px;
+
+
+}
+
+
+
+.fact-grid {
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+.source-grid {
+
+
+grid-template-columns:1fr;
+
+
+}
 
 
 }/* ================================
-COSPLAYS
+COSPLAY SECTION
 ================================ */
 
 
@@ -595,19 +1248,28 @@ width:100%;
 
 
 
-/* FEATURED */
+
+
+
+/* FEATURED COSPLAYS */
+
 
 .featured-cosplays {
 
 
 width:min(1200px,90%);
 
+
 margin:auto;
 
 
 display:grid;
 
-grid-template-columns:repeat(2,1fr);
+
+grid-template-columns:
+
+repeat(2,1fr);
+
 
 gap:30px;
 
@@ -616,16 +1278,33 @@ gap:30px;
 
 
 
+
+
+
 .cosplay-card {
 
 
-background:var(--bg-card);
+background:
+
+linear-gradient(
+
+145deg,
+
+rgba(255,255,255,.06),
+
+rgba(255,255,255,.01)
+
+);
+
+
 
 border:
-1px solid var(--border);
+
+1px solid rgba(255,79,216,.2);
 
 
-border-radius:22px;
+
+border-radius:25px;
 
 
 overflow:hidden;
@@ -634,14 +1313,35 @@ overflow:hidden;
 transition:.35s;
 
 
+position:relative;
+
+
 }
+
+
 
 
 
 .cosplay-card:hover {
 
 
-transform:translateY(-8px);
+transform:
+
+translateY(-10px);
+
+
+
+border-color:
+
+var(--primary);
+
+
+
+box-shadow:
+
+
+0 0 35px rgba(255,79,216,.35);
+
 
 
 }
@@ -655,10 +1355,12 @@ transform:translateY(-8px);
 
 display:block;
 
+
 overflow:hidden;
 
 
 }
+
 
 
 
@@ -682,13 +1384,18 @@ transition:.5s;
 
 
 
+
+
 .cosplay-card:hover img {
 
 
-transform:scale(1.05);
+transform:
+
+scale(1.08);
 
 
 }
+
 
 
 
@@ -704,24 +1411,13 @@ transform:scale(1.05);
 height:560px;
 
 
-position:relative;
-
-
 }
+
+
 
 
 
 .featured-card .cosplay-link {
-
-
-height:100%;
-
-
-}
-
-
-
-.featured-card img {
 
 
 height:100%;
@@ -738,22 +1434,32 @@ height:100%;
 
 content:"";
 
+
 position:absolute;
+
 
 inset:0;
 
 
+
 background:
+
 linear-gradient(
-transparent 40%,
-rgba(0,0,0,.8)
+
+transparent 35%,
+
+rgba(0,0,0,.85)
+
 );
+
 
 
 pointer-events:none;
 
 
 }
+
+
 
 
 
@@ -767,10 +1473,13 @@ padding:25px;
 
 position:relative;
 
+
 z-index:2;
 
 
 }
+
+
 
 
 
@@ -779,14 +1488,19 @@ z-index:2;
 
 position:absolute;
 
+
 bottom:0;
 
+
 left:0;
+
 
 width:100%;
 
 
 }
+
+
 
 
 
@@ -796,27 +1510,54 @@ width:100%;
 display:inline-block;
 
 
-background:var(--primary);
-
-color:#111;
+background:
 
 
-padding:6px 15px;
+linear-gradient(
+
+135deg,
+
+var(--primary),
+
+var(--secondary)
+
+);
+
+
+
+padding:
+
+6px 16px;
+
 
 
 border-radius:20px;
 
 
+
 font-size:.75rem;
 
 
-font-weight:800;
+font-weight:900;
+
+
+color:white;
+
+
+
+box-shadow:
+
+
+0 0 15px rgba(255,79,216,.5);
+
 
 
 margin-bottom:12px;
 
 
 }
+
+
 
 
 
@@ -829,6 +1570,8 @@ font-size:1.8rem;
 
 
 }
+
+
 
 
 
@@ -845,19 +1588,23 @@ color:var(--muted);
 
 
 
+
+
 .source-box {
 
 
 margin-top:15px;
 
 
-font-size:.85rem;
+font-size:.9rem;
 
 
 color:var(--muted);
 
 
 }
+
+
 
 
 
@@ -871,16 +1618,24 @@ color:var(--primary);
 
 
 
+.source-box a:hover {
+
+
+text-shadow:
+
+
+0 0 15px var(--primary);
+
+
+}
 
 
 
 
 
 
-/* ================================
-POPULAR GRID 2X2
-================================ */
 
+/* POPULAR COSPLAYS */
 
 
 .popular-cosplays {
@@ -888,23 +1643,28 @@ POPULAR GRID 2X2
 
 width:min(1200px,90%);
 
-margin:40px auto 0;
+
+
+margin:
+
+40px auto 0;
+
 
 
 display:grid;
 
 
+
 grid-template-columns:
+
 repeat(2,1fr);
 
 
-gap:25px;
+
+gap:30px;
 
 
 }
-
-
-
 
 
 
@@ -912,10 +1672,11 @@ gap:25px;
 .popular-cosplays .cosplay-card {
 
 
-height:320px;
+height:340px;
 
 
 }
+
 
 
 
@@ -930,6 +1691,8 @@ height:220px;
 
 
 
+
+
 .popular-cosplays img {
 
 
@@ -937,6 +1700,9 @@ height:220px;
 
 
 }
+
+
+
 
 
 
@@ -954,18 +1720,7 @@ padding:20px;
 .popular-cosplays .cosplay-info h3 {
 
 
-font-size:1.35rem;
-
-
-}
-
-
-
-
-.popular-cosplays .source-box {
-
-
-display:none;
+font-size:1.4rem;
 
 
 }
@@ -979,61 +1734,6 @@ display:none;
 
 
 /* ================================
-IMAGE POSITION CONTROL
-================================ */
-
-
-/*
- Ajustes individuais para evitar
- cortes ruins nas fotos
-*/
-
-
-.cosplay-gura img {
-
-object-position:center;
-
-}
-
-
-
-.cosplay-miku-br img {
-
-object-position:center;
-
-}
-
-
-
-.cosplay-marin img {
-
-object-position:center top;
-
-}
-
-
-
-.cosplay-frieren img {
-
-object-position:center top;
-
-}
-
-
-
-.cosplay-nino img {
-
-object-position:center;
-
-}
-
-
-
-.cosplay-miku-nakano img {
-
-object-position:center;
-
-}/* ================================
 GALLERY
 ================================ */
 
@@ -1048,19 +1748,27 @@ width:100%;
 
 
 
+
+
 .gallery-grid {
 
 
 width:min(1200px,90%);
 
+
+
 margin:auto;
+
 
 
 display:grid;
 
 
+
 grid-template-columns:
+
 repeat(2,1fr);
+
 
 
 gap:30px;
@@ -1073,17 +1781,31 @@ gap:30px;
 
 
 
-.gallery-item {
+
+.gallery-card {
 
 
-background:var(--bg-card);
+background:
+
+linear-gradient(
+
+145deg,
+
+rgba(255,255,255,.05),
+
+rgba(255,255,255,.01)
+
+);
+
 
 
 border:
-1px solid var(--border);
+
+1px solid rgba(140,92,255,.25);
 
 
-border-radius:22px;
+
+border-radius:25px;
 
 
 overflow:hidden;
@@ -1097,10 +1819,27 @@ transition:.35s;
 
 
 
-.gallery-item:hover {
+
+.gallery-card:hover {
 
 
-transform:translateY(-6px);
+transform:
+
+translateY(-8px);
+
+
+
+border-color:
+
+var(--secondary);
+
+
+
+box-shadow:
+
+
+0 0 35px rgba(140,92,255,.35);
+
 
 
 }
@@ -1109,32 +1848,13 @@ transform:translateY(-6px);
 
 
 
-
-.gallery-link {
-
-
-display:block;
-
-
-height:350px;
-
-
-overflow:hidden;
-
-
-}
-
-
-
-
-
-.gallery-link img {
+.gallery-card img {
 
 
 width:100%;
 
 
-height:100%;
+height:350px;
 
 
 object-fit:cover;
@@ -1148,10 +1868,13 @@ transition:.5s;
 
 
 
-.gallery-item:hover img {
+
+.gallery-card:hover img {
 
 
-transform:scale(1.06);
+transform:
+
+scale(1.06);
 
 
 }
@@ -1161,7 +1884,7 @@ transform:scale(1.06);
 
 
 
-.gallery-info {
+.gallery-content {
 
 
 padding:25px;
@@ -1173,7 +1896,7 @@ padding:25px;
 
 
 
-.gallery-info h3 {
+.gallery-content h3 {
 
 
 font-size:1.4rem;
@@ -1186,7 +1909,9 @@ margin-bottom:10px;
 
 
 
-.gallery-info p {
+
+
+.gallery-content p {
 
 
 color:var(--muted);
@@ -1207,7 +1932,6 @@ LIGHTBOX
 ================================ */
 
 
-
 .lightbox {
 
 
@@ -1218,7 +1942,9 @@ inset:0;
 
 
 background:
-rgba(0,0,0,.9);
+
+rgba(0,0,0,.92);
+
 
 
 display:flex;
@@ -1230,6 +1956,7 @@ align-items:center;
 justify-content:center;
 
 
+
 padding:40px;
 
 
@@ -1237,6 +1964,7 @@ opacity:0;
 
 
 visibility:hidden;
+
 
 
 transition:.3s;
@@ -1265,6 +1993,7 @@ visibility:visible;
 
 
 
+
 .lightbox img {
 
 
@@ -1280,13 +2009,15 @@ object-fit:contain;
 border-radius:20px;
 
 
+
 box-shadow:
-0 20px 60px rgba(0,0,0,.5);
+
+
+0 0 50px rgba(255,79,216,.5);
+
 
 
 }
-
-
 
 
 
@@ -1310,10 +2041,10 @@ background:none;
 border:none;
 
 
-color:white;
-
-
 font-size:3rem;
+
+
+color:white;
 
 
 cursor:pointer;
@@ -1327,110 +2058,35 @@ cursor:pointer;
 
 
 
+
 /* ================================
-REFERENCES
+COSPLAY/GALLERY MOBILE
 ================================ */
 
 
-.references-section {
+@media(max-width:900px){
 
 
-width:min(1200px,90%);
+.featured-cosplays,
+.popular-cosplays,
+.gallery-grid {
 
 
-margin:70px auto 0;
-
-
-background:var(--bg-card);
-
-
-padding:35px;
-
-
-border-radius:25px;
-
-
-border:
-1px solid var(--border);
+grid-template-columns:1fr;
 
 
 }
 
 
 
+.featured-card {
 
 
-.reference-cards {
-
-
-display:grid;
-
-
-grid-template-columns:
-repeat(2,1fr);
-
-
-gap:25px;
-
-
-margin-top:30px;
+height:450px;
 
 
 }
 
-
-
-
-
-.reference-card {
-
-
-background:var(--bg-soft);
-
-
-padding:25px;
-
-
-border-radius:18px;
-
-
-}
-
-
-
-.reference-card h4 {
-
-
-color:var(--primary);
-
-
-margin-bottom:10px;
-
-
-}
-
-
-
-.reference-card p {
-
-
-color:var(--muted);
-
-
-margin-bottom:15px;
-
-
-}
-
-
-
-.reference-card a {
-
-
-color:var(--primary);
-
-
-font-weight:700;
 
 
 }/* ================================
@@ -1448,25 +2104,40 @@ width:100%;
 
 
 
-.media-group {
+.media-wrapper {
 
 
 width:min(1200px,90%);
 
 
-margin:
-
-0 auto 70px;
+margin:auto;
 
 
 }
 
 
 
-.media-title {
 
 
-font-size:1.8rem;
+
+.stream-area,
+.video-area {
+
+
+margin-bottom:80px;
+
+
+}
+
+
+
+
+
+.stream-area h3,
+.video-area h3 {
+
+
+font-size:2rem;
 
 
 margin-bottom:30px;
@@ -1475,6 +2146,12 @@ margin-bottom:30px;
 color:white;
 
 
+text-shadow:
+
+
+0 0 15px var(--primary);
+
+
 }
 
 
@@ -1482,23 +2159,21 @@ color:white;
 
 
 
-/* ================================
-TWITCH
-================================ */
 
-
-
-.twitch-grid {
+.stream-grid,
+.video-grid {
 
 
 display:grid;
 
 
 grid-template-columns:
+
 repeat(2,1fr);
 
 
-gap:35px;
+
+gap:30px;
 
 
 }
@@ -1507,23 +2182,39 @@ gap:35px;
 
 
 
-.live-player-card {
 
 
-background:var(--bg-card);
+.stream-card,
+.video-card {
+
+
+background:
+
+linear-gradient(
+
+145deg,
+
+rgba(255,255,255,.05),
+
+rgba(255,255,255,.01)
+
+);
+
 
 
 border:
-1px solid var(--border);
+
+1px solid rgba(255,79,216,.2);
 
 
-border-radius:22px;
+
+border-radius:25px;
 
 
 overflow:hidden;
 
 
-transition:.3s;
+transition:.35s;
 
 
 }
@@ -1532,10 +2223,27 @@ transition:.3s;
 
 
 
-.live-player-card:hover {
+.stream-card:hover,
+.video-card:hover {
 
 
-transform:translateY(-5px);
+transform:
+
+translateY(-8px);
+
+
+
+border-color:
+
+var(--primary);
+
+
+
+box-shadow:
+
+
+0 0 35px rgba(255,79,216,.35);
+
 
 
 }
@@ -1544,17 +2252,20 @@ transform:translateY(-5px);
 
 
 
-.player-wrapper {
+
+.player-container,
+.video-container {
 
 
 width:100%;
 
 
-background:#000;
-
-
 aspect-ratio:
+
 16 / 9;
+
+
+background:#000;
 
 
 }
@@ -1563,7 +2274,8 @@ aspect-ratio:
 
 
 
-.player-wrapper iframe {
+.player-container iframe,
+.video-container iframe {
 
 
 width:100%;
@@ -1583,7 +2295,7 @@ border:0;
 
 
 
-.player-info {
+.media-info {
 
 
 padding:25px;
@@ -1595,7 +2307,7 @@ padding:25px;
 
 
 
-.player-info h4 {
+.media-info h4 {
 
 
 font-size:1.4rem;
@@ -1609,7 +2321,8 @@ margin-bottom:10px;
 
 
 
-.player-info p {
+
+.media-info p {
 
 
 color:var(--muted);
@@ -1624,78 +2337,47 @@ margin-bottom:20px;
 
 
 
-.player-info a {
+.media-info a {
 
 
-display:inline-block;
+display:inline-flex;
 
 
-padding:10px 22px;
+padding:
+
+12px 25px;
 
 
-border-radius:25px;
-
-
-background:var(--primary);
-
-
-color:#111;
-
-
-font-weight:700;
-
-
-}
+border-radius:30px;
 
 
 
+font-weight:800;
+
+
+background:
+
+linear-gradient(
+
+135deg,
+
+var(--primary),
+
+var(--secondary)
+
+);
 
 
 
+color:white;
 
 
 
-/* ================================
-YOUTUBE
-================================ */
+box-shadow:
 
 
+0 0 20px rgba(255,79,216,.5);
 
-
-
-.youtube-grid {
-
-
-display:grid;
-
-
-grid-template-columns:
-repeat(2,1fr);
-
-
-gap:35px;
-
-
-}
-
-
-
-
-
-.youtube-card {
-
-
-background:var(--bg-card);
-
-
-border:
-1px solid var(--border);
-
-
-border-radius:22px;
-
-
-overflow:hidden;
 
 
 transition:.3s;
@@ -1706,70 +2388,17 @@ transition:.3s;
 
 
 
-.youtube-card:hover {
+
+.media-info a:hover {
 
 
-transform:translateY(-5px);
+transform:
 
-
-}
-
-
-
-
-
-.video-info {
-
-
-padding:25px;
+translateY(-4px);
 
 
 }
 
-
-
-
-
-.video-info h4 {
-
-
-font-size:1.4rem;
-
-
-margin-bottom:10px;
-
-
-}
-
-
-
-
-
-.video-info p {
-
-
-color:var(--muted);
-
-
-margin-bottom:20px;
-
-
-}
-
-
-
-
-
-.video-info a {
-
-
-color:var(--primary);
-
-
-font-weight:700;
-
-
-}
 
 
 
@@ -1779,26 +2408,6 @@ font-weight:700;
 
 
 /* ================================
-MEDIA MOBILE
-================================ */
-
-
-
-@media(max-width:900px){
-
-
-.twitch-grid,
-.youtube-grid {
-
-
-grid-template-columns:1fr;
-
-
-}
-
-
-
-}/* ================================
 COMMUNITY SECTION
 ================================ */
 
@@ -1815,26 +2424,34 @@ width:100%;
 
 
 
+
 .social-grid {
 
 
 width:min(1200px,90%);
 
 
+
 margin:auto;
+
 
 
 display:grid;
 
 
+
 grid-template-columns:
-repeat(3,1fr);
+
+repeat(4,1fr);
 
 
-gap:30px;
+
+gap:25px;
 
 
 }
+
+
 
 
 
@@ -1843,18 +2460,32 @@ gap:30px;
 .social-card {
 
 
-background:var(--bg-card);
+background:
+
+linear-gradient(
+
+145deg,
+
+rgba(255,255,255,.06),
+
+rgba(255,255,255,.01)
+
+);
+
 
 
 border:
 
-1px solid var(--border);
+1px solid rgba(255,255,255,.12);
 
 
-border-radius:22px;
+
+border-radius:25px;
+
 
 
 padding:30px;
+
 
 
 display:flex;
@@ -1863,13 +2494,19 @@ display:flex;
 flex-direction:column;
 
 
-gap:20px;
+justify-content:space-between;
 
 
-transition:.3s;
+
+min-height:280px;
+
+
+
+transition:.35s;
 
 
 }
+
 
 
 
@@ -1877,7 +2514,33 @@ transition:.3s;
 .social-card:hover {
 
 
-transform:translateY(-8px);
+transform:
+
+translateY(-10px);
+
+
+}
+
+
+
+
+
+.social-brand {
+
+
+font-size:.85rem;
+
+
+font-weight:900;
+
+
+letter-spacing:3px;
+
+
+text-transform:uppercase;
+
+
+color:var(--muted);
 
 
 }
@@ -1887,16 +2550,38 @@ transform:translateY(-8px);
 
 
 
-.social-icon {
+.social-content h3 {
 
 
-width:60px;
+font-size:1.6rem;
 
 
-height:60px;
+margin-bottom:10px;
 
 
-border-radius:18px;
+}
+
+
+
+
+
+.social-content p {
+
+
+color:var(--muted);
+
+
+margin-bottom:25px;
+
+
+}
+
+
+
+
+
+
+.social-content a {
 
 
 display:flex;
@@ -1908,71 +2593,18 @@ align-items:center;
 justify-content:center;
 
 
-font-size:2rem;
 
+padding:
 
-font-weight:800;
-
-
-color:white;
-
-
-}
-
-
-
-
-
-
-.social-info h3 {
-
-
-font-size:1.5rem;
-
-
-margin-bottom:8px;
-
-
-}
-
-
-
-
-
-.social-info p {
-
-
-color:var(--muted);
-
-
-margin-bottom:20px;
-
-
-}
-
-
-
-
-
-.social-info a {
-
-
-display:inline-flex;
-
-
-align-items:center;
-
-
-justify-content:center;
-
-
-padding:12px 25px;
+12px 25px;
 
 
 border-radius:30px;
 
 
-font-weight:700;
+
+font-weight:900;
+
 
 
 transition:.3s;
@@ -1985,10 +2617,12 @@ transition:.3s;
 
 
 
-.social-info a:hover {
+.social-content a:hover {
 
 
-transform:translateY(-3px);
+transform:
+
+translateY(-4px);
 
 
 }
@@ -2002,77 +2636,154 @@ transform:translateY(-3px);
 
 
 /* ================================
-PLATFORM COLORS
+SOCIAL NEON COLORS
 ================================ */
 
 
 
 
 
-/* Instagram */
+/* TIKTOK */
 
 
-.instagram .social-icon {
+.tiktok-card {
+
+
+border-color:
+
+rgba(0,247,255,.3);
+
+
+}
+
+
+
+
+
+.tiktok-card:hover {
+
+
+box-shadow:
+
+
+0 0 35px rgba(0,247,255,.5);
+
+
+}
+
+
+
+
+
+.tiktok-card .social-content a {
+
+
+background:#050505;
+
+
+border:
+
+1px solid #00f7ff;
+
+
+color:white;
+
+
+
+box-shadow:
+
+
+0 0 15px #00f7ff;
+
+
+
+}
+
+
+
+
+
+.tiktok-card .social-content a:hover {
+
+
+box-shadow:
+
+
+0 0 25px #00f7ff,
+0 0 40px #ff0050;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* INSTAGRAM */
+
+
+.instagram-card {
+
+
+border-color:
+
+rgba(255,0,105,.4);
+
+
+}
+
+
+
+
+
+.instagram-card:hover {
+
+
+box-shadow:
+
+
+0 0 35px rgba(255,0,105,.5);
+
+
+}
+
+
+
+
+
+.instagram-card .social-content a {
 
 
 background:
 
 linear-gradient(
+
 135deg,
-#feda75,
-#d62976,
-#962fbf
+
+#ff9a00,
+
+#ff0069,
+
+#8a2be2
+
 );
 
 
-}
-
-
-
-.instagram .social-info a {
-
-
-background:#d62976;
-
 
 color:white;
 
 
-}
+
+box-shadow:
 
 
+0 0 25px rgba(255,0,105,.7);
 
-
-
-
-
-
-/* TikTok */
-
-
-.tiktok .social-icon {
-
-
-background:#000;
-
-
-border:1px solid white;
-
-
-}
-
-
-
-.tiktok .social-info a {
-
-
-background:#000;
-
-
-border:1px solid white;
-
-
-color:white;
 
 
 }
@@ -2084,20 +2795,40 @@ color:white;
 
 
 
-/* Twitch */
+
+/* TWITCH */
 
 
-.twitch .social-icon {
+.twitch-card {
 
 
-background:#9146ff;
+border-color:
+
+rgba(145,70,255,.5);
 
 
 }
 
 
 
-.twitch .social-info a {
+
+
+.twitch-card:hover {
+
+
+box-shadow:
+
+
+0 0 40px rgba(145,70,255,.7);
+
+
+}
+
+
+
+
+
+.twitch-card .social-content a {
 
 
 background:#9146ff;
@@ -2106,6 +2837,14 @@ background:#9146ff;
 color:white;
 
 
+
+box-shadow:
+
+
+0 0 25px #9146ff;
+
+
+
 }
 
 
@@ -2115,171 +2854,65 @@ color:white;
 
 
 
-/* YouTube */
+
+/* LINK HUB */
 
 
-.youtube .social-icon {
+.link-card {
 
 
-background:#ff0000;
+border-color:
+
+rgba(255,79,216,.4);
 
 
 }
 
 
 
-.youtube .social-info a {
 
 
-background:#ff0000;
+.link-card:hover {
+
+
+box-shadow:
+
+
+0 0 40px rgba(255,79,216,.6);
+
+
+}
+
+
+
+
+
+.link-card .social-content a {
+
+
+background:
+
+linear-gradient(
+
+135deg,
+
+#ff4fd8,
+
+#8c5cff
+
+);
+
 
 
 color:white;
 
 
-}
 
+box-shadow:
 
 
+0 0 25px rgba(255,79,216,.7);
 
-
-
-
-
-/* X */
-
-
-.twitter .social-icon {
-
-
-background:#050505;
-
-
-border:1px solid #333;
-
-
-}
-
-
-
-.twitter .social-info a {
-
-
-background:#050505;
-
-
-border:1px solid #333;
-
-
-color:white;
-
-
-}
-
-
-
-
-
-
-
-
-/* ================================
-REFERENCES
-================================ */
-
-
-
-
-
-.references-section {
-
-
-margin-top:80px;
-
-
-}
-
-
-
-.references-section h3 {
-
-
-font-size:1.8rem;
-
-
-margin-bottom:15px;
-
-
-}
-
-
-
-
-
-.references-section > p {
-
-
-color:var(--muted);
-
-
-}
-
-
-
-
-.reference-cards {
-
-
-display:grid;
-
-
-grid-template-columns:
-repeat(2,1fr);
-
-
-gap:25px;
-
-
-margin-top:30px;
-
-
-}
-
-
-
-
-
-
-
-.reference-card {
-
-
-background:var(--bg-soft);
-
-
-padding:25px;
-
-
-border-radius:18px;
-
-
-border:
-
-1px solid var(--border);
-
-
-}
-
-
-
-
-.reference-card a {
-
-
-color:var(--primary);
-
-
-font-weight:700;
 
 
 }
@@ -2293,8 +2926,9 @@ font-weight:700;
 
 
 /* ================================
-SOCIAL RESPONSIVE
+RESPONSIVE MEDIA + SOCIAL
 ================================ */
+
 
 
 @media(max-width:1000px){
@@ -2304,6 +2938,7 @@ SOCIAL RESPONSIVE
 
 
 grid-template-columns:
+
 repeat(2,1fr);
 
 
@@ -2316,23 +2951,17 @@ repeat(2,1fr);
 
 
 
-@media(max-width:650px){
+@media(max-width:700px){
 
 
+.stream-grid,
+.video-grid,
 .social-grid {
 
 
-grid-template-columns:1fr;
+grid-template-columns:
 
-
-}
-
-
-
-.reference-cards {
-
-
-grid-template-columns:1fr;
+1fr;
 
 
 }
@@ -2347,15 +2976,20 @@ FOOTER
 .site-footer {
 
 
-padding:50px 20px;
+padding:60px 20px;
 
 
-background:#080810;
+background:
+
+
+rgba(5,5,15,.95);
+
 
 
 border-top:
 
-1px solid var(--border);
+1px solid rgba(255,79,216,.25);
+
 
 
 text-align:center;
@@ -2385,13 +3019,22 @@ margin:auto;
 .footer-content h3 {
 
 
-font-size:1.5rem;
+font-size:1.7rem;
+
+
+margin-bottom:15px;
+
 
 
 color:var(--primary);
 
 
-margin-bottom:15px;
+
+text-shadow:
+
+
+0 0 20px var(--primary);
+
 
 
 }
@@ -2406,6 +3049,9 @@ margin-bottom:15px;
 color:var(--muted);
 
 
+margin-bottom:10px;
+
+
 }
 
 
@@ -2415,7 +3061,7 @@ color:var(--muted);
 .copyright {
 
 
-margin-top:20px;
+margin-top:25px;
 
 
 font-size:.9rem;
@@ -2443,52 +3089,94 @@ BACK TO TOP
 position:fixed;
 
 
+
 right:30px;
+
 
 
 bottom:30px;
 
 
-width:50px;
+
+width:55px;
 
 
-height:50px;
+
+height:55px;
+
 
 
 border-radius:50%;
 
 
-background:var(--primary);
+
+border:none;
 
 
-color:#111;
+
+background:
+
+linear-gradient(
+
+135deg,
+
+var(--primary),
+
+var(--secondary)
+
+);
 
 
-display:flex;
 
+color:white;
 
-align-items:center;
-
-
-justify-content:center;
 
 
 font-size:1.5rem;
 
 
+
+font-weight:900;
+
+
+
 cursor:pointer;
+
+
+
+display:flex;
+
+
+
+align-items:center;
+
+
+
+justify-content:center;
+
 
 
 opacity:0;
 
 
+
 visibility:hidden;
 
 
-transition:.3s;
+
+transition:.35s;
+
 
 
 z-index:999;
+
+
+
+box-shadow:
+
+
+0 0 25px rgba(255,79,216,.6);
+
 
 
 }
@@ -2512,16 +3200,293 @@ visibility:visible;
 
 
 
+.back-top:hover {
+
+
+transform:
+
+translateY(-5px);
+
+
+
+box-shadow:
+
+
+0 0 40px rgba(255,79,216,.9);
+
+
+
+}
+
+
+
+
+
 
 
 
 
 /* ================================
-NAVBAR MOBILE
+SCROLL ANIMATIONS
+================================ */
+
+
+.fact-card,
+.cosplay-card,
+.gallery-card,
+.stream-card,
+.video-card,
+.social-card {
+
+
+opacity:0;
+
+
+transform:
+
+translateY(40px);
+
+
+
+transition:
+
+
+opacity .7s ease,
+
+transform .7s ease;
+
+
+}
+
+
+
+
+
+.fact-card.visible,
+.cosplay-card.visible,
+.gallery-card.visible,
+.stream-card.visible,
+.video-card.visible,
+.social-card.visible {
+
+
+opacity:1;
+
+
+transform:
+
+translateY(0);
+
+
+}
+
+
+
+
+
+
+
+
+/* ================================
+HOVER GLOW GLOBAL
+================================ */
+
+
+.cosplay-card:hover,
+.gallery-card:hover,
+.stream-card:hover,
+.video-card:hover {
+
+
+box-shadow:
+
+
+0 0 35px rgba(255,79,216,.35);
+
+
+
+}
+
+
+
+
+
+.fact-card:hover {
+
+
+box-shadow:
+
+
+0 0 30px rgba(255,79,216,.35);
+
+
+
+}
+
+
+
+
+
+
+
+
+/* ================================
+IMAGE EFFECTS
 ================================ */
 
 
 
+.hero-image img,
+.about-image img,
+.cosplay-card img,
+.gallery-card img {
+
+
+animation:
+
+fadeImage .8s ease;
+
+
+}
+
+
+
+
+@keyframes fadeImage {
+
+
+from {
+
+
+opacity:0;
+
+
+transform:
+
+scale(.96);
+
+
+}
+
+
+
+to {
+
+
+opacity:1;
+
+
+transform:
+
+scale(1);
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================================
+LIGHTBOX ANIMATION
+================================ */
+
+
+.lightbox.active img {
+
+
+animation:
+
+zoomImage .35s ease;
+
+
+}
+
+
+
+
+
+@keyframes zoomImage {
+
+
+from {
+
+
+transform:
+
+scale(.8);
+
+
+opacity:0;
+
+
+}
+
+
+
+to {
+
+
+transform:
+
+scale(1);
+
+
+opacity:1;
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================================
+TEXT EFFECTS
+================================ */
+
+
+::selection {
+
+
+background:
+
+var(--primary);
+
+
+
+color:#111;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================================
+FINAL MOBILE
+================================ */
 
 
 @media(max-width:900px){
@@ -2547,6 +3512,8 @@ gap:20px;
 
 
 
+
+
 .nav-links {
 
 
@@ -2564,10 +3531,13 @@ justify-content:center;
 
 
 
+
 .hero-content {
 
 
-grid-template-columns:1fr;
+grid-template-columns:
+
+1fr;
 
 
 text-align:center;
@@ -2578,23 +3548,16 @@ text-align:center;
 
 
 
-.hero h1 {
 
-
-font-size:3rem;
-
-
-}
-
-
-
-.hero p {
+.hero-content p {
 
 
 margin:auto;
 
 
 }
+
+
 
 
 
@@ -2605,6 +3568,7 @@ justify-content:center;
 
 
 }
+
 
 
 
@@ -2624,276 +3588,9 @@ height:400px;
 .about-container {
 
 
-grid-template-columns:1fr;
+grid-template-columns:
 
-
-}
-
-
-
-
-.about-image img {
-
-
-height:450px;
-
-
-}
-
-
-
-
-
-.featured-cosplays {
-
-
-grid-template-columns:1fr;
-
-
-}
-
-
-
-
-.popular-cosplays {
-
-
-grid-template-columns:1fr;
-
-
-}
-
-
-
-
-.gallery-grid {
-
-
-grid-template-columns:1fr;
-
-
-}
-
-
-
-
-
-}/* ================================
-ANIMATIONS
-================================ */
-
-
-
-.fact-card,
-.cosplay-card,
-.gallery-item,
-.youtube-card,
-.live-player-card,
-.social-card {
-
-
-opacity:0;
-
-
-transform:
-translateY(40px);
-
-
-transition:
-
-opacity .7s ease,
-transform .7s ease;
-
-
-}
-
-
-
-
-
-.fact-card.visible,
-.cosplay-card.visible,
-.gallery-item.visible,
-.youtube-card.visible,
-.live-player-card.visible,
-.social-card.visible {
-
-
-opacity:1;
-
-
-transform:
-
-translateY(0);
-
-
-}
-
-
-
-
-
-
-
-
-/* ================================
-CARD HOVER EFFECTS
-================================ */
-
-
-
-.fact-card:hover {
-
-
-border-color:
-
-rgba(255,122,200,.5);
-
-
-}
-
-
-
-
-
-.gallery-item:hover,
-.cosplay-card:hover,
-.live-player-card:hover,
-.youtube-card:hover,
-.social-card:hover {
-
-
-border-color:
-
-rgba(255,122,200,.4);
-
-
-}
-
-
-
-
-
-
-
-
-/* ================================
-BUTTON ANIMATIONS
-================================ */
-
-
-
-.primary-btn,
-.secondary-btn,
-.social-info a,
-.player-info a {
-
-
-position:relative;
-
-
-overflow:hidden;
-
-
-}
-
-
-
-.primary-btn::before,
-.secondary-btn::before,
-.social-info a::before,
-.player-info a::before {
-
-
-content:"";
-
-
-position:absolute;
-
-
-inset:0;
-
-
-background:
-
-rgba(255,255,255,.15);
-
-
-transform:
-
-translateX(-100%);
-
-
-transition:.4s;
-
-
-}
-
-
-
-
-
-.primary-btn:hover::before,
-.secondary-btn:hover::before,
-.social-info a:hover::before,
-.player-info a:hover::before {
-
-
-transform:
-
-translateX(0);
-
-
-}
-
-
-
-
-
-
-
-
-
-/* ================================
-IMAGE SMOOTH EFFECT
-================================ */
-
-
-
-.hero-image img,
-.about-image img,
-.gallery-item img,
-.cosplay-card img {
-
-
-animation:
-
-imageFade .8s ease;
-
-
-}
-
-
-
-
-
-@keyframes imageFade {
-
-
-from {
-
-
-opacity:0;
-
-
-}
-
-
-
-to {
-
-
-opacity:1;
+1fr;
 
 
 }
@@ -2902,374 +3599,6 @@ opacity:1;
 
 }
 
-
-
-
-
-
-
-
-
-/* ================================
-SCROLL OFFSET
-================================ */
-
-
-
-section {
-
-
-scroll-margin-top:100px;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* ================================
-SOURCE BOX STYLE
-================================ */
-
-
-
-.source-box {
-
-
-padding-top:10px;
-
-
-}
-
-
-
-.source-box strong {
-
-
-color:white;
-
-
-}
-
-
-
-
-.source-box a:hover {
-
-
-text-decoration:underline;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* ================================
-LIGHTBOX ANIMATION
-================================ */
-
-
-
-.lightbox.active img {
-
-
-animation:
-
-zoomIn .3s ease;
-
-
-}
-
-
-
-
-
-@keyframes zoomIn {
-
-
-from {
-
-
-transform:scale(.8);
-
-
-opacity:0;
-
-
-}
-
-
-
-to {
-
-
-transform:scale(1);
-
-
-opacity:1;
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/* ================================
-TEXT SELECTION
-================================ */
-
-
-
-::selection {
-
-
-background:var(--primary);
-
-
-color:#111;
-
-
-}/* ================================
-FINAL IMAGE SETTINGS
-================================ */
-
-
-
-.hero-image img {
-
-
-object-position:center;
-
-
-}
-
-
-
-
-.about-image img {
-
-
-object-position:center;
-
-
-}
-
-
-
-
-
-
-
-/* ================================
-COSPLAY IMAGE CONTROL
-================================ */
-
-
-
-.featured-card img {
-
-
-object-fit:cover;
-
-
-object-position:center;
-
-
-}
-
-
-
-
-.popular-cosplays img {
-
-
-object-fit:cover;
-
-
-object-position:center top;
-
-
-}
-
-
-
-
-
-/*
- Individual adjustments
- Caso alguma foto tenha corte ruim
-*/
-
-
-.cosplay-card:nth-child(1) img {
-
-
-object-position:center;
-
-
-}
-
-
-
-.cosplay-card:nth-child(2) img {
-
-
-object-position:center top;
-
-
-}
-
-
-
-.cosplay-card:nth-child(3) img {
-
-
-object-position:center;
-
-
-}
-
-
-
-.cosplay-card:nth-child(4) img {
-
-
-object-position:center;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* ================================
-GALLERY IMAGE CONTROL
-================================ */
-
-
-
-.gallery-item:nth-child(1) img {
-
-
-object-position:center;
-
-
-}
-
-
-
-.gallery-item:nth-child(2) img {
-
-
-object-position:center;
-
-
-}
-
-
-
-.gallery-item:nth-child(3) img {
-
-
-object-position:center;
-
-
-}
-
-
-
-.gallery-item:nth-child(4) img {
-
-
-object-position:center;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* ================================
-SPACING FINAL TOUCHES
-================================ */
-
-
-
-.cosplays-section,
-.gallery-section,
-.media-section,
-.community-section {
-
-
-overflow:hidden;
-
-
-}
-
-
-
-
-
-.media-group + .media-group {
-
-
-margin-top:80px;
-
-
-}
-
-
-
-
-
-.community-section {
-
-
-padding-bottom:120px;
-
-
-}
-
-
-
-
-
-
-
-
-/* ================================
-SMALL DEVICES
-================================ */
 
 
 
@@ -3289,22 +3618,10 @@ padding:70px 0;
 
 
 
-.hero {
+.hero-content h1 {
 
 
-padding-top:120px;
-
-
-}
-
-
-
-
-
-.hero h1 {
-
-
-font-size:2.4rem;
+font-size:2.5rem;
 
 
 }
@@ -3328,26 +3645,14 @@ align-items:center;
 
 
 
-.primary-btn,
-.secondary-btn {
+.primary-button,
+.secondary-button {
 
 
-width:220px;
+width:230px;
 
 
 text-align:center;
-
-
-}
-
-
-
-
-
-.info-cards {
-
-
-grid-template-columns:1fr;
 
 
 }
@@ -3380,7 +3685,7 @@ height:auto;
 
 
 
-.popular-cosplays .cosplay-link {
+.gallery-card img {
 
 
 height:280px;
@@ -3392,32 +3697,13 @@ height:280px;
 
 
 
-.gallery-link {
+.back-top {
 
 
-height:280px;
+right:20px;
 
 
-}
-
-
-
-
-
-.lightbox {
-
-
-padding:20px;
-
-
-}
-
-
-
-.lightbox img {
-
-
-max-width:95%;
+bottom:20px;
 
 
 }
