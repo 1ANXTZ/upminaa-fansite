@@ -2,7 +2,7 @@
 =====================================
 UPMINAA FAN HUB
 MAIN.JS
-FINAL VERSION
+FINAL CORRECTED VERSION
 =====================================
 */
 
@@ -50,6 +50,7 @@ navLinks.classList.toggle(
 
 
 
+
 /* ==============================
 SMOOTH SCROLL
 ============================== */
@@ -81,6 +82,7 @@ if(target){
 event.preventDefault();
 
 
+
 target.scrollIntoView({
 
 behavior:"smooth"
@@ -104,6 +106,7 @@ behavior:"smooth"
 
 
 
+
 /* ==============================
 REVEAL ANIMATION
 ============================== */
@@ -113,7 +116,7 @@ const revealElements =
 document.querySelectorAll(
 `
 .profile-card,
-.curiosity-card,
+.bio-card,
 .cosplay-card,
 .gallery-card,
 .live-player-card,
@@ -142,7 +145,14 @@ entry.target.classList.add(
 );
 
 
+
+revealObserver.unobserve(
+entry.target
+);
+
+
 }
+
 
 
 });
@@ -161,6 +171,7 @@ threshold:.15
 
 
 
+
 revealElements.forEach(
 element=>{
 
@@ -171,6 +182,7 @@ element
 
 
 });
+
 
 
 
@@ -200,7 +212,9 @@ window.addEventListener(
 ()=>{
 
 
-if(window.scrollY > 500){
+if(
+window.scrollY > 500
+){
 
 
 backTop.classList.add(
@@ -245,8 +259,9 @@ behavior:"smooth"
 });
 
 
-
 }
+
+
 
 
 
@@ -274,21 +289,22 @@ new Date()
 .getFullYear();
 
 
-}/* ==============================
+}
+/* ==============================
 LIGHTBOX SYSTEM
 ============================== */
 
 
 const lightbox =
 document.querySelector(
-".lightbox"
+"#imageLightbox"
 );
 
 
 
 const lightboxImage =
 document.querySelector(
-".lightbox img"
+"#lightboxImage"
 );
 
 
@@ -303,7 +319,10 @@ document.querySelector(
 
 
 
-function openLightbox(image){
+function openLightbox(
+image
+){
+
 
 
 if(
@@ -314,6 +333,7 @@ if(
 return;
 
 }
+
 
 
 
@@ -338,7 +358,12 @@ lightbox.classList.add(
 
 
 
+
+
+
+
 function closeLightbox(){
+
 
 
 if(
@@ -352,6 +377,7 @@ return;
 
 
 
+
 lightbox.classList.remove(
 "active"
 );
@@ -360,6 +386,7 @@ lightbox.classList.remove(
 
 lightboxImage.src =
 "";
+
 
 
 }
@@ -371,27 +398,37 @@ lightboxImage.src =
 
 
 
-/*
-IMPORTANT:
-ALL IMAGES WITH THIS CLASS
-BECOME CLICKABLE
-*/
+
+/* ==============================
+CLICKABLE IMAGES
+============================== */
 
 
-const lightboxImages =
+const clickableImages =
 document.querySelectorAll(
-".lightbox-image"
+".cosplay-card img, .gallery-card img"
 );
 
 
 
-lightboxImages.forEach(
+
+
+clickableImages.forEach(
 image=>{
+
+
+
+image.classList.add(
+"lightbox-image"
+);
+
+
 
 
 image.addEventListener(
 "click",
 event=>{
+
 
 
 event.stopPropagation();
@@ -407,6 +444,7 @@ image
 });
 
 
+
 });
 
 
@@ -418,21 +456,29 @@ image
 
 
 /* ==============================
-COSPLAY CLICK SUPPORT
+CARD CLICK SUPPORT
 ============================== */
 
 
 
-const cosplayCards =
+const clickableCards =
 document.querySelectorAll(
-".cosplay-card"
+".cosplay-card, .gallery-card"
 );
 
 
 
 
-cosplayCards.forEach(
+
+clickableCards.forEach(
 card=>{
+
+
+
+card.addEventListener(
+"click",
+event=>{
+
 
 
 const image =
@@ -442,21 +488,11 @@ card.querySelector(
 
 
 
-if(image){
 
-
-
-image.classList.add(
-"lightbox-image"
-);
-
-
-
-
-
-card.addEventListener(
-"click",
-()=>{
+if(
+image &&
+event.target !== image
+){
 
 
 openLightbox(
@@ -464,73 +500,11 @@ image
 );
 
 
-
-});
-
-
 }
 
 
 
-
 });
-
-
-
-
-
-
-
-
-/* ==============================
-GALLERY CLICK SUPPORT
-============================== */
-
-
-const galleryCards =
-document.querySelectorAll(
-".gallery-card"
-);
-
-
-
-galleryCards.forEach(
-card=>{
-
-
-const image =
-card.querySelector(
-"img"
-);
-
-
-
-if(image){
-
-
-
-image.classList.add(
-"lightbox-image"
-);
-
-
-
-
-card.addEventListener(
-"click",
-()=>{
-
-
-openLightbox(
-image
-);
-
-
-});
-
-
-
-}
 
 
 
@@ -547,13 +521,18 @@ image
 if(lightboxClose){
 
 
+
 lightboxClose.addEventListener(
 "click",
 closeLightbox
 );
 
 
+
 }
+
+
+
 
 
 
@@ -567,6 +546,7 @@ lightbox.addEventListener(
 event=>{
 
 
+
 if(
 event.target === lightbox
 ){
@@ -578,7 +558,9 @@ closeLightbox();
 }
 
 
+
 });
+
 
 
 }
@@ -589,9 +571,11 @@ closeLightbox();
 
 
 
+
 document.addEventListener(
 "keydown",
 event=>{
+
 
 
 if(
@@ -653,11 +637,14 @@ document.querySelector(
 
 
 
+
 function getParentDomain(){
+
 
 
 let domain =
 window.location.hostname;
+
 
 
 
@@ -687,7 +674,9 @@ return domain;
 
 
 
+
 function createTwitchPlayer(){
+
 
 
 const iframe =
@@ -697,9 +686,13 @@ document.createElement(
 
 
 
+
+
 iframe.src =
 
 `https://player.twitch.tv/?channel=${TWITCH_CHANNEL}&parent=${getParentDomain()}&muted=true`;
+
+
 
 
 
@@ -728,7 +721,10 @@ iframe.allow =
 
 
 
+
+
 return iframe;
+
 
 
 }
@@ -744,7 +740,9 @@ return iframe;
 async function checkTwitchStatus(){
 
 
+
 try{
+
 
 
 const response =
@@ -756,8 +754,13 @@ await fetch(
 
 
 
+
+
 const data =
 await response.text();
+
+
+
 
 
 
@@ -769,14 +772,19 @@ return !data
 
 
 
+
 }
 
 catch(error){
 
 
+
 console.warn(
+
 "Twitch status error:",
+
 error
+
 );
 
 
@@ -784,10 +792,13 @@ error
 return false;
 
 
+
 }
 
 
+
 }
+
 
 
 
@@ -813,8 +824,10 @@ liveBadge
 
 
 
+
 badges.forEach(
 badge=>{
+
 
 
 if(!badge){
@@ -825,7 +838,9 @@ return;
 
 
 
+
 if(online){
+
 
 
 badge.classList.add(
@@ -843,6 +858,7 @@ badge.classList.remove(
 }
 
 else{
+
 
 
 badge.classList.add(
@@ -878,6 +894,7 @@ badge.classList.remove(
 async function updateTwitch(){
 
 
+
 const online =
 await checkTwitchStatus();
 
@@ -895,9 +912,11 @@ online
 
 
 
+
 /* ==============================
-HERO LIVE
+HERO LIVE STATUS
 ============================== */
+
 
 
 if(heroLiveStatus){
@@ -906,12 +925,9 @@ if(heroLiveStatus){
 
 heroLiveStatus.innerHTML = `
 
-
 <span class="status-dot"></span>
 
-
 LIVE
-
 
 `;
 
@@ -927,9 +943,8 @@ LIVE
 
 
 
-
 /* ==============================
-PLAYER
+LIVE PLAYER
 ============================== */
 
 
@@ -948,8 +963,10 @@ online
 ){
 
 
+
 twitchEmbed.innerHTML =
 "";
+
 
 
 twitchEmbed.appendChild(
@@ -973,21 +990,21 @@ createTwitchPlayer()
 
 
 /* ==============================
-PLAYER BADGE
+LIVE BADGE
 ============================== */
 
 
-if(liveBadge){
+if(
+liveBadge
+){
+
 
 
 liveBadge.innerHTML = `
 
-
 <span class="status-dot"></span>
 
-
 LIVE
-
 
 `;
 
@@ -1011,6 +1028,8 @@ updateTwitch();
 
 
 
+
+
 setInterval(
 
 updateTwitch,
@@ -1025,11 +1044,16 @@ TWITCH LAST VOD SYSTEM
 async function loadLatestVod(){
 
 
-if(!latestVod){
+
+if(
+!latestVod
+){
 
 return;
 
 }
+
+
 
 
 
@@ -1049,8 +1073,10 @@ await fetch(
 
 
 
+
 const videos =
 await response.json();
+
 
 
 
@@ -1066,6 +1092,7 @@ videos.length
 
 const latest =
 videos[0];
+
 
 
 
@@ -1096,9 +1123,12 @@ frameborder="0"
 
 
 
+
+
 }
 
 else{
+
 
 
 latestVod.innerHTML = `
@@ -1141,6 +1171,7 @@ error
 
 
 
+
 latestVod.innerHTML = `
 
 
@@ -1154,6 +1185,7 @@ Unable to load latest stream.
 
 
 `;
+
 
 
 
@@ -1176,9 +1208,11 @@ YOUTUBE SYSTEM
 ============================== */
 
 
+
 const YOUTUBE_CHANNEL_ID =
 
 "UCw3CBMvVjZJNfQR3tEvTodQ";
+
 
 
 
@@ -1202,7 +1236,9 @@ async function loadYoutubeVideos(){
 
 
 
-if(!youtubeGrid){
+if(
+!youtubeGrid
+){
 
 return;
 
@@ -1212,7 +1248,10 @@ return;
 
 
 
+
 try{
+
+
 
 
 
@@ -1224,9 +1263,13 @@ const feed =
 
 
 
+
+
 const proxy =
 
 "https://api.allorigins.win/raw?url=";
+
+
 
 
 
@@ -1248,9 +1291,12 @@ feed
 
 
 
+
 const xmlText =
 
 await response.text();
+
+
 
 
 
@@ -1272,6 +1318,9 @@ xmlText,
 
 
 
+
+
+
 const entries =
 
 [
@@ -1281,6 +1330,7 @@ const entries =
 )
 
 ];
+
 
 
 
@@ -1297,11 +1347,12 @@ entries
 entry=>{
 
 
+
 return {
 
 
-id:
 
+id:
 
 entry
 .querySelector(
@@ -1313,8 +1364,8 @@ entry
 
 
 
-title:
 
+title:
 
 entry
 .querySelector(
@@ -1335,8 +1386,6 @@ entry
 
 })
 
-
-
 .filter(
 
 video=>
@@ -1351,9 +1400,11 @@ video.id
 
 
 
+
 renderYoutubeVideos(
 videos
 );
+
 
 
 
@@ -1377,11 +1428,14 @@ error
 
 
 
+
+
 youtubeGrid.innerHTML = `
 
 
 
 <article class="youtube-card">
+
 
 
 <div class="video-wrapper">
@@ -1394,8 +1448,8 @@ Videos unavailable.
 </p>
 
 
-
 </div>
+
 
 
 </article>
@@ -1426,7 +1480,9 @@ videos
 
 
 
-if(!youtubeGrid){
+if(
+!youtubeGrid
+){
 
 return;
 
@@ -1436,7 +1492,11 @@ return;
 
 
 
-youtubeGrid.innerHTML = "";
+
+youtubeGrid.innerHTML =
+"";
+
+
 
 
 
@@ -1462,9 +1522,11 @@ document.createElement(
 
 
 
+
 card.className =
 
 "youtube-card";
+
 
 
 
@@ -1481,22 +1543,18 @@ card.innerHTML = `
 
 <iframe
 
-
 src="https://www.youtube.com/embed/${video.id}"
-
 
 title="${video.title}"
 
-
 loading="lazy"
 
-
 allowfullscreen
-
 
 >
 
 </iframe>
+
 
 
 </div>
@@ -1515,11 +1573,13 @@ ${video.title}
 </h4>
 
 
+
 </div>
 
 
 
 `;
+
 
 
 
@@ -1532,11 +1592,15 @@ card
 
 
 
+
+
+
 });
 
 
 
 }
+
 
 
 
@@ -1713,7 +1777,6 @@ loadYoutubeVideos();
 
 
 
-
 setInterval(
 
 refreshMedia,
@@ -1735,6 +1798,7 @@ FINAL STATUS
 ============================== */
 
 
+
 console.log(`
 
 
@@ -1754,6 +1818,8 @@ Systems:
 
 ✓ Reveal Animations
 
+✓ About Her Animation
+
 ✓ Lightbox Gallery
 
 ✓ Clickable Cosplays
@@ -1771,6 +1837,7 @@ Systems:
 
 
 `);
+
 
 
 
