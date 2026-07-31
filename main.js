@@ -2,7 +2,7 @@
 =====================================
 UPMINAA FAN HUB
 main.js
-FINAL PLAYER VERSION
+PLAYER FIX VERSION
 =====================================
 */
 
@@ -13,27 +13,49 @@ LOADER
 =====================================
 */
 
-const loaderEl = document.getElementById("loader");
 
-if(loaderEl){
+const loader =
+document.getElementById("loader");
+
+
+if(loader){
+
 
 window.addEventListener(
 "load",
 ()=>{
 
+
 setTimeout(
-()=>loaderEl.classList.add("hidden"),
-400
+()=>{
+
+loader.classList.add(
+"hidden"
 );
+
+},
+500
+);
+
 
 });
 
+
 setTimeout(
-()=>loaderEl.classList.add("hidden"),
-2000
+()=>{
+
+loader.classList.add(
+"hidden"
 );
 
+},
+2500
+);
+
+
 }
+
+
 
 
 
@@ -41,30 +63,37 @@ setTimeout(
 
 /*
 =====================================
-YOUTUBE AUTO VIDEOS
+YOUTUBE AUTO LOAD
 =====================================
 */
 
 
-const YT_CHANNEL_ID =
+const YOUTUBE_CHANNEL_ID =
 "UCw3CBMvVjZJNfQR3tEvTodQ";
 
 
-const YT_VIDEO_COUNT = 4;
-
-
-const YT_RSS_URL =
-`https://www.youtube.com/feeds/videos.xml?channel_id=${YT_CHANNEL_ID}`;
+const YOUTUBE_LIMIT =
+4;
 
 
 
-const YT_PROXIES = [
+const YOUTUBE_FEED =
+`https://www.youtube.com/feeds/videos.xml?channel_id=${YOUTUBE_CHANNEL_ID}`;
 
-url =>
+
+
+
+
+const RSS_PROXIES = [
+
+
+(url)=>
 `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
 
-url =>
+
+(url)=>
 `https://corsproxy.io/?url=${encodeURIComponent(url)}`
+
 
 ];
 
@@ -72,16 +101,14 @@ url =>
 
 
 
-async function fetchLatestVideos(){
 
-
-let lastError;
-
+async function getYoutubeVideos(){
 
 
 for(
-const proxy of YT_PROXIES
+const proxy of RSS_PROXIES
 ){
+
 
 
 try{
@@ -89,33 +116,33 @@ try{
 
 const response =
 await fetch(
-proxy(YT_RSS_URL)
+proxy(YOUTUBE_FEED)
 );
 
 
 
 if(!response.ok){
 
-throw new Error(
-"RSS error"
-);
+continue;
 
 }
 
 
 
-
-const xmlText =
+const text =
 await response.text();
+
 
 
 
 const xml =
 new DOMParser()
 .parseFromString(
-xmlText,
+text,
 "text/xml"
 );
+
+
 
 
 
@@ -127,7 +154,7 @@ const entries =
 ]
 .slice(
 0,
-YT_VIDEO_COUNT
+YOUTUBE_LIMIT
 );
 
 
@@ -136,10 +163,14 @@ YT_VIDEO_COUNT
 
 const videos =
 entries.map(
-entry=>({
+item=>{
+
+
+return {
+
 
 id:
-entry
+item
 .getElementsByTagName(
 "yt:videoId"
 )[0]
@@ -147,14 +178,18 @@ entry
 
 
 title:
-entry
+item
 .getElementsByTagName(
 "title"
 )[0]
 ?.textContent ||
 "Upminaa Video"
 
-})
+
+};
+
+
+}
 )
 .filter(
 video=>video.id
@@ -172,11 +207,14 @@ return videos;
 
 
 
-}
 
+}
 catch(error){
 
-lastError = error;
+console.warn(
+"Youtube proxy failed",
+error
+);
 
 }
 
@@ -186,8 +224,7 @@ lastError = error;
 
 
 
-throw lastError;
-
+return [];
 
 }
 
@@ -197,19 +234,20 @@ throw lastError;
 
 
 
-function renderYoutubeVideos(
+function createYoutubePlayers(
 videos
 ){
 
 
-const grid =
+
+const gallery =
 document.getElementById(
 "galleryGrid"
 );
 
 
 
-if(!grid){
+if(!gallery){
 
 return;
 
@@ -218,12 +256,13 @@ return;
 
 
 
-grid
+
+gallery
 .querySelectorAll(
 ".yt-video-card"
 )
 .forEach(
-item=>item.remove()
+card=>card.remove()
 );
 
 
@@ -232,6 +271,7 @@ item=>item.remove()
 
 videos.forEach(
 video=>{
+
 
 
 const card =
@@ -247,6 +287,7 @@ card.className =
 
 
 
+
 const iframe =
 document.createElement(
 "iframe"
@@ -256,6 +297,8 @@ document.createElement(
 
 iframe.src =
 `https://www.youtube.com/embed/${video.id}`;
+
+
 
 
 
@@ -274,10 +317,9 @@ true;
 
 
 
-iframe.setAttribute(
-"allow",
-"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-);
+iframe.allow =
+"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+
 
 
 
@@ -288,7 +330,7 @@ iframe
 
 
 
-grid.appendChild(
+gallery.appendChild(
 card
 );
 
@@ -303,51 +345,45 @@ card
 
 
 
-
-
-async function loadYoutubeVideos(){
-
-
-try{
+async function loadYoutube(){
 
 
 const videos =
-await fetchLatestVideos();
+await getYoutubeVideos();
 
 
-renderYoutubeVideos(
+
+if(videos.length){
+
+
+createYoutubePlayers(
 videos
 );
 
 
 console.log(
-"YouTube player loaded"
+"YouTube loaded"
 );
 
 
-
 }
-catch(error){
+else{
+
 
 console.warn(
-"YouTube error:",
-error
+"No Youtube videos found"
 );
 
 
 }
 
 
+
 }
 
 
 
-loadYoutubeVideos();
-
-
-
-
-
+loadYoutube();
 /*
 =====================================
 TWITCH SYSTEM
@@ -357,210 +393,6 @@ TWITCH SYSTEM
 
 const TWITCH_CHANNEL =
 "upminaa";
-
-
-const TWITCH_CLIENT_ID =
-"kimne78kx3ncx6brgo4mv6wki5h1ko";
-
-
-const TWITCH_GQL_URL =
-"https://gql.twitch.tv/gql";
-
-
-
-
-
-async function twitchQuery(
-query
-){
-
-
-const response =
-await fetch(
-TWITCH_GQL_URL,
-{
-
-method:"POST",
-
-headers:{
-
-"Client-Id":
-TWITCH_CLIENT_ID,
-
-"Content-Type":
-"application/json"
-
-},
-
-
-body:
-JSON.stringify({
-
-query
-
-})
-
-
-}
-
-);
-
-
-
-const json =
-await response.json();
-
-
-
-if(json.errors){
-
-throw new Error(
-"Twitch API error"
-);
-
-}
-
-
-
-return json.data;
-
-
-}/*
-=====================================
-TWITCH LIVE STATUS
-=====================================
-*/
-
-
-async function checkTwitchLive(){
-
-
-try{
-
-
-const data =
-await twitchQuery(
-`
-query {
-
-user(login:"${TWITCH_CHANNEL}") {
-
-stream {
-
-id
-
-}
-
-}
-
-}
-`
-);
-
-
-
-return Boolean(
-data?.user?.stream
-);
-
-
-
-}
-catch(error){
-
-
-console.warn(
-"Twitch status error:",
-error
-);
-
-
-return false;
-
-
-}
-
-
-}
-
-
-
-
-
-
-
-
-async function getLatestTwitchVod(){
-
-
-try{
-
-
-const data =
-await twitchQuery(
-`
-query {
-
-user(login:"${TWITCH_CHANNEL}") {
-
-videos(
-first:1,
-type:ARCHIVE
-){
-
-edges {
-
-node {
-
-id
-
-title
-
-}
-
-}
-
-}
-
-}
-
-}
-`
-);
-
-
-
-
-return data
-?.user
-?.videos
-?.edges?.[0]
-?.node || null;
-
-
-
-}
-catch(error){
-
-
-console.warn(
-"Twitch VOD error:",
-error
-);
-
-
-
-return null;
-
-
-}
-
-
-}
-
-
-
-
 
 
 
@@ -576,79 +408,115 @@ return window.location.hostname;
 
 
 
-
-
-function updateTwitchBadge(
-online
+function createTwitchPlayer(
+type,
+id
 ){
 
 
-const badge =
-document.getElementById(
-"twitchStatusBadge"
+const iframe =
+document.createElement(
+"iframe"
 );
 
 
 
-if(!badge){
 
-return;
-
-}
+if(type === "live"){
 
 
-
-const text =
-badge.querySelector(
-".status-text"
-);
+iframe.src =
+`https://player.twitch.tv/?channel=${TWITCH_CHANNEL}&parent=${twitchParent()}&muted=true`;
 
 
-
-if(online){
-
-
-badge.classList.remove(
-"is-off"
-);
-
-
-
-badge.classList.add(
-"is-on"
-);
-
-
-
-if(text){
-
-text.textContent =
-"AO VIVO";
-
-}
-
+iframe.title =
+"Upminaa Twitch Live";
 
 
 }
 else{
 
 
-badge.classList.remove(
-"is-on"
+iframe.src =
+`https://player.twitch.tv/?video=${id}&parent=${twitchParent()}&muted=true`;
+
+
+iframe.title =
+"Última live da Upminaa";
+
+
+}
+
+
+
+
+iframe.allowFullscreen =
+true;
+
+
+iframe.frameBorder =
+"0";
+
+
+
+return iframe;
+
+
+}
+
+
+
+
+
+
+
+
+/*
+=====================================
+TWITCH STATUS
+=====================================
+*/
+
+
+async function checkTwitchLive(){
+
+
+try{
+
+
+const response =
+await fetch(
+`https://decapi.me/twitch/uptime/${TWITCH_CHANNEL}`
 );
 
 
 
-badge.classList.add(
-"is-off"
+const text =
+await response.text();
+
+
+
+
+
+return !text.includes(
+"offline"
 );
 
 
 
-if(text){
+}
+catch(error){
 
-text.textContent =
-"OFFLINE";
+
+console.warn(
+"Twitch status error",
+error
+);
+
+
+
+return false;
+
 
 }
 
@@ -658,22 +526,26 @@ text.textContent =
 
 
 
-}
 
 
 
 
 
 
-
-
-function createTwitchLivePlayer(){
+async function loadTwitchLive(){
 
 
 
 const wrap =
 document.getElementById(
 "twitchEmbedWrap"
+);
+
+
+
+const badge =
+document.getElementById(
+"twitchStatusBadge"
 );
 
 
@@ -685,10 +557,8 @@ document.getElementById(
 
 
 
-if(
-!wrap ||
-wrap.dataset.loaded
-){
+
+if(!wrap){
 
 return;
 
@@ -697,37 +567,25 @@ return;
 
 
 
-const iframe =
-document.createElement(
-"iframe"
-);
+const live =
+await checkTwitchLive();
 
 
 
-iframe.src =
-`https://player.twitch.tv/?channel=${TWITCH_CHANNEL}&parent=${twitchParent()}&muted=true`;
+
+
+if(live){
 
 
 
-iframe.title =
-"Upminaa Twitch Live";
-
-
-
-iframe.allowFullscreen =
-true;
-
-
-
-iframe.setAttribute(
-"allow",
-"autoplay"
-);
-
+wrap.innerHTML =
+"";
 
 
 wrap.appendChild(
-iframe
+createTwitchPlayer(
+"live"
+)
 );
 
 
@@ -738,22 +596,68 @@ wrap.classList.add(
 
 
 
-wrap.dataset.loaded =
-"true";
-
-
 
 if(photo){
 
-photo.style.opacity =
-"0";
+photo.style.display =
+"none";
+
+}
+
+
+
+if(badge){
+
+
+badge.classList.remove(
+"is-off"
+);
+
+
+
+badge.classList.add(
+"is-on"
+);
+
+
+
+badge.querySelector(
+".status-text"
+).textContent =
+"AO VIVO";
+
+}
+
+
+
+
+console.log(
+"Twitch live loaded"
+);
+
+
+
+}
+
+else{
+
+
+
+if(badge){
+
+
+badge.querySelector(
+".status-text"
+).textContent =
+"OFFLINE";
+
 
 }
 
 
 
 console.log(
-"Twitch player loaded"
+"Twitch offline"
 );
 
 
@@ -762,32 +666,6 @@ console.log(
 
 
 
-
-
-
-
-async function updateTwitch(){
-
-
-const live =
-await checkTwitchLive();
-
-
-
-updateTwitchBadge(
-live
-);
-
-
-
-if(live){
-
-createTwitchLivePlayer();
-
-}
-
-
-
 }
 
 
@@ -797,7 +675,14 @@ createTwitchLivePlayer();
 
 
 
-async function loadTwitchVod(){
+/*
+=====================================
+ULTIMA LIVE / VOD
+=====================================
+*/
+
+
+async function loadLatestVod(){
 
 
 const card =
@@ -817,21 +702,40 @@ return;
 
 
 
-const vod =
-await getLatestTwitchVod();
+try{
 
 
 
-if(!vod){
+const response =
+await fetch(
+`https://decapi.me/twitch/videos/${TWITCH_CHANNEL}`
+);
+
+
+
+
+
+const data =
+await response.json();
+
+
+
+
+
+if(
+!data ||
+!data[0]
+){
 
 
 card.innerHTML =
 `
-<div class="yt-loading">
-Nenhum VOD encontrado.
+<div class="yt-error">
+
+Nenhuma live encontrada.
+
 </div>
 `;
-
 
 return;
 
@@ -842,25 +746,11 @@ return;
 
 
 
-const iframe =
-document.createElement(
-"iframe"
-);
+
+const vod =
+data[0];
 
 
-
-iframe.src =
-`https://player.twitch.tv/?video=${vod.id}&parent=${twitchParent()}&muted=true`;
-
-
-
-iframe.title =
-vod.title;
-
-
-
-iframe.allowFullscreen =
-true;
 
 
 
@@ -869,15 +759,50 @@ card.innerHTML =
 
 
 
+
+
 card.appendChild(
-iframe
+
+createTwitchPlayer(
+"vod",
+vod.id
+)
+
 );
 
 
 
 console.log(
-"Twitch VOD loaded"
+"Latest Twitch VOD loaded"
 );
+
+
+
+}
+
+catch(error){
+
+
+
+console.warn(
+"VOD error",
+error
+);
+
+
+
+card.innerHTML =
+`
+<div class="yt-error">
+
+Erro ao carregar última live.
+
+</div>
+`;
+
+
+
+}
 
 
 
@@ -887,26 +812,16 @@ console.log(
 
 
 
+loadTwitchLive();
 
-updateTwitch();
-
-
-loadTwitchVod();
+loadLatestVod();
 
 
 
 setInterval(
-updateTwitch,
+loadTwitchLive,
 120000
 );
-
-
-
-
-
-
-
-
 /*
 =====================================
 DOM READY
@@ -919,8 +834,13 @@ document.addEventListener(
 ()=>{
 
 
+
+
+
 /*
-FOOTER YEAR
+=====================================
+YEAR
+=====================================
 */
 
 
@@ -930,13 +850,15 @@ document.getElementById(
 );
 
 
-
 if(year){
 
 year.textContent =
-new Date().getFullYear();
+new Date()
+.getFullYear();
 
 }
+
+
 
 
 
@@ -951,39 +873,51 @@ MOBILE MENU
 */
 
 
-const menu =
-document.querySelector(
-".menu-toggle, #navToggle"
+const menuButton =
+document.getElementById(
+"navToggle"
 );
 
 
 
 const nav =
-document.querySelector(
-".nav-links, #navLinks"
+document.getElementById(
+"navLinks"
 );
+
+
 
 
 
 if(
-menu &&
+menuButton &&
 nav
 ){
 
 
-menu.addEventListener(
+
+menuButton.addEventListener(
 "click",
 ()=>{
 
 
+const open =
 nav.classList.toggle(
-"active"
+"open"
 );
 
 
 
-nav.classList.toggle(
-"open"
+menuButton.classList.toggle(
+"open",
+open
+);
+
+
+
+menuButton.setAttribute(
+"aria-expanded",
+open
 );
 
 
@@ -993,6 +927,50 @@ nav.classList.toggle(
 
 
 }
+
+
+
+
+
+document
+.querySelectorAll(
+".nav-link"
+)
+.forEach(
+link=>{
+
+
+link.addEventListener(
+"click",
+()=>{
+
+
+if(nav){
+
+nav.classList.remove(
+"open"
+);
+
+}
+
+
+if(menuButton){
+
+menuButton.classList.remove(
+"open"
+);
+
+}
+
+
+});
+
+
+});
+
+
+
+
 
 
 
@@ -1020,7 +998,9 @@ event=>{
 
 const target =
 document.querySelector(
-link.getAttribute("href")
+link.getAttribute(
+"href"
+)
 );
 
 
@@ -1031,10 +1011,10 @@ if(target){
 event.preventDefault();
 
 
-
 target.scrollIntoView({
 
-behavior:"smooth"
+behavior:
+"smooth"
 
 });
 
@@ -1042,33 +1022,40 @@ behavior:"smooth"
 }
 
 
+
 });
 
 
 });
+
+
+
+
+
+
+
+
+
+
 /*
 =====================================
-SCROLL REVEAL
+REVEAL ANIMATION
 =====================================
 */
 
 
-const revealItems =
+const reveal =
 document.querySelectorAll(
 `
 .about-card,
 .social-card,
 .gallery-card,
-.cosplay-card,
-.fact-card,
-.reference-card,
 .section-heading
 `
 );
 
 
 
-if(revealItems.length){
 
 
 const observer =
@@ -1080,11 +1067,13 @@ entries.forEach(
 entry=>{
 
 
-if(entry.isIntersecting){
+if(
+entry.isIntersecting
+){
 
 
 entry.target.classList.add(
-"visible"
+"in-view"
 );
 
 
@@ -1092,7 +1081,6 @@ entry.target.classList.add(
 observer.unobserve(
 entry.target
 );
-
 
 
 }
@@ -1103,19 +1091,70 @@ entry.target
 
 },
 {
-threshold:.15
+threshold:
+0.15
 }
 );
 
 
 
-revealItems.forEach(
-item=>observer.observe(item)
+
+
+reveal.forEach(
+item=>{
+
+
+item.classList.add(
+"reveal"
+);
+
+
+observer.observe(
+item
+);
+
+
+});
+
+
+
+
+
+
+
+
+
+/*
+=====================================
+IMAGE ERROR
+=====================================
+*/
+
+
+document
+.querySelectorAll(
+"img"
+)
+.forEach(
+img=>{
+
+
+img.addEventListener(
+"error",
+()=>{
+
+
+console.warn(
+"Image missing:",
+img.src
 );
 
 
 
-}
+});
+
+
+});
 
 
 
@@ -1146,27 +1185,18 @@ document.getElementById(
 
 
 
-const closeLightbox =
-document.querySelector(
-".lightbox-close"
-);
+
+document
+.querySelectorAll(
+".gallery-card img"
+)
+.forEach(
+image=>{
 
 
-
-
-
-let lastScroll = 0;
-
-
-
-
-
-
-function openImage(
-src,
-alt=""
-){
-
+image.addEventListener(
+"click",
+()=>{
 
 
 if(
@@ -1180,18 +1210,8 @@ return;
 
 
 
-lastScroll =
-window.scrollY;
-
-
-
 lightboxImage.src =
-src;
-
-
-
-lightboxImage.alt =
-alt;
+image.src;
 
 
 
@@ -1201,106 +1221,6 @@ lightbox.classList.add(
 
 
 
-document.body.style.overflow =
-"hidden";
-
-
-
-}
-
-
-
-
-
-
-
-function hideLightbox(){
-
-
-if(!lightbox){
-
-return;
-
-}
-
-
-
-lightbox.classList.remove(
-"active"
-);
-
-
-
-document.body.style.overflow =
-"";
-
-
-
-window.scrollTo(
-{
-
-top:lastScroll
-
-}
-);
-
-
-
-}
-
-
-
-
-
-
-
-
-
-document
-.querySelectorAll(
-`
-.cosplay-card img,
-.gallery-card img
-`
-)
-.forEach(
-image=>{
-
-
-image.style.cursor =
-"pointer";
-
-
-
-image.addEventListener(
-"click",
-()=>{
-
-
-const card =
-image.closest(
-".cosplay-card, .gallery-card"
-);
-
-
-
-const title =
-card
-?.querySelector(
-"h3"
-)
-?.textContent ||
-image.alt;
-
-
-
-openImage(
-image.src,
-title
-);
-
-
-
 });
 
 
@@ -1311,6 +1231,11 @@ title
 
 
 
+
+const closeLightbox =
+document.querySelector(
+".lightbox-close"
+);
 
 
 
@@ -1319,12 +1244,21 @@ if(closeLightbox){
 
 closeLightbox.addEventListener(
 "click",
-hideLightbox
+()=>{
+
+
+lightbox.classList.remove(
+"active"
 );
 
 
+});
+
 
 }
+
+
+
 
 
 
@@ -1340,278 +1274,19 @@ if(
 event.target === lightbox
 ){
 
-hideLightbox();
+
+lightbox.classList.remove(
+"active"
+);
+
 
 }
-
 
 
 });
 
 
 }
-
-
-
-
-
-
-document.addEventListener(
-"keydown",
-event=>{
-
-
-if(
-event.key === "Escape"
-){
-
-hideLightbox();
-
-}
-
-
-
-});
-
-
-
-
-
-
-
-
-
-/*
-=====================================
-BACK TO TOP
-=====================================
-*/
-
-
-const backTop =
-document.querySelector(
-".back-top"
-);
-
-
-
-if(backTop){
-
-
-
-window.addEventListener(
-"scroll",
-()=>{
-
-
-if(
-window.scrollY > 500
-){
-
-backTop.classList.add(
-"show"
-);
-
-
-}
-
-else{
-
-
-backTop.classList.remove(
-"show"
-);
-
-
-
-}
-
-
-
-});
-
-
-
-
-
-backTop.addEventListener(
-"click",
-()=>{
-
-
-window.scrollTo(
-{
-
-top:0,
-
-behavior:"smooth"
-
-}
-
-);
-
-
-
-});
-
-
-}
-
-
-
-
-
-
-
-
-
-/*
-=====================================
-HERO PARALLAX
-=====================================
-*/
-
-
-const orbA =
-document.querySelector(
-".orb-a"
-);
-
-
-
-const orbB =
-document.querySelector(
-".orb-b"
-);
-
-
-
-const heroFrame =
-document.querySelector(
-".hero-frame"
-);
-
-
-
-let ticking =
-false;
-
-
-
-
-
-window.addEventListener(
-"scroll",
-()=>{
-
-
-if(!ticking){
-
-
-window.requestAnimationFrame(
-()=>{
-
-
-const y =
-window.scrollY;
-
-
-
-if(orbA){
-
-orbA.style.transform =
-`translate(${y*.06}px,${y*.12}px)`;
-
-}
-
-
-
-if(orbB){
-
-orbB.style.transform =
-`translate(${-y*.05}px,${-y*.08}px)`;
-
-}
-
-
-
-if(heroFrame){
-
-heroFrame.style.transform =
-`translateY(${y*-.08}px)`;
-
-}
-
-
-
-ticking =
-false;
-
-
-
-});
-
-
-ticking =
-true;
-
-
-
-}
-
-
-
-},
-{
-passive:true
-}
-);
-
-
-
-
-
-
-
-
-
-/*
-=====================================
-IMAGE ERROR CHECK
-=====================================
-*/
-
-
-document
-.querySelectorAll(
-"img"
-)
-.forEach(
-img=>{
-
-
-img.addEventListener(
-"error",
-()=>{
-
-
-console.warn(
-"Imagem não encontrada:",
-img.src
-);
-
-
-
-img.classList.add(
-"image-error"
-);
-
-
-
-});
-
-
-});
 
 
 
@@ -1633,17 +1308,17 @@ document
 "iframe"
 )
 .forEach(
-frame=>{
+player=>{
 
 
-frame.addEventListener(
+player.addEventListener(
 "load",
 ()=>{
 
 
 console.log(
 "Player loaded:",
-frame.src
+player.src
 );
 
 
@@ -1651,37 +1326,11 @@ frame.src
 });
 
 
-
 });
 
 
 
 
-
-
-
-
-
-/*
-=====================================
-GLOBAL ERROR
-=====================================
-*/
-
-
-window.addEventListener(
-"error",
-event=>{
-
-
-console.warn(
-"Frontend error:",
-event.message
-);
-
-
-
-});
 
 
 
