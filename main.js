@@ -12,26 +12,28 @@ document.addEventListener(
 ()=>{
 
 
-
-
-
-
 /* ==============================
 MOBILE MENU
 ============================== */
 
 
 const menuButton =
-document.querySelector(".nav-toggle");
+document.querySelector(
+".nav-toggle"
+);
 
 
 const navLinks =
-document.querySelector(".nav-links");
+document.querySelector(
+".nav-links"
+);
 
 
 
-
-if(menuButton && navLinks){
+if(
+menuButton &&
+navLinks
+){
 
 
 menuButton.addEventListener(
@@ -54,9 +56,8 @@ navLinks.classList.toggle(
 
 
 
-
 /* ==============================
-SMOOTH NAVIGATION
+SMOOTH SCROLL
 ============================== */
 
 
@@ -86,7 +87,6 @@ if(target){
 event.preventDefault();
 
 
-
 target.scrollIntoView(
 {
 
@@ -100,14 +100,10 @@ behavior:"smooth"
 }
 
 
-
-
 });
 
 
 });
-
-
 
 
 
@@ -135,8 +131,6 @@ document.querySelectorAll(
 
 
 
-
-
 const revealObserver =
 new IntersectionObserver(
 entries=>{
@@ -146,13 +140,14 @@ entries.forEach(
 entry=>{
 
 
-if(entry.isIntersecting){
+if(
+entry.isIntersecting
+){
 
 
 entry.target.classList.add(
 "visible"
 );
-
 
 
 }
@@ -164,7 +159,7 @@ entry.target.classList.add(
 },
 {
 
-threshold:.15
+threshold:0.1
 
 }
 
@@ -198,7 +193,7 @@ BACK TO TOP
 
 const backTop =
 document.querySelector(
-"#backTop"
+".back-top"
 );
 
 
@@ -234,8 +229,9 @@ backTop.classList.remove(
 }
 
 
-
 });
+
+
 
 
 backTop.addEventListener(
@@ -265,11 +261,8 @@ behavior:"smooth"
 
 
 
-
-
-
 /* ==============================
-CURRENT YEAR
+YEAR
 ============================== */
 
 
@@ -294,28 +287,34 @@ new Date()
 
 
 
-
-
-});/* ==============================
+});/*
+=====================================
 LIGHTBOX SYSTEM
-============================== */
+=====================================
+*/
+
+
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
+
 
 
 const lightbox =
 document.querySelector(
-"#imageLightbox"
+".lightbox"
 );
 
 
 
 const lightboxImage =
 document.querySelector(
-"#lightboxImage"
+".lightbox img"
 );
 
 
 
-const lightboxClose =
+const closeButton =
 document.querySelector(
 ".lightbox-close"
 );
@@ -324,9 +323,12 @@ document.querySelector(
 
 
 
-const lightboxItems =
+const clickableImages =
 document.querySelectorAll(
-".lightbox-image"
+`
+.cosplay-card img,
+.gallery-card img
+`
 );
 
 
@@ -335,61 +337,31 @@ document.querySelectorAll(
 
 
 
+function openLightbox(image){
+
+
 if(
-lightbox &&
-lightboxImage &&
-lightboxItems.length
+!lightbox ||
+!lightboxImage
 ){
 
+return;
 
+}
 
-lightboxItems.forEach(
-image=>{
-
-
-image.addEventListener(
-"click",
-()=>{
 
 
 lightboxImage.src =
 image.src;
 
 
-
 lightboxImage.alt =
 image.alt;
-
 
 
 lightbox.classList.add(
 "active"
 );
-
-
-
-});
-
-
-});
-
-
-
-
-
-
-
-function closeLightbox(){
-
-
-lightbox.classList.remove(
-"active"
-);
-
-
-
-lightboxImage.src =
-"";
 
 
 
@@ -402,10 +374,75 @@ lightboxImage.src =
 
 
 
-if(lightboxClose){
+function closeLightbox(){
 
 
-lightboxClose.addEventListener(
+if(
+!lightbox
+){
+
+return;
+
+}
+
+
+
+lightbox.classList.remove(
+"active"
+);
+
+
+
+}
+
+
+
+
+
+clickableImages.forEach(
+image=>{
+
+
+image.classList.add(
+"lightbox-image"
+);
+
+
+
+image.addEventListener(
+"click",
+event=>{
+
+
+event.preventDefault();
+
+
+event.stopPropagation();
+
+
+openLightbox(
+image
+);
+
+
+
+});
+
+
+});
+
+
+
+
+
+
+
+
+
+if(closeButton){
+
+
+closeButton.addEventListener(
 "click",
 closeLightbox
 );
@@ -417,6 +454,9 @@ closeLightbox
 
 
 
+
+
+if(lightbox){
 
 
 lightbox.addEventListener(
@@ -435,8 +475,10 @@ closeLightbox();
 }
 
 
-
 });
+
+
+}
 
 
 
@@ -451,10 +493,6 @@ event=>{
 
 if(
 event.key === "Escape"
-&&
-lightbox.classList.contains(
-"active"
-)
 ){
 
 
@@ -464,128 +502,21 @@ closeLightbox();
 }
 
 
-
-});
-
-
-}
-
-
-
-
-
-
-
-
-/* ==============================
-COSPLAY CARD CLICK SUPPORT
-============================== */
-
-
-
-const cosplayCards =
-document.querySelectorAll(
-".cosplay-card"
-);
-
-
-
-
-
-cosplayCards.forEach(
-card=>{
-
-
-card.addEventListener(
-"click",
-event=>{
-
-
-const image =
-card.querySelector(
-"img"
-);
-
-
-
-
-if(
-image &&
-event.target !== image
-){
-
-
-image.click();
-
-
-
-}
-
-
-});
-
-
 });
 
 
 
+});/*
+=====================================
+TWITCH LIVE SYSTEM
+=====================================
+*/
 
 
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
 
-
-
-
-/* ==============================
-GALLERY CARD CLICK SUPPORT
-============================== */
-
-
-
-const galleryCards =
-document.querySelectorAll(
-".gallery-card"
-);
-
-
-
-
-
-
-galleryCards.forEach(
-card=>{
-
-
-card.addEventListener(
-"click",
-event=>{
-
-
-const image =
-card.querySelector(
-"img"
-);
-
-
-
-if(
-image &&
-event.target !== image
-){
-
-
-image.click();
-
-
-
-}
-
-
-});
-
-
-});/* ==============================
-TWITCH SYSTEM
-============================== */
 
 
 const TWITCH_CHANNEL =
@@ -593,35 +524,21 @@ const TWITCH_CHANNEL =
 
 
 
-
-
-const twitchEmbed =
+const twitchContainer =
 document.querySelector(
 "#twitchEmbedWrap"
 );
 
 
 
-
-const latestVod =
-document.querySelector(
-"#latestVod"
-);
-
-
-
-
-
-const heroLiveStatus =
+const heroLive =
 document.querySelector(
 ".hero-image .live-status"
 );
 
 
 
-
-
-const liveBadge =
+const streamLiveBadge =
 document.querySelector(
 "#twitchStatusBadge"
 );
@@ -631,19 +548,18 @@ document.querySelector(
 
 
 
-function getParentDomain(){
+function getParent(){
 
 
-
-let domain =
+const host =
 window.location.hostname;
 
 
 
 if(
-domain === ""
+host === ""
 ||
-domain === "localhost"
+host === "localhost"
 ){
 
 
@@ -654,7 +570,7 @@ return "localhost";
 
 
 
-return domain;
+return host;
 
 
 }
@@ -665,8 +581,7 @@ return domain;
 
 
 
-
-function createTwitchPlayer(){
+function createTwitchIframe(){
 
 
 
@@ -677,13 +592,9 @@ document.createElement(
 
 
 
-
-
 iframe.src =
 
-`https://player.twitch.tv/?channel=${TWITCH_CHANNEL}&parent=${getParentDomain()}&muted=true`;
-
-
+`https://player.twitch.tv/?channel=${TWITCH_CHANNEL}&parent=${getParent()}&muted=true`;
 
 
 
@@ -697,20 +608,18 @@ iframe.height =
 
 
 
-iframe.allowFullscreen =
-true;
-
-
-
 iframe.frameBorder =
 "0";
 
 
 
+iframe.allowFullscreen =
+true;
+
+
+
 iframe.allow =
 "autoplay; fullscreen";
-
-
 
 
 
@@ -727,8 +636,85 @@ return iframe;
 
 
 
+function setLiveStatus(
+online
+){
 
-async function checkTwitchStatus(){
+
+
+const badges = [
+
+heroLive,
+
+streamLiveBadge
+
+];
+
+
+
+
+
+badges.forEach(
+badge=>{
+
+
+if(
+!badge
+){
+
+return;
+
+}
+
+
+
+badge.classList.remove(
+"online",
+"offline"
+);
+
+
+
+
+
+if(
+online
+){
+
+
+badge.classList.add(
+"online"
+);
+
+
+}
+
+else{
+
+
+badge.classList.add(
+"offline"
+);
+
+
+}
+
+
+
+
+});
+
+
+}
+
+
+
+
+
+
+
+
+async function checkLive(){
 
 
 
@@ -745,14 +731,16 @@ await fetch(
 
 
 
-const data =
+const text =
 await response.text();
 
 
 
 
 
-return !data
+return !
+
+text
 .toLowerCase()
 .includes(
 "offline"
@@ -767,7 +755,7 @@ catch(error){
 
 
 console.warn(
-"Twitch status check failed:",
+"Twitch check unavailable",
 error
 );
 
@@ -789,108 +777,17 @@ return false;
 
 
 
-
-function updateLiveStyle(
-online
-){
-
-
-
-
-
-const elements = [
-
-heroLiveStatus,
-
-liveBadge
-
-];
-
-
-
-
-
-
-elements.forEach(
-element=>{
-
-
-if(!element){
-
-return;
-
-}
-
-
-
-
-if(online){
-
-
-
-element.classList.add(
-"online"
-);
-
-
-
-element.classList.remove(
-"offline"
-);
-
-
-
-}
-
-else{
-
-
-element.classList.add(
-"offline"
-);
-
-
-
-element.classList.remove(
-"online"
-);
-
-
-
-}
-
-
-
-
-});
-
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-async function updateTwitch(){
+async function updateLive(){
 
 
 
 const online =
-await checkTwitchStatus();
+await checkLive();
 
 
 
 
-
-updateLiveStyle(
+setLiveStatus(
 online
 );
 
@@ -901,18 +798,19 @@ online
 
 
 
-
-/* ==============================
-HERO LIVE STATUS
-============================== */
+/*
+==============================
+HERO BADGE
+==============================
+*/
 
 
 if(
-heroLiveStatus
+heroLive
 ){
 
 
-heroLiveStatus.innerHTML = `
+heroLive.innerHTML = `
 
 <span class="status-dot"></span>
 
@@ -921,7 +819,6 @@ LIVE
 `;
 
 
-
 }
 
 
@@ -931,87 +828,42 @@ LIVE
 
 
 
-
-/* ==============================
-LIVE PLAYER
-============================== */
-
-
-if(
-twitchEmbed
-){
-
+/*
+==============================
+PLAYER
+==============================
+*/
 
 
 if(
+twitchContainer &&
 online
-&&
-!twitchEmbed.querySelector(
-"iframe"
-)
 ){
 
 
 
-twitchEmbed.innerHTML =
+const hasPlayer =
+twitchContainer.querySelector(
+"iframe"
+);
+
+
+
+if(
+!hasPlayer
+){
+
+
+twitchContainer.innerHTML =
 "";
 
 
-
-twitchEmbed.appendChild(
-createTwitchPlayer()
+twitchContainer.appendChild(
+createTwitchIframe()
 );
 
 
-
 }
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/* ==============================
-LIVE BADGE TEXT
-============================== */
-
-
-if(
-liveBadge
-){
-
-
-
-const text =
-liveBadge.querySelector(
-".status-text"
-);
-
-
-
-if(text){
-
-
-
-text.textContent =
-"LIVE";
-
-
-}
-
-
-
-}
-
-
-
 
 
 }
@@ -1023,30 +875,104 @@ text.textContent =
 
 
 
-updateTwitch();
+}
+
+
+
+updateLive();
 
 
 
 
 setInterval(
-updateTwitch,
+updateLive,
 120000
-);/* ==============================
-TWITCH LAST VOD SYSTEM
+);
+
+
+
+});/*
+=====================================
+LATEST STREAM + YOUTUBE SYSTEM
+=====================================
+*/
+
+
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
+
+
+
+
+
+/* ==============================
+LATEST TWITCH STREAM
 ============================== */
 
 
-async function loadLatestVod(){
+const latestStream =
+document.querySelector(
+"#latestVod"
+);
 
 
 
-if(!latestVod){
 
-return;
+const TWITCH_CHANNEL =
+"upminaa";
+
+
+
+
+
+
+
+function twitchParent(){
+
+
+const host =
+window.location.hostname;
+
+
+
+if(
+!host
+||
+host === "localhost"
+){
+
+
+return "localhost";
+
 
 }
 
 
+
+return host;
+
+
+}
+
+
+
+
+
+
+
+
+async function loadLatestStream(){
+
+
+
+if(
+!latestStream
+){
+
+return;
+
+}
 
 
 
@@ -1075,13 +1001,14 @@ await response.json();
 
 
 if(
-videos &&
-videos.length
+Array.isArray(videos)
+&&
+videos.length > 0
 ){
 
 
 
-const latest =
+const vod =
 videos[0];
 
 
@@ -1089,12 +1016,12 @@ videos[0];
 
 
 
-latestVod.innerHTML = `
+latestStream.innerHTML = `
 
 
 <iframe
 
-src="https://player.twitch.tv/?video=${latest.id}&parent=${getParentDomain()}&muted=true"
+src="https://player.twitch.tv/?video=${vod.id}&parent=${twitchParent()}"
 
 title="Latest Upminaa Twitch Stream"
 
@@ -1111,29 +1038,8 @@ frameborder="0"
 
 
 
-
-
 }
 
-else{
-
-
-
-latestVod.innerHTML = `
-
-
-<p>
-
-No recorded streams available.
-
-</p>
-
-
-`;
-
-
-
-}
 
 
 
@@ -1146,7 +1052,7 @@ catch(error){
 
 console.warn(
 
-"Latest VOD loading failed:",
+"Latest stream unavailable:",
 
 error
 
@@ -1154,19 +1060,9 @@ error
 
 
 
+}
 
 
-latestVod.innerHTML = `
-
-
-<p>
-
-Unable to load latest stream.
-
-</p>
-
-
-`;
 
 
 
@@ -1175,7 +1071,15 @@ Unable to load latest stream.
 
 
 
-}
+
+
+
+
+
+
+loadLatestStream();
+
+
 
 
 
@@ -1186,20 +1090,14 @@ Unable to load latest stream.
 
 
 /* ==============================
-YOUTUBE SYSTEM
+YOUTUBE PLAYERS
 ============================== */
 
 
 
-const YOUTUBE_CHANNEL_ID =
-"UCw3CBMvVjZJNfQR3tEvTodQ";
-
-
-
-
-const youtubeGrid =
-document.querySelector(
-"#youtubeGrid"
+const youtubeCards =
+document.querySelectorAll(
+".youtube-card"
 );
 
 
@@ -1208,322 +1106,37 @@ document.querySelector(
 
 
 
-
-async function loadYoutubeVideos(){
-
-
-
-if(!youtubeGrid){
-
-return;
-
-}
+youtubeCards.forEach(
+card=>{
 
 
 
-
-
-
-try{
-
-
-
-
-
-const feed =
-
-`https://www.youtube.com/feeds/videos.xml?channel_id=${YOUTUBE_CHANNEL_ID}`;
-
-
-
-
-
-
-const proxy =
-
-"https://api.allorigins.win/raw?url=";
-
-
-
-
-
-
-const response =
-await fetch(
-
-proxy +
-encodeURIComponent(
-feed
-)
-
+const iframe =
+card.querySelector(
+"iframe"
 );
 
 
 
 
 
-
-const xmlText =
-await response.text();
-
-
-
-
-
-
-const xml =
-new DOMParser()
-.parseFromString(
-xmlText,
-"text/xml"
-);
-
-
-
-
-
-
-
-const entries =
-[
-...xml.querySelectorAll(
-"entry"
-)
-
-];
-
-
-
-
-
-
-const videos =
-
-entries
-.slice(0,4)
-.map(
-entry=>{
-
-
-
-return {
-
-
-id:
-
-entry
-.querySelector(
-"yt\\:videoId"
-)
-?.textContent,
-
-
-
-title:
-
-entry
-.querySelector(
-"title"
-)
-?.textContent
-
-||
-
-"Upminaa Video"
-
-
-
-};
-
-
-
-})
-.filter(
-video=>video.id
-);
-
-
-
-
-
-
-
-renderYoutubeVideos(
-videos
-);
-
-
-
-
-
-}
-
-catch(error){
-
-
-
-console.warn(
-
-"YouTube loading failed:",
-
-error
-
-);
-
-
-
-
-
-
-youtubeGrid.innerHTML = `
-
-
-<article class="youtube-card">
-
-
-<div class="video-wrapper">
-
-
-<p>
-
-Videos unavailable.
-
-</p>
-
-
-</div>
-
-
-</article>
-
-
-`;
-
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-function renderYoutubeVideos(
-videos
+if(
+iframe
 ){
 
 
 
+iframe.loading =
+"lazy";
 
 
-if(!youtubeGrid){
 
-return;
+iframe.allowFullscreen =
+true;
+
+
 
 }
-
-
-
-
-
-
-youtubeGrid.innerHTML =
-"";
-
-
-
-
-
-
-
-videos.forEach(
-video=>{
-
-
-
-
-
-
-const card =
-document.createElement(
-"article"
-);
-
-
-
-
-
-
-card.className =
-"youtube-card";
-
-
-
-
-
-
-
-card.innerHTML = `
-
-
-
-<div class="video-wrapper">
-
-
-<iframe
-
-src="https://www.youtube.com/embed/${video.id}"
-
-title="${video.title}"
-
-loading="lazy"
-
-allowfullscreen
-
->
-
-</iframe>
-
-
-</div>
-
-
-
-
-
-<div class="video-info">
-
-
-<h4>
-
-${video.title}
-
-</h4>
-
-
-</div>
-
-
-`;
-
-
-
-
-
-
-
-youtubeGrid.appendChild(
-card
-);
-
-
 
 
 
@@ -1531,29 +1144,51 @@ card
 
 
 
-}
 
 
 
 
 
 
+/*
+DO NOT REMOVE STATIC HTML
+
+The YouTube cards are already
+inside index.html.
+
+The JS only improves them.
+*/
 
 
-loadLatestVod();
+});/*
+=====================================
+FINAL SYSTEM CHECK
+=====================================
+*/
+
+
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
 
 
 
-loadYoutubeVideos();/* ==============================
-IMAGE ERROR HANDLER
+
+
+
+/* ==============================
+IMAGE ERROR PROTECTION
 ============================== */
 
 
-document
-.querySelectorAll(
+const images =
+document.querySelectorAll(
 "img"
-)
-.forEach(
+);
+
+
+
+images.forEach(
 image=>{
 
 
@@ -1564,8 +1199,7 @@ image.addEventListener(
 
 console.warn(
 
-"Image not found:",
-
+"Image failed:",
 image.src
 
 );
@@ -1586,15 +1220,18 @@ image.src
 
 
 /* ==============================
-PLAYER DEBUG
+IFRAME MONITOR
 ============================== */
 
 
-document
-.querySelectorAll(
+const players =
+document.querySelectorAll(
 "iframe"
-)
-.forEach(
+);
+
+
+
+players.forEach(
 player=>{
 
 
@@ -1605,8 +1242,7 @@ player.addEventListener(
 
 console.log(
 
-"Player loaded:",
-
+"Media loaded:",
 player.src
 
 );
@@ -1627,46 +1263,166 @@ player.src
 
 
 /* ==============================
-GLOBAL ERROR HANDLER
+ACTIVE NAV LINK
 ============================== */
 
 
+const sections =
+document.querySelectorAll(
+"section"
+);
+
+
+
+const navItems =
+document.querySelectorAll(
+".nav-links a"
+);
+
+
+
+
+
+
+
+if(
+sections.length &&
+navItems.length
+){
+
+
+
 window.addEventListener(
-"error",
-event=>{
+"scroll",
+()=>{
 
 
-console.error(`
-
-==============================
-
-UPMINAA FAN HUB ERROR
-
-==============================
-
-
-Message:
-
-${event.message}
+let current = "";
 
 
 
-File:
-
-${event.filename}
-
+sections.forEach(
+section=>{
 
 
-Line:
-
-${event.lineno}
+const top =
+section.offsetTop - 150;
 
 
 
-==============================
+if(
+window.scrollY >= top
+){
 
-`);
 
+current =
+section.id;
+
+
+}
+
+
+
+});
+
+
+
+
+
+
+navItems.forEach(
+link=>{
+
+
+link.classList.remove(
+"active"
+);
+
+
+
+if(
+link
+.getAttribute(
+"href"
+)
+===
+`#${current}`
+){
+
+
+link.classList.add(
+"active"
+);
+
+
+
+}
+
+
+
+});
+
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+/* ==============================
+CLOSE MOBILE MENU
+============================== */
+
+
+const links =
+document.querySelectorAll(
+".nav-links a"
+);
+
+
+
+const menu =
+document.querySelector(
+".nav-links"
+);
+
+
+
+
+
+links.forEach(
+link=>{
+
+
+link.addEventListener(
+"click",
+()=>{
+
+
+if(
+menu
+){
+
+
+menu.classList.remove(
+"open"
+);
+
+
+}
+
+
+
+});
 
 
 });
@@ -1680,92 +1436,35 @@ ${event.lineno}
 
 
 /* ==============================
-MEDIA AUTO REFRESH
-============================== */
-
-
-function refreshMedia(){
-
-
-
-updateTwitch();
-
-
-
-loadLatestVod();
-
-
-
-loadYoutubeVideos();
-
-
-
-}
-
-
-
-
-
-
-
-
-setInterval(
-
-refreshMedia,
-
-300000
-
-);
-
-
-
-
-
-
-
-
-
-/* ==============================
-FINAL STATUS
+FINAL READY MESSAGE
 ============================== */
 
 
 console.log(`
 
-
 =================================
 
 UPMINAA FAN HUB
 
-MAIN.JS ONLINE ✅
+SYSTEM READY ✅
 
 
-Systems:
+Loaded:
 
-
-✓ Mobile Navigation
-
+✓ Navigation
 ✓ Smooth Scroll
-
-✓ Reveal Animations
-
-✓ Lightbox Gallery
-
-✓ Twitch Live System
-
-✓ Twitch Latest Stream
-
-✓ YouTube Feed
-
-✓ Responsive Players
+✓ Reveal Animation
+✓ Lightbox
+✓ Twitch Support
+✓ Latest Stream
+✓ YouTube Players
+✓ Image Protection
+✓ Responsive Controls
 
 
 =================================
 
-
 `);
-
-
 
 
 
