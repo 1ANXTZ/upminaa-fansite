@@ -20,7 +20,6 @@ console.log(
 
 
 
-
 /*
 =====================================
 SMOOTH SCROLL
@@ -187,13 +186,16 @@ entry.target
 
 
 },
-{
 
+
+{
 
 threshold:.15
 
+}
 
-});
+
+);
 
 
 
@@ -258,7 +260,17 @@ image.classList.add(
 });
 
 
-});/*
+});
+
+
+
+
+
+
+
+
+
+/*
 =====================================
 IMAGE LIGHTBOX
 =====================================
@@ -287,7 +299,6 @@ document.querySelector(
 
 
 
-
 let savedScrollPosition = 0;
 
 
@@ -311,6 +322,7 @@ if(
 return;
 
 }
+
 
 
 
@@ -348,9 +360,8 @@ document.body.style.overflow =
 
 
 
-
-
 function closeLightbox(){
+
 
 
 if(!lightbox){
@@ -358,6 +369,7 @@ if(!lightbox){
 return;
 
 }
+
 
 
 
@@ -373,14 +385,13 @@ document.body.style.overflow =
 
 
 
+
 setTimeout(()=>{
 
 
 window.scrollTo({
 
-top:savedScrollPosition,
-
-behavior:"instant"
+top:savedScrollPosition
 
 });
 
@@ -389,17 +400,7 @@ behavior:"instant"
 
 
 
-}
-
-
-
-
-
-
-
-
-
-/*
+}/*
 =====================================
 CLICKABLE IMAGES
 =====================================
@@ -408,10 +409,7 @@ CLICKABLE IMAGES
 
 const clickableImages =
 document.querySelectorAll(
-`
-.cosplay-card img,
-.gallery-card img
-`
+".lightbox-trigger"
 );
 
 
@@ -448,10 +446,12 @@ image.closest(
 
 
 
+
 const title =
 card?.querySelector(
 "h3"
 );
+
 
 
 
@@ -507,8 +507,6 @@ closeLightbox
 
 
 
-
-
 if(lightbox){
 
 
@@ -532,8 +530,6 @@ closeLightbox();
 
 
 }
-
-
 
 
 
@@ -580,6 +576,8 @@ document.querySelectorAll(
 
 
 
+
+
 twitchPlayers.forEach(
 player=>{
 
@@ -598,6 +596,8 @@ console.log(
 
 
 
+
+
 player.addEventListener(
 "error",
 ()=>{
@@ -611,7 +611,17 @@ console.warn(
 });
 
 
-});/*
+});
+
+
+
+
+
+
+
+
+
+/*
 =====================================
 YOUTUBE PLAYER CHECK
 =====================================
@@ -622,6 +632,8 @@ const youtubePlayers =
 document.querySelectorAll(
 ".video-wrapper iframe"
 );
+
+
 
 
 
@@ -640,6 +652,8 @@ console.log(
 
 
 });
+
+
 
 
 
@@ -720,6 +734,7 @@ document.querySelector(
 
 
 
+
 if(backTop){
 
 
@@ -776,17 +791,7 @@ behavior:"smooth"
 });
 
 
-}
-
-
-
-
-
-
-
-
-
-/*
+}/*
 =====================================
 LIVE STATUS
 =====================================
@@ -802,9 +807,11 @@ document.querySelector(
 
 
 
+
 function updateLiveStatus(
 isLive
 ){
+
 
 
 if(!liveBadge){
@@ -816,7 +823,9 @@ return;
 
 
 
+
 if(isLive){
+
 
 
 liveBadge.classList.remove(
@@ -839,6 +848,7 @@ liveBadge.textContent =
 }else{
 
 
+
 liveBadge.classList.remove(
 "online"
 );
@@ -855,32 +865,38 @@ liveBadge.textContent =
 "● OFFLINE";
 
 
+
 }
 
 
 }
+
 
 
 
 
 /*
 
-Por padrão começa offline.
+Padrão começa offline.
 
-Quando conectar a Twitch API:
+Quando conectar Twitch API:
 
 updateLiveStatus(true);
 
-para vermelho.
+para LIVE.
 
 updateLiveStatus(false);
 
-para cinza.
+para OFFLINE.
 
 */
 
 
+
 updateLiveStatus(false);
+
+
+
 
 
 
