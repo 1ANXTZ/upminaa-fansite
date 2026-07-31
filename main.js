@@ -7,51 +7,6 @@ FINAL VERSION
 */
 
 
-/*
-=====================================
-LOADER
-=====================================
-*/
-
-
-const loader = document.getElementById("loader");
-
-
-window.addEventListener(
-"load",
-()=>{
-
-if(loader){
-
-setTimeout(
-()=>{
-
-loader.classList.add("hidden");
-
-},
-500
-);
-
-}
-
-}
-
-);
-
-
-
-
-
-
-
-
-/*
-=====================================
-DOM READY
-=====================================
-*/
-
-
 document.addEventListener(
 "DOMContentLoaded",
 ()=>{
@@ -60,132 +15,68 @@ document.addEventListener(
 
 
 
-/*
-=====================================
-YEAR
-=====================================
-*/
 
-
-const year =
-document.getElementById("year");
-
-
-
-if(year){
-
-year.textContent =
-new Date().getFullYear();
-
-}
-
-
-
-
-
-
-
-
-/*
-=====================================
+/* ==============================
 MOBILE MENU
-=====================================
-*/
+============================== */
 
 
-const menu =
-document.getElementById("navToggle");
+const menuButton =
+document.querySelector(".nav-toggle");
 
 
-const nav =
-document.getElementById("navLinks");
-
+const navLinks =
+document.querySelector(".nav-links");
 
 
 
 
-if(menu && nav){
+if(menuButton && navLinks){
 
 
-menu.addEventListener(
+menuButton.addEventListener(
 "click",
 ()=>{
 
 
-nav.classList.toggle("open");
-
-
-menu.classList.toggle("open");
-
-
-}
-
+navLinks.classList.toggle(
+"open"
 );
 
 
+});
+
+
 }
 
 
 
 
 
+
+
+/* ==============================
+SMOOTH NAVIGATION
+============================== */
+
+
 document
-.querySelectorAll("#navLinks a")
+.querySelectorAll(
+'a[href^="#"]'
+)
 .forEach(
 link=>{
 
 
 link.addEventListener(
 "click",
-()=>{
-
-
-nav?.classList.remove("open");
-
-
-menu?.classList.remove("open");
-
-
-}
-
-);
-
-
-}
-
-);
-
-
-
-
-
-
-
-
-
-/*
-=====================================
-SMOOTH SCROLL
-=====================================
-*/
-
-
-document
-.querySelectorAll('a[href^="#"]')
-.forEach(
-anchor=>{
-
-
-anchor.addEventListener(
-"click",
 event=>{
 
 
 const target =
 document.querySelector(
-anchor.getAttribute("href")
+link.getAttribute("href")
 );
-
 
 
 
@@ -196,117 +87,41 @@ event.preventDefault();
 
 
 
-target.scrollIntoView({
+target.scrollIntoView(
+{
 
 behavior:"smooth"
+
+}
+
+);
+
+
+}
+
+
+
 
 });
 
 
-}
-
-
-
-}
-
-);
-
-
-}
-
-);
-
-
-
-
-
-
-
-
-/*
-=====================================
-BACK TO TOP
-=====================================
-*/
-
-
-const backTop =
-document.getElementById(
-"backTop"
-);
-
-
-
-if(backTop){
-
-
-
-window.addEventListener(
-"scroll",
-()=>{
-
-
-if(window.scrollY > 500){
-
-
-backTop.classList.add(
-"show"
-);
-
-
-}else{
-
-
-backTop.classList.remove(
-"show"
-);
-
-
-}
-
-
-
-}
-
-);
-
-
-
-
-
-
-backTop.addEventListener(
-"click",
-()=>{
-
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
 });
 
 
-}
-
-);
-
-}
 
 
-/*
-=====================================
+
+
+
+
+
+/* ==============================
 REVEAL ANIMATION
-=====================================
-*/
+============================== */
 
 
 const revealElements =
-
 document.querySelectorAll(
-
 `
 .profile-card,
 .curiosity-card,
@@ -316,23 +131,19 @@ document.querySelectorAll(
 .youtube-card,
 .social-card
 `
-
 );
 
 
 
 
 
-const observer =
-
+const revealObserver =
 new IntersectionObserver(
-
-(entries)=>{
+entries=>{
 
 
 entries.forEach(
-
-(entry)=>{
+entry=>{
 
 
 if(entry.isIntersecting){
@@ -344,24 +155,13 @@ entry.target.classList.add(
 
 
 
-observer.unobserve(
-entry.target
-);
-
-
-
 }
 
 
-
-}
-
-);
-
+});
 
 
 },
-
 {
 
 threshold:.15
@@ -374,21 +174,91 @@ threshold:.15
 
 
 
-
-
 revealElements.forEach(
-
 element=>{
 
 
-observer.observe(element);
+revealObserver.observe(
+element
+);
 
+
+});
+
+
+
+
+
+
+
+/* ==============================
+BACK TO TOP
+============================== */
+
+
+const backTop =
+document.querySelector(
+"#backTop"
+);
+
+
+
+if(backTop){
+
+
+window.addEventListener(
+"scroll",
+()=>{
+
+
+if(
+window.scrollY > 500
+){
+
+
+backTop.classList.add(
+"show"
+);
+
+
+}
+
+else{
+
+
+backTop.classList.remove(
+"show"
+);
+
+
+}
+
+
+
+});
+
+
+backTop.addEventListener(
+"click",
+()=>{
+
+
+window.scrollTo(
+{
+
+top:0,
+
+behavior:"smooth"
 
 }
 
 );
 
 
+});
+
+
+}
 
 
 
@@ -396,83 +266,99 @@ observer.observe(element);
 
 
 
-/*
-=====================================
+
+
+/* ==============================
+CURRENT YEAR
+============================== */
+
+
+const year =
+document.querySelector(
+"#year"
+);
+
+
+
+if(year){
+
+
+year.textContent =
+new Date()
+.getFullYear();
+
+
+}
+
+
+
+
+
+
+
+});/* ==============================
 LIGHTBOX SYSTEM
-=====================================
-*/
+============================== */
 
 
 const lightbox =
-
-document.getElementById(
-"imageLightbox"
+document.querySelector(
+"#imageLightbox"
 );
-
 
 
 
 const lightboxImage =
+document.querySelector(
+"#lightboxImage"
+);
 
-document.getElementById(
-"lightboxImage"
+
+
+const lightboxClose =
+document.querySelector(
+".lightbox-close"
 );
 
 
 
 
 
-
-const clickableImages =
-
+const lightboxItems =
 document.querySelectorAll(
-
 ".lightbox-image"
-
 );
 
 
 
 
-
-
-
-
-function openLightbox(image){
 
 
 
 if(
-
-!lightbox ||
-
-!lightboxImage
-
+lightbox &&
+lightboxImage &&
+lightboxItems.length
 ){
 
-return;
-
-}
 
 
+lightboxItems.forEach(
+image=>{
 
 
+image.addEventListener(
+"click",
+()=>{
 
 
 lightboxImage.src =
-
 image.src;
 
 
 
-
-
 lightboxImage.alt =
-
 image.alt;
-
-
-
 
 
 
@@ -482,17 +368,10 @@ lightbox.classList.add(
 
 
 
+});
 
 
-document.body.style.overflow =
-
-"hidden";
-
-
-
-}
-
-
+});
 
 
 
@@ -503,27 +382,13 @@ document.body.style.overflow =
 function closeLightbox(){
 
 
-
-if(!lightbox){
-
-return;
-
-}
-
-
-
-
-
 lightbox.classList.remove(
 "active"
 );
 
 
 
-
-
-document.body.style.overflow =
-
+lightboxImage.src =
 "";
 
 
@@ -537,75 +402,12 @@ document.body.style.overflow =
 
 
 
-
-/*
-CLICKABLE IMAGES
-=====================================
-*/
+if(lightboxClose){
 
 
-clickableImages.forEach(
-
-image=>{
-
-
-image.addEventListener(
-
+lightboxClose.addEventListener(
 "click",
-
-()=>{
-
-
-openLightbox(image);
-
-
-}
-
-);
-
-
-}
-
-);
-
-
-
-
-
-
-
-
-/*
-CLOSE BUTTON
-=====================================
-*/
-
-
-const closeButton =
-
-document.querySelector(
-".lightbox-close"
-);
-
-
-
-
-if(closeButton){
-
-
-
-closeButton.addEventListener(
-
-"click",
-
-()=>{
-
-
-closeLightbox();
-
-
-}
-
+closeLightbox
 );
 
 
@@ -614,29 +416,17 @@ closeLightbox();
 
 
 
-
-
-
-
-/*
-CLICK OUTSIDE IMAGE
-=====================================
-*/
-
-
-if(lightbox){
 
 
 
 lightbox.addEventListener(
-
 "click",
-
 event=>{
 
 
-
-if(event.target === lightbox){
+if(
+event.target === lightbox
+){
 
 
 closeLightbox();
@@ -646,35 +436,26 @@ closeLightbox();
 
 
 
-}
-
-);
-
-
-}
+});
 
 
 
 
 
-
-
-
-
-/*
-ESC KEY CLOSE
-=====================================
-*/
 
 
 document.addEventListener(
-
 "keydown",
-
 event=>{
 
 
-if(event.key === "Escape"){
+if(
+event.key === "Escape"
+&&
+lightbox.classList.contains(
+"active"
+)
+){
 
 
 closeLightbox();
@@ -684,110 +465,166 @@ closeLightbox();
 
 
 
-}
-
-);
-
-
-
-
-
-
-
-
-
-/*
-=====================================
-IMAGE ERROR HANDLER
-=====================================
-*/
-
-
-document
-
-.querySelectorAll("img")
-
-.forEach(
-
-image=>{
-
-
-
-image.addEventListener(
-
-"error",
-
-()=>{
-
-
-
-console.warn(
-
-"Image not found:",
-
-image.src
-
-);
-
+});
 
 
 }
 
+
+
+
+
+
+
+
+/* ==============================
+COSPLAY CARD CLICK SUPPORT
+============================== */
+
+
+
+const cosplayCards =
+document.querySelectorAll(
+".cosplay-card"
 );
+
+
+
+
+
+cosplayCards.forEach(
+card=>{
+
+
+card.addEventListener(
+"click",
+event=>{
+
+
+const image =
+card.querySelector(
+"img"
+);
+
+
+
+
+if(
+image &&
+event.target !== image
+){
+
+
+image.click();
 
 
 
 }
 
+
+});
+
+
+});
+
+
+
+
+
+
+
+
+
+/* ==============================
+GALLERY CARD CLICK SUPPORT
+============================== */
+
+
+
+const galleryCards =
+document.querySelectorAll(
+".gallery-card"
 );
 
 
 
 
 
-/*
-=====================================
+
+galleryCards.forEach(
+card=>{
+
+
+card.addEventListener(
+"click",
+event=>{
+
+
+const image =
+card.querySelector(
+"img"
+);
+
+
+
+if(
+image &&
+event.target !== image
+){
+
+
+image.click();
+
+
+
+}
+
+
+});
+
+
+});/* ==============================
 TWITCH SYSTEM
-=====================================
-*/
+============================== */
 
 
 const TWITCH_CHANNEL =
-
 "upminaa";
 
 
 
 
 
-const twitchLivePlayer =
+const twitchEmbed =
+document.querySelector(
+"#twitchEmbedWrap"
+);
 
-document.getElementById(
-"twitchEmbedWrap"
+
+
+
+const latestVod =
+document.querySelector(
+"#latestVod"
 );
 
 
 
 
 
-const twitchBadge =
-
-document.getElementById(
-"twitchStatusBadge"
-);
-
-
-
-
-
-const heroStatus =
-
+const heroLiveStatus =
 document.querySelector(
 ".hero-image .live-status"
 );
 
 
 
+
+
+const liveBadge =
+document.querySelector(
+"#twitchStatusBadge"
+);
 
 
 
@@ -798,20 +635,15 @@ function getParentDomain(){
 
 
 
-let host =
-
+let domain =
 window.location.hostname;
 
 
 
-
-
 if(
-
-host === "" ||
-
-host === "localhost"
-
+domain === ""
+||
+domain === "localhost"
 ){
 
 
@@ -822,10 +654,7 @@ return "localhost";
 
 
 
-
-
-return host;
-
+return domain;
 
 
 }
@@ -837,19 +666,11 @@ return host;
 
 
 
-
-/*
-CREATE TWITCH LIVE PLAYER
-=====================================
-*/
-
-
-function createTwitchLive(){
+function createTwitchPlayer(){
 
 
 
 const iframe =
-
 document.createElement(
 "iframe"
 );
@@ -867,41 +688,27 @@ iframe.src =
 
 
 iframe.width =
-
 "100%";
-
-
 
 
 
 iframe.height =
-
 "100%";
 
 
 
-
-
-iframe.frameBorder =
-
-"0";
-
-
-
-
-
 iframe.allowFullscreen =
-
 true;
 
 
 
+iframe.frameBorder =
+"0";
+
 
 
 iframe.allow =
-
 "autoplay; fullscreen";
-
 
 
 
@@ -921,13 +728,7 @@ return iframe;
 
 
 
-/*
-CHECK LIVE STATUS
-=====================================
-*/
-
-
-async function checkTwitchLive(){
+async function checkTwitchStatus(){
 
 
 
@@ -936,7 +737,6 @@ try{
 
 
 const response =
-
 await fetch(
 
 `https://decapi.me/twitch/uptime/${TWITCH_CHANNEL}`
@@ -945,29 +745,18 @@ await fetch(
 
 
 
-
-
-const text =
-
+const data =
 await response.text();
 
 
 
 
 
-
-
-return !text
-
+return !data
 .toLowerCase()
-
 .includes(
-
 "offline"
-
 );
-
-
 
 
 
@@ -978,11 +767,8 @@ catch(error){
 
 
 console.warn(
-
-"Twitch status error:",
-
+"Twitch status check failed:",
 error
-
 );
 
 
@@ -990,7 +776,6 @@ error
 return false;
 
 
-
 }
 
 
@@ -1005,133 +790,69 @@ return false;
 
 
 
-/*
-UPDATE LIVE STATUS
-=====================================
-*/
-
-
-async function updateLiveStatus(){
-
-
-
-const online =
-
-await checkTwitchLive();
-
-
-
-
-
-
-
-/*
-HERO LIVE BADGE
-*/
-
-
-
-
-if(heroStatus){
-
-
-
-if(online){
-
-
-
-heroStatus.textContent =
-
-"LIVE";
-
-
-
-heroStatus.classList.add(
-"online"
-);
-
-
-
-heroStatus.classList.remove(
-"offline"
-);
-
-
-
-
-
-}else{
-
-
-
-heroStatus.textContent =
-
-"OFFLINE";
-
-
-
-heroStatus.classList.add(
-"offline"
-);
-
-
-
-heroStatus.classList.remove(
-"online"
-);
-
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/*
-LIVE PLAYER
-*/
-
-
-
-
-if(twitchLivePlayer){
-
-
-
-if(online){
-
-
-
-if(
-
-!twitchLivePlayer.querySelector(
-"iframe"
-)
-
+function updateLiveStyle(
+online
 ){
 
 
 
-twitchLivePlayer.innerHTML =
-
-"";
 
 
+const elements = [
+
+heroLiveStatus,
+
+liveBadge
+
+];
 
 
-twitchLivePlayer.appendChild(
 
-createTwitchLive()
 
+
+
+elements.forEach(
+element=>{
+
+
+if(!element){
+
+return;
+
+}
+
+
+
+
+if(online){
+
+
+
+element.classList.add(
+"online"
+);
+
+
+
+element.classList.remove(
+"offline"
+);
+
+
+
+}
+
+else{
+
+
+element.classList.add(
+"offline"
+);
+
+
+
+element.classList.remove(
+"online"
 );
 
 
@@ -1140,23 +861,62 @@ createTwitchLive()
 
 
 
-}else{
+
+});
 
 
 
-twitchLivePlayer.innerHTML =
 
-`
 
-<div class="offline-message">
 
-<p>
+}
 
-Stream is currently offline.
 
-</p>
 
-</div>
+
+
+
+
+
+
+async function updateTwitch(){
+
+
+
+const online =
+await checkTwitchStatus();
+
+
+
+
+
+updateLiveStyle(
+online
+);
+
+
+
+
+
+
+
+
+
+/* ==============================
+HERO LIVE STATUS
+============================== */
+
+
+if(
+heroLiveStatus
+){
+
+
+heroLiveStatus.innerHTML = `
+
+<span class="status-dot"></span>
+
+LIVE
 
 `;
 
@@ -1166,6 +926,48 @@ Stream is currently offline.
 
 
 
+
+
+
+
+
+
+/* ==============================
+LIVE PLAYER
+============================== */
+
+
+if(
+twitchEmbed
+){
+
+
+
+if(
+online
+&&
+!twitchEmbed.querySelector(
+"iframe"
+)
+){
+
+
+
+twitchEmbed.innerHTML =
+"";
+
+
+
+twitchEmbed.appendChild(
+createTwitchPlayer()
+);
+
+
+
+}
+
+
+
 }
 
 
@@ -1176,48 +978,29 @@ Stream is currently offline.
 
 
 
-/*
-STATUS BADGE
-*/
+/* ==============================
+LIVE BADGE TEXT
+============================== */
 
 
-if(twitchBadge){
+if(
+liveBadge
+){
 
 
 
-const statusText =
-
-twitchBadge.querySelector(
+const text =
+liveBadge.querySelector(
 ".status-text"
 );
 
 
 
-
-
-if(online){
-
-
-
-twitchBadge.classList.add(
-"online"
-);
+if(text){
 
 
 
-twitchBadge.classList.remove(
-"offline"
-);
-
-
-
-
-
-if(statusText){
-
-
-statusText.textContent =
-
+text.textContent =
 "LIVE";
 
 
@@ -1225,34 +1008,6 @@ statusText.textContent =
 
 
 
-
-
-}else{
-
-
-
-twitchBadge.classList.add(
-"offline"
-);
-
-
-
-twitchBadge.classList.remove(
-"online"
-);
-
-
-
-
-
-if(statusText){
-
-
-statusText.textContent =
-
-"OFFLINE";
-
-
 }
 
 
@@ -1263,72 +1018,34 @@ statusText.textContent =
 
 
 
-}
-
-
-
-}
 
 
 
 
 
-
-
-
-
-updateLiveStatus();
-
+updateTwitch();
 
 
 
 
 setInterval(
-
-updateLiveStatus,
-
+updateTwitch,
 120000
-
-);
-
-
-
-
-
-
-
-
-
-/*
-=====================================
-LATEST TWITCH LIVE / VOD
-=====================================
-*/
-
-
-const vodContainer =
-
-document.getElementById(
-"latestVod"
-);
-
-
-
-
-
-
-
+);/* ==============================
+TWITCH LAST VOD SYSTEM
+============================== */
 
 
 async function loadLatestVod(){
 
 
 
-if(!vodContainer){
+if(!latestVod){
 
 return;
 
 }
+
 
 
 
@@ -1339,7 +1056,6 @@ try{
 
 
 const response =
-
 await fetch(
 
 `https://decapi.me/twitch/videos/${TWITCH_CHANNEL}`
@@ -1351,7 +1067,6 @@ await fetch(
 
 
 const videos =
-
 await response.json();
 
 
@@ -1359,22 +1074,14 @@ await response.json();
 
 
 
-
-
 if(
-
 videos &&
-
 videos.length
-
 ){
 
 
 
-
-
 const latest =
-
 videos[0];
 
 
@@ -1382,25 +1089,23 @@ videos[0];
 
 
 
+latestVod.innerHTML = `
 
-
-vodContainer.innerHTML =
-
-`
 
 <iframe
 
 src="https://player.twitch.tv/?video=${latest.id}&parent=${getParentDomain()}&muted=true"
 
-title="Latest Upminaa stream"
+title="Latest Upminaa Twitch Stream"
+
+allowfullscreen
 
 frameborder="0"
 
-scrolling="no"
-
-allowfullscreen>
+>
 
 </iframe>
+
 
 `;
 
@@ -1408,15 +1113,14 @@ allowfullscreen>
 
 
 
+}
+
+else{
 
 
-}else{
 
+latestVod.innerHTML = `
 
-
-vodContainer.innerHTML =
-
-`
 
 <p>
 
@@ -1424,14 +1128,12 @@ No recorded streams available.
 
 </p>
 
+
 `;
 
 
 
 }
-
-
-
 
 
 
@@ -1444,7 +1146,7 @@ catch(error){
 
 console.warn(
 
-"Latest VOD loading error:",
+"Latest VOD loading failed:",
 
 error
 
@@ -1454,9 +1156,8 @@ error
 
 
 
-vodContainer.innerHTML =
+latestVod.innerHTML = `
 
-`
 
 <p>
 
@@ -1464,44 +1165,41 @@ Unable to load latest stream.
 
 </p>
 
+
 `;
 
 
 
+
+}
+
+
+
 }
 
 
 
 
 
-}
 
 
 
 
-
-
-
-
-loadLatestVod();/*
-=====================================
+/* ==============================
 YOUTUBE SYSTEM
-=====================================
-*/
+============================== */
+
 
 
 const YOUTUBE_CHANNEL_ID =
-
 "UCw3CBMvVjZJNfQR3tEvTodQ";
 
 
 
 
-
 const youtubeGrid =
-
-document.getElementById(
-"youtubeGrid"
+document.querySelector(
+"#youtubeGrid"
 );
 
 
@@ -1511,8 +1209,7 @@ document.getElementById(
 
 
 
-
-async function loadYoutube(){
+async function loadYoutubeVideos(){
 
 
 
@@ -1528,6 +1225,8 @@ return;
 
 
 try{
+
+
 
 
 
@@ -1549,14 +1248,13 @@ const proxy =
 
 
 
-
 const response =
-
 await fetch(
 
 proxy +
-
-encodeURIComponent(feed)
+encodeURIComponent(
+feed
+)
 
 );
 
@@ -1565,9 +1263,7 @@ encodeURIComponent(feed)
 
 
 
-
 const xmlText =
-
 await response.text();
 
 
@@ -1575,17 +1271,11 @@ await response.text();
 
 
 
-
 const xml =
-
 new DOMParser()
-
 .parseFromString(
-
 xmlText,
-
 "text/xml"
-
 );
 
 
@@ -1595,9 +1285,7 @@ xmlText,
 
 
 const entries =
-
 [
-
 ...xml.querySelectorAll(
 "entry"
 )
@@ -1609,24 +1297,12 @@ const entries =
 
 
 
-
 const videos =
 
 entries
-
-.slice(
-
-0,
-
-4
-
-)
-
+.slice(0,4)
 .map(
-
-video=>{
-
-
+entry=>{
 
 
 
@@ -1635,26 +1311,20 @@ return {
 
 id:
 
-video
-
+entry
 .querySelector(
 "yt\\:videoId"
 )
-
 ?.textContent,
-
-
 
 
 
 title:
 
-video
-
+entry
 .querySelector(
 "title"
 )
-
 ?.textContent
 
 ||
@@ -1663,22 +1333,13 @@ video
 
 
 
-
-
 };
 
 
 
-
-
-}
-
-)
-
+})
 .filter(
-
 video=>video.id
-
 );
 
 
@@ -1687,26 +1348,9 @@ video=>video.id
 
 
 
-
-if(videos.length){
-
-
-
-renderYoutube(videos);
-
-
-
-}else{
-
-
-
-showYoutubeError();
-
-
-
-}
-
-
+renderYoutubeVideos(
+videos
+);
 
 
 
@@ -1720,7 +1364,7 @@ catch(error){
 
 console.warn(
 
-"YouTube loading error:",
+"YouTube loading failed:",
 
 error
 
@@ -1730,53 +1374,28 @@ error
 
 
 
-showYoutubeError();
 
+youtubeGrid.innerHTML = `
 
-
-}
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/*
-YOUTUBE ERROR MESSAGE
-=====================================
-*/
-
-
-function showYoutubeError(){
-
-
-
-youtubeGrid.innerHTML =
-
-`
 
 <article class="youtube-card">
 
+
 <div class="video-wrapper">
+
 
 <p>
 
-Videos are currently unavailable.
+Videos unavailable.
 
 </p>
 
+
 </div>
 
+
 </article>
+
 
 `;
 
@@ -1786,24 +1405,36 @@ Videos are currently unavailable.
 
 
 
+}
 
 
 
 
 
 
-/*
-RENDER YOUTUBE CARDS
-=====================================
-*/
 
 
-function renderYoutube(videos){
+
+function renderYoutubeVideos(
+videos
+){
+
+
+
+
+
+if(!youtubeGrid){
+
+return;
+
+}
+
+
+
 
 
 
 youtubeGrid.innerHTML =
-
 "";
 
 
@@ -1813,7 +1444,6 @@ youtubeGrid.innerHTML =
 
 
 videos.forEach(
-
 video=>{
 
 
@@ -1822,7 +1452,6 @@ video=>{
 
 
 const card =
-
 document.createElement(
 "article"
 );
@@ -1831,8 +1460,8 @@ document.createElement(
 
 
 
-card.className =
 
+card.className =
 "youtube-card";
 
 
@@ -1841,28 +1470,24 @@ card.className =
 
 
 
+card.innerHTML = `
 
-card.innerHTML =
 
-`
 
 <div class="video-wrapper">
 
 
 <iframe
 
-
 src="https://www.youtube.com/embed/${video.id}"
-
 
 title="${video.title}"
 
-
 loading="lazy"
 
+allowfullscreen
 
-allowfullscreen>
-
+>
 
 </iframe>
 
@@ -1885,6 +1510,7 @@ ${video.title}
 
 </div>
 
+
 `;
 
 
@@ -1901,14 +1527,55 @@ card
 
 
 
+});
+
+
 
 }
+
+
+
+
+
+
+
+
+loadLatestVod();
+
+
+
+loadYoutubeVideos();/* ==============================
+IMAGE ERROR HANDLER
+============================== */
+
+
+document
+.querySelectorAll(
+"img"
+)
+.forEach(
+image=>{
+
+
+image.addEventListener(
+"error",
+()=>{
+
+
+console.warn(
+
+"Image not found:",
+
+image.src
 
 );
 
 
 
-}
+});
+
+
+});
 
 
 
@@ -1918,41 +1585,22 @@ card
 
 
 
-loadYoutube();
-
-
-
-
-
-
-
-
-
-/*
-=====================================
+/* ==============================
 PLAYER DEBUG
-=====================================
-*/
+============================== */
 
 
 document
-
 .querySelectorAll(
 "iframe"
 )
-
 .forEach(
-
 player=>{
 
 
-
 player.addEventListener(
-
 "load",
-
 ()=>{
-
 
 
 console.log(
@@ -1965,37 +1613,36 @@ player.src
 
 
 
-}
-
-);
+});
 
 
+});
 
-}
 
-);/*
-=====================================
+
+
+
+
+
+
+
+/* ==============================
 GLOBAL ERROR HANDLER
-=====================================
-*/
+============================== */
 
 
 window.addEventListener(
-
 "error",
-
 event=>{
 
 
-console.error(
+console.error(`
 
-`
-
-=================================
+==============================
 
 UPMINAA FAN HUB ERROR
 
-=================================
+==============================
 
 
 Message:
@@ -2016,17 +1663,13 @@ ${event.lineno}
 
 
 
-=================================
+==============================
 
-`
-
-);
+`);
 
 
 
-}
-
-);
+});
 
 
 
@@ -2036,18 +1679,16 @@ ${event.lineno}
 
 
 
-/*
-=====================================
-MEDIA AUTO UPDATE
-=====================================
-*/
+/* ==============================
+MEDIA AUTO REFRESH
+============================== */
 
 
 function refreshMedia(){
 
 
 
-updateLiveStatus();
+updateTwitch();
 
 
 
@@ -2055,7 +1696,7 @@ loadLatestVod();
 
 
 
-loadYoutube();
+loadYoutubeVideos();
 
 
 
@@ -2066,10 +1707,6 @@ loadYoutube();
 
 
 
-
-/*
-Refresh media every 5 minutes
-*/
 
 
 setInterval(
@@ -2088,63 +1725,45 @@ refreshMedia,
 
 
 
-/*
-=====================================
-FINAL SYSTEM STATUS
-=====================================
-*/
+/* ==============================
+FINAL STATUS
+============================== */
 
 
-console.log(
+console.log(`
 
-`
 
 =================================
 
 UPMINAA FAN HUB
 
-MAIN.JS FINAL VERSION
+MAIN.JS ONLINE ✅
 
 
-SYSTEM ONLINE ✅
+Systems:
 
-
-
-FEATURES:
-
-
-
-✓ Loader System
 
 ✓ Mobile Navigation
 
-✓ Smooth Scrolling
+✓ Smooth Scroll
 
 ✓ Reveal Animations
 
-✓ Image Lightbox
+✓ Lightbox Gallery
 
-✓ Clickable Cosplay Cards
+✓ Twitch Live System
 
-✓ Twitch Live Detection
+✓ Twitch Latest Stream
 
-✓ Twitch Live Player
+✓ YouTube Feed
 
-✓ Latest Twitch VOD
-
-✓ YouTube Video Feed
-
-✓ Responsive Media Players
-
-✓ Auto Media Refresh
-
+✓ Responsive Players
 
 
 =================================
 
-`
 
-);
+`);
 
 
 
