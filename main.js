@@ -2,7 +2,7 @@
 =====================================
 UPMINAA FAN HUB
 main.js
-FINAL FIX VERSION
+FIXED VERSION
 =====================================
 */
 
@@ -59,6 +59,10 @@ loader.classList.add(
 
 
 
+
+
+
+
 /*
 =====================================
 YOUTUBE AUTO LOAD
@@ -80,6 +84,8 @@ const YOUTUBE_FEED =
 
 
 
+
+
 const RSS_PROXIES = [
 
 
@@ -97,12 +103,15 @@ const RSS_PROXIES = [
 
 
 
+
+
 async function getYoutubeVideos(){
 
 
 for(
 const proxy of RSS_PROXIES
 ){
+
 
 
 try{
@@ -123,8 +132,11 @@ continue;
 
 
 
+
 const text =
 await response.text();
+
+
 
 
 
@@ -134,6 +146,7 @@ new DOMParser()
 text,
 "text/xml"
 );
+
 
 
 
@@ -148,6 +161,7 @@ const entries =
 0,
 YOUTUBE_LIMIT
 );
+
 
 
 
@@ -202,8 +216,9 @@ return videos;
 }
 catch(error){
 
+
 console.warn(
-"Youtube proxy failed",
+"YouTube proxy failed",
 error
 );
 
@@ -224,20 +239,25 @@ return [];
 
 
 
+
+
+
 function createYoutubePlayers(
 videos
 ){
 
 
 
-const youtubeGrid =
+const gallery =
 document.getElementById(
 "youtubeGrid"
 );
 
 
 
-if(!youtubeGrid){
+
+
+if(!gallery){
 
 return;
 
@@ -245,7 +265,11 @@ return;
 
 
 
-youtubeGrid
+
+
+
+
+gallery
 .querySelectorAll(
 ".yt-video-card"
 )
@@ -257,19 +281,34 @@ card=>card.remove()
 
 
 
+
 videos.forEach(
 video=>{
 
 
 const card =
 document.createElement(
-"figure"
+"article"
 );
 
 
 
 card.className =
-"gallery-card embed-card yt-video-card";
+"youtube-card yt-video-card";
+
+
+
+
+
+const wrapper =
+document.createElement(
+"div"
+);
+
+
+wrapper.className =
+"video-wrapper";
+
 
 
 
@@ -286,14 +325,14 @@ iframe.src =
 
 
 
+
+
 iframe.title =
 video.title;
 
 
-
 iframe.loading =
 "lazy";
-
 
 
 iframe.allowFullscreen =
@@ -306,13 +345,21 @@ iframe.allow =
 
 
 
-card.appendChild(
+
+
+wrapper.appendChild(
 iframe
 );
 
 
 
-youtubeGrid.appendChild(
+card.appendChild(
+wrapper
+);
+
+
+
+gallery.appendChild(
 card
 );
 
@@ -321,7 +368,10 @@ card
 });
 
 
+
 }
+
+
 
 
 
@@ -332,6 +382,8 @@ async function loadYoutube(){
 
 const videos =
 await getYoutubeVideos();
+
+
 
 
 
@@ -348,16 +400,18 @@ console.log(
 );
 
 
+
 }
 else{
 
 
 console.warn(
-"No Youtube videos found"
+"No YouTube videos found"
 );
 
 
 }
+
 
 
 }
@@ -376,11 +430,17 @@ const TWITCH_CHANNEL =
 
 
 
+
+
 function twitchParent(){
+
 
 return window.location.hostname;
 
+
 }
+
+
 
 
 
@@ -400,6 +460,7 @@ document.createElement(
 
 
 
+
 if(type === "live"){
 
 
@@ -407,23 +468,29 @@ iframe.src =
 `https://player.twitch.tv/?channel=${TWITCH_CHANNEL}&parent=${twitchParent()}&muted=true`;
 
 
+
 iframe.title =
 "Upminaa Twitch Live";
+
 
 
 }
 else{
 
 
+
 iframe.src =
 `https://player.twitch.tv/?video=${id}&parent=${twitchParent()}&muted=true`;
+
 
 
 iframe.title =
 "Última live da Upminaa";
 
 
+
 }
+
 
 
 
@@ -432,14 +499,24 @@ iframe.allowFullscreen =
 true;
 
 
+
 iframe.frameBorder =
 "0";
+
+
+
+iframe.allow =
+"autoplay; fullscreen";
+
 
 
 return iframe;
 
 
+
 }
+
+
 
 
 
@@ -467,8 +544,12 @@ await fetch(
 
 
 
+
+
 const text =
 await response.text();
+
+
 
 
 
@@ -487,6 +568,7 @@ console.warn(
 "Twitch status error",
 error
 );
+
 
 
 return false;
@@ -526,11 +608,15 @@ document.getElementById(
 
 
 
+
 if(!wrap){
 
 return;
 
 }
+
+
+
 
 
 
@@ -551,11 +637,14 @@ wrap.innerHTML =
 "";
 
 
+
 wrap.appendChild(
 createTwitchPlayer(
 "live"
 )
 );
+
+
 
 
 
@@ -567,17 +656,21 @@ wrap.classList.add(
 
 
 
+
+
 if(badge){
 
 
-badge.classList.remove(
-"is-off"
-);
-
-
 badge.classList.add(
-"is-on"
+"online"
 );
+
+
+
+badge.classList.remove(
+"offline"
+);
+
 
 
 
@@ -596,7 +689,11 @@ status.textContent =
 }
 
 
+
 }
+
+
+
 
 
 
@@ -606,13 +703,29 @@ console.log(
 
 
 
-}
 
+
+}
 else{
 
 
 
+
+
 if(badge){
+
+
+badge.classList.remove(
+"online"
+);
+
+
+
+badge.classList.add(
+"offline"
+);
+
+
 
 
 const status =
@@ -630,13 +743,19 @@ status.textContent =
 }
 
 
+
 }
+
+
+
 
 
 
 console.log(
 "Twitch offline"
 );
+
+
 
 
 
@@ -661,7 +780,6 @@ ULTIMA LIVE / VOD
 */
 
 
-
 async function loadLatestVod(){
 
 
@@ -682,6 +800,7 @@ return;
 
 
 
+
 try{
 
 
@@ -695,8 +814,106 @@ await fetch(
 
 
 
-const data =
-await response.json();
+
+const text =
+await response.text();
+
+
+
+
+
+
+console.log(
+"VOD API response:",
+text
+);
+
+
+
+
+
+
+
+if(
+!text ||
+text.includes("offline") ||
+text.includes("error") ||
+text.includes("❤") ||
+text.includes("❤️")
+){
+
+
+
+card.innerHTML =
+`
+<div class="yt-error">
+
+Nenhuma live recente encontrada.
+
+</div>
+`;
+
+
+
+return;
+
+
+
+}
+
+
+
+
+
+
+
+let data;
+
+
+
+
+
+
+try{
+
+
+
+data =
+JSON.parse(
+text
+);
+
+
+
+}
+catch(error){
+
+
+
+console.warn(
+"VOD JSON parse failed:",
+error
+);
+
+
+
+card.innerHTML =
+`
+<div class="yt-error">
+
+Última live indisponível no momento.
+
+</div>
+`;
+
+
+
+return;
+
+
+
+}
+
 
 
 
@@ -704,8 +921,10 @@ await response.json();
 
 if(
 !data ||
-!data[0]
+!data[0] ||
+!data[0].id
 ){
+
 
 
 card.innerHTML =
@@ -718,7 +937,9 @@ Nenhuma live encontrada.
 `;
 
 
+
 return;
+
 
 
 }
@@ -730,6 +951,7 @@ return;
 
 const vod =
 data[0];
+
 
 
 
@@ -754,24 +976,29 @@ vod.id
 
 
 
+
+
 console.log(
 "Latest Twitch VOD loaded"
 );
 
 
 
+
+
 }
-
-
 
 catch(error){
 
 
 
 console.warn(
-"VOD error",
+"VOD error:",
 error
 );
+
+
+
 
 
 
@@ -797,10 +1024,11 @@ Erro ao carregar última live.
 
 
 
-
 loadTwitchLive();
 
 loadLatestVod();
+
+
 
 
 
@@ -808,6 +1036,174 @@ setInterval(
 loadTwitchLive,
 120000
 );/*
+=====================================
+DOM READY
+=====================================
+*/
+
+
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
+
+
+
+
+
+
+
+/*
+=====================================
+YEAR
+=====================================
+*/
+
+
+const year =
+document.getElementById(
+"year"
+);
+
+
+
+if(year){
+
+
+year.textContent =
+new Date()
+.getFullYear();
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+=====================================
+MOBILE MENU
+=====================================
+*/
+
+
+const menuButton =
+document.getElementById(
+"navToggle"
+);
+
+
+
+const nav =
+document.getElementById(
+"navLinks"
+);
+
+
+
+
+
+
+if(
+menuButton &&
+nav
+){
+
+
+
+menuButton.addEventListener(
+"click",
+()=>{
+
+
+const open =
+nav.classList.toggle(
+"open"
+);
+
+
+
+
+menuButton.classList.toggle(
+"open",
+open
+);
+
+
+
+
+menuButton.setAttribute(
+"aria-expanded",
+open
+);
+
+
+
+});
+
+
+}
+
+
+
+
+
+
+
+
+
+document
+.querySelectorAll(
+"#navLinks a"
+)
+.forEach(
+link=>{
+
+
+link.addEventListener(
+"click",
+()=>{
+
+
+if(nav){
+
+nav.classList.remove(
+"open"
+);
+
+
+}
+
+
+if(menuButton){
+
+menuButton.classList.remove(
+"open"
+);
+
+
+}
+
+
+
+});
+
+
+});
+
+
+
+
+
+
+
+
+
+/*
 =====================================
 SMOOTH SCROLL
 =====================================
@@ -891,6 +1287,7 @@ document.querySelectorAll(
 
 
 
+
 const observer =
 new IntersectionObserver(
 entries=>{
@@ -916,7 +1313,9 @@ entry.target
 );
 
 
+
 }
+
 
 
 });
@@ -937,6 +1336,7 @@ threshold:
 
 
 
+
 reveal.forEach(
 item=>{
 
@@ -946,9 +1346,11 @@ item.classList.add(
 );
 
 
+
 observer.observe(
 item
 );
+
 
 
 });
@@ -1015,10 +1417,14 @@ document.getElementById(
 
 
 
+
+
 const lightboxImage =
 document.getElementById(
 "lightboxImage"
 );
+
+
 
 
 
@@ -1055,6 +1461,7 @@ image.src;
 
 
 
+
 lightbox.classList.add(
 "active"
 );
@@ -1065,8 +1472,6 @@ lightbox.classList.add(
 
 
 });
-
-
 
 
 
@@ -1096,11 +1501,11 @@ lightbox.classList.remove(
 );
 
 
+
 });
 
 
 }
-
 
 
 
@@ -1135,15 +1540,6 @@ lightbox.classList.remove(
 
 
 }
-
-
-
-
-
-
-
-
-
 /*
 =====================================
 PLAYER DEBUG
@@ -1181,47 +1577,12 @@ player.src
 
 
 
-});/*
-=====================================
-PLAYER DEBUG
-=====================================
-*/
-
-
-document
-.querySelectorAll(
-"iframe"
-)
-.forEach(
-player=>{
-
-
-player.addEventListener(
-"load",
-()=>{
-
-
-console.log(
-"Player loaded:",
-player.src
-);
-
-
-
-});
-
-
-});
-
-
-
-
 
 
 
 /*
 =====================================
-CLOSE MENU WHEN CLICK OUTSIDE
+CLOSE MENU OUTSIDE CLICK
 =====================================
 */
 
@@ -1242,15 +1603,22 @@ return;
 
 
 
-const clickedInside =
-nav.contains(event.target)
+
+
+const insideMenu =
+nav.contains(
+event.target
+)
 ||
-menuButton.contains(event.target);
+menuButton.contains(
+event.target
+);
 
 
 
 
-if(!clickedInside){
+
+if(!insideMenu){
 
 
 nav.classList.remove(
@@ -1303,11 +1671,14 @@ lightbox.classList.remove(
 );
 
 
+
 }
 
 
 
 });
+
+
 
 
 
@@ -1326,6 +1697,7 @@ const backTop =
 document.querySelector(
 ".back-top"
 );
+
 
 
 
@@ -1349,6 +1721,7 @@ backTop.classList.add(
 );
 
 
+
 }
 else{
 
@@ -1358,11 +1731,16 @@ backTop.classList.remove(
 );
 
 
+
 }
 
 
 
 });
+
+
+
+
 
 
 backTop.addEventListener(
@@ -1379,10 +1757,15 @@ behavior:"smooth"
 });
 
 
+
 });
 
 
+
 }
+
+
+
 
 
 
