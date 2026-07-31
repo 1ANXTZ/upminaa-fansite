@@ -34,6 +34,8 @@ window.addEventListener("load",()=>{
 
 
 
+
+
 /*
 =====================================
 DOM READY
@@ -44,6 +46,8 @@ DOM READY
 document.addEventListener(
 "DOMContentLoaded",
 ()=>{
+
+
 
 
 
@@ -66,6 +70,10 @@ year.textContent =
 new Date().getFullYear();
 
 }
+
+
+
+
 
 
 
@@ -135,6 +143,10 @@ menu?.classList.remove("open");
 
 
 
+
+
+
+
 /*
 =====================================
 SMOOTH SCROLL
@@ -179,6 +191,9 @@ behavior:"smooth"
 
 
 });
+
+
+
 
 
 
@@ -246,6 +261,12 @@ behavior:"smooth"
 
 
 }
+
+
+
+
+
+
 
 
 
@@ -393,6 +414,8 @@ document.body.style.overflow =
 
 
 
+
+
 function closeLightbox(){
 
 
@@ -424,6 +447,8 @@ document.body.style.overflow =
 
 
 
+
+
 clickableImages.forEach(
 image=>{
 
@@ -440,6 +465,7 @@ openLightbox(image);
 
 
 });
+
 
 
 
@@ -470,6 +496,7 @@ closeLightbox();
 
 
 }
+
 
 
 
@@ -534,6 +561,9 @@ closeLightbox();
 
 
 
+
+
+
 /*
 =====================================
 IMAGE ERROR CHECK
@@ -553,7 +583,7 @@ img.addEventListener(
 
 
 console.warn(
-"Imagem não encontrada:",
+"Image not found:",
 img.src
 );
 
@@ -562,6 +592,12 @@ img.src
 
 
 });
+
+
+
+
+
+
 
 
 /*
@@ -594,6 +630,8 @@ const heroStatus =
 document.querySelector(
 ".hero-image .live-status"
 );
+
+
 
 
 
@@ -688,6 +726,10 @@ return iframe;
 
 
 
+
+
+
+
 async function checkTwitchLive(){
 
 
@@ -748,12 +790,18 @@ return false;
 
 
 
+
+
+
+
 async function updateLiveStatus(){
 
 
 
 const online =
 await checkTwitchLive();
+
+
 
 
 
@@ -816,15 +864,6 @@ heroStatus.classList.remove(
 
 
 }
-
-
-
-
-
-
-
-
-
 /*
 ==============================
 TWITCH PLAYER
@@ -877,9 +916,12 @@ createTwitchLive()
 
 
 
+
+
+
 /*
 ==============================
-BADGE
+STATUS BADGE
 ==============================
 */
 
@@ -917,6 +959,7 @@ text.textContent =
 "LIVE";
 
 }
+
 
 
 }else{
@@ -962,6 +1005,9 @@ text.textContent =
 
 
 
+
+
+
 updateLiveStatus();
 
 
@@ -970,6 +1016,16 @@ setInterval(
 updateLiveStatus,
 120000
 );
+
+
+
+
+
+
+
+
+
+
 
 
 /*
@@ -983,6 +1039,8 @@ const vodContainer =
 document.getElementById(
 "latestVod"
 );
+
+
 
 
 
@@ -1018,6 +1076,7 @@ await response.json();
 
 
 
+
 if(
 data &&
 data.length
@@ -1027,6 +1086,7 @@ data.length
 
 const latest =
 data[0];
+
 
 
 
@@ -1061,7 +1121,7 @@ vodContainer.innerHTML = `
 
 <p>
 
-Nenhuma live gravada encontrada.
+No recorded livestream found.
 
 </p>
 
@@ -1079,7 +1139,7 @@ catch(error){
 
 
 console.warn(
-"Erro VOD:",
+"VOD error:",
 error
 );
 
@@ -1089,7 +1149,7 @@ vodContainer.innerHTML = `
 
 <p>
 
-Não foi possível carregar a última live.
+Unable to load the latest livestream.
 
 </p>
 
@@ -1117,6 +1177,10 @@ loadLatestVod();
 
 
 
+
+
+
+
 /*
 =====================================
 YOUTUBE SYSTEM
@@ -1129,10 +1193,15 @@ const YOUTUBE_CHANNEL_ID =
 
 
 
+
 const youtubeGrid =
 document.getElementById(
 "youtubeGrid"
 );
+
+
+
+
 
 
 
@@ -1192,12 +1261,14 @@ xmlText,
 
 
 
+
 const entries =
 [
 ...xml.querySelectorAll(
 "entry"
 )
 ];
+
 
 
 
@@ -1232,6 +1303,7 @@ video
 ?.textContent
 
 ||
+
 "Upminaa Video"
 
 
@@ -1244,8 +1316,6 @@ video
 .filter(
 video=>video.id
 );
-
-
 
 
 
@@ -1280,7 +1350,7 @@ youtubeGrid.innerHTML = `
 
 <p>
 
-Vídeos indisponíveis.
+Videos unavailable.
 
 </p>
 
@@ -1291,18 +1361,16 @@ Vídeos indisponíveis.
 `;
 
 
-}
-
-
 
 }
 
 
 
-
-
-
-
+}/*
+=====================================
+RENDER YOUTUBE VIDEOS
+=====================================
+*/
 
 
 function renderYoutube(videos){
@@ -1386,7 +1454,6 @@ card
 
 
 
-
 }
 
 
@@ -1395,7 +1462,26 @@ card
 
 
 
+
+
+
+
+
+
 loadYoutube();
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 =====================================
 PLAYER DEBUG
@@ -1417,15 +1503,20 @@ player.addEventListener(
 
 
 console.log(
-"Player carregado:",
+"Player loaded:",
 player.src
 );
 
 
+
 });
 
 
 });
+
+
+
+
 
 
 
@@ -1450,26 +1541,35 @@ window.addEventListener(
 console.error(
 `
 ==============================
+
 UPMINAA FAN HUB ERROR
+
 ==============================
 
-Mensagem:
+
+Message:
+
 ${event.message}
 
-Arquivo:
+
+File:
+
 ${event.filename}
 
-Linha:
+
+Line:
+
 ${event.lineno}
 
+
 ==============================
+
 `
 );
 
 
 
 });
-
 
 
 
@@ -1507,8 +1607,12 @@ loadYoutube();
 
 
 
+
+
+
+
 /*
-Atualiza mídia a cada 5 minutos
+Updates media every 5 minutes
 */
 
 
@@ -1516,6 +1620,9 @@ setInterval(
 refreshMedia,
 300000
 );
+
+
+
 
 
 
@@ -1546,21 +1653,37 @@ SYSTEM ONLINE ✅
 
 Features:
 
+
 ✓ Loader
+
 ✓ Mobile Menu
+
 ✓ Smooth Scroll
+
 ✓ Reveal Animation
+
 ✓ Lightbox
+
 ✓ Twitch Live System
+
 ✓ Hero LIVE Status
+
 ✓ Twitch VOD
+
 ✓ YouTube Feed
+
 ✓ Responsive Players
+
 
 =================================
 
 
 `);
+
+
+
+
+
 
 
 
