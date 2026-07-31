@@ -2,7 +2,8 @@
 =====================================
 UPMINAA FAN HUB
 MAIN.JS
-FINAL CORRECTED VERSION
+FINAL COMPATIBLE VERSION
+HTML + CSS COMPATIBILITY
 =====================================
 */
 
@@ -12,21 +13,29 @@ document.addEventListener(
 ()=>{
 
 
+
 /* ==============================
 MOBILE MENU
 ============================== */
 
 
 const menuButton =
-document.querySelector(".nav-toggle");
+document.querySelector(
+".nav-toggle"
+);
 
 
 const navLinks =
-document.querySelector(".nav-links");
+document.querySelector(
+".nav-links"
+);
 
 
 
-if(menuButton && navLinks){
+if(
+menuButton &&
+navLinks
+){
 
 
 menuButton.addEventListener(
@@ -43,6 +52,7 @@ navLinks.classList.toggle(
 
 
 }
+
 
 
 
@@ -69,18 +79,25 @@ link.addEventListener(
 event=>{
 
 
+const href =
+link.getAttribute(
+"href"
+);
+
+
 const target =
 document.querySelector(
-link.getAttribute("href")
+href
 );
 
 
 
-if(target){
+if(
+target
+){
 
 
 event.preventDefault();
-
 
 
 target.scrollIntoView({
@@ -109,12 +126,14 @@ behavior:"smooth"
 
 /* ==============================
 REVEAL ANIMATION
+COMPATIBLE WITH CSS
 ============================== */
 
 
 const revealElements =
 document.querySelectorAll(
 `
+.about-image,
 .profile-card,
 .bio-card,
 .cosplay-card,
@@ -128,6 +147,8 @@ document.querySelectorAll(
 
 
 
+
+
 const revealObserver =
 new IntersectionObserver(
 entries=>{
@@ -137,7 +158,9 @@ entries.forEach(
 entry=>{
 
 
-if(entry.isIntersecting){
+if(
+entry.isIntersecting
+){
 
 
 entry.target.classList.add(
@@ -145,14 +168,7 @@ entry.target.classList.add(
 );
 
 
-
-revealObserver.unobserve(
-entry.target
-);
-
-
 }
-
 
 
 });
@@ -166,6 +182,7 @@ threshold:.15
 }
 
 );
+
 
 
 
@@ -203,8 +220,9 @@ document.querySelector(
 
 
 
-if(backTop){
-
+if(
+backTop
+){
 
 
 window.addEventListener(
@@ -239,9 +257,6 @@ backTop.classList.remove(
 });
 
 
-
-
-
 backTop.addEventListener(
 "click",
 ()=>{
@@ -270,7 +285,7 @@ behavior:"smooth"
 
 
 /* ==============================
-YEAR
+CURRENT YEAR
 ============================== */
 
 
@@ -281,7 +296,9 @@ document.querySelector(
 
 
 
-if(year){
+if(
+year
+){
 
 
 year.textContent =
@@ -292,19 +309,20 @@ new Date()
 }
 /* ==============================
 LIGHTBOX SYSTEM
+COMPATIBLE WITH NEW HTML
 ============================== */
 
 
 const lightbox =
 document.querySelector(
-"#imageLightbox"
+".lightbox"
 );
 
 
 
 const lightboxImage =
 document.querySelector(
-"#lightboxImage"
+".lightbox img"
 );
 
 
@@ -319,10 +337,10 @@ document.querySelector(
 
 
 
+
 function openLightbox(
 image
 ){
-
 
 
 if(
@@ -333,7 +351,6 @@ if(
 return;
 
 }
-
 
 
 
@@ -359,11 +376,7 @@ lightbox.classList.add(
 
 
 
-
-
-
 function closeLightbox(){
-
 
 
 if(
@@ -377,15 +390,23 @@ return;
 
 
 
-
 lightbox.classList.remove(
 "active"
 );
 
 
 
+setTimeout(
+()=>{
+
+
 lightboxImage.src =
 "";
+
+
+},
+300
+);
 
 
 
@@ -400,14 +421,20 @@ lightboxImage.src =
 
 
 /* ==============================
-CLICKABLE IMAGES
+ALL CLICKABLE IMAGES
 ============================== */
 
 
 const clickableImages =
 document.querySelectorAll(
-".cosplay-card img, .gallery-card img"
+`
+.cosplay-card img,
+.gallery-card img,
+.lightbox-image
+`
 );
+
+
 
 
 
@@ -417,18 +444,14 @@ clickableImages.forEach(
 image=>{
 
 
-
-image.classList.add(
-"lightbox-image"
-);
-
+image.style.cursor =
+"pointer";
 
 
 
 image.addEventListener(
 "click",
 event=>{
-
 
 
 event.stopPropagation();
@@ -442,7 +465,6 @@ image
 
 
 });
-
 
 
 });
@@ -460,11 +482,15 @@ CARD CLICK SUPPORT
 ============================== */
 
 
-
 const clickableCards =
 document.querySelectorAll(
-".cosplay-card, .gallery-card"
+`
+.cosplay-card,
+.gallery-card
+`
 );
+
+
 
 
 
@@ -472,13 +498,6 @@ document.querySelectorAll(
 
 clickableCards.forEach(
 card=>{
-
-
-
-card.addEventListener(
-"click",
-event=>{
-
 
 
 const image =
@@ -489,9 +508,19 @@ card.querySelector(
 
 
 
+
 if(
-image &&
-event.target !== image
+image
+){
+
+
+card.addEventListener(
+"click",
+event=>{
+
+
+if(
+event.target.tagName !== "A"
 ){
 
 
@@ -507,6 +536,9 @@ image
 });
 
 
+}
+
+
 
 });
 
@@ -518,15 +550,20 @@ image
 
 
 
-if(lightboxClose){
+/* ==============================
+LIGHTBOX CLOSE
+============================== */
 
+
+if(
+lightboxClose
+){
 
 
 lightboxClose.addEventListener(
 "click",
 closeLightbox
 );
-
 
 
 }
@@ -536,15 +573,14 @@ closeLightbox
 
 
 
-
-if(lightbox){
-
+if(
+lightbox
+){
 
 
 lightbox.addEventListener(
 "click",
 event=>{
-
 
 
 if(
@@ -562,9 +598,7 @@ closeLightbox();
 });
 
 
-
 }
-
 
 
 
@@ -575,7 +609,6 @@ closeLightbox();
 document.addEventListener(
 "keydown",
 event=>{
-
 
 
 if(
@@ -594,7 +627,8 @@ closeLightbox();
 
 
 
-});/* ==============================
+});
+/* ==============================
 TWITCH SYSTEM
 ============================== */
 
@@ -641,10 +675,8 @@ document.querySelector(
 function getParentDomain(){
 
 
-
 let domain =
 window.location.hostname;
-
 
 
 
@@ -686,13 +718,9 @@ document.createElement(
 
 
 
-
-
 iframe.src =
 
 `https://player.twitch.tv/?channel=${TWITCH_CHANNEL}&parent=${getParentDomain()}&muted=true`;
-
-
 
 
 
@@ -717,14 +745,12 @@ true;
 
 
 iframe.allow =
+
 "autoplay; fullscreen";
 
 
 
-
-
 return iframe;
-
 
 
 }
@@ -744,7 +770,6 @@ async function checkTwitchStatus(){
 try{
 
 
-
 const response =
 await fetch(
 
@@ -754,13 +779,8 @@ await fetch(
 
 
 
-
-
 const data =
 await response.text();
-
-
-
 
 
 
@@ -772,25 +792,19 @@ return !data
 
 
 
-
 }
 
 catch(error){
 
 
-
 console.warn(
-
-"Twitch status error:",
-
+"Twitch status failed:",
 error
-
 );
 
 
 
 return false;
-
 
 
 }
@@ -813,7 +827,7 @@ online
 
 
 
-const badges = [
+const elements = [
 
 heroLiveStatus,
 
@@ -825,12 +839,13 @@ liveBadge
 
 
 
-badges.forEach(
-badge=>{
+elements.forEach(
+element=>{
 
 
-
-if(!badge){
+if(
+!element
+){
 
 return;
 
@@ -839,17 +854,18 @@ return;
 
 
 
-if(online){
+
+if(
+online
+){
 
 
-
-badge.classList.add(
+element.classList.add(
 "online"
 );
 
 
-
-badge.classList.remove(
+element.classList.remove(
 "offline"
 );
 
@@ -860,14 +876,12 @@ badge.classList.remove(
 else{
 
 
-
-badge.classList.add(
+element.classList.add(
 "offline"
 );
 
 
-
-badge.classList.remove(
+element.classList.remove(
 "online"
 );
 
@@ -878,7 +892,6 @@ badge.classList.remove(
 
 
 });
-
 
 
 }
@@ -901,7 +914,6 @@ await checkTwitchStatus();
 
 
 
-
 updateLiveStyle(
 online
 );
@@ -913,17 +925,21 @@ online
 
 
 
+
 /* ==============================
-HERO LIVE STATUS
+HERO LIVE BADGE
 ============================== */
 
 
+if(
+heroLiveStatus
+){
 
-if(heroLiveStatus){
 
 
+heroLiveStatus.innerHTML =
 
-heroLiveStatus.innerHTML = `
+`
 
 <span class="status-dot"></span>
 
@@ -944,7 +960,7 @@ LIVE
 
 
 /* ==============================
-LIVE PLAYER
+TWITCH PLAYER
 ============================== */
 
 
@@ -990,7 +1006,7 @@ createTwitchPlayer()
 
 
 /* ==============================
-LIVE BADGE
+LIVE BADGE TEXT
 ============================== */
 
 
@@ -1000,7 +1016,9 @@ liveBadge
 
 
 
-liveBadge.innerHTML = `
+liveBadge.innerHTML =
+
+`
 
 <span class="status-dot"></span>
 
@@ -1023,7 +1041,6 @@ LIVE
 
 
 
-
 updateTwitch();
 
 
@@ -1031,13 +1048,11 @@ updateTwitch();
 
 
 setInterval(
-
 updateTwitch,
-
 120000
-
-);/* ==============================
-TWITCH LAST VOD SYSTEM
+);
+/* ==============================
+TWITCH LATEST VOD SYSTEM
 ============================== */
 
 
@@ -1052,7 +1067,6 @@ if(
 return;
 
 }
-
 
 
 
@@ -1073,7 +1087,6 @@ await fetch(
 
 
 
-
 const videos =
 await response.json();
 
@@ -1082,9 +1095,9 @@ await response.json();
 
 
 
-
 if(
-videos &&
+videos
+&&
 videos.length
 ){
 
@@ -1097,11 +1110,9 @@ videos[0];
 
 
 
+latestVod.innerHTML =
 
-
-latestVod.innerHTML = `
-
-
+`
 
 <iframe
 
@@ -1117,11 +1128,7 @@ frameborder="0"
 
 </iframe>
 
-
-
 `;
-
-
 
 
 
@@ -1131,17 +1138,15 @@ else{
 
 
 
-latestVod.innerHTML = `
+latestVod.innerHTML =
 
-
+`
 
 <p>
 
 No recorded streams available.
 
 </p>
-
-
 
 `;
 
@@ -1160,21 +1165,17 @@ catch(error){
 
 
 console.warn(
-
-"Latest VOD error:",
-
+"Latest VOD failed:",
 error
-
 );
 
 
 
 
 
+latestVod.innerHTML =
 
-latestVod.innerHTML = `
-
-
+`
 
 <p>
 
@@ -1182,10 +1183,7 @@ Unable to load latest stream.
 
 </p>
 
-
-
 `;
-
 
 
 
@@ -1208,11 +1206,9 @@ YOUTUBE SYSTEM
 ============================== */
 
 
-
 const YOUTUBE_CHANNEL_ID =
 
 "UCw3CBMvVjZJNfQR3tEvTodQ";
-
 
 
 
@@ -1249,17 +1245,14 @@ return;
 
 
 
+
 try{
-
-
 
 
 
 const feed =
 
 `https://www.youtube.com/feeds/videos.xml?channel_id=${YOUTUBE_CHANNEL_ID}`;
-
-
 
 
 
@@ -1286,6 +1279,7 @@ feed
 )
 
 );
+
 
 
 
@@ -1320,7 +1314,6 @@ xmlText,
 
 
 
-
 const entries =
 
 [
@@ -1340,17 +1333,16 @@ const entries =
 const videos =
 
 entries
-.slice(0,4)
+.slice(
+0,
+4
+)
 
 .map(
-
 entry=>{
 
 
-
 return {
-
-
 
 id:
 
@@ -1358,10 +1350,7 @@ entry
 .querySelector(
 "yt\\:videoId"
 )
-
 ?.textContent,
-
-
 
 
 
@@ -1371,7 +1360,6 @@ entry
 .querySelector(
 "title"
 )
-
 ?.textContent
 
 ||
@@ -1383,18 +1371,14 @@ entry
 };
 
 
-
 })
 
 .filter(
-
 video=>
 
 video.id
 
 );
-
-
 
 
 
@@ -1417,25 +1401,19 @@ catch(error){
 
 
 console.warn(
-
-"YouTube loading error:",
-
+"YouTube loading failed:",
 error
-
 );
 
 
 
 
 
+youtubeGrid.innerHTML =
 
-
-youtubeGrid.innerHTML = `
-
-
+`
 
 <article class="youtube-card">
-
 
 
 <div class="video-wrapper">
@@ -1451,10 +1429,7 @@ Videos unavailable.
 </div>
 
 
-
 </article>
-
-
 
 `;
 
@@ -1492,10 +1467,7 @@ return;
 
 
 
-
-youtubeGrid.innerHTML =
-"";
-
+youtubeGrid.innerHTML = "";
 
 
 
@@ -1508,16 +1480,11 @@ videos.forEach(
 video=>{
 
 
-
-
-
 const card =
 
 document.createElement(
 "article"
 );
-
-
 
 
 
@@ -1532,11 +1499,9 @@ card.className =
 
 
 
+card.innerHTML =
 
-
-card.innerHTML = `
-
-
+`
 
 <div class="video-wrapper">
 
@@ -1556,10 +1521,7 @@ allowfullscreen
 </iframe>
 
 
-
 </div>
-
-
 
 
 
@@ -1573,10 +1535,7 @@ ${video.title}
 </h4>
 
 
-
 </div>
-
-
 
 `;
 
@@ -1589,9 +1548,6 @@ ${video.title}
 youtubeGrid.appendChild(
 card
 );
-
-
-
 
 
 
@@ -1608,12 +1564,13 @@ card
 
 
 
+
 loadLatestVod();
 
 
-
-loadYoutubeVideos();/* ==============================
-IMAGE ERROR HANDLER
+loadYoutubeVideos();
+/* ==============================
+IMAGE ERROR DEBUG
 ============================== */
 
 
@@ -1654,7 +1611,7 @@ image.src
 
 
 /* ==============================
-PLAYER DEBUG
+IFRAME DEBUG
 ============================== */
 
 
@@ -1663,10 +1620,10 @@ document
 "iframe"
 )
 .forEach(
-player=>{
+iframe=>{
 
 
-player.addEventListener(
+iframe.addEventListener(
 "load",
 ()=>{
 
@@ -1675,7 +1632,7 @@ console.log(
 
 "Player loaded:",
 
-player.src
+iframe.src
 
 );
 
@@ -1706,6 +1663,7 @@ event=>{
 
 console.error(`
 
+
 =================================
 
 UPMINAA FAN HUB ERROR
@@ -1733,6 +1691,7 @@ ${event.lineno}
 
 =================================
 
+
 `);
 
 
@@ -1750,7 +1709,6 @@ ${event.lineno}
 /* ==============================
 MEDIA AUTO REFRESH
 ============================== */
-
 
 
 function refreshMedia(){
@@ -1798,7 +1756,6 @@ FINAL STATUS
 ============================== */
 
 
-
 console.log(`
 
 
@@ -1816,9 +1773,11 @@ Systems:
 
 ✓ Smooth Scroll
 
-✓ Reveal Animations
+✓ Reveal Animation
 
-✓ About Her Animation
+✓ About Cards
+
+✓ About Her
 
 ✓ Lightbox Gallery
 
@@ -1826,7 +1785,7 @@ Systems:
 
 ✓ Twitch Live System
 
-✓ Twitch Latest Stream
+✓ Latest Stream
 
 ✓ YouTube Feed
 
