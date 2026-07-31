@@ -13,66 +13,46 @@ RESET
 
 
 *{
-
     margin:0;
-
     padding:0;
-
     box-sizing:border-box;
-
 }
 
 
 
 html{
-
     scroll-behavior:smooth;
-
 }
 
 
 
 body{
-
     font-family:
-
     "Inter",
     Arial,
     sans-serif;
 
-
     background:#080812;
 
-
-    color:#fff;
-
+    color:#ffffff;
 
     line-height:1.6;
 
-
     overflow-x:hidden;
-
 }
 
 
 
-
 img{
-
     max-width:100%;
-
     display:block;
-
 }
 
 
 
 a{
-
     text-decoration:none;
-
     color:inherit;
-
 }
 
 
@@ -80,50 +60,36 @@ a{
 
 :root{
 
-
     --bg-main:#080812;
-
 
     --bg-card:#11111d;
 
-
     --bg-soft:#181827;
-
-
 
     --primary:#ff4fd8;
 
-
     --secondary:#7b61ff;
 
-
-
     --pink-glow:
-
     rgba(255,79,216,.5);
 
-
+    --purple-glow:
+    rgba(123,97,255,.5);
 
     --text:#fff;
 
-
     --muted:#b8b8c7;
 
-
     --border:
-
     rgba(255,255,255,.08);
 
 }
 
 
 
-
-
 /* ==============================
-GENERAL
+SECTIONS
 ============================== */
-
 
 
 section{
@@ -136,18 +102,11 @@ section{
 
 
 
-
 .section-title{
 
-
-    width:min(1200px,90%);
-
-    margin:
-
-    0 auto 50px;
-
-
     text-align:center;
+
+    margin-bottom:50px;
 
 }
 
@@ -155,18 +114,13 @@ section{
 
 .section-title span{
 
-
     color:var(--primary);
-
 
     font-size:.85rem;
 
-
     text-transform:uppercase;
 
-
     letter-spacing:3px;
-
 
     text-shadow:
 
@@ -178,9 +132,7 @@ section{
 
 .section-title h2{
 
-
     font-size:2.5rem;
-
 
     margin-top:10px;
 
@@ -190,20 +142,13 @@ section{
 
 .section-title p{
 
-
     max-width:700px;
 
-
     margin:15px auto;
-
 
     color:var(--muted);
 
 }
-
-
-
-
 
 
 
@@ -214,21 +159,15 @@ HEADER
 
 .site-header{
 
-
     position:fixed;
-
 
     top:0;
 
-
     left:0;
-
 
     width:100%;
 
-
     z-index:1000;
-
 
 
     background:
@@ -236,11 +175,9 @@ HEADER
     rgba(8,8,18,.85);
 
 
-
     backdrop-filter:
 
     blur(15px);
-
 
 
     border-bottom:
@@ -254,21 +191,16 @@ HEADER
 
 .navbar{
 
-
-    width:min(1200px,90%);
-
-
     height:80px;
 
+    width:min(1200px,90%);
 
     margin:auto;
 
 
     display:flex;
 
-
     align-items:center;
-
 
     justify-content:space-between;
 
@@ -276,19 +208,13 @@ HEADER
 
 
 
-
-
 .logo{
-
 
     font-size:1.5rem;
 
-
     font-weight:900;
 
-
     color:var(--primary);
-
 
 
     text-shadow:
@@ -299,15 +225,11 @@ HEADER
 
 
 
-
 .nav-links{
-
 
     display:flex;
 
-
     gap:30px;
-
 
     list-style:none;
 
@@ -315,12 +237,9 @@ HEADER
 
 
 
-
 .nav-links a{
 
-
     color:var(--muted);
-
 
     transition:.3s;
 
@@ -330,66 +249,44 @@ HEADER
 
 .nav-links a:hover{
 
-
     color:white;
-
 
     text-shadow:
 
     0 0 15px var(--primary);
 
-}
-
-
-
-
-
-
-
-/* ==============================
+}/* ==============================
 HERO
 ============================== */
 
 
-
 .hero-section{
-
 
     min-height:100vh;
 
-
     padding-top:150px;
 
-
     display:flex;
-
 
     align-items:center;
 
 }
-
 
 
 
 .hero-content{
 
-
     width:min(1200px,90%);
-
 
     margin:auto;
 
-
     display:grid;
-
 
     grid-template-columns:
 
     1fr 1fr;
 
-
     gap:60px;
-
 
     align-items:center;
 
@@ -397,22 +294,15 @@ HERO
 
 
 
-
-
 .hero-tag{
-
 
     color:var(--primary);
 
-
-    font-weight:900;
-
+    font-weight:800;
 
     letter-spacing:3px;
 
-
     font-size:.8rem;
-
 
     text-transform:uppercase;
 
@@ -420,19 +310,13 @@ HERO
 
 
 
-
 .hero-content h1{
-
 
     font-size:4rem;
 
-
     line-height:1.1;
 
-
     margin:20px 0;
-
-
 
     text-shadow:
 
@@ -442,16 +326,11 @@ HERO
 
 
 
-
-
 .hero-content p{
-
 
     max-width:550px;
 
-
     font-size:1.15rem;
-
 
     color:var(--muted);
 
@@ -459,15 +338,11 @@ HERO
 
 
 
-
 .hero-buttons{
-
 
     display:flex;
 
-
     gap:20px;
-
 
     margin-top:35px;
 
@@ -475,20 +350,14 @@ HERO
 
 
 
-
-
 .primary-button,
 .secondary-button{
 
-
     padding:14px 30px;
-
 
     border-radius:30px;
 
-
     font-weight:800;
-
 
     transition:.3s;
 
@@ -498,7 +367,6 @@ HERO
 
 .primary-button{
 
-
     background:
 
     linear-gradient(
@@ -507,6 +375,7 @@ HERO
     var(--secondary)
     );
 
+    color:white;
 
     box-shadow:
 
@@ -518,39 +387,32 @@ HERO
 
 .secondary-button{
 
-
-    background:var(--bg-card);
-
-
     border:
 
     1px solid rgba(255,255,255,.15);
 
+    background:var(--bg-card);
+
 }
-
-
 
 
 
 .primary-button:hover,
 .secondary-button:hover{
 
-
-    transform:
-
-    translateY(-4px);
+    transform:translateY(-4px);
 
 }
 
 
 
 
-
-/* HERO IMAGE */
+/* ==============================
+HERO IMAGE
+============================== */
 
 
 .hero-image{
-
 
     position:relative;
 
@@ -558,21 +420,15 @@ HERO
 
 
 
-
 .hero-image img{
-
 
     width:100%;
 
-
     height:550px;
-
 
     object-fit:cover;
 
-
     object-position:center top;
-
 
     border-radius:30px;
 
@@ -588,33 +444,21 @@ HERO
 
 .live-status{
 
-
     position:absolute;
-
-
-    top:25px;
-
 
     right:25px;
 
+    top:25px;
 
     padding:7px 18px;
 
-
     border-radius:20px;
-
 
     font-size:.75rem;
 
-
     font-weight:900;
 
-}
-
-
-
-.live-status.offline{
-
+    letter-spacing:1px;
 
     background:#555;
 
@@ -624,40 +468,11 @@ HERO
 
 .live-status.online{
 
-
-    background:red;
-
+    background:#ff0000;
 
     box-shadow:
 
     0 0 25px red;
-
-}/* ==============================
-ABOUT
-============================== */
-
-
-.about-container{
-
-
-    width:min(1200px,90%);
-
-
-    margin:auto;
-
-
-    display:grid;
-
-
-    grid-template-columns:
-
-    400px 1fr;
-
-
-    gap:60px;
-
-
-    align-items:start;
 
 }
 
@@ -665,20 +480,38 @@ ABOUT
 
 
 
-.about-image img{
+/* ==============================
+ABOUT
+============================== */
 
+
+.about-container{
+
+    width:min(1200px,90%);
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+
+    400px 1fr;
+
+    gap:60px;
+
+}
+
+
+
+.about-image img{
 
     width:100%;
 
-
     height:520px;
-
 
     object-fit:cover;
 
-
     object-position:center top;
-
 
     border-radius:25px;
 
@@ -691,16 +524,11 @@ ABOUT
 
 
 
-
-
 .about-content{
-
 
     display:flex;
 
-
     flex-direction:column;
-
 
     gap:30px;
 
@@ -708,18 +536,13 @@ ABOUT
 
 
 
-
-
 .fact-grid{
 
-
     display:grid;
-
 
     grid-template-columns:
 
     repeat(2,1fr);
-
 
     gap:20px;
 
@@ -727,10 +550,7 @@ ABOUT
 
 
 
-
-
 .fact-card{
-
 
     background:
 
@@ -743,14 +563,11 @@ ABOUT
 
     padding:25px;
 
-
     border-radius:20px;
-
 
     border:
 
     1px solid rgba(255,79,216,.15);
-
 
     transition:.3s;
 
@@ -758,20 +575,11 @@ ABOUT
 
 
 
-
-
 .fact-card:hover{
 
+    transform:translateY(-5px);
 
-    transform:
-
-    translateY(-5px);
-
-
-    border-color:
-
-    var(--primary);
-
+    border-color:var(--primary);
 
     box-shadow:
 
@@ -781,13 +589,9 @@ ABOUT
 
 
 
-
-
 .fact-card h3{
 
-
     color:var(--primary);
-
 
     margin-bottom:8px;
 
@@ -795,52 +599,32 @@ ABOUT
 
 
 
-
-
 .fact-card p,
 .about-description p{
 
-
     color:var(--muted);
 
-}
-
-
-
-
-
-.about-description p{
-
-
-    margin-bottom:18px;
-
-}
-
-
-
-
-
-
-
-
-
-/* ==============================
+}/* ==============================
 COSPLAYS
 ============================== */
+
+
+.cosplays-section{
+
+    width:100%;
+
+}
+
 
 
 .featured-cosplays,
 .popular-cosplays{
 
-
     width:min(1200px,90%);
-
 
     margin:auto;
 
-
     display:grid;
-
 
     gap:30px;
 
@@ -848,41 +632,17 @@ COSPLAYS
 
 
 
-
-
 .featured-cosplays{
 
-
     grid-template-columns:
 
     repeat(2,1fr);
 
 }
-
-
-
-
-
-.popular-cosplays{
-
-
-    margin-top:40px;
-
-
-    grid-template-columns:
-
-    repeat(2,1fr);
-
-}
-
-
-
-
 
 
 
 .cosplay-card{
-
 
     background:
 
@@ -893,15 +653,15 @@ COSPLAYS
     );
 
 
+    border:
+
+    1px solid rgba(255,79,216,.15);
+
+
     border-radius:25px;
 
 
     overflow:hidden;
-
-
-    border:
-
-    1px solid rgba(255,79,216,.15);
 
 
     transition:.35s;
@@ -913,14 +673,9 @@ COSPLAYS
 
 
 
-
-
 .cosplay-card:hover{
 
-
-    transform:
-
-    translateY(-8px);
+    transform:translateY(-8px);
 
 
     border-color:
@@ -936,60 +691,32 @@ COSPLAYS
 
 
 
-
-
-
-
 /* ==============================
-FEATURED COSPLAY IMAGE
+IMAGE LINK
 ============================== */
-
-
-.featured-card{
-
-
-    height:560px;
-
-}
-
-
-
 
 
 .cosplay-link{
 
-
     display:block;
 
+    overflow:hidden;
 
-    width:100%;
+    position:relative;
 
-
-    height:100%;
-
-
-    cursor:pointer;
+    z-index:3;
 
 }
 
 
 
-
-
-.featured-card img{
-
+.cosplay-card img{
 
     width:100%;
 
-
     height:100%;
 
-
     object-fit:cover;
-
-
-    object-position:center top;
-
 
     transition:.5s;
 
@@ -997,35 +724,40 @@ FEATURED COSPLAY IMAGE
 
 
 
-
-
 .cosplay-card:hover img{
 
-
-    transform:
-
-    scale(1.05);
+    transform:scale(1.06);
 
 }
 
 
 
+/* ==============================
+FEATURED COSPLAYS
+============================== */
 
 
-/*
-Overlay
-não bloqueia clique
-*/
+.featured-card{
+
+    height:560px;
+
+}
+
+
+
+.featured-card .cosplay-link{
+
+    height:100%;
+
+}
+
 
 
 .featured-card::after{
 
-
     content:"";
 
-
     position:absolute;
-
 
     inset:0;
 
@@ -1038,60 +770,52 @@ não bloqueia clique
     );
 
 
+    z-index:1;
+
     pointer-events:none;
 
 }
 
 
 
+.featured-card .cosplay-info{
 
+    position:absolute;
+
+    bottom:0;
+
+    left:0;
+
+    width:100%;
+
+    z-index:4;
+
+}
+
+
+
+/* ==============================
+COSPLAY INFO
+============================== */
 
 
 .cosplay-info{
 
-
     padding:25px;
 
+    position:relative;
+
+    z-index:4;
 
 }
-
-
-
-
-
-.featured-card .cosplay-info{
-
-
-    position:absolute;
-
-
-    bottom:0;
-
-
-    left:0;
-
-
-    width:100%;
-
-
-    z-index:2;
-
-}
-
-
-
-
 
 
 
 .cosplay-label{
 
-
     display:inline-block;
 
-
     padding:6px 15px;
-
 
     border-radius:20px;
 
@@ -1107,9 +831,7 @@ não bloqueia clique
 
     font-size:.75rem;
 
-
     font-weight:900;
-
 
     margin-bottom:12px;
 
@@ -1117,10 +839,7 @@ não bloqueia clique
 
 
 
-
-
 .cosplay-info h3{
-
 
     font-size:1.8rem;
 
@@ -1128,27 +847,19 @@ não bloqueia clique
 
 
 
-
-
 .cosplay-info p{
-
 
     color:var(--muted);
 
 }
-
-
 
 
 
 .source-box{
 
-
     margin-top:15px;
 
-
     font-size:.85rem;
-
 
     color:var(--muted);
 
@@ -1156,32 +867,34 @@ não bloqueia clique
 
 
 
-
-
 .source-box a{
-
 
     color:var(--primary);
 
-
-    font-weight:900;
+    font-weight:800;
 
 }
 
 
 
-
-
-
-
-
 /* ==============================
-POPULAR COSPLAYS
+POPULAR COSPLAY
 ============================== */
 
 
-.popular-cosplays .cosplay-card{
+.popular-cosplays{
 
+    margin-top:40px;
+
+    grid-template-columns:
+
+    repeat(2,1fr);
+
+}
+
+
+
+.popular-cosplays .cosplay-card{
 
     height:350px;
 
@@ -1189,9 +902,7 @@ POPULAR COSPLAYS
 
 
 
-
 .popular-cosplays .cosplay-link{
-
 
     height:230px;
 
@@ -1199,21 +910,54 @@ POPULAR COSPLAYS
 
 
 
-
-
 .popular-cosplays img{
-
-
-    width:100%;
-
 
     height:230px;
 
+}
 
-    object-fit:cover;
 
 
-    object-position:center top;
+/* ==============================
+ENQUADRAMENTO INDIVIDUAL
+============================== */
+
+
+/* Marin Kitagawa */
+
+.popular-cosplays .cosplay-card:nth-child(1) img{
+
+    object-position:center 20%;
+
+}
+
+
+
+/* Frieren */
+
+.popular-cosplays .cosplay-card:nth-child(2) img{
+
+    object-position:center 15%;
+
+}
+
+
+
+/* Nino */
+
+.popular-cosplays .cosplay-card:nth-child(3) img{
+
+    object-position:center 25%;
+
+}
+
+
+
+/* Miku Nakano */
+
+.popular-cosplays .cosplay-card:nth-child(4) img{
+
+    object-position:center 18%;
 
 }/* ==============================
 GALLERY
@@ -1222,20 +966,15 @@ GALLERY
 
 .gallery-grid{
 
-
     width:min(1200px,90%);
-
 
     margin:auto;
 
-
     display:grid;
-
 
     grid-template-columns:
 
     repeat(2,1fr);
-
 
     gap:30px;
 
@@ -1243,10 +982,7 @@ GALLERY
 
 
 
-
-
 .gallery-card{
-
 
     background:
 
@@ -1258,7 +994,6 @@ GALLERY
 
 
     border-radius:25px;
-
 
     overflow:hidden;
 
@@ -1274,14 +1009,9 @@ GALLERY
 
 
 
-
-
 .gallery-card:hover{
 
-
-    transform:
-
-    translateY(-8px);
+    transform:translateY(-8px);
 
 
     box-shadow:
@@ -1292,21 +1022,14 @@ GALLERY
 
 
 
-
-
 .gallery-card img{
 
-
     width:100%;
-
 
     height:350px;
 
 
     object-fit:cover;
-
-
-    object-position:center;
 
 
     cursor:pointer;
@@ -1318,23 +1041,60 @@ GALLERY
 
 
 
-
-
 .gallery-card:hover img{
 
-
-    transform:
-
-    scale(1.05);
+    transform:scale(1.05);
 
 }
 
 
 
+/* ==============================
+GALLERY ENQUADRAMENTO
+============================== */
+
+
+/* Main Moments */
+
+.gallery-card:nth-child(1) img{
+
+    object-position:center;
+
+}
+
+
+
+/* Behind The Scenes */
+
+.backstage-card img{
+
+    object-position:center 30%;
+
+}
+
+
+
+/* Fanart */
+
+.fanart-card img{
+
+    object-position:center center;
+
+}
+
+
+
+/* Gaming */
+
+.gallery-card:nth-child(4) img{
+
+    object-position:center;
+
+}
+
 
 
 .gallery-content{
-
 
     padding:25px;
 
@@ -1342,13 +1102,9 @@ GALLERY
 
 
 
-
-
 .gallery-content h3{
 
-
     font-size:1.4rem;
-
 
     margin-bottom:10px;
 
@@ -1356,10 +1112,7 @@ GALLERY
 
 
 
-
-
 .gallery-content p{
-
 
     color:var(--muted);
 
@@ -1367,21 +1120,13 @@ GALLERY
 
 
 
-
-
 .artist-credit a{
-
 
     color:var(--primary);
 
-
-    font-weight:900;
+    font-weight:800;
 
 }
-
-
-
-
 
 
 
@@ -1392,11 +1137,17 @@ MEDIA
 ============================== */
 
 
+.media-section{
+
+    width:100%;
+
+}
+
+
+
 .media-group{
 
-
     width:min(1200px,90%);
-
 
     margin:
 
@@ -1406,13 +1157,9 @@ MEDIA
 
 
 
-
-
 .media-title{
 
-
     font-size:1.8rem;
-
 
     margin-bottom:30px;
 
@@ -1420,19 +1167,14 @@ MEDIA
 
 
 
-
-
 .twitch-grid,
 .youtube-grid{
 
-
     display:grid;
-
 
     grid-template-columns:
 
     repeat(2,1fr);
-
 
     gap:35px;
 
@@ -1441,12 +1183,8 @@ MEDIA
 
 
 
-
-
-
 .live-player-card,
 .youtube-card{
-
 
     background:
 
@@ -1474,15 +1212,10 @@ MEDIA
 
 
 
-
-
 .live-player-card:hover,
 .youtube-card:hover{
 
-
-    transform:
-
-    translateY(-6px);
+    transform:translateY(-6px);
 
 
     box-shadow:
@@ -1494,18 +1227,12 @@ MEDIA
 
 
 
-
-
-
 .player-wrapper,
 .video-wrapper{
 
-
     width:100%;
 
-
     aspect-ratio:16/9;
-
 
     background:#000;
 
@@ -1513,17 +1240,12 @@ MEDIA
 
 
 
-
-
 .player-wrapper iframe,
 .video-wrapper iframe{
 
-
     width:100%;
 
-
     height:100%;
-
 
     border:0;
 
@@ -1532,10 +1254,8 @@ MEDIA
 
 
 
-
 .player-info,
 .video-info{
-
 
     padding:25px;
 
@@ -1543,14 +1263,10 @@ MEDIA
 
 
 
-
-
 .player-info h4,
 .video-info h4{
 
-
     font-size:1.4rem;
-
 
     margin-bottom:10px;
 
@@ -1558,14 +1274,10 @@ MEDIA
 
 
 
-
-
 .player-info p,
 .video-info p{
 
-
     color:var(--muted);
-
 
     margin-bottom:20px;
 
@@ -1573,11 +1285,8 @@ MEDIA
 
 
 
-
-
 .player-info a,
 .video-info a{
-
 
     display:inline-block;
 
@@ -1597,7 +1306,7 @@ MEDIA
     );
 
 
-    font-weight:900;
+    font-weight:800;
 
 }/* ==============================
 COMMUNITY
@@ -1606,31 +1315,23 @@ COMMUNITY
 
 .social-grid{
 
-
     width:min(1200px,90%);
-
 
     margin:auto;
 
-
     display:grid;
-
 
     grid-template-columns:
 
     repeat(4,1fr);
 
-
-    gap:25px;
+    gap:30px;
 
 }
 
 
 
-
-
 .social-card{
-
 
     background:
 
@@ -1654,7 +1355,6 @@ COMMUNITY
 
     display:flex;
 
-
     flex-direction:column;
 
 
@@ -1667,14 +1367,9 @@ COMMUNITY
 
 
 
-
-
 .social-card:hover{
 
-
-    transform:
-
-    translateY(-8px);
+    transform:translateY(-8px);
 
 
     box-shadow:
@@ -1685,46 +1380,33 @@ COMMUNITY
 
 
 
-
-
 .social-icon{
-
 
     width:60px;
 
-
     height:60px;
-
 
     border-radius:20px;
 
 
     display:flex;
 
-
     align-items:center;
-
 
     justify-content:center;
 
 
-    font-size:1.5rem;
-
-
     font-weight:900;
 
+    font-size:1.5rem;
 
 }
 
 
 
-
-
 .social-info h3{
 
-
     font-size:1.5rem;
-
 
     margin-bottom:8px;
 
@@ -1732,13 +1414,9 @@ COMMUNITY
 
 
 
-
-
 .social-info p{
 
-
     color:var(--muted);
-
 
     margin-bottom:20px;
 
@@ -1746,13 +1424,7 @@ COMMUNITY
 
 
 
-
-
 .social-info a{
-
-
-    display:inline-flex;
-
 
     padding:12px 25px;
 
@@ -1763,33 +1435,28 @@ COMMUNITY
     font-weight:900;
 
 
+    display:inline-flex;
+
+
+    justify-content:center;
+
+
     transition:.3s;
 
 }
 
 
 
-
-
 .social-info a:hover{
 
-
-    transform:
-
-    translateY(-3px);
+    transform:translateY(-3px);
 
 }
 
 
 
-
-
-/* SOCIAL COLORS */
-
-
 .instagram .social-icon,
 .instagram .social-info a{
-
 
     background:
 
@@ -1804,28 +1471,19 @@ COMMUNITY
 
 
 
-
-
 .tiktok .social-icon,
 .tiktok .social-info a{
 
-
     background:#000;
 
-
-    border:
-
-    1px solid white;
+    border:1px solid white;
 
 }
 
 
 
-
-
 .twitch .social-icon,
 .twitch .social-info a{
-
 
     background:#9146ff;
 
@@ -1833,11 +1491,8 @@ COMMUNITY
 
 
 
-
-
 .official-links .social-icon,
 .official-links .social-info a{
-
 
     background:
 
@@ -1852,257 +1507,12 @@ COMMUNITY
 
 
 
-
-
-
-
 /* ==============================
-REFERENCES
-============================== */
-
-
-.references-section{
-
-
-    width:min(1200px,90%);
-
-
-    margin:80px auto;
-
-
-    padding:40px;
-
-
-    background:
-
-    linear-gradient(
-    145deg,
-    var(--bg-card),
-    var(--bg-soft)
-    );
-
-
-    border-radius:25px;
-
-}
-
-
-
-
-
-.reference-cards{
-
-
-    display:grid;
-
-
-    grid-template-columns:
-
-    repeat(2,1fr);
-
-
-    gap:25px;
-
-
-    margin-top:30px;
-
-}
-
-
-
-
-
-.reference-card{
-
-
-    padding:25px;
-
-
-    background:#0e0e18;
-
-
-    border-radius:20px;
-
-
-    border:
-
-    1px solid rgba(255,79,216,.15);
-
-}
-
-
-
-
-
-.reference-card h4{
-
-
-    color:var(--primary);
-
-
-    margin-bottom:10px;
-
-}
-
-
-
-
-
-.reference-card p{
-
-
-    color:var(--muted);
-
-}
-
-
-
-
-
-.reference-card a{
-
-
-    color:var(--primary);
-
-
-    font-weight:900;
-
-}
-
-
-
-
-
-
-
-
-/* ==============================
-FOOTER
-============================== */
-
-
-.site-footer{
-
-
-    padding:60px 20px;
-
-
-    background:#05050c;
-
-
-    border-top:
-
-    1px solid rgba(255,79,216,.2);
-
-
-    text-align:center;
-
-}
-
-
-
-
-
-.footer-content{
-
-
-    width:min(900px,90%);
-
-
-    margin:auto;
-
-}
-
-
-
-
-
-.footer-content h3{
-
-
-    font-size:1.8rem;
-
-
-    color:var(--primary);
-
-
-    text-shadow:
-
-    0 0 20px var(--pink-glow);
-
-}
-
-
-
-
-
-.footer-content p{
-
-
-    color:var(--muted);
-
-}
-
-
-
-
-
-.footer-credits{
-
-
-    margin-top:25px;
-
-
-    padding:20px 35px;
-
-
-    display:inline-block;
-
-
-    background:
-
-    rgba(255,255,255,.03);
-
-
-    border-radius:20px;
-
-
-    border:
-
-    1px solid rgba(255,79,216,.25);
-
-}
-
-
-
-
-
-.footer-credits strong{
-
-
-    color:white;
-
-}
-
-
-
-
-
-.footer-credits a{
-
-
-    color:var(--primary);
-
-
-    font-weight:900;
-
-}/* ==============================
 LIGHTBOX
 ============================== */
 
 
 .lightbox{
-
 
     position:fixed;
 
@@ -2138,20 +1548,13 @@ LIGHTBOX
 
     z-index:2000;
 
-
-    backdrop-filter:blur(8px);
-
 }
-
-
 
 
 
 .lightbox.active{
 
-
     opacity:1;
-
 
     visibility:visible;
 
@@ -2159,10 +1562,7 @@ LIGHTBOX
 
 
 
-
-
 .lightbox img{
-
 
     max-width:90vw;
 
@@ -2180,19 +1580,11 @@ LIGHTBOX
 
     0 0 60px rgba(255,79,216,.45);
 
-
-    animation:
-
-    zoomIn .3s ease;
-
 }
 
 
 
-
-
 .lightbox-close{
-
 
     position:absolute;
 
@@ -2223,34 +1615,187 @@ LIGHTBOX
 
 
 
-@keyframes zoomIn{
+/* ==============================
+REFERENCES
+============================== */
 
 
-    from{
+.references-section{
+
+    width:min(1200px,90%);
 
 
-        transform:scale(.8);
+    margin:80px auto;
 
 
-        opacity:0;
-
-    }
+    padding:40px;
 
 
-    to{
+    background:
+
+    linear-gradient(
+    145deg,
+    var(--bg-card),
+    var(--bg-soft)
+    );
 
 
-        transform:scale(1);
-
-
-        opacity:1;
-
-    }
+    border-radius:25px;
 
 }
 
 
 
+.reference-cards{
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(2,1fr);
+
+
+    gap:25px;
+
+
+    margin-top:30px;
+
+}
+
+
+
+.reference-card{
+
+    padding:25px;
+
+
+    background:#0e0e18;
+
+
+    border-radius:20px;
+
+
+    border:
+
+    1px solid rgba(255,79,216,.15);
+
+}
+
+
+
+.reference-card h4{
+
+    color:var(--primary);
+
+}
+
+
+
+.reference-card p{
+
+    color:var(--muted);
+
+}
+
+
+
+.reference-card a{
+
+    color:var(--primary);
+
+    font-weight:800;
+
+}
+
+
+
+
+/* ==============================
+FOOTER
+============================== */
+
+
+.site-footer{
+
+    padding:60px 20px;
+
+
+    background:#05050c;
+
+
+    border-top:
+
+    1px solid rgba(255,79,216,.2);
+
+
+    text-align:center;
+
+}
+
+
+
+.footer-content{
+
+    width:min(900px,90%);
+
+    margin:auto;
+
+}
+
+
+
+.footer-content h3{
+
+    color:var(--primary);
+
+
+    font-size:1.8rem;
+
+}
+
+
+
+.footer-content p{
+
+    color:var(--muted);
+
+}
+
+
+
+.footer-credits{
+
+    margin-top:25px;
+
+
+    padding:20px 35px;
+
+
+    display:inline-block;
+
+
+    background:
+
+    rgba(255,255,255,.03);
+
+
+    border-radius:20px;
+
+
+    border:
+
+    1px solid rgba(255,79,216,.25);
+
+}
+
+
+
+.footer-credits a{
+
+    color:var(--primary);
+
+}
 
 
 
@@ -2262,7 +1807,6 @@ BACK TOP
 
 
 .back-top{
-
 
     position:fixed;
 
@@ -2308,23 +1852,13 @@ BACK TOP
 
     visibility:hidden;
 
-
-    transition:.3s;
-
-
-    z-index:999;
-
 }
-
-
 
 
 
 .back-top.show{
 
-
     opacity:1;
-
 
     visibility:visible;
 
@@ -2334,11 +1868,8 @@ BACK TOP
 
 
 
-
-
-
 /* ==============================
-SCROLL ANIMATION
+ANIMATION
 ============================== */
 
 
@@ -2354,9 +1885,7 @@ SCROLL ANIMATION
     opacity:0;
 
 
-    transform:
-
-    translateY(40px);
+    transform:translateY(40px);
 
 
     transition:.7s ease;
@@ -2365,24 +1894,14 @@ SCROLL ANIMATION
 
 
 
-
-
 .visible{
-
 
     opacity:1;
 
 
-    transform:
-
-    translateY(0);
+    transform:translateY(0);
 
 }
-
-
-
-
-
 
 
 
@@ -2392,25 +1911,19 @@ RESPONSIVE
 ============================== */
 
 
-
-@media(max-width:1100px){
-
-
-    .social-grid{
+@media(max-width:1000px){
 
 
-        grid-template-columns:
+.social-grid{
 
-        repeat(2,1fr);
+    grid-template-columns:
 
-    }
-
+    repeat(2,1fr);
 
 }
 
 
-
-
+}
 
 
 
@@ -2418,268 +1931,131 @@ RESPONSIVE
 
 
 
-    .navbar{
+.navbar{
 
+    flex-direction:column;
 
-        flex-direction:column;
+    height:auto;
 
+    padding:20px 0;
 
-        height:auto;
+}
 
 
-        padding:20px 0;
 
+.hero-content{
 
-        gap:20px;
+    grid-template-columns:1fr;
 
-    }
+    text-align:center;
 
+}
 
 
-    .nav-links{
 
+.hero-content h1{
 
-        flex-wrap:wrap;
+    font-size:3rem;
 
+}
 
-        justify-content:center;
 
 
-        gap:15px;
+.hero-buttons{
 
-    }
+    justify-content:center;
 
+}
 
 
 
-    .hero-content{
+.about-container{
 
+    grid-template-columns:1fr;
 
-        grid-template-columns:1fr;
+}
 
 
-        text-align:center;
 
-    }
+.featured-cosplays,
+.popular-cosplays,
+.gallery-grid,
+.twitch-grid,
+.youtube-grid{
 
+    grid-template-columns:1fr;
 
+}
 
 
-    .hero-content h1{
 
+.social-grid{
 
-        font-size:3rem;
+    grid-template-columns:1fr;
 
-    }
+}
 
 
 
+.reference-cards{
 
-    .hero-buttons{
+    grid-template-columns:1fr;
 
+}
 
-        justify-content:center;
-
-    }
-
-
-
-
-
-    .about-container{
-
-
-        grid-template-columns:1fr;
-
-    }
-
-
-
-
-
-    .about-image img{
-
-
-        height:450px;
-
-    }
-
-
-
-
-
-    .featured-cosplays,
-    .popular-cosplays,
-    .gallery-grid,
-    .twitch-grid,
-    .youtube-grid{
-
-
-        grid-template-columns:1fr;
-
-    }
-
-
-
-
-
-    .social-grid{
-
-
-        grid-template-columns:1fr;
-
-    }
-
-
-
-
-
-    .reference-cards{
-
-
-        grid-template-columns:1fr;
-
-    }
 
 
 }
 
 
 
-
-
-
-
-
 @media(max-width:600px){
 
 
+section{
 
-    section{
+    padding:70px 0;
 
+}
 
-        padding:70px 0;
 
-    }
 
+.hero-content h1{
 
+    font-size:2.3rem;
 
+}
 
 
-    .hero-content h1{
 
+.hero-buttons{
 
-        font-size:2.3rem;
+    flex-direction:column;
 
-    }
+    align-items:center;
 
+}
 
 
 
+.primary-button,
+.secondary-button{
 
-    .hero-image img{
+    width:220px;
 
+    text-align:center;
 
-        height:420px;
+}
 
-    }
 
 
+.lightbox img{
 
+    max-width:95vw;
 
+    max-height:80vh;
 
-    .hero-buttons{
+}
 
-
-        flex-direction:column;
-
-
-        align-items:center;
-
-    }
-
-
-
-
-
-    .primary-button,
-    .secondary-button{
-
-
-        width:220px;
-
-
-        text-align:center;
-
-    }
-
-
-
-
-
-    .featured-card{
-
-
-        height:480px;
-
-    }
-
-
-
-
-
-    .popular-cosplays .cosplay-card{
-
-
-        height:auto;
-
-    }
-
-
-
-
-
-    .popular-cosplays .cosplay-link{
-
-
-        height:250px;
-
-    }
-
-
-
-
-
-    .gallery-card img{
-
-
-        height:280px;
-
-    }
-
-
-
-
-
-    .lightbox img{
-
-
-        max-width:95vw;
-
-
-        max-height:80vh;
-
-    }
-
-
-
-
-
-    .references-section{
-
-
-        padding:25px;
-
-    }
 
 }
