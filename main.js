@@ -1,7 +1,8 @@
 /*
 =====================================
 UPMINAA FAN HUB
-MAIN.JS FINAL VERSION
+MAIN.JS
+FINAL VERSION
 =====================================
 */
 
@@ -16,19 +17,27 @@ LOADER
 const loader = document.getElementById("loader");
 
 
-window.addEventListener("load",()=>{
+window.addEventListener(
+"load",
+()=>{
 
-    if(loader){
+if(loader){
 
-        setTimeout(()=>{
+setTimeout(
+()=>{
 
-            loader.classList.add("hidden");
+loader.classList.add("hidden");
 
-        },500);
+},
+500
+);
 
-    }
+}
 
-});
+}
+
+);
+
 
 
 
@@ -51,8 +60,6 @@ document.addEventListener(
 
 
 
-
-
 /*
 =====================================
 YEAR
@@ -64,13 +71,13 @@ const year =
 document.getElementById("year");
 
 
+
 if(year){
 
 year.textContent =
 new Date().getFullYear();
 
 }
-
 
 
 
@@ -96,6 +103,7 @@ document.getElementById("navLinks");
 
 
 
+
 if(menu && nav){
 
 
@@ -106,10 +114,13 @@ menu.addEventListener(
 
 nav.classList.toggle("open");
 
+
 menu.classList.toggle("open");
 
 
-});
+}
+
+);
 
 
 }
@@ -117,9 +128,11 @@ menu.classList.toggle("open");
 
 
 
+
 document
 .querySelectorAll("#navLinks a")
-.forEach(link=>{
+.forEach(
+link=>{
 
 
 link.addEventListener(
@@ -129,15 +142,18 @@ link.addEventListener(
 
 nav?.classList.remove("open");
 
+
 menu?.classList.remove("open");
 
 
-});
+}
+
+);
 
 
-});
+}
 
-
+);
 
 
 
@@ -156,12 +172,13 @@ SMOOTH SCROLL
 
 document
 .querySelectorAll('a[href^="#"]')
-.forEach(anchor=>{
+.forEach(
+anchor=>{
 
 
 anchor.addEventListener(
 "click",
-e=>{
+event=>{
 
 
 const target =
@@ -171,10 +188,12 @@ anchor.getAttribute("href")
 
 
 
+
 if(target){
 
 
-e.preventDefault();
+event.preventDefault();
+
 
 
 target.scrollIntoView({
@@ -187,14 +206,15 @@ behavior:"smooth"
 }
 
 
-});
+
+}
+
+);
 
 
-});
+}
 
-
-
-
+);
 
 
 
@@ -205,17 +225,20 @@ behavior:"smooth"
 
 /*
 =====================================
-BACK TOP
+BACK TO TOP
 =====================================
 */
 
 
 const backTop =
-document.getElementById("backTop");
+document.getElementById(
+"backTop"
+);
 
 
 
 if(backTop){
+
 
 
 window.addEventListener(
@@ -226,19 +249,28 @@ window.addEventListener(
 if(window.scrollY > 500){
 
 
-backTop.classList.add("show");
+backTop.classList.add(
+"show"
+);
 
 
 }else{
 
 
-backTop.classList.remove("show");
+backTop.classList.remove(
+"show"
+);
 
 
 }
 
 
-});
+
+}
+
+);
+
+
 
 
 
@@ -257,31 +289,24 @@ behavior:"smooth"
 });
 
 
-});
+}
 
+);
 
 }
 
 
-
-
-
-
-
-
-
-
-
-
 /*
 =====================================
-REVEAL CARDS
+REVEAL ANIMATION
 =====================================
 */
 
 
 const revealElements =
+
 document.querySelectorAll(
+
 `
 .profile-card,
 .curiosity-card,
@@ -289,19 +314,24 @@ document.querySelectorAll(
 .gallery-card,
 .live-player-card,
 .youtube-card,
-.social-card,
-.reference-card
+.social-card
 `
+
 );
 
 
 
+
+
 const observer =
+
 new IntersectionObserver(
+
 (entries)=>{
 
 
 entries.forEach(
+
 (entry)=>{
 
 
@@ -313,36 +343,57 @@ entry.target.classList.add(
 );
 
 
+
 observer.unobserve(
 entry.target
 );
 
 
+
 }
 
 
 
-});
+}
+
+);
+
 
 
 },
+
 {
+
 threshold:.15
+
 }
+
 );
+
+
 
 
 
 
 
 revealElements.forEach(
-item=>{
+
+element=>{
 
 
-observer.observe(item);
+observer.observe(element);
 
 
-});
+}
+
+);
+
+
+
+
+
+
+
 
 
 /*
@@ -353,22 +404,35 @@ LIGHTBOX SYSTEM
 
 
 const lightbox =
+
 document.getElementById(
 "imageLightbox"
 );
 
 
+
+
 const lightboxImage =
+
 document.getElementById(
 "lightboxImage"
 );
 
 
 
+
+
+
 const clickableImages =
+
 document.querySelectorAll(
+
 ".lightbox-image"
+
 );
+
+
+
 
 
 
@@ -377,9 +441,13 @@ document.querySelectorAll(
 function openLightbox(image){
 
 
+
 if(
+
 !lightbox ||
+
 !lightboxImage
+
 ){
 
 return;
@@ -388,13 +456,23 @@ return;
 
 
 
+
+
+
 lightboxImage.src =
+
 image.src;
 
 
 
+
+
 lightboxImage.alt =
+
 image.alt;
+
+
+
 
 
 
@@ -404,11 +482,17 @@ lightbox.classList.add(
 
 
 
+
+
 document.body.style.overflow =
+
 "hidden";
 
 
+
 }
+
+
 
 
 
@@ -428,13 +512,18 @@ return;
 
 
 
+
+
 lightbox.classList.remove(
 "active"
 );
 
 
 
+
+
 document.body.style.overflow =
+
 "";
 
 
@@ -449,22 +538,35 @@ document.body.style.overflow =
 
 
 
+/*
+CLICKABLE IMAGES
+=====================================
+*/
+
+
 clickableImages.forEach(
+
 image=>{
 
 
 image.addEventListener(
+
 "click",
+
 ()=>{
 
 
 openLightbox(image);
 
 
-});
+}
+
+);
 
 
-});
+}
+
+);
 
 
 
@@ -472,27 +574,39 @@ openLightbox(image);
 
 
 
+
+/*
+CLOSE BUTTON
+=====================================
+*/
 
 
 const closeButton =
+
 document.querySelector(
 ".lightbox-close"
 );
 
 
 
+
 if(closeButton){
 
 
+
 closeButton.addEventListener(
+
 "click",
+
 ()=>{
 
 
 closeLightbox();
 
 
-});
+}
+
+);
 
 
 }
@@ -501,6 +615,13 @@ closeLightbox();
 
 
 
+
+
+
+/*
+CLICK OUTSIDE IMAGE
+=====================================
+*/
 
 
 if(lightbox){
@@ -508,13 +629,14 @@ if(lightbox){
 
 
 lightbox.addEventListener(
+
 "click",
+
 event=>{
 
 
-if(
-event.target === lightbox
-){
+
+if(event.target === lightbox){
 
 
 closeLightbox();
@@ -524,7 +646,9 @@ closeLightbox();
 
 
 
-});
+}
+
+);
 
 
 }
@@ -532,16 +656,25 @@ closeLightbox();
 
 
 
+
+
+
+
+
+/*
+ESC KEY CLOSE
+=====================================
+*/
 
 
 document.addEventListener(
+
 "keydown",
+
 event=>{
 
 
-if(
-event.key === "Escape"
-){
+if(event.key === "Escape"){
 
 
 closeLightbox();
@@ -550,11 +683,10 @@ closeLightbox();
 }
 
 
-});
 
+}
 
-
-
+);
 
 
 
@@ -566,35 +698,48 @@ closeLightbox();
 
 /*
 =====================================
-IMAGE ERROR CHECK
+IMAGE ERROR HANDLER
 =====================================
 */
 
 
 document
+
 .querySelectorAll("img")
+
 .forEach(
-img=>{
+
+image=>{
 
 
-img.addEventListener(
+
+image.addEventListener(
+
 "error",
+
 ()=>{
 
 
+
 console.warn(
+
 "Image not found:",
-img.src
+
+image.src
+
 );
 
 
-});
+
+}
+
+);
 
 
-});
 
+}
 
-
+);
 
 
 
@@ -608,25 +753,35 @@ TWITCH SYSTEM
 
 
 const TWITCH_CHANNEL =
+
 "upminaa";
 
 
 
+
+
 const twitchLivePlayer =
+
 document.getElementById(
 "twitchEmbedWrap"
 );
 
 
 
+
+
 const twitchBadge =
+
 document.getElementById(
 "twitchStatusBadge"
 );
 
 
 
+
+
 const heroStatus =
+
 document.querySelector(
 ".hero-image .live-status"
 );
@@ -638,28 +793,41 @@ document.querySelector(
 
 
 
+
 function getParentDomain(){
 
 
+
 let host =
+
 window.location.hostname;
 
 
 
+
+
 if(
+
 host === "" ||
+
 host === "localhost"
+
 ){
+
 
 return "localhost";
 
+
 }
+
+
 
 
 
 return host;
 
 
+
 }
 
 
@@ -668,6 +836,12 @@ return host;
 
 
 
+
+
+/*
+CREATE TWITCH LIVE PLAYER
+=====================================
+*/
 
 
 function createTwitchLive(){
@@ -675,9 +849,12 @@ function createTwitchLive(){
 
 
 const iframe =
+
 document.createElement(
 "iframe"
 );
+
+
 
 
 
@@ -687,32 +864,51 @@ iframe.src =
 
 
 
+
+
 iframe.width =
+
 "100%";
+
+
 
 
 
 iframe.height =
+
 "100%";
 
 
 
+
+
 iframe.frameBorder =
+
 "0";
 
 
 
+
+
 iframe.allowFullscreen =
+
 true;
 
 
 
+
+
 iframe.allow =
+
 "autoplay; fullscreen";
 
 
 
+
+
+
 return iframe;
+
 
 
 }
@@ -725,9 +921,10 @@ return iframe;
 
 
 
-
-
-
+/*
+CHECK LIVE STATUS
+=====================================
+*/
 
 
 async function checkTwitchLive(){
@@ -739,6 +936,7 @@ try{
 
 
 const response =
+
 await fetch(
 
 `https://decapi.me/twitch/uptime/${TWITCH_CHANNEL}`
@@ -747,18 +945,29 @@ await fetch(
 
 
 
+
+
 const text =
+
 await response.text();
 
 
 
-return !
 
-text
+
+
+
+return !text
+
 .toLowerCase()
+
 .includes(
+
 "offline"
+
 );
+
+
 
 
 
@@ -767,39 +976,27 @@ text
 catch(error){
 
 
+
 console.warn(
+
 "Twitch status error:",
+
 error
+
 );
+
 
 
 return false;
 
 
-}
-
-
 
 }
 
 
 
+}
 
-
-
-
-
-
-
-
-
-
-async function updateLiveStatus(){
-
-
-
-const online =
-await checkTwitchLive();
 
 
 
@@ -809,10 +1006,30 @@ await checkTwitchLive();
 
 
 /*
-==============================
-HERO STATUS
-==============================
+UPDATE LIVE STATUS
+=====================================
 */
+
+
+async function updateLiveStatus(){
+
+
+
+const online =
+
+await checkTwitchLive();
+
+
+
+
+
+
+
+/*
+HERO LIVE BADGE
+*/
+
+
 
 
 if(heroStatus){
@@ -824,7 +1041,9 @@ if(online){
 
 
 heroStatus.textContent =
+
 "LIVE";
+
 
 
 heroStatus.classList.add(
@@ -836,6 +1055,8 @@ heroStatus.classList.add(
 heroStatus.classList.remove(
 "offline"
 );
+
+
 
 
 
@@ -844,7 +1065,9 @@ heroStatus.classList.remove(
 
 
 heroStatus.textContent =
-"LIVE";
+
+"OFFLINE";
+
 
 
 heroStatus.classList.add(
@@ -864,16 +1087,23 @@ heroStatus.classList.remove(
 
 
 }
+
+
+
+
+
+
+
+
+
 /*
-==============================
-TWITCH PLAYER
-==============================
+LIVE PLAYER
 */
 
 
-if(
-twitchLivePlayer
-){
+
+
+if(twitchLivePlayer){
 
 
 
@@ -882,81 +1112,29 @@ if(online){
 
 
 if(
+
 !twitchLivePlayer.querySelector(
 "iframe"
 )
+
 ){
 
 
+
 twitchLivePlayer.innerHTML =
+
 "";
 
 
+
+
 twitchLivePlayer.appendChild(
+
 createTwitchLive()
+
 );
 
 
-}
-
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-==============================
-STATUS BADGE
-==============================
-*/
-
-
-if(twitchBadge){
-
-
-
-const text =
-twitchBadge.querySelector(
-".status-text"
-);
-
-
-
-if(online){
-
-
-
-twitchBadge.classList.add(
-"online"
-);
-
-
-
-twitchBadge.classList.remove(
-"offline"
-);
-
-
-
-if(text){
-
-text.textContent =
-"LIVE";
 
 }
 
@@ -966,9 +1144,90 @@ text.textContent =
 
 
 
-twitchBadge.classList.remove(
+twitchLivePlayer.innerHTML =
+
+`
+
+<div class="offline-message">
+
+<p>
+
+Stream is currently offline.
+
+</p>
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+STATUS BADGE
+*/
+
+
+if(twitchBadge){
+
+
+
+const statusText =
+
+twitchBadge.querySelector(
+".status-text"
+);
+
+
+
+
+
+if(online){
+
+
+
+twitchBadge.classList.add(
 "online"
 );
+
+
+
+twitchBadge.classList.remove(
+"offline"
+);
+
+
+
+
+
+if(statusText){
+
+
+statusText.textContent =
+
+"LIVE";
+
+
+}
+
+
+
+
+
+}else{
 
 
 
@@ -978,11 +1237,28 @@ twitchBadge.classList.add(
 
 
 
-if(text){
+twitchBadge.classList.remove(
+"online"
+);
 
-text.textContent =
+
+
+
+
+if(statusText){
+
+
+statusText.textContent =
+
 "OFFLINE";
 
+
+}
+
+
+
+
+
 }
 
 
@@ -992,13 +1268,6 @@ text.textContent =
 
 
 }
-
-
-
-}
-
-
-
 
 
 
@@ -1012,13 +1281,15 @@ updateLiveStatus();
 
 
 
+
+
 setInterval(
+
 updateLiveStatus,
+
 120000
+
 );
-
-
-
 
 
 
@@ -1030,15 +1301,20 @@ updateLiveStatus,
 
 /*
 =====================================
-TWITCH LAST VOD
+LATEST TWITCH LIVE / VOD
 =====================================
 */
 
 
 const vodContainer =
+
 document.getElementById(
 "latestVod"
 );
+
+
+
+
 
 
 
@@ -1057,11 +1333,13 @@ return;
 
 
 
+
 try{
 
 
 
 const response =
+
 await fetch(
 
 `https://decapi.me/twitch/videos/${TWITCH_CHANNEL}`
@@ -1070,65 +1348,91 @@ await fetch(
 
 
 
-const data =
+
+
+const videos =
+
 await response.json();
 
 
 
 
 
+
+
+
 if(
-data &&
-data.length
+
+videos &&
+
+videos.length
+
 ){
 
 
 
+
+
 const latest =
-data[0];
+
+videos[0];
 
 
 
 
 
 
-vodContainer.innerHTML = `
 
+
+vodContainer.innerHTML =
+
+`
 
 <iframe
 
 src="https://player.twitch.tv/?video=${latest.id}&parent=${getParentDomain()}&muted=true"
 
-width="100%"
-
-height="100%"
+title="Latest Upminaa stream"
 
 frameborder="0"
+
+scrolling="no"
 
 allowfullscreen>
 
 </iframe>
 
-
 `;
+
+
+
+
 
 
 
 }else{
 
 
-vodContainer.innerHTML = `
+
+vodContainer.innerHTML =
+
+`
 
 <p>
 
-No recorded livestream found.
+No recorded streams available.
 
 </p>
 
 `;
 
 
+
 }
+
+
+
+
 
 
 
@@ -1139,33 +1443,38 @@ catch(error){
 
 
 console.warn(
-"VOD error:",
+
+"Latest VOD loading error:",
+
 error
+
 );
 
 
 
-vodContainer.innerHTML = `
+
+
+vodContainer.innerHTML =
+
+`
 
 <p>
 
-Unable to load the latest livestream.
+Unable to load latest stream.
 
 </p>
 
 `;
 
 
-}
-
-
-
 
 }
 
 
 
-loadLatestVod();
+
+
+}
 
 
 
@@ -1174,14 +1483,7 @@ loadLatestVod();
 
 
 
-
-
-
-
-
-
-
-/*
+loadLatestVod();/*
 =====================================
 YOUTUBE SYSTEM
 =====================================
@@ -1189,12 +1491,15 @@ YOUTUBE SYSTEM
 
 
 const YOUTUBE_CHANNEL_ID =
+
 "UCw3CBMvVjZJNfQR3tEvTodQ";
 
 
 
 
+
 const youtubeGrid =
+
 document.getElementById(
 "youtubeGrid"
 );
@@ -1219,6 +1524,9 @@ return;
 
 
 
+
+
+
 try{
 
 
@@ -1229,33 +1537,57 @@ const feed =
 
 
 
+
+
+
 const proxy =
 
 "https://api.allorigins.win/raw?url=";
 
 
 
+
+
+
+
 const response =
+
 await fetch(
 
 proxy +
+
 encodeURIComponent(feed)
 
 );
 
 
 
+
+
+
+
 const xmlText =
+
 await response.text();
 
 
 
+
+
+
+
 const xml =
+
 new DOMParser()
+
 .parseFromString(
+
 xmlText,
+
 "text/xml"
+
 );
+
 
 
 
@@ -1263,10 +1595,13 @@ xmlText,
 
 
 const entries =
+
 [
+
 ...xml.querySelectorAll(
 "entry"
 )
+
 ];
 
 
@@ -1274,10 +1609,24 @@ const entries =
 
 
 
+
 const videos =
+
 entries
-.slice(0,4)
-.map(video=>{
+
+.slice(
+
+0,
+
+4
+
+)
+
+.map(
+
+video=>{
+
+
 
 
 
@@ -1287,19 +1636,25 @@ return {
 id:
 
 video
+
 .querySelector(
 "yt\\:videoId"
 )
+
 ?.textContent,
+
+
 
 
 
 title:
 
 video
+
 .querySelector(
 "title"
 )
+
 ?.textContent
 
 ||
@@ -1308,13 +1663,22 @@ video
 
 
 
+
+
 };
 
 
 
-})
+
+
+}
+
+)
+
 .filter(
+
 video=>video.id
+
 );
 
 
@@ -1323,7 +1687,26 @@ video=>video.id
 
 
 
+
+if(videos.length){
+
+
+
 renderYoutube(videos);
+
+
+
+}else{
+
+
+
+showYoutubeError();
+
+
+
+}
+
+
 
 
 
@@ -1336,13 +1719,50 @@ catch(error){
 
 
 console.warn(
-"YouTube error:",
+
+"YouTube loading error:",
+
 error
+
 );
 
 
 
-youtubeGrid.innerHTML = `
+
+
+showYoutubeError();
+
+
+
+}
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/*
+YOUTUBE ERROR MESSAGE
+=====================================
+*/
+
+
+function showYoutubeError(){
+
+
+
+youtubeGrid.innerHTML =
+
+`
 
 <article class="youtube-card">
 
@@ -1350,7 +1770,7 @@ youtubeGrid.innerHTML = `
 
 <p>
 
-Videos unavailable.
+Videos are currently unavailable.
 
 </p>
 
@@ -1366,9 +1786,14 @@ Videos unavailable.
 
 
 
-}/*
-=====================================
-RENDER YOUTUBE VIDEOS
+
+
+
+
+
+
+/*
+RENDER YOUTUBE CARDS
 =====================================
 */
 
@@ -1378,50 +1803,73 @@ function renderYoutube(videos){
 
 
 youtubeGrid.innerHTML =
+
 "";
 
 
 
 
 
-videos.forEach(video=>{
+
+
+videos.forEach(
+
+video=>{
+
+
+
 
 
 
 const card =
+
 document.createElement(
 "article"
 );
 
 
 
+
+
 card.className =
+
 "youtube-card";
 
 
 
 
 
-card.innerHTML = `
 
+
+
+card.innerHTML =
+
+`
 
 <div class="video-wrapper">
 
 
 <iframe
 
+
 src="https://www.youtube.com/embed/${video.id}"
+
 
 title="${video.title}"
 
+
 loading="lazy"
 
+
 allowfullscreen>
+
 
 </iframe>
 
 
 </div>
+
+
 
 
 
@@ -1437,8 +1885,9 @@ ${video.title}
 
 </div>
 
-
 `;
+
+
 
 
 
@@ -1450,7 +1899,12 @@ card
 
 
 
-});
+
+
+
+}
+
+);
 
 
 
@@ -1464,15 +1918,7 @@ card
 
 
 
-
-
-
-
 loadYoutube();
-
-
-
-
 
 
 
@@ -1490,43 +1936,44 @@ PLAYER DEBUG
 
 
 document
+
 .querySelectorAll(
 "iframe"
 )
+
 .forEach(
-(player)=>{
+
+player=>{
+
 
 
 player.addEventListener(
+
 "load",
+
 ()=>{
 
 
+
 console.log(
+
 "Player loaded:",
+
 player.src
+
 );
 
 
 
-});
+}
 
-
-});
-
-
+);
 
 
 
+}
 
-
-
-
-
-
-
-
-/*
+);/*
 =====================================
 GLOBAL ERROR HANDLER
 =====================================
@@ -1534,17 +1981,21 @@ GLOBAL ERROR HANDLER
 
 
 window.addEventListener(
+
 "error",
-(event)=>{
+
+event=>{
 
 
 console.error(
+
 `
-==============================
+
+=================================
 
 UPMINAA FAN HUB ERROR
 
-==============================
+=================================
 
 
 Message:
@@ -1552,9 +2003,11 @@ Message:
 ${event.message}
 
 
+
 File:
 
 ${event.filename}
+
 
 
 Line:
@@ -1562,14 +2015,19 @@ Line:
 ${event.lineno}
 
 
-==============================
+
+=================================
 
 `
+
 );
 
 
 
-});
+}
+
+);
+
 
 
 
@@ -1580,7 +2038,7 @@ ${event.lineno}
 
 /*
 =====================================
-LAZY UPDATE
+MEDIA AUTO UPDATE
 =====================================
 */
 
@@ -1588,10 +2046,13 @@ LAZY UPDATE
 function refreshMedia(){
 
 
+
 updateLiveStatus();
 
 
+
 loadLatestVod();
+
 
 
 loadYoutube();
@@ -1606,19 +2067,17 @@ loadYoutube();
 
 
 
-
-
-
-
-
 /*
-Updates media every 5 minutes
+Refresh media every 5 minutes
 */
 
 
 setInterval(
+
 refreshMedia,
+
 300000
+
 );
 
 
@@ -1629,18 +2088,16 @@ refreshMedia,
 
 
 
-
-
-
 /*
 =====================================
-FINAL STATUS
+FINAL SYSTEM STATUS
 =====================================
 */
 
 
-console.log(`
+console.log(
 
+`
 
 =================================
 
@@ -1648,39 +2105,46 @@ UPMINAA FAN HUB
 
 MAIN.JS FINAL VERSION
 
+
 SYSTEM ONLINE ✅
 
 
-Features:
+
+FEATURES:
 
 
-✓ Loader
 
-✓ Mobile Menu
+✓ Loader System
 
-✓ Smooth Scroll
+✓ Mobile Navigation
 
-✓ Reveal Animation
+✓ Smooth Scrolling
 
-✓ Lightbox
+✓ Reveal Animations
 
-✓ Twitch Live System
+✓ Image Lightbox
 
-✓ Hero LIVE Status
+✓ Clickable Cosplay Cards
 
-✓ Twitch VOD
+✓ Twitch Live Detection
 
-✓ YouTube Feed
+✓ Twitch Live Player
 
-✓ Responsive Players
+✓ Latest Twitch VOD
+
+✓ YouTube Video Feed
+
+✓ Responsive Media Players
+
+✓ Auto Media Refresh
+
 
 
 =================================
 
+`
 
-`);
-
-
+);
 
 
 
