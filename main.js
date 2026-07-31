@@ -13,24 +13,29 @@ LOADER
 =====================================
 */
 
-
-const loader = document.getElementById("loader");
+const loader =
+document.getElementById("loader");
 
 
 if(loader){
+
 
 window.addEventListener(
 "load",
 ()=>{
 
+
 setTimeout(
 ()=>{
 
-loader.classList.add("hidden");
+loader.classList.add(
+"hidden"
+);
 
 },
 500
 );
+
 
 });
 
@@ -38,19 +43,24 @@ loader.classList.add("hidden");
 setTimeout(
 ()=>{
 
-loader.classList.add("hidden");
+loader.classList.add(
+"hidden"
+);
 
 },
 2500
 );
 
+
 }
+
+
 
 
 
 /*
 =====================================
-YEAR
+DOM READY
 =====================================
 */
 
@@ -60,8 +70,17 @@ document.addEventListener(
 ()=>{
 
 
+/*
+=====================================
+YEAR
+=====================================
+*/
+
+
 const year =
-document.getElementById("year");
+document.getElementById(
+"year"
+);
 
 
 if(year){
@@ -74,6 +93,7 @@ new Date().getFullYear();
 
 
 
+
 /*
 =====================================
 MOBILE MENU
@@ -82,11 +102,16 @@ MOBILE MENU
 
 
 const menuButton =
-document.getElementById("navToggle");
+document.getElementById(
+"navToggle"
+);
+
 
 
 const nav =
-document.getElementById("navLinks");
+document.getElementById(
+"navLinks"
+);
 
 
 
@@ -101,19 +126,21 @@ menuButton.addEventListener(
 ()=>{
 
 
-const active =
-nav.classList.toggle("open");
+const open =
+nav.classList.toggle(
+"open"
+);
 
 
 menuButton.classList.toggle(
 "open",
-active
+open
 );
 
 
 menuButton.setAttribute(
 "aria-expanded",
-active
+open
 );
 
 
@@ -121,6 +148,7 @@ active
 
 
 }
+
 
 
 
@@ -140,14 +168,18 @@ link.addEventListener(
 
 if(nav){
 
-nav.classList.remove("open");
+nav.classList.remove(
+"open"
+);
 
 }
 
 
 if(menuButton){
 
-menuButton.classList.remove("open");
+menuButton.classList.remove(
+"open"
+);
 
 }
 
@@ -156,6 +188,7 @@ menuButton.classList.remove("open");
 
 
 });
+
 
 
 
@@ -190,7 +223,9 @@ link.getAttribute("href")
 
 if(target){
 
+
 event.preventDefault();
+
 
 
 target.scrollIntoView({
@@ -214,9 +249,10 @@ behavior:"smooth"
 
 
 
+
 /*
 =====================================
-BACK TO TOP
+BACK TOP
 =====================================
 */
 
@@ -240,6 +276,7 @@ if(
 window.scrollY > 500
 ){
 
+
 backTop.classList.add(
 "show"
 );
@@ -261,6 +298,7 @@ backTop.classList.remove(
 });
 
 
+
 backTop.addEventListener(
 "click",
 ()=>{
@@ -278,15 +316,9 @@ behavior:"smooth"
 });
 
 
-}
-
-
-
-
-
-/*
+}/*
 =====================================
-REVEAL ANIMATION
+REVEAL ANIMATION FIX
 =====================================
 */
 
@@ -297,6 +329,8 @@ document.querySelectorAll(
 .fact-card,
 .cosplay-card,
 .gallery-card,
+.live-player-card,
+.youtube-card,
 .social-card,
 .reference-card
 `
@@ -313,7 +347,9 @@ entries.forEach(
 entry=>{
 
 
-if(entry.isIntersecting){
+if(
+entry.isIntersecting
+){
 
 
 entry.target.classList.add(
@@ -321,9 +357,11 @@ entry.target.classList.add(
 );
 
 
+
 observer.unobserve(
 entry.target
 );
+
 
 
 }
@@ -336,10 +374,13 @@ entry.target
 },
 {
 
-threshold:.15
+threshold:0.15
 
 }
+
 );
+
+
 
 
 
@@ -347,10 +388,24 @@ revealItems.forEach(
 item=>{
 
 
-observer.observe(item);
+item.classList.add(
+"visible"
+);
+
+
+observer.observe(
+item
+);
 
 
 });
+
+
+
+
+
+
+
 /*
 =====================================
 LIGHTBOX
@@ -364,10 +419,12 @@ document.getElementById(
 );
 
 
+
 const lightboxImage =
 document.getElementById(
 "lightboxImage"
 );
+
 
 
 
@@ -377,11 +434,6 @@ document
 )
 .forEach(
 image=>{
-
-
-image.style.cursor =
-"pointer";
-
 
 
 image.addEventListener(
@@ -426,17 +478,18 @@ lightbox.classList.add(
 
 
 
-const closeLightbox =
+
+const lightboxClose =
 document.querySelector(
 ".lightbox-close"
 );
 
 
 
-if(closeLightbox){
+if(lightboxClose){
 
 
-closeLightbox.addEventListener(
+lightboxClose.addEventListener(
 "click",
 ()=>{
 
@@ -450,6 +503,7 @@ lightbox.classList.remove(
 
 
 }
+
 
 
 
@@ -475,6 +529,7 @@ lightbox.classList.remove(
 }
 
 
+
 });
 
 
@@ -485,9 +540,10 @@ lightbox.classList.remove(
 
 
 
+
 /*
 =====================================
-IMAGE ERROR DEBUG
+IMAGE DEBUG
 =====================================
 */
 
@@ -511,17 +567,10 @@ img.src
 );
 
 
-
 });
 
 
-});
-
-
-
-
-
-/*
+});/*
 =====================================
 YOUTUBE SYSTEM
 =====================================
@@ -541,8 +590,6 @@ const youtubeGrid =
 document.getElementById(
 "youtubeGrid"
 );
-
-
 
 
 
@@ -589,9 +636,7 @@ proxy(YOUTUBE_FEED)
 
 
 
-if(
-!response.ok
-){
+if(!response.ok){
 
 continue;
 
@@ -599,7 +644,7 @@ continue;
 
 
 
-const xmlText =
+const text =
 await response.text();
 
 
@@ -607,7 +652,7 @@ await response.text();
 const xml =
 new DOMParser()
 .parseFromString(
-xmlText,
+text,
 "text/xml"
 );
 
@@ -626,8 +671,7 @@ YOUTUBE_LIMIT
 
 
 const videos =
-entries
-.map(
+entries.map(
 entry=>{
 
 
@@ -642,7 +686,6 @@ entry
 ?.textContent,
 
 
-
 title:
 entry
 .getElementsByTagName(
@@ -652,7 +695,9 @@ entry
 "Upminaa Video"
 
 
+
 };
+
 
 
 }
@@ -676,7 +721,7 @@ catch(error){
 
 
 console.warn(
-"YouTube proxy error",
+"YouTube erro:",
 error
 );
 
@@ -698,10 +743,11 @@ return [];
 
 
 
+
+
 function createYoutubePlayers(
 videos
 ){
-
 
 
 if(!youtubeGrid){
@@ -713,6 +759,7 @@ return;
 
 
 youtubeGrid.innerHTML = "";
+
 
 
 
@@ -733,10 +780,10 @@ card.className =
 
 
 
-
 card.innerHTML = `
 
 <div class="video-wrapper">
+
 
 <iframe
 
@@ -746,16 +793,16 @@ title="${video.title}"
 
 loading="lazy"
 
-allowfullscreen
+allowfullscreen>
 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+</iframe>
 
-></iframe>
 
 </div>
 
 
 <div class="video-info">
+
 
 <h4>
 
@@ -763,10 +810,10 @@ ${video.title}
 
 </h4>
 
+
 </div>
 
 `;
-
 
 
 
@@ -779,7 +826,9 @@ card
 });
 
 
+
 }
+
 
 
 
@@ -794,7 +843,9 @@ await getYoutubeVideos();
 
 
 
-if(videos.length){
+if(
+videos.length
+){
 
 
 createYoutubePlayers(
@@ -802,9 +853,11 @@ videos
 );
 
 
+
 console.log(
 "YouTube carregado"
 );
+
 
 
 }
@@ -825,6 +878,14 @@ console.warn(
 
 
 loadYoutube();
+
+
+
+
+
+
+
+
 /*
 =====================================
 TWITCH SYSTEM
@@ -839,26 +900,19 @@ const TWITCH_CHANNEL =
 
 
 
+
 function twitchParent(){
 
 
-let host =
+const host =
 window.location.hostname;
 
 
-
-if(
-host === "localhost" ||
-host === "127.0.0.1"
-){
-
-return "localhost";
-
-}
-
-
-
-return host;
+return host === ""
+?
+"localhost"
+:
+host;
 
 
 }
@@ -882,7 +936,9 @@ document.createElement(
 
 
 
-if(type === "live"){
+if(
+type === "live"
+){
 
 
 iframe.src =
@@ -892,6 +948,7 @@ iframe.src =
 
 iframe.title =
 "Upminaa Twitch Live";
+
 
 
 }
@@ -904,11 +961,11 @@ iframe.src =
 
 
 iframe.title =
-"Última live da Upminaa";
+"Upminaa VOD";
+
 
 
 }
-
 
 
 
@@ -920,7 +977,6 @@ iframe.height =
 "100%";
 
 
-
 iframe.frameBorder =
 "0";
 
@@ -930,24 +986,10 @@ true;
 
 
 
-iframe.allow =
-"autoplay; fullscreen";
-
-
-
 return iframe;
 
 
-}
-
-
-
-
-
-
-
-
-/*
+}/*
 =====================================
 TWITCH STATUS
 =====================================
@@ -972,18 +1014,11 @@ await response.text();
 
 
 
-if(
-text.toLowerCase()
-.includes("offline")
-){
-
-return false;
-
-}
-
-
-
-return true;
+return !text
+.toLowerCase()
+.includes(
+"offline"
+);
 
 
 
@@ -1050,7 +1085,6 @@ await checkTwitchLive();
 if(live){
 
 
-
 wrap.innerHTML =
 "";
 
@@ -1071,24 +1105,26 @@ badge.classList.add(
 );
 
 
+
 badge.classList.remove(
 "offline"
 );
 
 
-const status =
+
+const text =
 badge.querySelector(
 ".status-text"
 );
 
 
-if(status){
 
-status.textContent =
+if(text){
+
+text.textContent =
 "AO VIVO";
 
 }
-
 
 
 }
@@ -1105,7 +1141,6 @@ console.log(
 else{
 
 
-
 if(badge){
 
 
@@ -1114,22 +1149,23 @@ badge.classList.add(
 );
 
 
+
 badge.classList.remove(
 "online"
 );
 
 
 
-const status =
+const text =
 badge.querySelector(
 ".status-text"
 );
 
 
 
-if(status){
+if(text){
 
-status.textContent =
+text.textContent =
 "OFFLINE";
 
 }
@@ -1161,20 +1197,12 @@ console.log(
 
 /*
 =====================================
-LATEST TWITCH VOD
-=====================================
-
-O decapi antigo retornava texto
-com emojis e quebrava JSON.
-
-Agora usamos o endpoint de vídeos
-do Twitch sem tentar JSON inválido.
+TWITCH VOD
 =====================================
 */
 
 
 async function loadLatestVod(){
-
 
 
 const card =
@@ -1195,9 +1223,10 @@ return;
 
 
 /*
-Fallback seguro:
-caso não exista API oficial
-sem token, mantém card funcional.
+O endpoint antigo da decapi
+retornava texto e quebrava JSON.
+
+Mantendo player seguro.
 */
 
 
@@ -1210,7 +1239,7 @@ card.innerHTML = `
 
 src="https://www.twitch.tv/embed/${TWITCH_CHANNEL}/videos?parent=${twitchParent()}"
 
-title="Últimas lives Upminaa"
+title="Últimas lives da Upminaa"
 
 frameborder="0"
 
@@ -1228,13 +1257,12 @@ allowfullscreen>
 
 
 console.log(
-"Últimas lives carregadas"
+"VOD carregado"
 );
 
 
 
 }
-
 
 
 
@@ -1248,12 +1276,16 @@ loadLatestVod();
 
 
 
-
-
 setInterval(
 loadTwitchLive,
 120000
 );
+
+
+
+
+
+
 
 
 /*
@@ -1282,7 +1314,6 @@ player.src
 );
 
 
-
 });
 
 
@@ -1291,103 +1322,13 @@ player.src
 
 
 
-
-
-
-/*
-=====================================
-COSPLAY IMAGE FIX
-=====================================
-*/
-
-
-document
-.querySelectorAll(
-".featured-card img"
-)
-.forEach(
-image=>{
-
-
-image.addEventListener(
-"click",
-()=>{
-
-
-const parent =
-image.closest(
-".cosplay-link"
-);
-
-
-
-if(parent){
-
-
-parent.click();
-
-
-}
-
-
-
-});
-
-
-});
-
-
-
-
-
-
-
-/*
-=====================================
-REMOVE BROKEN LINKS
-=====================================
-*/
-
-
-document
-.querySelectorAll(
-'a[href="#"]'
-)
-.forEach(
-link=>{
-
-
-link.addEventListener(
-"click",
-event=>{
-
-
-event.preventDefault();
-
-
-});
-
-
-});
-
-
-
-
-
-
-
-/*
-=====================================
-CONSOLE INFO
-=====================================
-*/
 
 
 console.log(
 `
-=====================================
+=================================
 UPMINAA FAN HUB
-JS LOADED SUCCESSFULLY
-=====================================
+MAIN.JS OK
+=================================
 `
 );
