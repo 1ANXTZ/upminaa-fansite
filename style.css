@@ -2945,3 +2945,27 @@ section{
 
 
 }
+.credit-name{
+
+    color:var(--text-muted);
+
+    font-weight:600;
+
+}
+
+.footer-credits a{
+
+    color:var(--pink);
+
+    font-weight:900;
+
+}
+
+.footer-credits a:hover{
+
+    color:white;
+
+    text-shadow:
+    0 0 12px var(--pink);
+
+}
