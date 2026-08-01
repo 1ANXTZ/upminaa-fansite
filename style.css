@@ -1745,3 +1745,71 @@ a.player-placeholder{
     }
 
 }
+/* ============================== FOOTER DISCLAIMER ============================== */
+
+
+.footer-disclaimer{
+
+    max-width:750px;
+
+    margin:30px auto 0;
+
+    padding:22px;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,79,216,.15);
+
+    border-radius:18px;
+
+    color:var(--text-muted);
+
+    font-size:.9rem;
+
+    line-height:1.8;
+
+}
+
+
+
+.footer-disclaimer p{
+
+    margin:0;
+
+}
+
+
+
+.footer-credits{
+
+    margin-top:25px;
+
+    padding:25px;
+
+    display:inline-block;
+
+    background:rgba(255,255,255,.03);
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,79,216,.2);
+
+}
+
+
+
+.footer-credits p{
+
+    margin:5px 0;
+
+}
+
+
+
+.footer-credits p:first-child{
+
+    color:var(--pink);
+
+    font-weight:900;
+
+}
