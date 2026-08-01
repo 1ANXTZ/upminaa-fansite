@@ -1,0 +1,228 @@
+/*
+=====================================
+UPMINAA FAN HUB
+STYLE.CSS
+=====================================
+*/
+
+/* ============================== RESET ============================== */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:"Rajdhani",Arial,sans-serif;background:#080812;color:white;overflow-x:hidden;line-height:1.6;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+
+:root{
+  --bg-main:#080812;
+  --bg-card:#11111d;
+  --bg-soft:#181827;
+  --pink:#ff4fd8;
+  --purple:#7b61ff;
+  --cyan:#00eaff;
+  --text-muted:#b8b8c7;
+  --twitch:#9146ff;
+}
+
+/* ============================== GLOBAL ============================== */
+section{padding:100px 0;scroll-margin-top:100px;}
+.section-title{width:min(1200px,90%);margin:0 auto 50px;text-align:center;}
+.section-title span{color:var(--pink);font-family:"Orbitron";letter-spacing:3px;font-size:.8rem;font-weight:900;}
+.section-title h2{font-family:"Orbitron";font-size:2.5rem;margin-top:10px;}
+.section-title p{color:var(--text-muted);max-width:700px;margin:15px auto;}
+.click-info{font-size:.9rem;color:var(--pink)!important;font-weight:700;}
+
+/* ============================== HEADER ============================== */
+.site-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(8,8,18,.85);backdrop-filter:blur(15px);border-bottom:1px solid rgba(255,79,216,.2);}
+.navbar{width:min(1200px,90%);height:80px;margin:auto;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:"Orbitron";font-size:1.5rem;font-weight:900;color:var(--pink);}
+.logo span{color:white;}
+.nav-links{display:flex;gap:30px;list-style:none;}
+.nav-links a{color:var(--text-muted);font-weight:700;transition:.3s;}
+.nav-links a:hover{color:white;text-shadow:0 0 15px var(--pink);}
+
+/* ============================== HERO ============================== */
+.hero-section{min-height:100vh;padding-top:150px;display:flex;align-items:center;}
+.hero-content{width:min(1200px,90%);margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.hero-tag{color:var(--pink);font-weight:900;letter-spacing:3px;font-size:.8rem;}
+.hero-content h1{font-family:"Orbitron";font-size:4rem;margin:20px 0;text-shadow:0 0 40px rgba(255,79,216,.5);}
+.hero-content p{font-size:1.15rem;color:var(--text-muted);max-width:550px;}
+.hero-buttons{display:flex;gap:20px;margin-top:35px;}
+.social-button{padding:14px 30px;border-radius:30px;font-weight:900;transition:.35s;border:1px solid transparent;display:flex;align-items:center;gap:8px;}
+.social-button:hover{transform:translateY(-5px);}
+.twitch-button{background:rgba(145,70,255,.15);border-color:#9146ff;box-shadow:0 0 15px rgba(145,70,255,.6);color:#c8a8ff;}
+.instagram-button{background:rgba(214,41,118,.15);border-color:#d62976;box-shadow:0 0 15px rgba(214,41,118,.6);color:#ff8ac5;}
+.tiktok-button{background:rgba(0,242,234,.1);border-color:#00f2ea;box-shadow:0 0 15px rgba(255,0,80,.6);color:white;}
+
+/* ============================== HERO IMAGE ============================== */
+.hero-image{position:relative;}
+.hero-image img{width:100%;height:550px;object-fit:cover;object-position:center;border-radius:30px;box-shadow:0 0 60px rgba(255,79,216,.25);}
+.live-status{padding:8px 20px;border-radius:25px;font-family:"Orbitron";font-weight:900;font-size:.8rem;display:flex;align-items:center;gap:8px;}
+.hero-image .live-status{position:absolute;top:25px;right:25px;}
+.live-status.offline{background:#555;color:#ddd;}
+.live-status.online{background:red;color:white;box-shadow:0 0 25px red;animation:livePulse 1.8s infinite;}
+@keyframes livePulse{0%{transform:scale(1);}50%{transform:scale(1.06);}100%{transform:scale(1);}}
+
+/* ============================== ABOUT ============================== */
+.about-container{width:min(1200px,90%);margin:auto;display:grid;grid-template-columns:380px 1fr;gap:50px;align-items:start;}
+.about-image{width:100%;}
+.about-image img{width:100%;height:540px;object-fit:cover;border-radius:25px;box-shadow:0 0 45px rgba(255,79,216,.3);}
+.about-content{display:flex;flex-direction:column;gap:25px;}
+.profile-facts{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.profile-card{background:linear-gradient(145deg,var(--bg-card),var(--bg-soft));padding:20px;border-radius:18px;border:1px solid rgba(255,79,216,.2);min-height:110px;display:flex;flex-direction:column;justify-content:center;transition:.3s;}
+.profile-card:hover{transform:translateY(-5px);box-shadow:0 0 25px rgba(255,79,216,.25);}
+.profile-card span{color:var(--text-muted);font-size:.85rem;font-weight:700;}
+.profile-card h3{margin-top:8px;color:var(--pink);font-family:"Orbitron";font-size:1rem;line-height:1.3;}
+.bio-card{background:linear-gradient(145deg,var(--bg-card),var(--bg-soft));padding:25px;border-radius:22px;border:1px solid rgba(255,79,216,.2);}
+.bio-card h3{font-family:"Orbitron";margin-bottom:15px;color:var(--pink);}
+.bio-card p{color:var(--text-muted);font-size:1rem;line-height:1.7;}
+
+/* ============================== SOURCE BUTTONS ============================== */
+.source-row{margin-top:20px;display:flex;align-items:center;gap:15px;}
+.source-row span{color:#aaa;font-weight:700;}
+.source-button{padding:8px 20px;border-radius:25px;font-weight:900;display:inline-flex;transition:.3s;}
+.source-button:hover{transform:translateY(-3px);}
+.twitch-source{background:#9146ff;box-shadow:0 0 15px rgba(145,70,255,.5);}
+.instagram-source{background:linear-gradient(135deg,#feda75,#d62976,#962fbf);box-shadow:0 0 15px rgba(214,41,118,.5);}
+
+/* ============================== COSPLAY ============================== */
+.cosplay-card{background:linear-gradient(145deg,var(--bg-card),var(--bg-soft));border-radius:25px;overflow:hidden;border:1px solid rgba(255,79,216,.15);transition:.35s;cursor:pointer;}
+.cosplay-card:hover{transform:translateY(-8px);box-shadow:0 0 35px rgba(255,79,216,.25);}
+.cosplay-card img{width:100%;height:100%;object-fit:cover;transition:.4s ease;}
+.cosplay-card:hover img{transform:scale(1.04);}
+.featured-cosplays{width:min(1200px,90%);margin:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:30px;}
+.featured-card{height:560px;position:relative;}
+.featured-card img{height:100%;object-fit:cover;}
+.featured-card::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,.85));}
+.cosplay-info{position:absolute;bottom:0;left:0;width:100%;padding:25px;z-index:2;}
+.popular-cosplays{width:min(1200px,90%);margin:40px auto;display:grid;grid-template-columns:repeat(2,1fr);gap:25px;}
+.popular-cosplays .cosplay-card{height:430px;}
+.popular-cosplays img{height:280px;object-fit:cover;object-position:center 20%;}
+
+/* ============================== GALLERY ============================== */
+.gallery-grid{width:min(1200px,90%);margin:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:30px;}
+.gallery-card{background:linear-gradient(145deg,var(--bg-card),var(--bg-soft));border-radius:25px;overflow:hidden;border:1px solid rgba(255,79,216,.15);transition:.35s;cursor:pointer;}
+.gallery-card:hover{transform:translateY(-8px);box-shadow:0 0 35px rgba(255,79,216,.25);}
+.gallery-card img{width:100%;height:360px;object-fit:cover;cursor:pointer;}
+.gallery-card:nth-child(1) img{object-position:center;}
+.backstage-card img{object-position:center 30%;}
+.fanart-card img{object-position:center;}
+.gaming-card img{object-position:center 35%;}
+.gallery-content{padding:25px;}
+.gallery-content h3{font-family:"Orbitron";margin-bottom:10px;}
+.gallery-content p{color:var(--text-muted);}
+.artist-credit{margin-top:15px;color:#aaa;}
+.artist-credit a{color:var(--pink);font-weight:900;}
+
+/* ============================== LIGHTBOX ============================== */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;padding:30px;opacity:0;visibility:hidden;transition:.3s;z-index:3000;}
+.lightbox.active{opacity:1;visibility:visible;}
+.lightbox img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:25px;box-shadow:0 0 60px rgba(255,79,216,.5);}
+.lightbox-close{position:absolute;top:25px;right:35px;background:none;border:none;font-size:3rem;color:white;cursor:pointer;}
+
+/* ============================== MEDIA ============================== */
+.media-group{width:min(1200px,90%);margin:0 auto 80px;}
+.media-title{font-family:"Orbitron";font-size:1.8rem;margin-bottom:30px;color:var(--pink);}
+.twitch-grid,.youtube-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:35px;}
+.live-player-card,.youtube-card{background:linear-gradient(145deg,var(--bg-card),var(--bg-soft));border-radius:25px;overflow:hidden;border:1px solid rgba(255,79,216,.15);}
+.player-wrapper,.video-wrapper{width:100%;aspect-ratio:16/9;background:#000;overflow:hidden;position:relative;display:block;}
+.player-wrapper iframe,.video-wrapper iframe{width:100%;height:100%;border:0;display:block;}
+#twitchEmbedWrap,#latestVod{width:100%;height:100%;}
+.player-info,.video-info{padding:25px;}
+.player-info h4,.video-info h4{font-family:"Orbitron";font-size:1.3rem;margin-bottom:10px;}
+.player-info p,.video-info p{color:var(--text-muted);}
+
+/* Loading / empty states for the backend-driven cards */
+.player-placeholder{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:20px;
+  color:var(--text-muted);
+  font-size:.95rem;
+}
+
+/* Stream/video meta line (game · viewers, or date · duration) */
+.video-meta{font-size:.9rem;color:var(--pink);font-weight:700;}
+
+/* Small live/offline text label injected next to the pulsing dot */
+.status-label{font-family:"Orbitron";}
+
+/* ============================== COMMUNITY ============================== */
+.social-grid{width:min(1200px,90%);margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:25px;}
+.social-card{background:linear-gradient(145deg,var(--bg-card),var(--bg-soft));padding:30px;border-radius:25px;border:1px solid rgba(255,79,216,.15);transition:.35s;}
+.social-card:hover{transform:translateY(-8px);box-shadow:0 0 35px rgba(255,79,216,.25);}
+.social-icon{width:65px;height:65px;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-weight:900;margin-bottom:20px;}
+.social-info h3{font-family:"Orbitron";font-size:1.4rem;}
+.social-info p{color:var(--text-muted);margin:15px 0;}
+.social-info a{display:inline-flex;padding:12px 25px;border-radius:30px;font-weight:900;transition:.3s;}
+.social-info a:hover{transform:translateY(-3px);}
+.instagram .social-icon,.instagram .social-info a{background:linear-gradient(135deg,#feda75,#d62976,#962fbf);box-shadow:0 0 20px rgba(214,41,118,.5);}
+.twitch .social-icon,.twitch .social-info a{background:#9146ff;box-shadow:0 0 20px rgba(145,70,255,.5);}
+.tiktok .social-icon,.tiktok .social-info a{background:linear-gradient(90deg,#00f2ea,#ff0050);box-shadow:0 0 20px rgba(255,0,80,.5);}
+.official-links .social-icon,.official-links .social-info a{background:#222;border:1px solid #777;box-shadow:0 0 20px rgba(255,255,255,.15);}
+
+/* ============================== REVEAL ANIMATION ============================== */
+.profile-card,.bio-card,.cosplay-card,.gallery-card,.live-player-card,.youtube-card,.social-card{opacity:0;transform:translateY(40px);transition:.7s ease;}
+.visible{opacity:1;transform:translateY(0);}
+
+/* ============================== BACK TOP ============================== */
+.back-top{position:fixed;right:30px;bottom:30px;width:55px;height:55px;border-radius:50%;border:none;cursor:pointer;background:linear-gradient(135deg,var(--pink),var(--purple));color:white;font-size:1.5rem;opacity:0;visibility:hidden;transition:.3s;z-index:999;box-shadow:0 0 25px rgba(255,79,216,.5);}
+.back-top.show{opacity:1;visibility:visible;}
+
+/* ============================== FOOTER ============================== */
+.site-footer{padding:60px 20px;background:#05050c;border-top:1px solid rgba(255,79,216,.2);text-align:center;}
+.footer-content{width:min(900px,90%);margin:auto;}
+.footer-content h3{font-family:"Orbitron";font-size:1.8rem;color:var(--pink);}
+.footer-content p{color:var(--text-muted);}
+.footer-credits{margin-top:25px;padding:25px;display:inline-block;background:rgba(255,255,255,.03);border-radius:20px;border:1px solid rgba(255,79,216,.2);}
+.footer-credits a{color:var(--pink);font-weight:900;}
+
+/* ============================== MOBILE MENU ============================== */
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;}
+.nav-toggle span{display:block;width:30px;height:3px;background:white;margin:6px;border-radius:5px;}
+
+/* ============================== RESPONSIVE ============================== */
+@media(max-width:1100px){
+  .social-grid{grid-template-columns:repeat(2,1fr);}
+}
+
+@media(max-width:900px){
+  .navbar{padding:20px 0;height:auto;}
+  .nav-toggle{display:block;}
+  .nav-links{position:absolute;top:80px;left:0;width:100%;background:#080812;flex-direction:column;align-items:center;padding:30px 0;transform:translateY(-150%);transition:.3s;}
+  .nav-links.open{transform:translateY(0);}
+  .hero-content{grid-template-columns:1fr;text-align:center;}
+  .hero-content p{margin:auto;}
+  .hero-buttons{justify-content:center;flex-wrap:wrap;}
+  .hero-content h1{font-size:3rem;}
+  .hero-image img{height:450px;}
+  .about-container{grid-template-columns:1fr;}
+  .about-image img{height:450px;}
+  .profile-facts{grid-template-columns:1fr;}
+  .featured-cosplays,.popular-cosplays,.gallery-grid,.twitch-grid,.youtube-grid{grid-template-columns:1fr;}
+  .featured-card{height:500px;}
+  .popular-cosplays .cosplay-card{height:auto;}
+  .popular-cosplays img{height:320px;}
+  .social-grid{grid-template-columns:1fr;}
+}
+
+@media(max-width:600px){
+  section{padding:70px 0;}
+  .section-title h2{font-size:2rem;}
+  .hero-content h1{font-size:2.3rem;}
+  .hero-buttons{flex-direction:column;align-items:center;}
+  .social-button{width:230px;justify-content:center;}
+  .hero-image img{height:380px;}
+  .hero-image .live-status{top:15px;right:15px;}
+  .about-image img{height:380px;}
+  .bio-card{padding:20px;}
+  .source-row{flex-direction:column;align-items:flex-start;}
+  .featured-card{height:430px;}
+  .popular-cosplays img{height:250px;}
+  .gallery-card img{height:260px;}
+  .player-wrapper,.video-wrapper{aspect-ratio:16/10;}
+  .player-info,.video-info{padding:20px;}
+  .social-card{padding:25px;}
+  .footer-credits{width:90%;}
+  .lightbox{padding:15px;}
+  .lightbox img{max-width:95vw;max-height:80vh;}
+}
