@@ -10,7 +10,7 @@ Features:
 - Reveal animations
 - Image lightbox
 - Twitch embed
-- YouTube feed
+- YouTube latest videos
 =====================================
 */
 
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-/* ============================== 
+/* ==============================
    MOBILE MENU
 ============================== */
 
@@ -35,11 +35,16 @@ document.querySelector(".nav-links");
 
 if(menuButton && navLinks){
 
-    menuButton.addEventListener("click",()=>{
 
-        navLinks.classList.toggle("open");
+    menuButton.addEventListener(
+        "click",
+        () => {
 
-    });
+            navLinks.classList.toggle("open");
+
+        }
+    );
+
 
 }
 
@@ -47,41 +52,46 @@ if(menuButton && navLinks){
 
 
 
-/* ============================== 
+/* ==============================
    SMOOTH SCROLL
 ============================== */
 
 
 document
 .querySelectorAll('a[href^="#"]')
-.forEach(link=>{
+.forEach(link => {
 
 
-    link.addEventListener("click",event=>{
+    link.addEventListener(
+        "click",
+        event => {
 
 
-        const target =
-        document.querySelector(
-            link.getAttribute("href")
-        );
+            const target =
+            document.querySelector(
+                link.getAttribute("href")
+            );
 
 
 
-        if(target){
-
-            event.preventDefault();
+            if(target){
 
 
-            target.scrollIntoView({
+                event.preventDefault();
 
-                behavior:"smooth"
 
-            });
+                target.scrollIntoView({
+
+                    behavior:"smooth"
+
+                });
+
+
+            }
+
 
         }
-
-
-    });
+    );
 
 
 });
@@ -91,15 +101,26 @@ document
 
 
 
-/* ============================== 
+
+/* ==============================
    REVEAL ANIMATION
 ============================== */
 
 
 const revealElements =
 document.querySelectorAll(
-".about-image, .profile-card, .bio-card, .cosplay-card, .gallery-card, .live-player-card, .youtube-card, .social-card"
+`
+.about-image,
+.profile-card,
+.bio-card,
+.cosplay-card,
+.gallery-card,
+.live-player-card,
+.youtube-card,
+.social-card
+`
 );
+
 
 
 
@@ -108,17 +129,19 @@ if("IntersectionObserver" in window){
 
 const revealObserver =
 new IntersectionObserver(
-(entries)=>{
+entries => {
 
 
-entries.forEach(entry=>{
+entries.forEach(entry => {
 
 
 if(entry.isIntersecting){
 
-    entry.target.classList.add(
-        "visible"
-    );
+
+entry.target.classList.add(
+"visible"
+);
+
 
 }
 
@@ -134,7 +157,8 @@ threshold:0.15
 
 
 
-revealElements.forEach(element=>{
+
+revealElements.forEach(element => {
 
 
 revealObserver.observe(element);
@@ -150,7 +174,9 @@ revealObserver.observe(element);
 
 
 
-/* ============================== 
+
+
+/* ==============================
    BACK TO TOP
 ============================== */
 
@@ -174,7 +200,9 @@ window.scrollY > 500
 );
 
 
-});
+}
+);
+
 
 
 
@@ -192,7 +220,8 @@ behavior:"smooth"
 });
 
 
-});
+}
+);
 
 
 }
@@ -204,7 +233,9 @@ behavior:"smooth"
 
 
 
-/* ============================== 
+
+
+/* ==============================
    LIGHTBOX
 ============================== */
 
@@ -213,16 +244,20 @@ const lightbox =
 document.querySelector(".lightbox");
 
 
+
 const lightboxImage =
 document.querySelector(
 ".lightbox img"
 );
 
 
+
 const lightboxClose =
 document.querySelector(
 ".lightbox-close"
 );
+
+
 
 
 
@@ -239,7 +274,6 @@ lightboxImage.src =
 image.src;
 
 
-
 lightboxImage.alt =
 image.alt;
 
@@ -251,6 +285,8 @@ lightbox.classList.add(
 
 
 }
+
+
 
 
 
@@ -272,12 +308,19 @@ lightbox.classList.remove(
 
 setTimeout(()=>{
 
+
 lightboxImage.src="";
+
 
 },300);
 
 
+
 }
+
+
+
+
 
 
 
@@ -305,10 +348,13 @@ event.stopPropagation();
 openLightbox(image);
 
 
-});
+}
+);
 
 
 });
+
+
 
 
 
@@ -338,15 +384,20 @@ event=>{
 
 if(event.target.tagName !== "A"){
 
+
 openLightbox(image);
+
 
 }
 
 
-});
+}
+);
 
 
 });
+
+
 
 
 
@@ -365,6 +416,9 @@ closeLightbox
 
 
 
+
+
+
 if(lightbox){
 
 
@@ -375,15 +429,21 @@ event=>{
 
 if(event.target === lightbox){
 
+
 closeLightbox();
 
+
 }
-
-
-});
 
 
 }
+);
+
+
+}
+
+
+
 
 
 
@@ -398,24 +458,33 @@ event.key==="Escape" &&
 lightbox?.classList.contains("active")
 ){
 
+
 closeLightbox();
+
 
 }
 
 
 });
 
-/* ============================== 
+
+
+
+
+
+/* ==============================
    SECURITY HELPER
 ============================== */
 
 
 function escapeHtml(value){
 
+
 return String(value ?? "")
 .replace(
 /[&<>"']/g,
-character=>({
+character => ({
+
 
 "&":"&amp;",
 "<":"&lt;",
@@ -423,18 +492,12 @@ character=>({
 '"':"&quot;",
 "'":"&#39;"
 
+
 }[character])
 );
 
-}
 
-
-
-
-
-
-
-/* ============================== 
+}/* ==============================
    TWITCH
 ============================== */
 
@@ -498,6 +561,7 @@ document.querySelector("#vodMeta")
 
 
 
+
 function getParentDomain(){
 
 
@@ -511,12 +575,6 @@ return window.location.hostname || "localhost";
 
 
 
-
-
-/*
-Twitch official embed.
-The player itself handles live/offline state.
-*/
 
 
 function mountTwitchPlayer(){
@@ -552,9 +610,14 @@ iframe.frameBorder="0";
 
 iframe.allowFullscreen=true;
 
+
+
 iframe.allow =
 "autoplay; fullscreen";
 
+
+
+twitchEls.twitchEmbedWrap.innerHTML="";
 
 
 twitchEls.twitchEmbedWrap.appendChild(
@@ -563,6 +626,8 @@ iframe
 
 
 }
+
+
 
 
 
@@ -604,13 +669,21 @@ element.querySelector(
 
 if(label){
 
+
 label.textContent =
-isLive ? "LIVE" : "OFFLINE";
+isLive
+?
+"LIVE"
+:
+"OFFLINE";
+
 
 }
 
 
 }
+
+
 
 
 
@@ -638,6 +711,7 @@ const text =
 
 
 
+
 const isLive =
 response.ok &&
 !text.includes("offline") &&
@@ -662,7 +736,10 @@ isLive
 
 
 
+
+
 if(twitchEls.twitchStreamTitle){
+
 
 twitchEls.twitchStreamTitle.textContent =
 isLive
@@ -671,12 +748,17 @@ isLive
 :
 "Upminaa is offline";
 
+
 }
 
 
 
 
+
+
+
 if(twitchEls.twitchStreamMeta){
+
 
 twitchEls.twitchStreamMeta.textContent =
 isLive
@@ -685,11 +767,13 @@ isLive
 :
 "Follow Upminaa on Twitch for future streams.";
 
-}
-
-
 
 }
+
+
+
+}
+
 catch(error){
 
 
@@ -700,7 +784,6 @@ error
 
 
 }
-
 
 
 }
@@ -714,21 +797,16 @@ error
 
 
 /*
-Removed automatic VOD API.
-
-decapi.me/twitch/videos sometimes
-returns text instead of JSON.
-
-The fallback is more reliable
-for GitHub Pages.
+Não usa mais decapi videos.
+Ele retorna texto e quebra JSON.
 */
-
 
 function mountLatestVod(){
 
 
 if(!twitchEls.latestVod)
 return;
+
 
 
 
@@ -752,24 +830,35 @@ Watch recent broadcasts on Twitch →
 
 
 
+
+
 if(twitchEls.vodTitle){
+
 
 twitchEls.vodTitle.textContent =
 "Recent Broadcasts";
 
+
 }
+
+
 
 
 
 if(twitchEls.vodMeta){
 
+
 twitchEls.vodMeta.textContent =
 "See previous streams on Twitch.";
 
+
 }
 
 
+
 }
+
+
 
 
 
@@ -787,17 +876,17 @@ mountLatestVod();
 
 
 
+
 setInterval(
 refreshLiveBadge,
 300000
-);/* ============================== 
-   YOUTUBE FEED
+);/* ==============================
+   YOUTUBE LATEST VIDEOS
 ============================== */
 
 
 const YOUTUBE_CHANNEL_ID =
 "UCw3CBMvVjZJNfQR3tEvTodQ";
-
 
 
 const YOUTUBE_CHANNEL_URL =
@@ -812,9 +901,7 @@ document.querySelector("#youtubeGrid");
 
 
 
-
-
-async function loadYoutubeVideos(){
+function renderYoutubeVideos(videos){
 
 
 if(!youtubeGrid)
@@ -822,194 +909,15 @@ return;
 
 
 
-
-try{
-
-
-
-const rssUrl =
-`https://www.youtube.com/feeds/videos.xml?channel_id=${YOUTUBE_CHANNEL_ID}`;
-
-
-
-
-/*
-Uses rss2json instead of allorigins.
-
-The previous proxy caused 408 timeout
-errors on GitHub Pages.
-*/
-
-
-const apiUrl =
-`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-
-
-
-
-const response =
-await fetch(apiUrl);
-
-
-
-
-if(!response.ok){
-
-throw new Error(
-"YouTube request failed"
-);
-
-}
-
-
-
-
-
-const data =
-await response.json();
-
-
-
-
-
-if(
-!data.items ||
-!data.items.length
-){
-
-throw new Error(
-"No videos found"
-);
-
-}
-
-
-
-
-
-const videos =
-data.items
-.slice(0,4)
-.map(video=>{
-
-
-let videoId = "";
-
-
-
-if(video.guid.includes("video:")){
-
-
-videoId =
-video.guid.split(":").pop();
-
-
-}
-else{
-
-
-const match =
-video.link.match(
-/v=([^&]+)/
-);
-
-
-
-videoId =
-match
-?
-match[1]
-:
-"";
-
-
-}
-
-
-
-return {
-
-
-id:videoId,
-
-
-title:
-video.title || "Upminaa Video"
-
-
-};
-
-
-})
-.filter(video=>video.id);
-
-
-
-
-
-
-
-if(!videos.length){
-
-throw new Error(
-"No valid videos"
-);
-
-}
-
-
-
-
-renderYoutubeVideos(videos);
-
-
-
-
-}
-catch(error){
-
-
-console.warn(
-"YouTube unavailable:",
-error
-);
-
-
-
-showYoutubeFallback();
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-function renderYoutubeVideos(videos){
-
-
-
-youtubeGrid.innerHTML = "";
+youtubeGrid.innerHTML="";
 
 
 
 videos.forEach(video=>{
 
 
-
 const card =
-document.createElement(
-"article"
-);
+document.createElement("article");
 
 
 
@@ -1018,12 +926,9 @@ card.className =
 
 
 
-
-
 card.innerHTML = `
 
 <div class="video-wrapper">
-
 
 <iframe
 
@@ -1033,6 +938,8 @@ title="${escapeHtml(video.title)}"
 
 loading="lazy"
 
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+
 allowfullscreen>
 
 </iframe>
@@ -1041,9 +948,7 @@ allowfullscreen>
 </div>
 
 
-
 <div class="video-info">
-
 
 <h4>
 
@@ -1055,8 +960,6 @@ ${escapeHtml(video.title)}
 </div>
 
 `;
-
-
 
 
 
@@ -1078,12 +981,219 @@ youtubeGrid.appendChild(card);
 
 
 
+async function loadYoutubeVideos(){
+
+
+if(!youtubeGrid)
+return;
+
+
+
+
+try{
+
+
+const rssUrl =
+`https://www.youtube.com/feeds/videos.xml?channel_id=${YOUTUBE_CHANNEL_ID}`;
+
+
+
+
+
+/*
+Proxy alternativo.
+Evita bloqueio CORS do GitHub Pages.
+*/
+
+
+const proxyUrl =
+`https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(rssUrl)}`;
+
+
+
+
+
+
+const response =
+await fetch(proxyUrl);
+
+
+
+
+if(!response.ok){
+
+throw new Error(
+"YouTube feed unavailable"
+);
+
+}
+
+
+
+
+
+
+const xmlText =
+await response.text();
+
+
+
+
+
+
+const xml =
+new DOMParser()
+.parseFromString(
+xmlText,
+"text/xml"
+);
+
+
+
+
+
+
+const entries =
+[
+...xml.querySelectorAll("entry")
+];
+
+
+
+
+
+
+
+const videos =
+entries
+.slice(0,4)
+.map(entry=>{
+
+
+return {
+
+
+id:
+entry
+.querySelector(
+"yt\\:videoId, videoId"
+)
+?.textContent,
+
+
+
+title:
+entry
+.querySelector("title")
+?.textContent ||
+"Upminaa Video"
+
+
+};
+
+
+
+})
+.filter(video=>video.id);
+
+
+
+
+
+
+
+if(!videos.length){
+
+
+throw new Error(
+"No videos found"
+);
+
+
+}
+
+
+
+
+
+
+
+localStorage.setItem(
+
+"upminaa_youtube_cache",
+
+JSON.stringify(videos)
+
+);
+
+
+
+
+
+
+
+renderYoutubeVideos(videos);
+
+
+
+
+
+
+}
+
+catch(error){
+
+
+console.warn(
+"YouTube feed failed:",
+error
+);
+
+
+
+
+const cached =
+localStorage.getItem(
+"upminaa_youtube_cache"
+);
+
+
+
+
+if(cached){
+
+
+renderYoutubeVideos(
+JSON.parse(cached)
+);
+
+
+}
+
+else{
+
+
+showYoutubeFallback();
+
+
+}
+
+
+
+}
+
+
+
+
 function showYoutubeFallback(){
+
+
+if(!youtubeGrid)
+return;
 
 
 
 youtubeGrid.innerHTML = `
-
 
 <article class="youtube-card">
 
@@ -1101,9 +1211,7 @@ target="_blank"
 
 rel="noopener noreferrer">
 
-
 Watch latest videos on YouTube →
-
 
 </a>
 
@@ -1113,13 +1221,11 @@ Watch latest videos on YouTube →
 
 </article>
 
-
 `;
 
 
 
 }
-
 
 
 
@@ -1134,9 +1240,7 @@ loadYoutubeVideos();
 
 
 
-
-
-/* ============================== 
+/* ==============================
    IMAGE DEBUG
 ============================== */
 
@@ -1155,6 +1259,7 @@ console.warn(
 "Image not found:",
 image.src
 );
+
 
 
 });
