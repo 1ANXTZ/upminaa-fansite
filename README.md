@@ -1,66 +1,74 @@
 # 🌸 Upminaa Fan Hub
 
-![Upminaa Fan Hub](assets/images/favicon.png)
+![Upminaa Fan Hub](images/favicon.png)
 
-Um fan site dedicado à criadora de conteúdo **Upminaa**, reunindo informações públicas, cosplays, galeria, streams, vídeos e links oficiais em uma única plataforma.
+A fan-made website dedicated to **Upminaa**, bringing together public information, cosplays, gallery, streams, videos and official links into one organized platform.
 
-O projeto foi desenvolvido como projeto de estudo e portfólio, focado em desenvolvimento front-end, organização de conteúdo e criação de uma experiência visual moderna para fãs.
+This project was developed as a front-end study and portfolio project, focused on modern web development, content organization, SEO optimization and creating a visually immersive experience for fans.
 
 ---
 
-# ✨ Funcionalidades
+# 🌎 Live Website
+
+Visit the deployed version:
+
+https://1anxtz.github.io/upminaa-fansite/
+
+---
+
+# ✨ Features
 
 ## 🏠 Home / Hero Section
 
-- Apresentação do Fan Hub
-- Imagem principal da criadora
-- Indicador de status LIVE
-- Navegação rápida entre seções
-- Design neon moderno
+- Fan Hub introduction
+- Main creator image
+- LIVE status indicator
+- Quick navigation between sections
+- Modern neon-inspired design
 
 ---
 
 ## 👤 About
 
-- Biografia da criadora
-- Cards com informações principais
-- Área de descrição personalizada
-- Organização visual com imagem e informações
+- Creator information
+- Profile cards
+- Custom biography section
+- Organized layout with image and content
 
 ---
 
 ## 🎭 Cosplays
 
-- Área de cosplays destacados
-- Cards com informações individuais
-- Descrições dos personagens
-- Imagens com enquadramento otimizado
-- Visualização ampliada das imagens através de lightbox
+- Featured cosplay section
+- Individual cosplay cards
+- Character descriptions
+- Optimized image presentation
+- Full-size image preview with custom lightbox
 
 ---
 
 ## 🖼️ Gallery
 
-- Galeria de momentos
-- Fotos de bastidores
-- Fanart da comunidade
-- Créditos dos artistas
-- Visualização de imagens em tela ampliada
+- Collection of moments
+- Behind-the-scenes content
+- Community fanart
+- Artist credits
+- Expanded image viewing
 
 ---
 
 ## 📺 Media
 
-- Player da Twitch
-- Área de vídeos do YouTube
-- Links para plataformas oficiais
-- Estrutura preparada para futuras integrações
+- Twitch live stream section
+- YouTube video area
+- Official platform links
+- Structure prepared for future integrations
 
 ---
 
 ## 🌐 Community
 
-Links das redes sociais oficiais:
+Official social media links:
 
 - Instagram
 - TikTok
@@ -70,18 +78,18 @@ Links das redes sociais oficiais:
 
 ---
 
-## 🔍 Experiência do usuário
+# 🔍 User Experience
 
-- Design inspirado em interfaces neon modernas
-- Animações de entrada
-- Efeitos hover
-- Lightbox personalizado
-- Layout responsivo para desktop e mobile
-- Navegação suave entre seções
+- Modern neon interface
+- Smooth animations
+- Hover effects
+- Custom lightbox system
+- Responsive design for desktop and mobile
+- Smooth scrolling navigation
 
 ---
 
-# 🛠️ Tecnologias utilizadas
+# 🛠️ Technologies Used
 
 ## Front-end
 
@@ -91,17 +99,31 @@ Links das redes sociais oficiais:
 
 ---
 
-## Recursos utilizados
+## Development Features
 
 - CSS Grid
 - CSS Flexbox
 - Intersection Observer API
 - DOM Manipulation
 - Responsive Design
-- Lightbox personalizado
-- Smooth Scroll---
+- Smooth Scroll
+- Custom UI components
 
-# 📂 Estrutura do projeto
+---
+
+## SEO & Web Optimization
+
+- SEO metadata optimization
+- Google Search Console integration
+- XML Sitemap
+- Robots.txt configuration
+- Schema.org Structured Data
+- Open Graph integration
+- Twitter Cards
+
+---
+
+# 📂 Project Structure
 
 ```text
 upminaa-fansite/
@@ -112,88 +134,135 @@ upminaa-fansite/
 ├── main.js
 ├── README.md
 ├── LICENSE
+├── robots.txt
+├── sitemap.xml
 │
-└── assets/
+└── images/
     │
-    └── images/
-        │
-        ├── favicon.png
-        │
-        ├── profile/
-        │   └── imagens principais da criadora
-        │
-        ├── cosplay/
-        │   └── imagens dos cosplays
-        │
-        └── gallery/
-            └── imagens da galeria
+    ├── favicon.png
+    │
+    ├── profile/
+    │   ├── upminaa-profile.png
+    │   └── upminaa-bio-photo.jpg
+    │
+    ├── cosplay/
+    │   ├── cosplay-gura.jpg
+    │   ├── cosplay-miku-br.jpg
+    │   ├── cosplay-frieren.jpg
+    │   ├── cosplay-marin.jpg
+    │   ├── cosplay-miku-nakano.jpg
+    │   └── cosplay-nino.jpg
+    │
+    └── gallery/
+        ├── main.jpg
+        ├── behind-the-scenes.jpg
+        ├── fanart.jpg
+        └── gaming.jpg
 ```
+
 ---
 
-# 🚀 Como executar
+# 🚀 How To Run
 
-Clone o repositório:
+Clone the repository:
 
 ```bash
 git clone https://github.com/1ANXTZ/upminaa-fansite.git
-
-Entre na pasta:
-cd upminaa-fansite
-
-Abra o arquivo:
-index.html
-ou utilize uma extensão como Live Server no VS Code.
 ```
-🌎 Deploy
 
-O projeto está preparado para hospedagem em:
+Enter the project folder:
 
-Netlify
-Vercel
-GitHub Pages
-🎨 Créditos
-Desenvolvimento
+```bash
+cd upminaa-fansite
+```
 
-Criado por:
+Open:
 
-1ANXTZ (Ian)
+```text
+index.html
+```
+
+or use an extension like **Live Server** in VS Code.
+
+---
+
+# 🌎 Deployment
+
+Current deployment:
+
+- GitHub Pages
+
+Future deployment compatibility:
+
+- Netlify
+- Vercel
+
+---
+
+# 📊 Project Status
+
+🚀 Live project
+
+Website:
+
+https://1anxtz.github.io/upminaa-fansite/
+
+This project was created as a front-end portfolio project using HTML, CSS and JavaScript.
+
+---
+
+# 🎨 Credits
+
+## Development
+
+Created by:
+
+**1ANXTZ (Ian)**
+
+GitHub:
+
+https://github.com/1ANXTZ
 
 Instagram:
 
 https://instagram.com/1anxtz
 
-Fanart
+---
 
-Arte utilizada na galeria:
+## Fanart
 
-Artista:
+Artwork used in the gallery:
 
-@someguywhoarts
+Artist:
+
+**@someguywhoarts**
 
 Instagram:
 
 https://instagram.com/someguywhoarts
 
-📌 Observações
+---
 
-Este projeto é um fan project criado para organização e apresentação de informações públicas relacionadas à criadora.
+# 📌 Disclaimer
 
-Não possui vínculo oficial com Upminaa.
+This project is an unofficial fan project created to organize and present publicly available information related to Upminaa.
 
-As imagens e artes utilizadas pertencem aos seus respectivos proprietários.
+It is not affiliated with, sponsored by, endorsed by or officially connected to Upminaa.
+
+All images, artworks, logos and trademarks belong to their respective owners.
 
 ---
 
-# 🔮 Melhorias futuras
+# 🔮 Future Improvements
 
-Possíveis evoluções:
+Possible future updates:
 
-- Integração oficial com Twitch API para status LIVE automático
-- Atualização automática de vídeos do YouTube
-- Área de notícias e atualizações
-- Melhorias contínuas de acessibilidade
-- Otimização de performance
-- Novas seções para interação da comunidade
+- Official Twitch API integration for automatic LIVE status
+- Automatic YouTube content updates
+- News and updates section
+- Accessibility improvements
+- Performance optimization
+- New community interaction features
 
 ---
 
