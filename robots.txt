@@ -1,4 +1,5 @@
 User-agent: *
+
 Allow: /
 
 Sitemap: https://1anxtz.github.io/upminaa-fansite/sitemap.xml
